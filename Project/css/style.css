@@ -1,0 +1,456 @@
+#back2Top {
+    width: 40px;
+    line-height: 30px;
+    overflow: hidden;
+    z-index: 999;
+    display: none;
+    cursor: pointer;
+    position: fixed;
+    bottom: 100px;
+    right: 0;
+    margin-right: 20px;
+    background-color: #00a651;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none;
+    height: 40px;
+    width: 40px;
+    border-radius: 3px;
+    padding: 5px
+}
+#back2Top:hover {
+    background-color: #02E470;
+    color: #4D4D4D;
+}
+
+#back2Top i {
+    line-height: 20px;
+}
+
+
+
+/*Header*/
+.header-one{
+    background-color: red;
+    height:30px;
+}
+.header-one ul{
+    padding: 0px !important;
+}
+.header-one ul li{
+    display: inline-block;
+    list-style: none;
+    padding-right:20px
+}
+.header-one span{
+    line-height: 30px;
+    color: #676666
+}
+.header-one i{
+    color: #434343;
+
+}
+.header-two{
+    margin-top: 15px
+}
+.chil2-header-two #search{
+    position: relative;
+}
+.chil1-header-two img{
+    width: 98%;
+    height:auto;
+    padding: 0px  !important;
+}
+.chil2-header-two input{
+    height:35px;
+    width: 85%;
+    outline: none;
+    border-bottom-left-radius:; 3px;
+    border-top-left-radius: 3px;
+    border:1px solid #00a651;
+    padding-left: 45px 
+
+}
+.chil2-header-two button{
+    height:35px;
+    width: 100px;
+    position: absolute;
+    background-color: #00a651;
+    color: white;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    border:1px solid #00a651;
+    border:0;
+}
+.chil2-header-two #search i{
+    position: absolute;
+    top: 8px;
+    left: 14px;
+    color: #00a651;
+    padding: 1px;
+}
+.chil2-header-two p{
+   color: #696969;
+   margin-top: 10px;
+   font-size:13px;
+}
+.chil2-header-two p span{
+   color: #606060;
+   font-weight: bold;
+}
+.chil3-header-two ul{
+    padding: 0px !important;
+}
+.chil3-header-two ul li{
+    display: inline-block;
+    list-style: none;
+    text-align: center;
+    padding: 0px !important;
+}
+.chil3-header-two ul li img{
+    height:46px;
+    width: 46px
+}
+.chil3-header-two  .icon1 img{
+    height:30px;
+    width: 30px;
+    margin-top: 8px;
+    margin-bottom: 7px
+}
+.chil3-header-two span{
+    font-size:12px;
+}
+.chil3-header-two ul li a{
+    color: #343434;
+}
+.chil3-header-two ul li a:hover{
+    color: #00a651;
+}
+a{
+    text-decoration: none !important;
+}
+/*::-webkit-input-placeholder {
+    font-weight: 500;
+    font-size: 14px;
+    color: #00a651;
+}*/
+.icon1{
+    float: right;
+    width: 125px
+}
+.icon2{
+    float: right;
+    width: 70px;
+    position: relative;
+}
+.icon3{
+    float: right;
+    width: 70px
+}
+#count-cart{
+    position: absolute;
+    top: 5px;
+    right: 24px;
+    background-color: #00a651;
+    color: #fff;
+    text-align: center;
+    min-width: 18px;
+    min-height: 18px;
+    line-height: 18px;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -o-border-radius: 20px;
+    font-size: 11px;
+}
+
+
+nav.navbar-findcond {
+    background: rgba(0, 0, 0, 0.6);
+}
+nav.navbar-findcond a { 
+    color: white;
+    font-size: 18px ;
+}
+nav.navbar-findcond ul.navbar-nav a { color: white }
+nav.navbar-findcond ul.navbar-nav a:hover,
+nav.navbar-findcond ul.navbar-nav a:visited,
+nav.navbar-findcond ul.navbar-nav a:focus,
+nav.navbar-findcond ul.navbar-nav a:active{ 
+    background: white; 
+    color: #cb2429;
+    border-bottom: 2px solid #9b0029;
+}
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: #eee;
+    border-color: #9b0029 !important;
+}
+
+
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+
+
+/*registerForm*/
+.registerForm .menubar{
+    background-color: #3c8dbc;
+    
+}
+.registerForm .menubar h1{
+    color: white;
+    padding: 5px;
+    text-align: center;
+}
+.title{
+    color: #37474f;
+    margin:30px 0;
+}
+.registerForm .mainForm{
+    background-color: #f2f7fb
+}
+.registerForm .mainForm p{
+    font-size:16px;
+}
+.registerForm .mainForm p span{
+    font-size:18px;
+    color: red;
+    font-weight: bold
+}
+ul{
+    padding: 0;
+    margin:0 !important;
+}
+.registerForm .mainForm .text{
+    width: 20%;
+    float: left;
+}
+.registerForm .mainForm .input{
+    width:80%;
+    float: left;
+}
+.main-input{
+    width: 100%;
+    float: left;
+}
+.registerForm .mainForm input{
+    height: 35px;
+    width: 60%;
+    padding-left: 15px;
+    border-radius: 3px;
+    border: 1px solid #D7D5D5;
+    outline: none
+}
+.registerForm .mainForm select{
+    height: 35px;
+    width: 20%;
+    border-radius: 3px;
+    border: 1px solid #D7D5D5;
+    outline: none
+}
+.main-input{
+    margin-bottom: 10px
+}
+.button-res{
+    margin-left: 20%;
+}
+.button-res input{
+    text-align: center;
+    width: 20% !important;
+    background-color: #428bca;
+    height: 45px !important;
+    border: 0px;
+    color: white;
+    font-size: 18px
+}
+.button-res input:hover{
+    background-color: white;
+    height: 45px !important;
+    border: 1px solid #428bca;
+    color: #428bca;
+}
+/*.nameLink{
+    background-color: #696969
+}*/
+.nameLink .linkLeft i{
+    color: white;
+    padding: 10px;
+    background-color: #4099ff;;
+    display:inline-block;
+    margin:0;
+    border-radius: 5px;
+    font-size: 20px
+}
+.linkPage{
+    margin-top: 15px;
+    margin-bottom: 60px !important
+}
+.linkLeft{
+    width: 50%;
+    float: left;
+}
+.linkLeft .icon{
+    width: 10%;
+    float: left;
+}
+.linkLeft .linkText{
+    width: 90%;
+    float: left;
+}
+.linkLeft .linkText h4{
+    margin:0 0 5px 0 !important;
+}
+.linkLeft .linkText p{
+    font-size: 13px
+}
+.linkRight ul li{
+    display: inline-block;
+    list-style: none;
+    padding-left: 10px
+}
+.linkRight a{
+    color: #37474f ;
+}
+.linkRight a:hover{
+    color: #4099ff ;
+}
+.mainForm{
+    width: 85%;
+    float: left;
+}
+.registerContentBG{
+    padding: 15px 30px
+}
+.registerContent{
+    background-color: white;
+    height: 750px;
+    margin-top: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(43,43,43,.1), 0 11px 6px -7px rgba(43,43,43,.1);
+}
+.registerContentForm{
+    padding: 15px 20px
+}
+/*menubar*/
+.menubarRight{
+    margin-right: 15px;
+    padding: 15px 0px
+}
+.menubarRight ul li{
+    display: inline-block;
+    list-style: none;
+}
+.menubarRight img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px
+}
+.menubarRight a{
+    color: white
+}
+/*mainMenu*/
+.mainMenu{
+    background-color: #222d32; 
+    height: 950px;
+    width: 15%;
+    float: left;
+}
+.logoTeam img{
+    width: 60px;
+    height: auto;
+}
+.logoTeam {
+    padding: 10px;
+    border-bottom: 2px solid #233140
+}
+.mainMenu .logoTeam a{
+    color: white;
+    font-size:14px;
+}
+.Navigation h4{
+    font-size: 13px;
+    color: #f1f7ff;
+    padding: 10px 15px
+}
+.Navigation{
+    border-bottom: 1px solid #233140
+}
+.menu ul li{
+    list-style: none;
+    padding: 20px 15px
+}
+.full a{
+    color: #37474f;
+    font-size:16px;
+    margin-right: 30px
+}
+.full{
+    margin-right: 30px
+}
+.menu ul li:hover,
+.menu ul li:visited,
+.menu ul li:focus,
+.menu ul li:active
+{
+    background-color: #1d2531
+}
+.menu ul li:hover > a{
+    color: white !important
+}
+.mainMenu .menu ul li a{
+    color: #b7c0cd
+}
+.mainMenu .menu ul li a:hover{
+    color: white
+}
+.menu i{
+    padding-right: 10px;
+}
+.icon-nvar{
+    float: left;
+    font-size: 20px;
+    padding-left: 15px;
+    margin-top: 5px
+}
