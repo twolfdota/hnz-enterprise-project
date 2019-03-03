@@ -18,19 +18,19 @@
 	<div class="registerForm container-full" id="myvideo">
 		<div class="hidden-lg hidden-md">
 			<nav id="menu">
-	         <ul>
-				<li>
-					<a data-toggle="pill" href="#register">
-						<i  class="fa fa-bars" aria-hidden="true"></i> Registration
-					</a>
-				</li>
-				<li>
-					<a data-toggle="pill" href="#academic">
-						<i class="fa fa-bars" aria-hidden="true"></i> Academic Year's Event Information
-					</a>
-				</li>
+				<ul>
+					<li>
+						<a data-toggle="pill" href="#register">
+							<i  class="fa fa-bars" aria-hidden="true"></i> Registration
+						</a>
+					</li>
+					<li>
+						<a data-toggle="pill" href="#academic">
+							<i class="fa fa-bars" aria-hidden="true"></i> Academic Year's Event Information
+						</a>
+					</li>
 				</ul>
-	      </nav>
+			</nav>
 		</div>
 		<div class="mainMenu hidden-xs hidden-sm">
 			<div class="logoTeam">
@@ -125,7 +125,7 @@
 				</div>
 				<div class="registerContent tab-content">
 					<div id="register" class="registerContentForm tab-pane fade in active">
-						<form>
+						<form name="formRes">
 							<div class="title">
 								<h3>Personal information</h3>
 							</div>
@@ -159,7 +159,7 @@
 								</div>
 								<div class="input">
 									<select>
-									  <option value="">Student</option>
+										<option value="">Student</option>
 									</select>
 								</div>
 							</div>
@@ -169,7 +169,7 @@
 								</div>
 								<div class="input">
 									<select>
-									  <option value="">Faculty</option>
+										<option value="">Faculty</option>
 									</select>
 								</div>
 							</div>
@@ -195,7 +195,7 @@
 							</div>
 							<div class="main-input">
 								<div class="button-res">
-									<input type="submit" name="" value="Sign Up">
+									<input type="submit" name="" value="Sign Up" onclick="ValidateEmail(document.formRes.email)">
 								</div>
 							</div>
 						</form>
@@ -241,47 +241,81 @@
 		</div>
 	</div>
 	<script>
-		function validateForm() {
-		  var x = document.forms["myForm"]["fname"].value;
-		  if (x == "") {
-		    alert("Name must be filled out");
-		    return false;
-		  }
-
+		function ValidateEmail(inputText)
+		{
+			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			if(inputText.value.match(mailformat))
+			{
+				document.formRes.email.focus();
+				return true;
+			}
+			else
+			{
+				alert("You have entered an invalid email address!");
+				document.formRes.email.focus();
+				return false;
+			}
 		}
-		</script>
-	<script>
-	var elem = document.getElementById("myvideo");
-	function openFullscreen() {
-	  if (elem.requestFullscreen) {
-	    elem.requestFullscreen();
-	  } else if (elem.mozRequestFullScreen) { /* Firefox */
-	    elem.mozRequestFullScreen();
-	  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-	    elem.webkitRequestFullscreen();
-	  } else if (elem.msRequestFullscreen) { /* IE/Edge */
-	    elem.msRequestFullscreen();
-	  }
-	}
+		function ValidatePhone(inputtxt)
+   {
+      var numbers = /^[0-9]+$/;
+      if(inputtxt.value.match(numbers))
+      {
+      alert('Your Registration number has accepted....');
+      document.formRes.phone.focus();
+      return true;
+      }
+      else
+      {
+      alert('Please input numeric characters only');
+      document.formRes.phone.focus();
+      return false;
+      }
+   } 
 	</script>
 	<script>
-         jQuery(document).ready(function( $ ) {
-            $("#menu").mmenu({
-               "extensions": [
-                  "fx-menu-zoom",
-                  "fx-panels-zoom",
-                  "pagedim-black",
-                  "theme-dark"
-               ],
-               "iconPanels": true
-            });
-         });
-      </script>
+		function validateForm() {
+			var x = document.forms["myForm"]["fname"].value;
+			if (x == "") {
+				alert("Name must be filled out");
+				return false;
+			}
+
+		}
+	</script>
+	<script>
+		var elem = document.getElementById("myvideo");
+		function openFullscreen() {
+			if (elem.requestFullscreen) {
+				elem.requestFullscreen();
+			} else if (elem.mozRequestFullScreen) { /* Firefox */
+				elem.mozRequestFullScreen();
+			} else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+				elem.webkitRequestFullscreen();
+			} else if (elem.msRequestFullscreen) { /* IE/Edge */
+				elem.msRequestFullscreen();
+			}
+		}
+
+	</script>
+	<script>
+		jQuery(document).ready(function( $ ) {
+			$("#menu").mmenu({
+				"extensions": [
+				"fx-menu-zoom",
+				"fx-panels-zoom",
+				"pagedim-black",
+				"theme-dark"
+				],
+				"iconPanels": true
+			});
+		});
+	</script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/slick.js"></script>
-  	<script type="text/javascript" src="js/slick.min.js"></script>
+	<script type="text/javascript" src="js/slick.min.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 	<script type="text/javascript" src="mmenu/mmenu/jquery.mmenu.all.js"></script>
 </body>
