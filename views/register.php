@@ -295,7 +295,7 @@
                     }
                 }).then(function() {
                     $.ajax({
-                        url: `/Project/createUser`,
+                        url: `/hnz-enterprise-project/createUser`,
                         type: 'POST',
                         dataType: 'json',
                         data: $("#createForm").serialize(),
@@ -338,7 +338,7 @@
                 return false;
             } else {
                 $.ajax({
-                    url: `/Project/editDeadlines`,
+                    url: `/hnz-enterprise-project/editDeadlines`,
                     type: 'POST',
                     dataType: 'json',
                     data: $("#yearForm").serialize(),
@@ -402,7 +402,7 @@
             })
 
             $.ajax({
-                url: `/Project/loadYear`,
+                url: `/hnz-enterpise-project/loadYear`,
                 type: 'GET',
                 dataType: 'json',
                 success: function(result) {
@@ -418,7 +418,7 @@
             })
 
             $.ajax({
-                url: `/Project/loadFaculty`,
+                url: `/hnz-enterprise-project/loadFaculty`,
                 type: 'GET',
                 dataType: 'json',
                 success: function(result) {
