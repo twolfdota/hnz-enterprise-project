@@ -68,7 +68,8 @@ class userCtrl
         $conn->close();
     }
 
-    function validateEmail(){
+    function validateEmail()
+    {
         require_once './DBConnect.php';
         $sql = "select email from user";
         $result = array();
@@ -81,7 +82,7 @@ class userCtrl
             while ($stmt->fetch()) {
                 array_push($result, $email);
             }
-    
+
             $stmt->free_result();
             $stmt->close();
         }
@@ -89,7 +90,19 @@ class userCtrl
         echo $jsonresult;
     }
 
-    
-}
+    function check($email, $pass) {
+        require_once './DBConnect.php';
+        $sql = "select email from user where email=? and password=?";
+        $stmt = $conn->prepare($sql);
+        $salt = "124$@=+YJQ123";
+        $token = hash("sha1", $pass . $salt);
+        $stmt->bind_param("ss", $email, $token);
+        $stmt->execute();
+        $stmt->store_result();
+        $conn->close();
+        $num_of_rows = $stmt->num_rows;
+        return $num_of_rows;
+    }
 
-?>
+}
+ 

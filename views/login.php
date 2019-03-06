@@ -8,19 +8,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <head>
 
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="assets/css/style.css" type="text/css" media="all" />
 	<!-- Style-CSS -->
-	<link rel="stylesheet" href="css/fontawesome-all.css">
+	<link rel="stylesheet" href="assets/css/fontawesome-all.css">
 
 </head>
 
 <body>
-	<div class="video-w3l" data-vide-bg="video/1">
+	<div class="video-w3l" data-vide-bg="assets/video/1">
 		<!-- title -->
 		<h1>
 			<span>L</span>ogin
 			<span>T</span>o
-			<span>T</span>the
+			<span>T</span>he
 			<span>S</span>ystem</h1>
 		<!-- //title -->
 		<!-- content -->
@@ -28,13 +28,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<form action="#" method="post">
 				<div class="form-style-agile">
 					<label>
-						<i class="fas fa-user"></i>Username</label>
-					<input placeholder="Username" name="Name" type="text" required="">
+						<i class="fas fa-user"></i>Email</label>
+					<input placeholder="email" name="email" type="text" required="">
 				</div>
 				<div class="form-style-agile">
 					<label>
 						<i class="fas fa-unlock-alt"></i>Password</label>
-					<input placeholder="Password" name="Password" type="password" required="">
+					<input placeholder="Password" name="password" type="password" required="">
 				</div>
 				<!-- switch -->
 <!-- 				<div class="checkout-w3l">
@@ -49,7 +49,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<a href="#">Remember Me</a>
 				</div> -->
 				<!-- //switch -->
-				<input type="submit" value="Log In">
+				<input type="submit" value="Log In" name="login-form">
 				<!-- social icons -->
 				<!-- //social icons -->
 			</form>
@@ -58,11 +58,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	
 	<!-- Jquery -->
-	<script src="js/jquery-2.2.3.min.js"></script>
+	<script src="assets/js/jquery-2.2.3.min.js"></script>
 	<!-- //Jquery -->
 
 	<!-- Video js -->
-	<script src="js/jquery.vide.min.js"></script>
+	<script src="assets/js/jquery.vide.min.js"></script>
 	<!-- //Video js -->
 	
 </body>

@@ -12,9 +12,12 @@ $route->add('/cms', function () {
     include_once './views/register.php';
 });
 
+$route->add('/login', function () {
+    include_once './views/login.php';
+});
 //Thêm các đường dẫn load dữ liệu đầu trang vào đây (thường dùng GET)
 $route->add('/loadFaculty', function () {
-    
+
     include './controllers/facultyController.php';
     $facultyCtrl = new facultyCtrl();
     $facultyCtrl->loadFalcuty();
@@ -22,7 +25,7 @@ $route->add('/loadFaculty', function () {
 
 
 $route->add('/loadYear', function () {
-  
+
     include './controllers/yearController.php';
     $yearCtrl = new yearCtrl();
     $yearCtrl->loadYear();
@@ -49,5 +52,28 @@ $route->add('/createUser', function () {
     $userCtrl->create();
 });
 
+$route->add('/login', function () {
+    include_once './views/login.php';
+    include './controllers/userController.php';
+
+    $userCtrl = new userCtrl();
+    $email = $_POST["email"];
+    $pass = $_POST["password"];
+    if (isset($_POST['login-form'])) {
+        if ($email != null && $pass != null) {
+            $num_of_rows = $userCtrl->check($email, $pass);
+            if ($num_of_rows > 0) {
+                $_SESSION['login'] = $email;
+
+                header("Location: index.php");
+                exit;
+            } else {
+                echo '<script>alert("invalid username or password")</script>';
+            }
+        } else {
+            echo '<script>alert("please fill in the forms!")</script>';
+        }
+    }
+});
 
 $route->submit();
