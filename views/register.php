@@ -19,10 +19,11 @@
 </head>
 
 <body>
+    <!-- Modal để hiển thị thông tin user sau khi add-->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
-            <!-- Modal content-->
+            
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -30,7 +31,6 @@
                 </div>
                 <div class="modal-body" id="mymodal-body">
                     <center><img src="assets/images/anonymous.png" width="50%" height="50%" /></center>
-                    <p><b></b></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">OK</button>
@@ -39,6 +39,7 @@
 
         </div>
     </div>
+    <!-- nội dung chính của page -->
     <div class="registerForm container-full" id="myvideo">
         <div class="hidden-lg hidden-md">
             <nav id="menu">
@@ -233,6 +234,14 @@
                             </div>
                             <div class="main-input">
                                 <div class="text">
+                                    <p><span>* </span>Year name</p>
+                                </div>
+                                <div class="input">
+                                    <input type="text" name="yearName" required>
+                                </div>
+                            </div>
+                            <div class="main-input">
+                                <div class="text">
                                     <p><span>* </span>Start Time</p>
                                 </div>
                                 <div class="input">
@@ -268,7 +277,9 @@
     </div>
     <script>
         function Validate(formRes, event) {
+            //không cho form post theo cách thông thường để post bằng ajax
             event.preventDefault();
+            //validate thông tin user
             var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             var numbers = /^[0-9]{10}$/;
             if (!formRes.phone.value || !formRes.email.value || !formRes.name.value || !formRes.password.value || !formRes.dob.value) {
@@ -283,8 +294,9 @@
                 alert("You have entered an invalid email address");
                 return false;
             } else {
+                //kiểm tra email có bị lặp không bằng ajax
                 $.ajax({
-                    url: `/Project/vldEmail`,
+                    url: `/hnz-enterprise-project/vldEmail`,
                     type: 'GET',
                     dataType: 'json',
                     async: false
@@ -294,6 +306,7 @@
                         return false;
                     }
                 }).then(function() {
+                    //post bằng ajax
                     $.ajax({
                         url: `/hnz-enterprise-project/createUser`,
                         type: 'POST',
@@ -322,13 +335,15 @@
         }
 
         function validateYear(yearForm, event) {
+            //không cho form post theo cách thông thường để post bằng ajax
             event.preventDefault();
+            //validate thông tin của academic year
 			var currentYear = new Date().getFullYear();
             var startDt = yearForm.startDate.value;
             var dl1 = yearForm.deadline.value;
             var dl2 = yearForm.finalDeadline.value;
-            if (!startDt || !dl1 || !dl2) {
-                alert("Please input all time milestones!");
+            if (!startDt || !dl1 || !dl2 || !yearForm.yearName.value) {
+                alert("Please input all information!");
                 return false;
             } else if (new Date(startDt).getFullYear()!= currentYear || new Date(dl1).getFullYear()!= currentYear || new Date(dl2).getFullYear()!= currentYear ){
 				alert("Invalid time range!");
@@ -336,6 +351,7 @@
             } else if ((new Date(dl1).getTime() <= new Date(startDt).getTime()) || (new Date(dl2).getTime() <= new Date(dl1).getTime())) {
                 alert("Invalid time range!");
                 return false;
+            //post bằng ajax
             } else {
                 $.ajax({
                     url: `/hnz-enterprise-project/editDeadlines`,
@@ -384,14 +400,15 @@
     </script>
     <script>
         jQuery(document).ready(function($) {
+            //tạo 1 hàm format date để load vào html
             Date.prototype.formatted = function() {
-                var mm = this.getMonth() + 1; // getMonth() is zero-based
+                var mm = this.getMonth() + 1; // getMonth() bắt đầu từ 0 - 11
                 var dd = this.getDate();
                 var HH = this.getHours();
                 var MM = this.getMinutes();
                 var ss = this.getSeconds();
                 return this.getFullYear() + "-" +
-                    +(mm > 9 ? '' : '0') + mm + "-" +
+                    (mm > 9 ? '' : '0') + mm + "-" +
                     (dd > 9 ? '' : '0') + dd + "T" +
                     (HH > 9 ? '' : '0') + HH + ":" +
                     (MM > 9 ? '' : '0') + MM + ":" +
@@ -400,23 +417,22 @@
             $('#myModal').on('hidden', function() {
                 location.reload();
             })
-
+            //load thông tin năm hiện tại vào trang
             $.ajax({
-                url: `/hnz-enterpise-project/loadYear`,
+                url: `/hnz-enterprise-project/loadYear`,
                 type: 'GET',
                 dataType: 'json',
                 success: function(result) {
-
+                    console.log(new Date(result[0].dl1).formatted());
                     if (result[0]) {
-                        var td = new Date(result[0].std);
-                        console.log(td.formatted());
+                        document.yearForm.yearName.value = result[0].yearName;
                         document.yearForm.startDate.defaultValue = new Date(result[0].std).formatted();
                         document.yearForm.deadline.defaultValue = new Date(result[0].dl1).formatted();
                         document.yearForm.finalDeadline.defaultValue = new Date(result[0].dl2).formatted();
                     }
                 }
             })
-
+            //load danh sách khoa, lọc ra số khoa đã có coordinator
             $.ajax({
                 url: `/hnz-enterprise-project/loadFaculty`,
                 type: 'GET',
