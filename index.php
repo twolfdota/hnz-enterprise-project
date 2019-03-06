@@ -8,8 +8,11 @@ $route->add('/', function () {
     include_once './views/home.php';
 });
 
-$route->add('/cms', function () {
+$route->add('/register', function () {
     include_once './views/register.php';
+});
+$route->add('/student', function () {
+    include_once './views/student.php';
 });
 
 $route->add('/login', function () {
