@@ -153,61 +153,69 @@
                 </div>
                 <div class="registerContent tab-content">
                     <div id="upload" class="registerContentForm tab-pane fade in active">
-                        <div class="uploadFrame">
-                            <a href="#"  onclick="document.getElementById('id01').style.display='block'">
-                                <img  src="assets/images/upload_file-512.png">
-                            </a>
-                            <p>You can drag and drop files here to add them.</p>
-                        </div>
-                    </div>
-                    <div id="id01" class="modal">
-
-                      <form class="modal-content animate" action="/action_page.php">
-                        <div class="imgcontainer">
-                          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                      </div>
-
-                      <div class="" style="width: 700px;margin:auto;">
-                          <div class="row">    
-                            <div class="">  
+                        <form>  
+                            <div class="uploadForm">  
                                 <!-- image-preview-filename input [CUT FROM HERE]-->
                                 <div class="image-preview">
                                     <div class="row">
-                                        <div>
-                                            <input type="file" name="">
-                                        </div>
-                                    </div>
-                                    <div class="row">
                                          <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                                             <input type="checkbox" autocomplete="off" checked>
+                                             <h4>Title</h4>
                                          </div>
                                          <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                                             <p>Chấp nhận điều khoản</p>
+                                             <input type="text" name="" required>
                                          </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-4 col-xs-6">
+                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+
+                                         </div>
+                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                                             <div class="file">
+                                                <input type="file" name="" required>
+                                            </div>
+                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+
+                                         </div>
+                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                                             <div class=" check">
+                                             <input type="checkbox" autocomplete="off" checked>
+                                             <p>Chấp nhận điều khoản</p>
+                                         </div>
+                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+
+                                         </div>
+                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 fileImg">
+                                             <div class="row">
+                                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                            <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                                <span class="glyphicon glyphicon-remove"></span> Clear
-                                            </button>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                             <div class="btn btn-default image-preview-input">
                                                 <i class="fa fa-folder-open" aria-hidden="true"></i>
                                                 <span class="image-preview-input-title">Browse</span>
                                                 <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
                                             </div>
                                         </div>
+                                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                            <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                                <span class="glyphicon glyphicon-remove"></span> Clear
+                                            </button>
+                                        </div>
+                                             </div>
+                                         </div>
+                                        
                                     </div>
                                 </div><!-- /input-group image-preview [TO HERE]--> 
                             </div>
-                        </div>
+                        </form>
                     </div>
-                </form>
             </div>
             <div id="academic" class="registerContentForm tab-pane fade">
                         <!-- <form name="yearForm" id="yearForm">
