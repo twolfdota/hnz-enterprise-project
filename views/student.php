@@ -153,7 +153,7 @@
                 </div>
                 <div class="registerContent tab-content">
                     <div id="upload" class="registerContentForm tab-pane fade in active">
-                        <form>  
+                        <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
                             <div class="uploadForm">  
                                 <!-- image-preview-filename input [CUT FROM HERE]-->
                                 <div class="image-preview">
@@ -162,7 +162,7 @@
                                            <h4>Title</h4>
                                        </div>
                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 ">
-                                           <input type="text" name="" required>
+                                           <input type="text" name="title" required>
                                        </div>
                                    </div>
                                    <div class="row session2">
@@ -171,7 +171,7 @@
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
                                        <div class="file">
-                                        <input type="file" name="" required>
+                                        <input accept=".doc, .docx" type="file" name="doc" required>
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +181,7 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
                                    <div class=" check">
-                                       <input type="checkbox" autocomplete="off" checked>
+                                       <input type="checkbox" autocomplete="off" name="agree" checked>
                                        <p>Chấp nhận điều khoản</p>
                                    </div>
                                </div>
@@ -199,7 +199,7 @@
                                     <div class="btn btn-default image-preview-input">
                                         <i class="fa fa-folder-open" aria-hidden="true"></i>
                                         <span class="image-preview-input-title">Browse</span>
-                                        <input type="file" accept="image/png, image/jpeg, image/gif" required="" name="input-file-preview"/> <!-- rename it -->
+                                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
@@ -216,7 +216,7 @@
                         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                           <input " class="btnSubmit" type="submit" name="" value="Upload">
+                           <input " class="btnSubmit" type="submit" name="form-upload" value="Upload">
                        </div>
                    </div>
 
@@ -318,99 +318,7 @@
 </div>
 </div>
 </div>
-<script>
-    function Validate(formRes, event) {
-            //không cho form post theo cách thông thường để post bằng ajax
-            event.preventDefault();
-            //validate thông tin user
-            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            var numbers = /^[0-9]{10}$/;
-            if (!formRes.phone.value || !formRes.email.value || !formRes.name.value || !formRes.password.value || !formRes.dob.value) {
-                alert('Please fill in all of the forms!');
-                return false;
-            }
-            if (!formRes.phone.value.match(numbers)) {
-                alert('Please input correct phone format(10 digits)');
 
-                return false;
-            } else if (!formRes.email.value.match(mailformat)) {
-                alert("You have entered an invalid email address");
-                return false;
-            } else {
-                //kiểm tra email có bị lặp không bằng ajax
-                $.ajax({
-                    url: `/hnz-enterprise-project/vldEmail`,
-                    type: 'GET',
-                    dataType: 'json',
-                    async: false
-                }).done(function(result) {
-                    if (result.indexOf(formRes.email.value) > -1) {
-                        alert("Email already used!");
-                        return false;
-                    }
-                }).then(function() {
-                    //post bằng ajax
-                    $.ajax({
-                        url: `/hnz-enterprise-project/createUser`,
-                        type: 'POST',
-                        dataType: 'json',
-                        data: $("#createForm").serialize(),
-                        async: false
-                    }).done(function(result) {
-                        var fcText = $(`#list option[value='${result.faculty}']`).text();
-                        $("#mymodal-body").html(`<center><img src="assets/images/anonymous.png" width="50px" height="50px"/></center>
-                           <p><b>Role: </b>${result.role}</p>
-                           <p><b>Name: </b>${result.name}</p>
-                           <p><b>Date of birth: </b>${result.dob}</p>
-                           <p><b>Phone: </b>${result.phone}</p>
-                           <p><b>Email: </b>${result.email}</p>
-                           <p><b>Faculty: </b>${fcText}</p>`);
-                        if (result.role == "Student") {
-                            $("#mymodal-body").append(`<p><b>Student ID: </b>${result.stdID}</p>`);
-                        }
-                        $("#myModal").modal("show");
-                    })
-                })
-
-
-
-            }
-        }
-
-        function validateYear(yearForm, event) {
-            //không cho form post theo cách thông thường để post bằng ajax
-            event.preventDefault();
-            //validate thông tin của academic year
-            var currentYear = new Date().getFullYear();
-            var startDt = yearForm.startDate.value;
-            var dl1 = yearForm.deadline.value;
-            var dl2 = yearForm.finalDeadline.value;
-            if (!startDt || !dl1 || !dl2 || !yearForm.yearName.value) {
-                alert("Please input all information!");
-                return false;
-            } else if (new Date(startDt).getFullYear()!= currentYear || new Date(dl1).getFullYear()!= currentYear || new Date(dl2).getFullYear()!= currentYear ){
-                alert("Invalid time range!");
-                return false;
-            } else if ((new Date(dl1).getTime() <= new Date(startDt).getTime()) || (new Date(dl2).getTime() <= new Date(dl1).getTime())) {
-                alert("Invalid time range!");
-                return false;
-            //post bằng ajax
-        } else {
-            $.ajax({
-                url: `/hnz-enterprise-project/editDeadlines`,
-                type: 'POST',
-                dataType: 'json',
-                data: $("#yearForm").serialize(),
-                async: false
-            }).done(function(result) {
-                if (result.status == "success") {
-                    alert("Deadlines successfully updated!");
-                    location.reload();
-                }
-            })
-        }
-    }
-</script>
     <!--
     <script>
         function validateForm() {
@@ -441,82 +349,7 @@
         }
     }
 </script>
-<script>
-    jQuery(document).ready(function($) {
-            //tạo 1 hàm format date để load vào html
-            Date.prototype.formatted = function() {
-                var mm = this.getMonth() + 1; // getMonth() bắt đầu từ 0 - 11
-                var dd = this.getDate();
-                var HH = this.getHours();
-                var MM = this.getMinutes();
-                var ss = this.getSeconds();
-                return this.getFullYear() + "-" +
-                (mm > 9 ? '' : '0') + mm + "-" +
-                (dd > 9 ? '' : '0') + dd + "T" +
-                (HH > 9 ? '' : '0') + HH + ":" +
-                (MM > 9 ? '' : '0') + MM + ":" +
-                (ss > 9 ? '' : '0') + ss;
-            };
-            $('#myModal').on('hidden', function() {
-                location.reload();
-            })
-            //load thông tin năm hiện tại vào trang
-            $.ajax({
-                url: `/hnz-enterprise-project/loadYear`,
-                type: 'GET',
-                dataType: 'json',
-                success: function(result) {
-                    console.log(new Date(result[0].dl1).formatted());
-                    if (result[0]) {
-                        document.yearForm.yearName.value = result[0].yearName;
-                        document.yearForm.startDate.defaultValue = new Date(result[0].std).formatted();
-                        document.yearForm.deadline.defaultValue = new Date(result[0].dl1).formatted();
-                        document.yearForm.finalDeadline.defaultValue = new Date(result[0].dl2).formatted();
-                    }
-                }
-            })
-            //load danh sách khoa, lọc ra số khoa đã có coordinator
-            $.ajax({
-                url: `/hnz-enterprise-project/loadFaculty`,
-                type: 'GET',
-                dataType: 'json',
-                success: function(result) {
-                    if (result.leftFC.length <= 0) {
-                        $("#user-role").html(`<option value="1">Student</option>
-                          <option value="3">Guest</option>`)
-                    }
-                    var htmlList = "";
-                    var tempList = result.allFC;
-                    tempList.forEach(function(item) {
-                        htmlList += `<option value="${item.code}">${item.name}</option>`;
-                    })
-                    $("#fc-list").html(htmlList);
-                    $("#user-role").on('change', function() {
-                        htmlList = "";
-                        if ($(this).val() == 2) {
-                            tempList = result.leftFC;
-                        } else {
-                            tempList = result.allFC;
-                        }
-                        tempList.forEach(function(item) {
-                            htmlList += `<option value="${item.code}">${item.name}</option>`;
-                        })
-                        $("#fc-list").html(htmlList);
-                    })
 
-
-                }
-            })
-        });
-    var modal = document.getElementById('id01');
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
     <script type="text/javascript">
         $(document).on('click', '#close-preview', function(){ 
             $('.image-preview').popover('hide');
