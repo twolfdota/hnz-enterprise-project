@@ -61,9 +61,9 @@ $route->add('/login', function () {
     $pass = $_POST["password"];
     if (isset($_POST['login-form'])) {
         if ($email != null && $pass != null) {
-            $num_of_rows = $userCtrl->check($email, $pass);
-            if ($num_of_rows > 0) {
-                $_SESSION['login'] = $email;
+            $res = $userCtrl->check($email, $pass);
+            if (sizeof($res) > 0) {
+                $_SESSION['login'] = $res[0];
 
                 header("Location: index.php");
                 exit;

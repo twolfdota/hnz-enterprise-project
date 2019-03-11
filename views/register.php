@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <?php
+    session_start();
+    ?>
 
 </head>
 
@@ -23,7 +26,7 @@
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
-            
+
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -338,20 +341,20 @@
             //không cho form post theo cách thông thường để post bằng ajax
             event.preventDefault();
             //validate thông tin của academic year
-			var currentYear = new Date().getFullYear();
+            var currentYear = new Date().getFullYear();
             var startDt = yearForm.startDate.value;
             var dl1 = yearForm.deadline.value;
             var dl2 = yearForm.finalDeadline.value;
             if (!startDt || !dl1 || !dl2 || !yearForm.yearName.value) {
                 alert("Please input all information!");
                 return false;
-            } else if (new Date(startDt).getFullYear()!= currentYear || new Date(dl1).getFullYear()!= currentYear || new Date(dl2).getFullYear()!= currentYear ){
-				alert("Invalid time range!");
-				return false;
+            } else if (new Date(startDt).getFullYear() != currentYear || new Date(dl1).getFullYear() != currentYear || new Date(dl2).getFullYear() != currentYear) {
+                alert("Invalid time range!");
+                return false;
             } else if ((new Date(dl1).getTime() <= new Date(startDt).getTime()) || (new Date(dl2).getTime() <= new Date(dl1).getTime())) {
                 alert("Invalid time range!");
                 return false;
-            //post bằng ajax
+                //post bằng ajax
             } else {
                 $.ajax({
                     url: `/hnz-enterprise-project/editDeadlines`,
