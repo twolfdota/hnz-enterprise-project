@@ -543,10 +543,27 @@ ul{
 .fileImg input{
     width: 100% !important;
 }
+.btnSubmit {
+    width: 20% !important;
+}
 
-
-
-
+.imgPost img{
+    width: 170px;
+    height: auto;
+}
+.btn span.glyphicon {               
+    opacity: 0;             
+}
+.btn.active span.glyphicon {                
+    opacity: 1;             
+}
+.session1, .session2, .session3, .session4{
+    margin:20px 0px;
+}
+.session2 input{
+    border: none !important;
+    padding:0px !important;
+}
 /* vertical align top */
 
 nav.vertical ul li {

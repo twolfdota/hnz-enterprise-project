@@ -48,12 +48,12 @@
             <nav id="menu">
                 <ul>
                     <li>
-                        <a data-toggle="pill" href="#register">
+                        <a data-toggle="pill" href="#">
                             <i class="fa fa-bars" aria-hidden="true"></i> Registration
                         </a>
                     </li>
                     <li>
-                        <a data-toggle="pill" href="#academic">
+                        <a data-toggle="pill" href="#">
                             <i class="fa fa-bars" aria-hidden="true"></i> Academic Year's Event Information
                         </a>
                     </li>
@@ -78,7 +78,7 @@
                         </a>
                     </li>
                     <li>
-                        <a data-toggle="pill" href="#academic">
+                        <a data-toggle="pill" href="#yourmagazine">
                             <i class="fa fa-bars" aria-hidden="true"></i> Your File
                         </a>
                     </li>
@@ -157,116 +157,169 @@
                             <div class="uploadForm">  
                                 <!-- image-preview-filename input [CUT FROM HERE]-->
                                 <div class="image-preview">
-                                    <div class="row">
-                                         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                                             <h4>Title</h4>
-                                         </div>
-                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                                             <input type="text" name="" required>
-                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                                    <div class="row session1">
+                                       <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                                           <h4>Title</h4>
+                                       </div>
+                                       <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 ">
+                                           <input type="text" name="" required>
+                                       </div>
+                                   </div>
+                                   <div class="row session2">
+                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 ">
 
-                                         </div>
-                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                                             <div class="file">
-                                                <input type="file" name="" required>
-                                            </div>
-                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-
-                                         </div>
-                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                                             <div class=" check">
-                                             <input type="checkbox" autocomplete="off" checked>
-                                             <p>Chấp nhận điều khoản</p>
-                                         </div>
-                                         </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                                       <div class="file">
+                                        <input type="file" name="" required>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-
-                                         </div>
-                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 fileImg">
-                                             <div class="row">
-                                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                            <div class="btn btn-default image-preview-input">
-                                                <i class="fa fa-folder-open" aria-hidden="true"></i>
-                                                <span class="image-preview-input-title">Browse</span>
-                                                <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                            <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                                <span class="glyphicon glyphicon-remove"></span> Clear
-                                            </button>
-                                        </div>
-                                             </div>
-                                         </div>
-                                        
-                                    </div>
-                                </div><!-- /input-group image-preview [TO HERE]--> 
+                                </div>
                             </div>
-                        </form>
+                            <div class="row session3">
+                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                                   <div class=" check">
+                                       <input type="checkbox" autocomplete="off" checked>
+                                       <p>Chấp nhận điều khoản</p>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="row session4">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 fileImg">
+                               <div class="row">
+                                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                    <div class="btn btn-default image-preview-input">
+                                        <i class="fa fa-folder-open" aria-hidden="true"></i>
+                                        <span class="image-preview-input-title">Browse</span>
+                                        <input type="file" accept="image/png, image/jpeg, image/gif" required="" name="input-file-preview"/> <!-- rename it -->
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                        <span class="glyphicon glyphicon-remove"></span> Clear
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-            </div>
-            <div id="academic" class="registerContentForm tab-pane fade">
-                        <!-- <form name="yearForm" id="yearForm">
-                            <div class="title">
-                                <h3>Academic year information</h3>
-                            </div>
-                            <div class="main-input">
-                                <div class="text">
-                                    <p><span>* </span>Year name</p>
-                                </div>
-                                <div class="input">
-                                    <input type="text" name="yearName" required>
-                                </div>
-                            </div>
-                            <div class="main-input">
-                                <div class="text">
-                                    <p><span>* </span>Start Time</p>
-                                </div>
-                                <div class="input">
-                                    <input type="datetime-local" name="startDate" required>
-                                </div>
-                            </div>
-                            <div class="main-input">
-                                <div class="text">
-                                    <p><span>* </span>Posting deadline</p>
-                                </div>
-                                <div class="input">
-                                    <input type="datetime-local" name="deadline" required>
-                                </div>
-                            </div>
-                            <div class="main-input">
-                                <div class="text">
-                                    <p><span>* </span>updating deadline</p>
-                                </div>
-                                <div class="input">
-                                    <input type="datetime-local" name="finalDeadline" required>
-                                </div>
-                            </div>
-                            <div class="main-input">
-                                <div class="button-res">
-                                    <input type="submit" name="" value="Edit" onclick="validateYear(document.yearForm, event)">
-                                </div>
-                            </div>
-                        </form> -->
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                           <input " class="btnSubmit" type="submit" name="" value="Upload">
+                       </div>
+                   </div>
+
+                   </div><!-- /input-group image-preview [TO HERE]--> 
+               </div>
+           </form>
+       </div>
+       <div id="yourmagazine" class="registerContentForm tab-pane fade">
+        <div>
+            <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                <div class="well well-sm text-center">
+
+                    <h3>View by Status</h3>
+                    
+                    <div class="btn-group" data-toggle="buttons">
+                        
+                        <label class="btn btn-success active">
+                            <input type="radio" name="options" id="option2" autocomplete="off" >
+                            Approved
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </label>
+
+                        <label class="btn btn-warning">
+                            <input type="radio" name="options" id="option2" autocomplete="off">
+                            Sending
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </label>
+
+                        <label class="btn btn-danger">
+                            <input type="radio" name="options" id="option2" autocomplete="off">
+                            Cannel
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </label>
+                    
                     </div>
                 </div>
             </div>
+            <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                <table class="table table-striped custab">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Name Magazine</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                        <tr>
+                            <td>1</td>
+                            <td>News</td>
+                            <td class="imgPost">
+                                <img src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
+                            </td>
+                            <td>News Cate</td>
+                            <td>Approved</td>
+                            <td class="">
+                                <a class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a> 
+                                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
+                                <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>News</td>
+                            <td class="imgPost">
+                                <img src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
+                            </td>
+                            <td>News Cate</td>
+                            <td>Sending</td>
+                            <td class="">
+                                <a class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a> 
+                                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
+                                <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>News</td>
+                            <td class="imgPost">
+                                <img src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
+                            </td>
+                            <td>News Cate</td>
+                            <td>Cannel</td>
+                            <td class="">
+                                <a class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a> 
+                                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
+                                <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+                            </td>
+                         </tr>
+                </table>
+                </div>
         </div>
     </div>
-    <script>
-        function Validate(formRes, event) {
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<script>
+    function Validate(formRes, event) {
             //không cho form post theo cách thông thường để post bằng ajax
             event.preventDefault();
             //validate thông tin user
@@ -306,12 +359,12 @@
                     }).done(function(result) {
                         var fcText = $(`#list option[value='${result.faculty}']`).text();
                         $("#mymodal-body").html(`<center><img src="assets/images/anonymous.png" width="50px" height="50px"/></center>
-                         <p><b>Role: </b>${result.role}</p>
-                         <p><b>Name: </b>${result.name}</p>
-                         <p><b>Date of birth: </b>${result.dob}</p>
-                         <p><b>Phone: </b>${result.phone}</p>
-                         <p><b>Email: </b>${result.email}</p>
-                         <p><b>Faculty: </b>${fcText}</p>`);
+                           <p><b>Role: </b>${result.role}</p>
+                           <p><b>Name: </b>${result.name}</p>
+                           <p><b>Date of birth: </b>${result.dob}</p>
+                           <p><b>Phone: </b>${result.phone}</p>
+                           <p><b>Email: </b>${result.email}</p>
+                           <p><b>Faculty: </b>${fcText}</p>`);
                         if (result.role == "Student") {
                             $("#mymodal-body").append(`<p><b>Student ID: </b>${result.stdID}</p>`);
                         }
@@ -470,12 +523,12 @@
     // Hover befor close the preview
     $('.image-preview').hover(
         function () {
-         $('.image-preview').popover('show');
-     }, 
-     function () {
-         $('.image-preview').popover('hide');
-     }
-     );    
+           $('.image-preview').popover('show');
+       }, 
+       function () {
+           $('.image-preview').popover('hide');
+       }
+       );    
 });
 
         $(function() {
