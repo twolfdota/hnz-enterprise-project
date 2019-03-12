@@ -175,17 +175,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row session3">
-                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-
-                                </div>
-                                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                                   <div class=" check">
-                                       <input type="checkbox" autocomplete="off" checked>
-                                       <p>Chấp nhận điều khoản</p>
-                                   </div>
-                               </div>
-                           </div>
                            <div class="row session4">
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
 
@@ -212,6 +201,17 @@
                         </div>
 
                     </div>
+                    <div class="row session3">
+                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                                   <div class=" check">
+                                       <input type="checkbox" autocomplete="off" checked>
+                                       <p>Chấp nhận điều khoản</p>
+                                   </div>
+                               </div>
+                           </div>
                     <div class="row">
                         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
                         </div>
