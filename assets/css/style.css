@@ -564,6 +564,85 @@ ul{
     border: none !important;
     padding:0px !important;
 }
+
+.rules{
+    height: 100px;
+    overflow: auto;
+    width: 61%
+}
+.uploadForm h4 span{
+    color: red;
+    font-size: 18px;
+    padding-right: 2px
+}
+.modal .btnSubmit{
+    margin-bottom: 50px
+}
+.comment{ 
+    border: 1px solid #F3F3F3;
+    padding:10px;
+    min-height: 110px;
+}
+.formCmt{
+    height: 150px;
+    overflow: auto;
+    width: 61%;
+}
+.imgCmt img{
+    height: 50px;
+    width: auto;
+}
+.imgCmt{
+    height: 70px;
+    width: auto;
+    width: 10%;
+    float: left;
+}
+.nameCmt{
+    width: 90%;
+    float: left;
+}
+.nameCmt h4{
+    margin-bottom:0;
+    margin-top:10px;
+    color: #11648B
+}
+.contentCmt{
+    width: 100%;
+    float: left;
+    padding-left: 10%;
+    margin-top: -30px
+}
+.modal .close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+.modal .close:hover,
+.modal .close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* vertical align top */
 
 nav.vertical ul li {

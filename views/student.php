@@ -159,7 +159,7 @@
                                 <div class="image-preview">
                                     <div class="row session1">
                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                                           <h4>Title</h4>
+                                           <h4><span>*</span>Title</h4>
                                        </div>
                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 ">
                                            <input type="text" name="title" required>
@@ -167,7 +167,7 @@
                                    </div>
                                    <div class="row session2">
                                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 ">
-
+                                        <h4><span>*</span>File Manazine</h4>
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
                                        <div class="file">
@@ -176,21 +176,9 @@
                                 </div>
                             </div>
 
-                            <div class="row session3">
-                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-
-                                </div>
-                                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                                   <div class=" check">
-                                       <input type="checkbox" autocomplete="off" name="agree" checked>
-                                       <p>Chấp nhận điều khoản</p>
-                                   </div>
-                               </div>
-                           </div>
-
                            <div class="row session4">
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-
+                                <h4><span>*</span>Logo </h4>
                             </div>
                             <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 fileImg">
                                <div class="row">
@@ -222,6 +210,18 @@
                                    <div class=" check">
                                        <input type="checkbox" autocomplete="off" checked>
                                        <p>Chấp nhận điều khoản</p>
+                                   </div>
+                               </div>
+                           </div>
+                    <div class="row session3">
+                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                                   <div class="rules">
+                                       <p>
+                                           Trải nghiệm của bạn trên Facebook không giống với của bất kỳ ai khác: từ các bài viết, tin, sự kiện, quảng cáo và nội dung khác mà bạn nhìn thấy trong Bảng tin hoặc nền tảng video của chúng tôi tới các Trang bạn theo dõi và các tính năng khác mà bạn có thể sử dụng, chẳng hạn như Thịnh hành, Marketplace và tìm kiếm. Chúng tôi sử dụng dữ liệu mà mình có - ví dụ: về các kết nối bạn tạo, các lựa chọn và cài đặt bạn chọn và những gì bạn chia sẻ cũng như thực hiện trên và ngoài Sản phẩm của chúng tôi - để cá nhân hóa trải nghiệm của bạn.
+                                       </p>
                                    </div>
                                </div>
                            </div>
@@ -288,7 +288,7 @@
                             <td>News Cate</td>
                             <td>Approved</td>
                             <td class="">
-                                <a class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a> 
+                                <a onclick="document.getElementById('update').style.display='block'" class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a> 
                                 <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
                                 <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
                             </td>
@@ -302,7 +302,7 @@
                             <td>News Cate</td>
                             <td>Sending</td>
                             <td class="">
-                                <a class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a> 
+                                <a onclick="document.getElementById('update').style.display='block'" class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a> 
                                 <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
                                 <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
                             </td>
@@ -316,13 +316,122 @@
                             <td>News Cate</td>
                             <td>Cannel</td>
                             <td class="">
-                                <a class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a> 
+                                <a onclick="document.getElementById('update').style.display='block'" class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a> 
                                 <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
                                 <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
                             </td>
                          </tr>
                 </table>
                 </div>
+        </div>
+        <div id="update" class="modal">
+  
+          <div class="modal-content animate" action="/action_page.php">
+            <span onclick="document.getElementById('update').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
+                            <div class="uploadForm">  
+                                <!-- image-preview-filename input [CUT FROM HERE]-->
+                                <div class="image-preview">
+                                    <div class="row session1">
+                                       <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                                           <h4><span>*</span>Title</h4>
+                                       </div>
+                                       <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 ">
+                                           <input type="text" name="title" required>
+                                       </div>
+                                   </div>
+                                   <div class="row session2">
+                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 ">
+                                        <h4><span>*</span>File Manazine</h4>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                                       <div class="file">
+                                        <input accept=".doc, .docx" type="file" name="doc" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                           <div class="row session4">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                                <h4><span>*</span>Logo </h4>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 fileImg">
+                               <div class="row">
+                                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                    <div class="btn btn-default image-preview-input">
+                                        <i class="fa fa-folder-open" aria-hidden="true"></i>
+                                        <span class="image-preview-input-title">Browse</span>
+                                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                        <span class="glyphicon glyphicon-remove"></span> Clear
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row session3">
+                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                                    
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                                    <h4>Comment</h4>
+                                   <div class="formCmt">
+                                       <div class="comment">
+                                           <div class="imgCmt">
+                                               <img src="assets/images/user.png">
+                                           </div>
+                                           <div class="nameCmt">
+                                               <h4>Vu Van Tien</h4>
+                                           </div>
+                                           <div class="contentCmt">
+                                               You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
+                                           </div>
+                                       </div>
+                                       <div class="comment">
+                                           <div class="imgCmt">
+                                               <img src="assets/images/user.png">
+                                           </div>
+                                           <div class="nameCmt">
+                                               <h4>Vu Van Tien</h4>
+                                           </div>
+                                           <div class="contentCmt">
+                                               You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
+                                           </div>
+                                       </div>
+                                       <div class="comment">
+                                           <div class="imgCmt">
+                                               <img src="assets/images/user.png">
+                                           </div>
+                                           <div class="nameCmt">
+                                               <h4>Vu Van Tien</h4>
+                                           </div>
+                                           <div class="contentCmt">
+                                               You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                           <input " class="btnSubmit" type="submit" name="form-upload" value="Update">
+                       </div>
+                   </div>
+
+                   </div><!-- /input-group image-preview [TO HERE]--> 
+               </div>
+           </form>
+          </div>
         </div>
     </div>
 </div>
