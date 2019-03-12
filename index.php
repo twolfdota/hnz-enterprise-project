@@ -79,4 +79,40 @@ $route->add('/login', function () {
     }
 });
 
+$route->add('/student', function () {
+    include_once './views/student.php';
+    include './controllers/magazineController.php';
+    include './controllers/imgController.php';
+    $imgCtrl = new imgCtrl();
+    $magazineCtrl = new magazineCtrl();
+    $title = $_POST["title"];
+    if (isset($_POST["form-upload"])) {
+        if (!$_POST["agree"]) {
+            echo '<script>alert("You must agree with the terms!")</script>';
+        } else if ($title == "") {
+            echo '<script>alert("Please input the title!!")</script>';
+        } else if (!$_FILES["doc"]["name"]) {
+            echo '<script>alert("Please upload your document!!")</script>';
+        } else {
+            $img_dir = 'uploads/mgzImg/';
+            $doc_dir = 'uploads/doc/';
+            $avaDir = 'assets/images/no-cover.png';
+            if ($_FILES["input-file-preview"]["name"]) {
+                $img_target_file = $img_dir . basename($_FILES["input-file-preview"]["name"]);
+                $imageFileType = strtolower(pathinfo($img_target_file, PATHINFO_EXTENSION));
+                $avaDir = $img_dir . $title . '.' . $imageFileType;
+            }
+            $doc_target_file = $doc_dir . basename($_FILES["doc"]["name"]);
+            $docFileType = strtolower(pathinfo($doc_target_file, PATHINFO_EXTENSION));
+            $docDir = $doc_dir . $title . '.' . $docFileType;
+            $validated = $magazineCtrl->add($title, $docDir, $avaDir);
+            if ($validated) {
+                $imgCtrl->addImg($img_dir, $title, $doc_dir, $title);
+            } else {
+                echo '<script>alert("Cannot upload magazine!")</script>';
+            }
+        }
+    }
+});
+
 $route->submit();
