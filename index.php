@@ -8,12 +8,35 @@ $route->add('/', function () {
     include_once './views/home.php';
 });
 
-$route->add('/register', function () {
-    include_once './views/register.php';
+$route->add('/cms', function () {
+    include_once './views/admin.php';
+    /*
+    if (isset($_SESSION['login'])) {
+        include './controllers/userController.php';
+        $userCtrl = new userCtrl();
+        $author = $userCtrl->authorize();
+        echo $author['role'];
+        switch($author['role']){
+            case 1:
+                include_once './views/student.php';
+                break;
+            case 2:
+                
+                break;
+            case 3:
+                header("/");
+                exit();
+            default:
+                include_once './views/admin.php';
+        }
+    }
+    else {
+        header("Location:login");
+        exit();
+    }*/
+
 });
-$route->add('/student', function () {
-    include_once './views/student.php';
-});
+
 
 $route->add('/login', function () {
     include_once './views/login.php';
@@ -64,8 +87,8 @@ $route->add('/login', function () {
     $pass = $_POST["password"];
     if (isset($_POST['login-form'])) {
         if ($email != null && $pass != null) {
-            $num_of_rows = $userCtrl->check($email, $pass);
-            if ($num_of_rows > 0) {
+            $res = $userCtrl->check($email, $pass);
+            if (count($res) > 0) {
                 $_SESSION['login'] = $email;
 
                 header("Location: index.php");
