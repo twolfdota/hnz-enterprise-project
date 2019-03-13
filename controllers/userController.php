@@ -90,54 +90,60 @@ class userCtrl
         echo $jsonresult;
     }
 
-    function check($name, $pass) {
+    function check($email, $pass) {
         require_once './DBConnect.php';
-        $sql = "select ava from UserLogin where UserName=? and Password=?";
+        $sql = "select email from user where email=? and password=?";
+        $result = array();
         $stmt = $conn->prepare($sql);
         $salt = "124$@=+YJQ123";
         $token = hash("sha1", $pass . $salt);
-        $stmt->bind_param("ss", $name, $token);
+        $stmt->bind_param("ss", $email, $token);
         $stmt->execute();
         $stmt->store_result();
         $conn->close();
         $num_of_rows = $stmt->num_rows;
-        return $num_of_rows;
+        if ($num_of_rows > 0) {
+            $stmt->bind_result($name);
+            while ($stmt->fetch()) {
+                array_push($result, $email);
+            }
+
+            $stmt->free_result();
+            $stmt->close();
+        }
+        return $result;
     }
 
     function authorize() {
         require_once './DBConnect.php';
-        $name = isset($_SESSION['login']) ? $_SESSION['login'] : $_COOKIE['login'];
+        $email = $_SESSION['login'];
         $role = 0;
-        $store = 0;
         $img = "";
-        $bigimg = "";
-        $storename = "";
-        $sql = "select adm, department, ava, address, storeimg from UserLogin as u left join department as d on u.department = d.id where UserName=?";
+        $name = "";
+        $sql = "select roles, u.name, f.name, avatar from user as u left join faculty as f on u.faculty = f.code where email=?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $name);
+        $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
         $num_of_rows = $stmt->num_rows;
         if ($num_of_rows > 0) {
-            $stmt->bind_result($adm, $dep, $ava, $address, $storeimg);
+            $stmt->bind_result($adm, $username, $dep, $avatar);
             while ($stmt->fetch()) {
                 $role = $adm;
-                $store = $dep;
-                $img = $ava != null ? $ava : 'assets/images/anonymous.png';
-                $bigimg = $storeimg;
-                $storename = $address;
+                $name = $username;
+                $fac = $dep;
+                $img = $avatar != null ? $avatar : 'assets/images/anonymous.png';
             }
             $stmt->free_result();
             $stmt->close();
         }
         $author = (array) [
-                    'role' => $role,
-                    'store' => $store,
-                    'ava' => $img,
-                    'storeimg' => $bigimg,
-                    'storename' => $storename
+            'role' => $role,
+            'name' => $name,
+            'faculty' => $fac,
+            'ava' => $img
         ];
-        return $author;
+        return $author; 
     }
 }
  
