@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <?php
+        session_start();
+    ?>
 </head>
 
 <body>
@@ -96,10 +98,10 @@
                             </a>
                         </li>
                         <li class="active">
-                            <img src="assets/images/avatar-4.jpg">
+                            <img src="<?php echo $author['ava'];?>">
                         </li>
                         <li>
-                            <a href="">Admin <i class="fa fa-caret-down" aria-hidden="true"></a></i>
+                            <a href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i>
                         </li>
                     </ul>
                 </div>

@@ -120,6 +120,7 @@ class userCtrl
         $role = 0;
         $img = "";
         $name = "";
+        $fac = "";
         $sql = "select roles, u.name, f.name, avatar from user as u left join faculty as f on u.faculty = f.code where email=?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $email);
