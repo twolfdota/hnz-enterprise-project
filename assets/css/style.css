@@ -628,10 +628,22 @@ ul{
 }
 
 
+.logout{
+    display: none
+}
+.logout li i{
+    padding-left: 5px
+}
 
-
-
-
+.menu-logout li:hover .logout{
+    display: inline-block;
+    /*position: absolute;
+    top: 20px;
+    right: 0*/
+}
+.logout li a:hover{
+    color: #900606
+}
 
 
 

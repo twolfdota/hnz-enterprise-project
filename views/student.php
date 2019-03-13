@@ -105,7 +105,7 @@
                 </div>
                 <div class="menubarRight text-right hidden-xs hidden-sm">
                     <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->
-                    <ul>
+                    <ul class="menu-logout">
                         <li class="full hidden-xs hidden-sm">
                             <a href="#">
                                 <i onclick="openFullscreen();" class="fa fa-arrows-alt" aria-hidden="true"></i>
@@ -115,7 +115,12 @@
                             <img src="assets/images/avatar-4.jpg">
                         </li>
                         <li>
-                            <a href="">Admin <i class="fa fa-caret-down" aria-hidden="true"></a></i>
+                            <a href="">Admin <i class="fa fa-caret-down" aria-hidden="true"> </a></i>
+                            <ul class="logout">
+                                <li>
+                                    <a href="#">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
