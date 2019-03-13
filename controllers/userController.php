@@ -90,13 +90,13 @@ class userCtrl
         echo $jsonresult;
     }
 
-    function check($email, $pass) {
+    function check($name, $pass) {
         require_once './DBConnect.php';
-        $sql = "select email from user where email=? and password=?";
+        $sql = "select ava from UserLogin where UserName=? and Password=?";
         $stmt = $conn->prepare($sql);
         $salt = "124$@=+YJQ123";
         $token = hash("sha1", $pass . $salt);
-        $stmt->bind_param("ss", $email, $token);
+        $stmt->bind_param("ss", $name, $token);
         $stmt->execute();
         $stmt->store_result();
         $conn->close();
@@ -104,5 +104,40 @@ class userCtrl
         return $num_of_rows;
     }
 
+    function authorize() {
+        require_once './DBConnect.php';
+        $name = isset($_SESSION['login']) ? $_SESSION['login'] : $_COOKIE['login'];
+        $role = 0;
+        $store = 0;
+        $img = "";
+        $bigimg = "";
+        $storename = "";
+        $sql = "select adm, department, ava, address, storeimg from UserLogin as u left join department as d on u.department = d.id where UserName=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $name);
+        $stmt->execute();
+        $stmt->store_result();
+        $num_of_rows = $stmt->num_rows;
+        if ($num_of_rows > 0) {
+            $stmt->bind_result($adm, $dep, $ava, $address, $storeimg);
+            while ($stmt->fetch()) {
+                $role = $adm;
+                $store = $dep;
+                $img = $ava != null ? $ava : 'assets/images/anonymous.png';
+                $bigimg = $storeimg;
+                $storename = $address;
+            }
+            $stmt->free_result();
+            $stmt->close();
+        }
+        $author = (array) [
+                    'role' => $role,
+                    'store' => $store,
+                    'ava' => $img,
+                    'storeimg' => $bigimg,
+                    'storename' => $storename
+        ];
+        return $author;
+    }
 }
  
