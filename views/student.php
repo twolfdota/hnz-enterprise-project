@@ -68,7 +68,7 @@
                 <a href="">Vu Van Tien</a>
             </div>
             <div class="Navigation">
-                <h4>Navigation</h4>
+                <h4>Faculty: <span>IT</span></h4>
             </div>
             <div class="menu">
                 <ul>
@@ -105,7 +105,11 @@
                 </div>
                 <div class="menubarRight text-right hidden-xs hidden-sm">
                     <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->
+
                     <ul class="menu-logout">
+                        <a href="home.php" class="text-left goto" title="Go to Home page">
+                            <i class="fa fa-gg" aria-hidden="true"></i>
+                        </a>
                         <li class="full hidden-xs hidden-sm">
                             <a href="#">
                                 <i onclick="openFullscreen();" class="fa fa-arrows-alt" aria-hidden="true"></i>
@@ -121,6 +125,7 @@
                                     <a href="/hnz-enterprise-project/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                 </li>
                             </ul>
+                            
                         </li>
                     </ul>
                 </div>

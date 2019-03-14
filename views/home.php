@@ -71,8 +71,12 @@
                             <li class="dropdown">
                                 <a href="gioithieu.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Giới thiệu</a>
                             </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a onclick="document.getElementById('id01').style.display='block'" href="gioithieu.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Login</a>
+                                <a href="student.php" class="dropdown-toggle text-right" data-toggle="dropdown" role="button" aria-expanded="false"> 
+                                    <i class="fa fa-gg" aria-hidden="true" title="Go to Manazine page"></i>
+                                </a>
                             </li>
                         </ul>
                     </div>
