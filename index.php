@@ -67,6 +67,11 @@ $route->add('/loadYear', function () {
     $yearCtrl->loadYear();
 });
 
+$route->add('/list', function (){
+    include_once './controllers/magazineController.php';
+    $magazineCtrl = new magazineCtrl();
+    $magazineCtrl->getListMagazine();
+});
 //Thêm các đường dẫn validate hoặc add, update dữ liệu vào đây (thường dùng POST)
 $route->add('/editDeadlines', function () {
     include './controllers/yearController.php';
@@ -120,27 +125,29 @@ $route->add('/postMgz', function () {
 
     if (isset($_POST["title"])) {
         $title = $_POST["title"];
-        if (!$_POST["agree"]) {
+        $vldAgree = isset($_POST["agree"]) ? $_POST["agree"] : false;
+        if (!$vldAgree) {
             echo json_encode('You must agree with the terms!');
         } else if ($title == "") {
             echo json_encode('Please input the title!!');
         } else if ($_FILES['doc']['name'] == "") {
             echo json_encode('Please upload your document!!');
-        } else {
+        } else if ($_FILES['imageUpload']['name'] == "") {
+                echo json_encode('Please upload your image!!');
+        }
+        else {
             $img_dir = 'uploads/mgzImg/';
             $doc_dir = 'uploads/doc/';
             $avaDir = 'assets/images/no-cover.png';
-            if ($_FILES['input_file_preview']['name'] == "") {
-                echo json_encode('Please upload your image!!');
-            } else {
-                $img_target_file = $img_dir . basename($_FILES["input-file-preview"]["name"]);
+
+                $img_target_file = $img_dir . basename($_FILES["imageUpload"]["name"]);
                 $imageFileType = strtolower(pathinfo($img_target_file, PATHINFO_EXTENSION));
                 $avaDir = $img_dir . $title . '.' . $imageFileType;
-            }
+
             $doc_target_file = $doc_dir . basename($_FILES["doc"]["name"]);
             $docFileType = strtolower(pathinfo($doc_target_file, PATHINFO_EXTENSION));
             $docDir = $doc_dir . $title . '.' . $docFileType;
-            $validated = $magazineCtrl->add($title, $docDir, $avaDir);
+            $validated = $magazineCtrl->add($title, $docDir, $avaDir, $_POST['userid']);
             if ($validated) {
                 $imgCtrl->addImg($img_dir, $title, $doc_dir, $title);
             } else {
@@ -160,3 +167,4 @@ $route->add('/logout', function() {
 });
 
 $route->submit();
+

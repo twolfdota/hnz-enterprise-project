@@ -161,6 +161,7 @@
                         <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
                             <div class="uploadForm">  
                                 <!-- image-preview-filename input [CUT FROM HERE]-->
+                                <input type="hidden" value="<?php echo $author['id']?>" name="userid"/>
                                 <div class="image-preview">
                                     <div class="row session1">
                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
@@ -194,7 +195,7 @@
                                     <div class="btn btn-default image-preview-input">
                                         <i class="fa fa-folder-open" aria-hidden="true"></i>
                                         <span class="image-preview-input-title">Browse</span>
-                                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+                                        <input type="file" accept="image/png, image/jpeg, image/gif, image/jpg" name="imageUpload"/> <!-- rename it -->
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
@@ -287,48 +288,31 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                        <tr>
-                            <td>1</td>
-                            <td>News</td>
-                            <td class="imgPost">
-                                <img src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
-                            </td>
-                            <td>News Cate</td>
-                            <td>Approved</td>
-                            <td class="">
-                                <a onclick="document.getElementById('update').style.display='block'" class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a> 
-                                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
-                                <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
-                            </td>
-                         </tr>
-                         <tr>
-                            <td>1</td>
-                            <td>News</td>
-                            <td class="imgPost">
-                                <img src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
-                            </td>
-                            <td>News Cate</td>
-                            <td>Sending</td>
-                            <td class="">
-                                <a onclick="document.getElementById('update').style.display='block'" class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a> 
-                                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
-                                <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
-                            </td>
-                         </tr>
-                         <tr>
-                            <td>1</td>
-                            <td>News</td>
-                            <td class="imgPost">
-                                <img src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
-                            </td>
-                            <td>News Cate</td>
-                            <td>Cannel</td>
-                            <td class="">
-                                <a onclick="document.getElementById('update').style.display='block'" class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a> 
-                                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
-                                <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
-                            </td>
-                         </tr>
+                        <?php
+                        include_once './controllers/magazineController.php';
+                        $magazineCtrl = new magazineCtrl();
+                        $result = $magazineCtrl->getListMagazine($author['id']);
+                        foreach($result as $item) {
+                            ?>
+                    <tr>
+                        <td><?php echo $item->id?></td>
+                        <td><?php echo $item->title?></td>
+                        <td class="imgPost">
+                            <img src="<?php echo $item->img?>">
+                        </td>
+                        <td>News Cate</td>
+                        <td><?php echo $item->status?></td>
+                        <td class="">
+                            <a onclick="document.getElementById('update').style.display='block'" class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
+                            <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+                        </td>
+                    </tr>
+                    <?php
+                        }
+                        ?>
+
+
                 </table>
                 </div>
         </div>
@@ -336,7 +320,7 @@
   
           <div class="modal-content animate" action="/action_page.php">
             <span onclick="document.getElementById('update').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
+            <form name="updateForm" id="updateForm" method="post" enctype="multipart/form-data">
                             <div class="uploadForm">  
                                 <!-- image-preview-filename input [CUT FROM HERE]-->
                                 <div class="image-preview">
