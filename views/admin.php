@@ -15,9 +15,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <?php
-        session_start();
-    ?>
 </head>
 
 <body>
@@ -85,7 +82,7 @@
             </div>
         </div>
         <div class="mainForm">
-            <div class="menubar">
+        <div class="menubar">
                 <div class="menubarRight text-right hidden-md hidden-lg">
                     <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->
                     <ul>
@@ -95,26 +92,31 @@
                             </a>
                         </li>
                         <li class="active">
-                            <img src="assets/images/avatar-4.jpg">
+                            <img src="<?php echo $author['ava'];?>">
                         </li>
                         <li>
-                            <a href="">Admin <i class="fa fa-caret-down" aria-hidden="true"></a></i>
+                            <a href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i>
                         </li>
                     </ul>
                 </div>
                 <div class="menubarRight text-right hidden-xs hidden-sm">
                     <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->
-                    <ul>
+                    <ul class="menu-logout">
                         <li class="full hidden-xs hidden-sm">
                             <a href="#">
                                 <i onclick="openFullscreen();" class="fa fa-arrows-alt" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li class="active">
-                            <img src="assets/images/avatar-4.jpg">
+                            <img src="<?php echo $author['ava'];?>">
                         </li>
                         <li>
-                            <a href="">Admin <i class="fa fa-caret-down" aria-hidden="true"></a></i>
+                            <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i>
+                            <ul class="logout">
+                                <li>
+                                    <a href="/hnz-enterprise-project/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

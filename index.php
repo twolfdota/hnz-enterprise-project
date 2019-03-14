@@ -9,13 +9,11 @@ $route->add('/home', function () {
 });
 
 $route->add('/cms', function () {
-    include_once './views/admin.php';
-    /*
+    session_start();
     if (isset($_SESSION['login'])) {
         include './controllers/userController.php';
         $userCtrl = new userCtrl();
         $author = $userCtrl->authorize();
-        echo $author['role'];
         switch($author['role']){
             case 1:
                 include_once './views/student.php';
@@ -33,12 +31,17 @@ $route->add('/cms', function () {
     else {
         header("Location:login");
         exit();
-    }*/
+    }
 
 });
 
 
 $route->add('/login', function () {
+    session_start();
+    if(isset($_SESSION['login'])) {
+        header("Location:index.php");
+        exit();
+    }
     include_once './views/login.php';
 });
 //Thêm các đường dẫn load dữ liệu đầu trang vào đây (thường dùng GET)
@@ -102,25 +105,27 @@ $route->add('/login', function () {
     }
 });
 
-$route->add('/student', function () {
-    include_once './views/student.php';
+$route->add('/postMgz', function () {
     include './controllers/magazineController.php';
     include './controllers/imgController.php';
     $imgCtrl = new imgCtrl();
     $magazineCtrl = new magazineCtrl();
-    $title = $_POST["title"];
-    if (isset($_POST["form-upload"])) {
+
+    if (isset($_POST["title"])) {
+        $title = $_POST["title"];
         if (!$_POST["agree"]) {
-            echo '<script>alert("You must agree with the terms!")</script>';
+            echo json_encode('You must agree with the terms!');
         } else if ($title == "") {
-            echo '<script>alert("Please input the title!!")</script>';
-        } else if (!$_FILES["doc"]["name"]) {
-            echo '<script>alert("Please upload your document!!")</script>';
+            echo json_encode('Please input the title!!');
+        } else if ($_FILES['doc']['name'] == "") {
+            echo json_encode('Please upload your document!!');
         } else {
             $img_dir = 'uploads/mgzImg/';
             $doc_dir = 'uploads/doc/';
             $avaDir = 'assets/images/no-cover.png';
-            if ($_FILES["input-file-preview"]["name"]) {
+            if ($_FILES['input_file_preview']['name'] == "") {
+                echo json_encode('Please upload your image!!');
+            } else {
                 $img_target_file = $img_dir . basename($_FILES["input-file-preview"]["name"]);
                 $imageFileType = strtolower(pathinfo($img_target_file, PATHINFO_EXTENSION));
                 $avaDir = $img_dir . $title . '.' . $imageFileType;
@@ -132,10 +137,19 @@ $route->add('/student', function () {
             if ($validated) {
                 $imgCtrl->addImg($img_dir, $title, $doc_dir, $title);
             } else {
-                echo '<script>alert("Cannot upload magazine!")</script>';
+                echo 'Cannot upload magazine!';
             }
         }
+    } else {
+        echo json_encode("please input title!!!");
     }
+});
+
+$route->add('/logout', function() {
+    session_start();
+    unset($_SESSION['login']);
+    header("Location: login");
+    exit;
 });
 
 $route->submit();

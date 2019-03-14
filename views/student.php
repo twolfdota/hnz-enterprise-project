@@ -15,9 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <?php
-        session_start();
-    ?>
+
 </head>
 
 <body>
@@ -114,13 +112,13 @@
                             </a>
                         </li>
                         <li class="active">
-                            <img src="assets/images/avatar-4.jpg">
+                            <img src="<?php echo $author['ava'];?>">
                         </li>
                         <li>
-                            <a href="">Admin <i class="fa fa-caret-down" aria-hidden="true"> </a></i>
+                            <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i>
                             <ul class="logout">
                                 <li>
-                                    <a href="#">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                    <a href="/hnz-enterprise-project/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                 </li>
                             </ul>
                         </li>
@@ -215,7 +213,7 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
                                    <div class=" check">
-                                       <input type="checkbox" autocomplete="off" checked>
+                                       <input type="checkbox" autocomplete="off" checked name="agree">
                                        <p>Chấp nhận điều khoản</p>
                                    </div>
                                </div>
@@ -232,11 +230,14 @@
                                    </div>
                                </div>
                            </div>
+                           <div class="row session3">
+                                <h4 id="ErrorMsg" style="color:red; font-weight:bold"></h4>
+                           </div>
                     <div class="row">
                         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                           <input " class="btnSubmit" type="submit" name="form-upload" value="Upload">
+                           <input " class="btnSubmit" type="submit" name="form-upload" value="Upload" onclick="validateMgz(document.uploadForm, event)">
                        </div>
                    </div>
 
@@ -462,7 +463,27 @@
 -->
 <script>
     var elem = document.getElementById("myvideo");
-
+    function validateMgz(form, event) {
+        $("#ErrorMsg").html("");
+        event.preventDefault();
+        formData = new FormData($("#uploadForm")[0]);
+        $.ajax({
+            url: `/hnz-enterprise-project/postMgz`,
+            type: 'POST',
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function(result){
+                if (result == '"success"') {
+                    alert("Magazine successfully uploaded!");
+                    location.reload();
+                }
+                else {
+                    $("#ErrorMsg").html(result);
+                }
+            }
+            })
+    }
     function openFullscreen() {
         if (elem.requestFullscreen) {
             elem.requestFullscreen();
