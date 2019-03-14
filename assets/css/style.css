@@ -29,166 +29,96 @@
 }
 
 
-
-/*Header*/
-.header-one{
-    background-color: red;
-    height:30px;
+.header-desktop{
+    background-image: url(../images/background.png);
+    background-repeat: no-repeat;
+    background-size: 100%
 }
-.header-one ul{
-    padding: 0px !important;
-}
-.header-one ul li{
-    display: inline-block;
-    list-style: none;
-    padding-right:20px
-}
-.header-one span{
-    line-height: 30px;
-    color: #676666
-}
-.header-one i{
-    color: #434343;
-
-}
-.header-two{
-    margin-top: 15px
-}
-.chil2-header-two #search{
-    position: relative;
-}
-.chil1-header-two img{
-    width: 98%;
-    height:auto;
-    padding: 0px  !important;
-}
-.chil2-header-two input{
-    height:35px;
-    width: 85%;
-    outline: none;
-    border-bottom-left-radius:; 3px;
-    border-top-left-radius: 3px;
-    border:1px solid #00a651;
-    padding-left: 45px 
-
-}
-.chil2-header-two button{
-    height:35px;
+.header-top .section1 img{
     width: 100px;
-    position: absolute;
-    background-color: #00a651;
-    color: white;
-    border-bottom-right-radius: 3px;
-    border-top-right-radius: 3px;
-    border:1px solid #00a651;
-    border:0;
+    height: auto;
+    margin: 20px 0
 }
-.chil2-header-two #search i{
-    position: absolute;
-    top: 8px;
-    left: 14px;
-    color: #00a651;
-    padding: 1px;
-}
-.chil2-header-two p{
-   color: #696969;
-   margin-top: 10px;
-   font-size:13px;
-}
-.chil2-header-two p span{
-   color: #606060;
-   font-weight: bold;
-}
-.chil3-header-two ul{
-    padding: 0px !important;
-}
-.chil3-header-two ul li{
+.header-top .section2 span{
+    float: left;
     display: inline-block;
-    list-style: none;
-    text-align: center;
-    padding: 0px !important;
+    padding: 36px 15px 12px 0;
+    margin: 0px 0 15px 15px;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: roboto bold !important;
+    color: #da5b34
 }
-.chil3-header-two ul li img{
-    height:46px;
-    width: 46px
+.header-top .section3 a img{
+    width: 100px;
+    height: auto;
+    padding-left: 30px
 }
-.chil3-header-two  .icon1 img{
-    height:30px;
-    width: 30px;
-    margin-top: 8px;
-    margin-bottom: 7px
+.header-top .section3{
+    margin-top: 20px
 }
-.chil3-header-two span{
-    font-size:12px;
+.header-top .section3 span{
+    background-color: #F07318;
+    padding:15px 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 5px;
 }
-.chil3-header-two ul li a{
-    color: #343434;
+.header-top .section3 span a{
+
+    color: white
 }
-.chil3-header-two ul li a:hover{
-    color: #00a651;
+.header-top .section3 span a:hover{
+
+    color: #898888
 }
-a{
+.header-top .section3 span i{
+    font-size: 20px;
+    padding-right: 5px
+}
+.slider-header img{
+    width: 100%;
+    max-height: 800px;
+    margin-top: -20px
+}
+.slider-header{
+    margin-top: -20px
+}
+.slick-next, .slick-prev {
+    display: none !important
+}
+a:hover{
     text-decoration: none !important;
 }
-/*::-webkit-input-placeholder {
-    font-weight: 500;
-    font-size: 14px;
-    color: #00a651;
-}*/
-.icon1{
-    float: right;
-    width: 125px
-}
-.icon2{
-    float: right;
-    width: 70px;
-    position: relative;
-}
-.icon3{
-    float: right;
-    width: 70px
-}
-#count-cart{
-    position: absolute;
-    top: 5px;
-    right: 24px;
-    background-color: #00a651;
-    color: #fff;
-    text-align: center;
-    min-width: 18px;
-    min-height: 18px;
-    line-height: 18px;
-    border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -o-border-radius: 20px;
-    font-size: 11px;
-}
-
-
 nav.navbar-findcond {
-    background: rgba(0, 0, 0, 0.6);
+    background: #555555;
 }
 nav.navbar-findcond a { 
     color: white;
     font-size: 18px ;
 }
-nav.navbar-findcond ul.navbar-nav a { color: white }
+nav.navbar-findcond ul.navbar-nav a { 
+    color: white ;
+    border-bottom: 2px solid #555555;
+
+}
 nav.navbar-findcond ul.navbar-nav a:hover,
 nav.navbar-findcond ul.navbar-nav a:visited,
 nav.navbar-findcond ul.navbar-nav a:focus,
 nav.navbar-findcond ul.navbar-nav a:active{ 
     background: white; 
-    color: #cb2429;
-    border-bottom: 2px solid #9b0029;
+    color: #da5b34;
+    border-bottom: 2px solid #da5b34;
 }
 .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
     background-color: #eee;
     border-color: #9b0029 !important;
 }
 
-
+.navbar {
+     border-radius: 0px !important;
+}
 
 
 /* The Modal (background) */

@@ -20,26 +20,27 @@
 
 <body>
     <header class="hidden-xs hidden-sm">
-        <div class="header-two">
+        <div class="header-desktop">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-xs-12 chil1-header-two">
+                <div class="row header-top">
+                    <div class="col-lg-2 col-md-2 col-xs-12 section1">
                         <a href="index.html">
                             <img src="assets/images/logo.png">
                         </a>
                     </div>
-                    <div class="col-lg-5 col-md-4  col-xs-12 chil2-header-two">
+                    <div class="col-lg-5 col-md-5 col-xs-12 section2">
                         <p>
                             <span>Inspire Your Teaching and Learning</span>
                         </p>
                     </div>
-                    <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 chil3-header-two">
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 section3 text-right">
                         <span>
+                            <i class="fa fa-phone" aria-hidden="true"></i>
                             Hotline:
                             <a href="tel:0968 098 781">0968 098 781</a>
                         </span>
                         <a href="">
-                            <img src="assets/images/educap1.png">
+                            <img  src="assets/images/educap1.png">
                         </a>
                     </div>
                 </div>
@@ -77,34 +78,6 @@
                     </div>
                 </div>
             </nav>
-        </div>
-
-        <div id="id01" class="modal">
-
-            <form class="modal-content animate" action="/action_page.php">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-                </div>
-
-                <div class="container">
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
-
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
-
-                    <button type="submit">Login</button>
-                    <label>
-                        <input type="checkbox" checked="checked" name="remember"> Remember me
-                    </label>
-                </div>
-
-                <div class="container" style="background-color:#f1f1f1">
-                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                    <span class="psw">Forgot <a href="#">password?</a></span>
-                </div>
-            </form>
         </div>
     </header>
     <header class="hidden-lg  hidden-md" id="header-mobie">
@@ -162,6 +135,14 @@
                 </ul>
             </nav>
         </div>
+    </header>
+    <header class="slider-header">
+        <a href="">
+            <img src="assets/images/student-education_1526999740.jpg">
+        </a>
+        <a href="">
+            <img src="assets/images/student-education_1526999740.jpg">
+        </a>
     </header>
     <content>
         <div class="container">

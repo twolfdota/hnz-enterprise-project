@@ -4,7 +4,7 @@ include 'route.php';
 
 $route = new Route();
 //Thêm các đường dẫn load trang tĩnh vào đây
-$route->add('/', function () {
+$route->add('/home', function () {
     include_once './views/home.php';
 });
 
