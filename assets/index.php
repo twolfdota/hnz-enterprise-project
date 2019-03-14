@@ -5,14 +5,7 @@ include 'route.php';
 $route = new Route();
 //Thêm các đường dẫn load trang tĩnh vào đây
 $route->add('/', function () {
-    session_start();
-    if (isset($_SESSION['login'])) {
-        include_once './views/home.php';
-    }
-    else {
-        header("Location:login");
-        exit();
-    }
+    include_once './views/home.php';
 });
 
 $route->add('/cms', function () {

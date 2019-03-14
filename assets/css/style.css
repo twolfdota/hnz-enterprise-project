@@ -454,6 +454,205 @@ ul{
     padding-left: 15px;
     margin-top: 5px
 }
+.registerContent .uploadFrame{
+    text-align: center;
+    border: 1px dashed #37474f;
+    width: 50%;
+    margin:auto;
+    padding: 60px 0px 40px 0px;
+    margin-top: 5%;
+    border-radius: 3px
+}
+.registerContent .uploadFrame img{
+    height: 70px !important;
+    width: 70px;
+    margin-bottom: 25px
+
+}
+.registerContent .uploadFrame p{
+    color: #37474f ;
+}
+.registerContent .uploadFrame:hover{
+   border: 1px dashed #4099ff;
+
+}
+
+.btn span.glyphicon {               
+    opacity: 0;             
+}
+.btn.active span.glyphicon {                
+    opacity: 1;             
+}
+
+.registerForm .mainForm .file input {
+    border:0;
+    outline: none;
+}
+
+
+.image-preview-input {
+    position: relative;
+    overflow: hidden;
+    margin: 0px;    
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;    
+}
+.image-preview-input input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+    margin-left:2px;
+}
+
+.image-preview-filename{
+    width: 100% !important;
+    margin-top: 0px !important;
+}
+
+.uploadForm{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%
+}
+.check input{
+    width: 30%;
+    float: left;
+    height: 20px !important;
+    width: 20px !important;
+    margin-top:0 !important;
+
+}
+.check p{
+    width: 70%;
+    float: left;
+    margin-bottom:0;
+     padding-left: 10px !important;
+}
+.file input{
+    padding-left: 0 !important;
+}
+.fileImg input{
+    width: 100% !important;
+}
+.btnSubmit {
+    width: 20% !important;
+}
+
+.imgPost img{
+    width: 170px;
+    height: auto;
+}
+.btn span.glyphicon {               
+    opacity: 0;             
+}
+.btn.active span.glyphicon {                
+    opacity: 1;             
+}
+.session1, .session2, .session3, .session4{
+    margin:20px 0px;
+}
+.session2 input{
+    border: none !important;
+    padding:0px !important;
+}
+
+.rules{
+    height: 100px;
+    overflow: auto;
+    width: 61%
+}
+.uploadForm h4 span{
+    color: red;
+    font-size: 18px;
+    padding-right: 2px
+}
+.modal .btnSubmit{
+    margin-bottom: 50px
+}
+.comment{ 
+    border: 1px solid #F3F3F3;
+    padding:10px;
+    min-height: 110px;
+}
+.formCmt{
+    height: 150px;
+    overflow: auto;
+    width: 61%;
+}
+.imgCmt img{
+    height: 50px;
+    width: auto;
+}
+.imgCmt{
+    height: 70px;
+    width: auto;
+    width: 10%;
+    float: left;
+}
+.nameCmt{
+    width: 90%;
+    float: left;
+}
+.nameCmt h4{
+    margin-bottom:0;
+    margin-top:10px;
+    color: #11648B
+}
+.contentCmt{
+    width: 100%;
+    float: left;
+    padding-left: 10%;
+    margin-top: -30px
+}
+.modal .close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+.modal .close:hover,
+.modal .close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+
+.logout{
+    display: none
+}
+.logout li i{
+    padding-left: 5px
+}
+
+.menu-logout li:hover .logout{
+    display: inline-block;
+    /*position: absolute;
+    top: 20px;
+    right: 0*/
+}
+.logout li a:hover{
+    color: #900606
+}
+
+
+
+
+
+
+
+
+
 
 
 /* vertical align top */
@@ -913,3 +1112,4 @@ i.icon_g_plus {
 }
 
 /*--//responsive--*/
+

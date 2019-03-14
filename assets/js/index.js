@@ -1,4 +1,12 @@
+// Get the modal
+var modal = document.getElementById('update');
 
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 $(document).ready(function(){
 	 $('.slider-nav').slick({
@@ -188,18 +196,8 @@ $(document).ready(function() {
     });
 
 });
-// var count = 1;
-// var countEl = document.getElementById("count");
-// onclick = function plus(){
-//   count++;
-//   countEl.value = count;
-// }
-// onclick= function minus(){
-//   if (count > 1) {
-//     count--;
-//     countEl.value = count;
-//   }  
-// }
+
+
 
 $(function(){
 
