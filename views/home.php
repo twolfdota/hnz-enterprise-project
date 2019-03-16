@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="assets/mmenu/mmenu/jquery.mmenu.all.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style-mobie.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <?php
 		session_start();
 		?>
@@ -60,7 +60,7 @@
                     <div class="collapse navbar-collapse" id="navbar">
                         <ul class="nav navbar-nav navbar-left">
                             <li class="dropdown">
-                                <a href="lienhe.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Trang chủ</a>
+                                <a href="student.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Trang chủ</a>
                             </li>
                             <li class="dropdown">
                                 <a href="lienhe.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Tin tức - Sự kiện</a>
@@ -73,8 +73,12 @@
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
+                            
+                            <li>
+                                <p>Dao Ngoc Tuan Anh<i> _ </i><span> IT</span></p>
+                            </li>
                             <li class="dropdown">
-                                <a href="student.php" class="dropdown-toggle text-right" data-toggle="dropdown" role="button" aria-expanded="false"> 
+                                <a href="/hnz-enterprise-project/cms" class="dropdown-toggle text-right" role="button" aria-expanded="false"> 
                                     <i class="fa fa-gg" aria-hidden="true" title="Go to Manazine page"></i>
                                 </a>
                             </li>

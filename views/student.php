@@ -107,7 +107,7 @@
                     <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->
 
                     <ul class="menu-logout">
-                        <a href="home.php" class="text-left goto" title="Go to Home page">
+                        <a href="/hnz-enterprise-project/" class="text-left goto" title="Go to Home page">
                             <i class="fa fa-gg" aria-hidden="true"></i>
                         </a>
                         <li class="full hidden-xs hidden-sm">
@@ -402,7 +402,7 @@
                                                <img src="assets/images/user.png">
                                            </div>
                                            <div class="nameCmt">
-                                               <h4>Vu Van Tien</h4>
+                                               <h4>Vu Van Tien <span>IT</span></h4>
                                            </div>
                                            <div class="contentCmt">
                                                You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
@@ -413,7 +413,7 @@
                                                <img src="assets/images/user.png">
                                            </div>
                                            <div class="nameCmt">
-                                               <h4>Vu Van Tien</h4>
+                                               <h4>Vu Van Tien <span>IT</span></h4>
                                            </div>
                                            <div class="contentCmt">
                                                You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
@@ -424,13 +424,22 @@
                                                <img src="assets/images/user.png">
                                            </div>
                                            <div class="nameCmt">
-                                               <h4>Vu Van Tien</h4>
+                                               <h4>Vu Van Tien <span>IT</span></h4>
                                            </div>
                                            <div class="contentCmt">
                                                You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
                                            </div>
                                        </div>
                                    </div>
+                                   <div class="YourFormcmt">
+                                        <div class="imgCmt">
+                                            <img src="assets/images/user.png">
+                                        </div>
+                                       <div class="contentCmt">
+                                            <textarea placeholder="Write your comment..." class="form-control" rows="5" required id="comment"></textarea>
+                                        </div>
+                                   </div>
+
                                </div>
                            </div>
                     <div class="row">

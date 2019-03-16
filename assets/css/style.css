@@ -81,10 +81,10 @@
 .slider-header img{
     width: 100%;
     max-height: 800px;
-    margin-top: -20px
 }
-.slider-header{
-    margin-top: -20px
+
+.slider-header a{
+    width: 100%
 }
 .slick-next, .slick-prev {
     display: none !important
@@ -92,7 +92,7 @@
 a:hover{
     text-decoration: none !important;
 }
-nav.navbar-findcond {
+nav.navbar-findcond  {
     background: #555555;
 }
 nav.navbar-findcond a { 
@@ -119,9 +119,27 @@ nav.navbar-findcond ul.navbar-nav a:active{
 
 .navbar {
      border-radius: 0px !important;
+     height: 54px !important;
+     margin-bottom: 0  !important;
 }
 
+.navbar-right p{
+    margin-top: 13px;
+    font-size: 16px;
+    color: white
+}
+.navbar-right a{
+    border:0 !important;
 
+}
+.navbar-right p span{
+    font-size: 18px
+}
+.navbar-right a:hover{
+    color: #da5b34;
+    background-color: #555555 !important;
+
+}
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -526,8 +544,19 @@ ul{
     overflow: auto;
     width: 61%;
 }
+.YourFormcmt{
+    height: 150px;
+    width: 61%;
+}
+.YourFormcmt img{
+    margin-top: 30px;
+}
+.YourFormcmt textarea{
+    height: 35px !important;
+    background-color: #ECECEC
+}
 .imgCmt img{
-    height: 50px;
+    height: 40px;
     width: auto;
 }
 .imgCmt{
@@ -590,55 +619,6 @@ ul{
 
 
 
-
-
-
-/* vertical align top */
-
-nav.vertical ul li {
-    display: block;
-}
-
-/* vertical menu */
-
-nav.horizontal ul li {
-    display: inline-block;
-}
-
-/* horizontal menu */
-
-img {
-    max-width: 100%;
-}
-
-/*end reset*/
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 100%;
-}
-
-.video-w3l {
-    background: rgba(0, 0, 0, 0.28);
-    min-height: -webkit-fill-available;
-}
-
-/*--header--*/
-
-h1 {
-    font-size: 3.5em;
-    color: rgba(255, 255, 255, 0.74);
-    letter-spacing: 1px;
-    text-align: center;
-    /* font-weight: 600; */
-    margin: 0 2vw 3vw;
-    font-family: 'Marck Script', cursive;
-    padding-top: 2vw;
-}
-
-h1 span {
-    color: #E91E63;
-}
 
 /*--//header--*/
 
@@ -991,7 +971,7 @@ i.icon_g_plus {
 
 /*--responsive--*/
 
-@media(max-width:1920px) {
+/*@media(max-width:1920px) {
     h1 {
         font-size: 3.5vw;
     }
@@ -1047,7 +1027,7 @@ i.icon_g_plus {
         margin: 0 2vw 6vw;
         padding-top: 4vw;
     }
-}
+}*/
 
 /*--//responsive--*/
 
