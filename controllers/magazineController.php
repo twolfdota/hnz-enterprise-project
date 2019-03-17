@@ -19,5 +19,28 @@ class magazineCtrl
 
         return $validated;
     }
+
+    function getListMagazine($id) {
+        require './DBConnect.php';
+        $result = array();
+        if($id){
+
+
+            $query_fetch = mysqli_query($conn,"SELECT * FROM magazine WHERE userid = $id");
+            while($show = mysqli_fetch_array($query_fetch)){
+                $item = (object) [
+                    'id' => $show['id'],
+                    'title' => $show['title'],
+                    'img' => $show['imgFile'],
+                    'doc' => $show['docFile'],
+                    'status' => $show['status']
+                ];
+                array_push($result, $item);
+            } // while loop brace
+
+        } // isset brace
+        return $result;
+
+    }
 }
  
