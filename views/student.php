@@ -199,7 +199,7 @@
                                     <div class="btn btn-default image-preview-input">
                                         <i class="fa fa-folder-open" aria-hidden="true"></i>
                                         <span class="image-preview-input-title">Browse</span>
-                                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+                                        <input type="file" accept="image/png, image/jpeg, image/gif" name="imageUpload"/> <!-- rename it -->
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">

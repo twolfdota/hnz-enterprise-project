@@ -13,7 +13,7 @@ class magazineCtrl
             $stmt->execute();
             if (mysqli_error($conn)) {
                 $validated = false;
-                echo '<script>alert("Title used!!")</script>';
+                echo json_encode('Title already used!');
             }
             $conn->close();
 
