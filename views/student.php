@@ -292,48 +292,27 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                        <tr>
-                            <td>1</td>
-                            <td>News</td>
-                            <td class="imgPost">
-                                <img src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
-                            </td>
-                            <td>News Cate</td>
-                            <td>Approved</td>
-                            <td class="">
-                                <a onclick="document.getElementById('update').style.display='block'" class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a> 
-                                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
-                                <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
-                            </td>
-                         </tr>
-                         <tr>
-                            <td>1</td>
-                            <td>News</td>
-                            <td class="imgPost">
-                                <img src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
-                            </td>
-                            <td>News Cate</td>
-                            <td>Sending</td>
-                            <td class="">
-                                <a onclick="document.getElementById('update').style.display='block'" class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a> 
-                                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
-                                <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
-                            </td>
-                         </tr>
-                         <tr>
-                            <td>1</td>
-                            <td>News</td>
-                            <td class="imgPost">
-                                <img src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
-                            </td>
-                            <td>News Cate</td>
-                            <td>Cannel</td>
-                            <td class="">
-                                <a onclick="document.getElementById('update').style.display='block'" class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a> 
-                                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
-                                <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
-                            </td>
-                         </tr>
+                <?php
+                        include_once './controllers/magazineController.php';
+                        $magazineCtrl = new magazineCtrl();
+                        $result = $magazineCtrl->getListMagazine($author['id']);
+                        foreach($result as $item) {
+                            ?>
+                    <tr>
+                        <td><?php echo $item->id?></td>
+                        <td><?php echo $item->title?></td>
+                        <td class="imgPost">
+                            <img src="<?php echo $item->img?>">
+                        </td>
+                        <td>News Cate</td>
+                        <td><?php echo $item->status?></td>
+                        <td class="">
+                            <a onclick="document.getElementById('update').style.display='block'" class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                        </td>
+                    </tr>
+                    <?php
+                        }
+                        ?>
                 </table>
                 </div>
         </div>
