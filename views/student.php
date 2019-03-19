@@ -68,7 +68,7 @@
                 <a href="">Vu Van Tien</a>
             </div>
             <div class="Navigation">
-                <h4>Faculty: <span>IT</span></h4>
+                <h4>Faculty: <span><?php echo $author['faculty'];?></span></h4>
             </div>
             <div class="menu">
                 <ul>
@@ -165,6 +165,7 @@
                     <div id="upload" class="registerContentForm tab-pane fade in active">
                         <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
                             <div class="uploadForm">  
+                                <input type="hidden" value="<?php echo $author['id']?>" name="userid" id="userid"/>
                                 <!-- image-preview-filename input [CUT FROM HERE]-->
                                 <div class="image-preview">
                                     <div class="row session1">
@@ -287,7 +288,6 @@
                         <th>ID</th>
                         <th>Title</th>
                         <th>Image</th>
-                        <th>Name Magazine</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -304,10 +304,9 @@
                         <td class="imgPost">
                             <img src="<?php echo $item->img?>">
                         </td>
-                        <td>News Cate</td>
                         <td><?php echo $item->status?></td>
                         <td class="">
-                            <a onclick="document.getElementById('update').style.display='block'" class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                            <a class="edit-btn" data-value="<?php echo $item->id?>" class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
                         </td>
                     </tr>
                     <?php
@@ -322,6 +321,7 @@
             <span onclick="document.getElementById('update').style.display='none'" class="close" title="Close Modal">&times;</span>
             <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
                             <div class="uploadForm">  
+                                <input id="mgz-id" name="mgzId" type="hidden" value=""/>
                                 <!-- image-preview-filename input [CUT FROM HERE]-->
                                 <div class="image-preview">
                                     <div class="row session1">
@@ -369,13 +369,25 @@
                         </div>
 
                     </div>
-                    <div class="row session3">
+
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                           <input " class="btnSubmit" type="submit" name="form-upload" value="Update">
+                       </div>
+                   </div>
+
+                   </div><!-- /input-group image-preview [TO HERE]--> 
+               </div>
+           </form>
+           <div class="row session3">
                                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
                                     
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
                                     <h4>Comment</h4>
-                                   <div class="formCmt">
+                                   <div class="formCmt" id="formCmt">
                                        <div class="comment">
                                            <div class="imgCmt">
                                                <img src="assets/images/user.png">
@@ -412,7 +424,7 @@
                                    </div>
                                    <div class="YourFormcmt">
                                         <div class="imgCmt">
-                                            <img src="assets/images/user.png">
+                                            <img src="<?php echo $author['ava'];?>">
                                         </div>
                                        <div class="contentCmt">
                                             <textarea placeholder="Write your comment..." class="form-control" rows="5" required id="comment"></textarea>
@@ -421,17 +433,6 @@
 
                                </div>
                            </div>
-                    <div class="row">
-                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                           <input " class="btnSubmit" type="submit" name="form-upload" value="Update">
-                       </div>
-                   </div>
-
-                   </div><!-- /input-group image-preview [TO HERE]--> 
-               </div>
-           </form>
           </div>
         </div>
     </div>
@@ -491,7 +492,95 @@
             elem.msRequestFullscreen();
         }
     }
-</script>
+
+    $(".edit-btn").click(function() {
+        var mgzId = $(this).data("value");
+        $("#mgz-id").val(mgzId);
+        $("#formCmt").html("");
+        var htmlList="";
+        $.ajax({
+                url: `/hnz-enterprise-project/loadComments?mgzId=${mgzId}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function(result) {
+                    console.log(result);
+                    if (result.length) {
+  
+                    result.forEach(function(item) {
+                        htmlList += `<div class="comment">
+                                           <div class="imgCmt">
+                                               <img src="${item.avatar}">
+                                           </div>
+                                           <div class="nameCmt">
+                                               <h4>${item.username} <span>${item.fName}</span></h4>
+                                           </div>
+                                           <div class="contentCmt">
+                                               ${item.content}
+                                           </div>
+                                       </div>`;
+                    })
+
+                    }
+                    $("#formCmt").html(htmlList);
+                }
+            })
+            
+        document.getElementById('update').style.display='block';
+    })
+
+    $('#comment').keypress(function (e) {
+        
+        var key = e.which;
+        if(key == 13)  // the enter key code
+        {
+            e.preventDefault();
+            var c = $.trim($(this).val()).length;
+            console.log(c);
+            if (c<10) {
+                alert("Your comment too short!!");
+            }
+            else if (c>200) {
+                alert("Your comment too long!!");
+            }
+            else {
+                var content = $.trim($(this).val());
+                var userId = $("#userid").val();
+                var mgzId = $("#mgz-id").val();
+                $.ajax({
+                url: `/hnz-enterprise-project/postModifyCmt`,
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    content:content,
+                    userId:userId,
+                    mgzId:mgzId
+                },
+                success: function(result) {
+                    if(result.error) {
+                        alert(result.error)
+                    }
+                    else {
+                        htmlCmt = `<div class="comment">
+                                           <div class="imgCmt">
+                                               <img src="<?php echo $author['ava'];?>">
+                                           </div>
+                                           <div class="nameCmt">
+                                               <h4><?php echo $author['name'];?> <span><?php echo $author['faculty'];?></span></h4>
+                                           </div>
+                                           <div class="contentCmt">
+                                               ${content}
+                                           </div>
+                                       </div>`;    
+                        $("#formCmt").append(htmlCmt);
+                        $("#formCmt").animate({ scrollTop: $('#formCmt').prop("scrollHeight")}, 1000);
+                        $("#comment").val("");                  
+                    }
+                }
+            })               
+            }
+        }
+    });   
+    </script>
 
     <script type="text/javascript">
         $(document).on('click', '#close-preview', function(){ 

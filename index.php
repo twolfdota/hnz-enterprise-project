@@ -60,6 +60,12 @@ $route->add('/loadYear', function () {
     $yearCtrl->loadYear();
 });
 
+$route->add('/loadComments', function(){
+    include './controllers/cmtController.php';
+    $cmtCtrl = new cmtCtrl();
+    $cmtCtrl->getListModifyCmt($_GET['mgzId']);
+});
+
 //Thêm các đường dẫn validate hoặc add, update dữ liệu vào đây (thường dùng POST)
 $route->add('/editDeadlines', function () {
     include './controllers/yearController.php';
@@ -145,6 +151,12 @@ $route->add('/postMgz', function () {
     } else {
         echo json_encode("please input title!!!");
     }
+});
+
+$route->add('/postModifyCmt', function(){
+    include './controllers/cmtController.php';
+    $cmtCtrl = new cmtCtrl();
+    $cmtCtrl->addModifyCmt($_POST["content"], $_POST["userId"], $_POST["mgzId"]);
 });
 
 $route->add('/logout', function() {

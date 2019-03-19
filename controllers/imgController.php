@@ -1,7 +1,6 @@
 <?php
 
 class imgCtrl {
-
     function addImg($image_target_dir, $image_name, $doc_target_dir, $doc_name) {
         $uploadOk = 1;
         $target_img = $image_target_dir . basename($_FILES["imageUpload"]["name"]);
@@ -23,13 +22,15 @@ class imgCtrl {
         }
 // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
+            $magazineCtrl->delete($doc_name);
             echo json_encode('Your file is not uploaded!!');
 // if everything is ok, try to upload file
         } else {
             move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $image_target_dir . $image_name. '.' . $imageFileType);
             if (move_uploaded_file($_FILES["doc"]["tmp_name"], $doc_target_dir . $doc_name. '.' . $docFileType)) {
-                echo '<script>alert("Magazine uploaded successfully!"); location.reload();</script>';
+                echo json_encode('upload successfully!');
             } else {
+                $magazineCtrl->delete($doc_name);
                 echo json_encode('Error uploading file!!!');
             }
         }
