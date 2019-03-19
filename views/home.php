@@ -73,7 +73,9 @@
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            
+                            <li>
+                                <img class="avatar" src="assets/images/images.jpg">
+                            </li>
                             <li>
                                 <p>Dao Ngoc Tuan Anh<i> _ </i><span> IT</span></p>
                             </li>

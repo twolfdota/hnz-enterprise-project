@@ -27,11 +27,7 @@
 #back2Top i {
     line-height: 20px;
 }
-.video-w3l {
-    position: none;
-    background-size: 100% !important;
-    height: 100% !important;
-}
+
 
 .header-desktop{
     background-image: url(../images/background.png);
@@ -1035,3 +1031,10 @@ i.icon_g_plus {
 
 /*--//responsive--*/
 
+.avatar{
+    height: 30px;
+    width: auto;
+    margin-top: 10px;
+    border-radius: 50%;
+    padding-right: 5px
+}
