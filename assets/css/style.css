@@ -27,7 +27,11 @@
 #back2Top i {
     line-height: 20px;
 }
-
+.video-w3l {
+    position: none;
+    background-size: 100% !important;
+    height: 100% !important;
+}
 
 .header-desktop{
     background-image: url(../images/background.png);

@@ -36,14 +36,7 @@ $route->add('/cms', function () {
 });
 
 
-$route->add('/login', function () {
-    session_start();
-    if(isset($_SESSION['login'])) {
-        header("Location:index.php");
-        exit();
-    }
-    include_once './views/login.php';
-});
+
 //Thêm các đường dẫn load dữ liệu đầu trang vào đây (thường dùng GET)
 $route->add('/loadFaculty', function () {
 
@@ -88,6 +81,11 @@ $route->add('/createUser', function () {
 });
 
 $route->add('/login', function () {
+        session_start();
+    if(isset($_SESSION['login'])) {
+        header("Location:index.php");
+        exit();
+    }
     include_once './views/login.php';
     include './controllers/userController.php';
 
