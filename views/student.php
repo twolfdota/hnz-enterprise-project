@@ -48,13 +48,13 @@
             <nav id="menu">
                 <ul>
                     <li>
-                        <a data-toggle="pill" href="#">
-                            <i class="fa fa-bars" aria-hidden="true"></i> Registration
+                        <a data-toggle="pill" href="#upload">
+                            <i class="fa fa-bars" aria-hidden="true"></i> Upload File
                         </a>
                     </li>
                     <li>
-                        <a data-toggle="pill" href="#">
-                            <i class="fa fa-bars" aria-hidden="true"></i> Academic Year's Event Information
+                        <a data-toggle="pill" href="#yourmagazine">
+                            <i class="fa fa-bars" aria-hidden="true"></i> Your File
                         </a>
                     </li>
                 </ul>
@@ -138,8 +138,8 @@
                                 <i class="fa fa-user-plus" aria-hidden="true"></i>
                             </div>
                             <div class="linkText">
-                                <h4>Registration</h4>
-                                <p>Hello</p>
+                                <h4>File</h4>
+                                <p>Upload File For Students</p>
                             </div>
                         </div>
                         <div class="linkRight text-right">

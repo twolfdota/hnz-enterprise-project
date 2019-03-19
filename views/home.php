@@ -77,7 +77,10 @@
                                 <img class="avatar" src="assets/images/images.jpg">
                             </li>
                             <li>
-                                <p>Dao Ngoc Tuan Anh<i> _ </i><span> IT</span></p>
+                                <p> Dao Ngoc Tuan Anh<i> _ </i><span> IT</span></p>
+                            </li>
+                            <li class="logoutHome">
+                                <a href="#"><i class="fa fa-sign-out" aria-hidden="true" title="logout"></i></a>
                             </li>
                             <li class="dropdown">
                                 <a href="/hnz-enterprise-project/cms" class="dropdown-toggle text-right" role="button" aria-expanded="false"> 
