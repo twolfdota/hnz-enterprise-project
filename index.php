@@ -92,9 +92,10 @@ $route->add('/login', function () {
     include './controllers/userController.php';
 
     $userCtrl = new userCtrl();
-    $email = $_POST["email"];
-    $pass = $_POST["password"];
+
     if (isset($_POST['login-form'])) {
+        $email = $_POST["email"];
+        $pass = $_POST["password"];
         if ($email != null && $pass != null) {
             $res = $userCtrl->check($email, $pass);
             if (count($res) > 0) {
