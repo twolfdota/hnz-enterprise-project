@@ -274,7 +274,7 @@
 
                         <label class="btn btn-danger">
                             <input type="radio" name="options" id="option2" autocomplete="off">
-                            Cannel
+                            Cancel
                             <span class="glyphicon glyphicon-ok"></span>
                         </label>
                     
