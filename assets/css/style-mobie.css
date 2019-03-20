@@ -1,87 +1,78 @@
 @media screen and (max-width:800px) {
-.registerContent{
-    background-color: white;
-    height: 750px;
-    margin-top: 30px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px 0 rgba(43,43,43,.1), 0 11px 6px -7px rgba(43,43,43,.1);
+.header-top1 i{
+  color: #da5b34;
+  font-size: 25px;
+  margin-top: 20px;
 }
-.mainForm{
-    width: 100%;
-    float: left;
+.header-top2 img{
+  width: auto;
+  height: 70px
 }
-.registerForm .mainForm input{
-    height: 30px;
-    width: 100%;
-    padding-left: 15px;
-    border-radius: 3px;
-    border: 1px solid #D7D5D5;
-    outline: none
+.header-top3 img{
+  width: auto;
+  height: 50px;
+  float: right !important;
+  margin-top: -35px
 }
-.registerForm .mainForm select{
-    height: 30px;
-    width: 100%;
-    border-radius: 3px;
-    border: 1px solid #D7D5D5;
-    outline: none
-}
-.registerContentBG{
-    padding: 10px 15px
-}
-.registerContentForm{
-    padding: 10px 10px
-}
-.registerForm .mainForm .text{
-    width: 30%;
-    float: left;
-}
-.registerForm .mainForm .text p{
-    font-size: 13px !important
-}
-.registerForm .mainForm .input{
-    width:70%;
-    float: left;
-}
-.linkPage{
-    margin-top: 15px;
-    margin-bottom: 20px !important
-}
-.button-res{
-    margin-left: 30%;
-}
-.button-res input{
-    text-align: center;
-    width: 100% !important;
-    background-color: #428bca;
-    height: 40px !important;
-    border: 0px;
+.header-top3 span{
+  background-color: #F07318;
+    padding:10px 20px;
     color: white;
-    font-size: 18px
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 5px;
+}
+.phone{
+  margin-top: 25px
+}
+}
+.background-mobie{
+    background-color: #646260;
+    background-repeat: repeat;
+    background-size: 100%;
+    height: 70px;
+}
+.chil2-header-two{
+    float: left;
+    display: inline-block;
+    padding: 10px 15px 12px 0;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: roboto bold !important;
+    color: #da5b34;
+    text-align: center !important;
 }
 }
 /*.content-cart .col-xs-12{
   padding: 0px !im
 }*/
 @media screen and (max-width:640px) {
-.content-cart .media-body h4{
-    font-size:14px;
-}
-.content-cart .total strong{
-    font-size:16px !important
-}
-.content-checkout #left select{
-  width: 170px !important;
-  height: 30px
-}
-.content-checkout #left #input50 input{
-  width: 170px !important;
-}
-.top-content #right ul{
-  float: left;
-  padding-left: 0px;
-}
+
 }
 @media screen and (max-width:480px) {
+  .header-top1 i{
+  color: #da5b34;
+  font-size: 25px;
+  margin-top: 20px;
+}
+.header-top2 img{
+  width: auto;
+  height: 60px
+}
+.header-top3 img{
+  width: auto;
+  height: 40px;
+  float: right !important;
+  margin-top: -30px
+}
+.header-top3 span{
+  background-color: #F07318;
+    padding:10px 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    border-radius: 5px;
+}
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
 #header-mobie #header-top .header-top3 img{
