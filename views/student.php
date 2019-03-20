@@ -166,6 +166,7 @@
                         <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
                             <div class="uploadForm">  
                                 <input type="hidden" value="<?php echo $author['id']?>" name="userid" id="userid"/>
+                                <input type="hidden" value="<?php echo $author['role']?>" id="userRole"/>
                                 <!-- image-preview-filename input [CUT FROM HERE]-->
                                 <div class="image-preview">
                                     <div class="row session1">
@@ -564,6 +565,7 @@
                 var content = $.trim($(this).val());
                 var userId = $("#userid").val();
                 var mgzId = $("#mgz-id").val();
+                var userRole = $("#userRole").val();
                 $.ajax({
                 url: `/hnz-enterprise-project/postModifyCmt`,
                 type: 'POST',
@@ -578,12 +580,28 @@
                         alert(result.error)
                     }
                     else {
+                        let textRole = "";
+                        switch(userRole) {
+                            case "1":
+                                textRole = `<span class="red-role">Student</span>
+                                                <span> - </span>
+                                                <span class="role red-role"><?php echo $author['faculty'];?> Department</span>`;
+                                break;  
+                            case "2":
+                                textRole = `<span class="blue-role">Coordinator</span>
+                                                <span> - </span>
+                                                <span class="role blue-role"><?php echo $author['faculty'];?> Department</span>`;
+                                break;  
+                        }
                         htmlCmt = `<div class="comment">
                                            <div class="imgCmt">
                                                <img src="<?php echo $author['ava'];?>">
                                            </div>
                                            <div class="nameCmt">
-                                               <h4><?php echo $author['name'];?> <span><?php echo $author['faculty'];?></span></h4>
+                                               <h4><?php echo $author['name'];?> <br>`
+                                               + textRole + 
+                                                `<span class="time text-right"> ${new Date().toLocaleString()} </span>                                              
+                                               </h4>
                                            </div>
                                            <div class="contentCmt">
                                                ${content}
