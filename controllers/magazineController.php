@@ -7,7 +7,7 @@ class magazineCtrl
         $validated = true;
 
 
-            $sql = "insert into magazine(title, docFile, imgFile, userid, status, created_at, updated_at) values(?,?,?,?,'new',now(), null)";
+            $sql = "insert into magazine(title, docFile, imgFile, userid, status, created_at, updated_at, academicYear) values(?,?,?,?,'new',now(), null, YEAR(now()))";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("sssi", $title, $doc, $ava, $userid);
             $stmt->execute();
