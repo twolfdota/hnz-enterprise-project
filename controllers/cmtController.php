@@ -17,7 +17,8 @@ class cmtCtrl {
                     'username' => $show['username'],
                     'roles' => $show['roles'],
                     'fName' => $show['fName'],
-                    'avatar' => $show['avatar']
+                    'avatar' => $show['avatar'],
+                    'cmtDate' => $show['cmtDate']
                 ];
                 array_push($result, $item);
             } // while loop brace

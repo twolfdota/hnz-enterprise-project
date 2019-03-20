@@ -13,9 +13,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style-mobie.css">
     <link rel="stylesheet" type="text/css" href="assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <?php
-		session_start();
-		?>
+
 </head>
 
 <body>
@@ -74,13 +72,13 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <img class="avatar" src="assets/images/images.jpg">
+                                <img class="avatar" src="<?php echo $author['ava']?>">
                             </li>
                             <li>
-                                <p> Dao Ngoc Tuan Anh<i> _ </i><span> IT</span></p>
+                                <p> <?php echo $author['name']?><i> _ </i><span> <?php echo $author['faculty']?> Department</span></p>
                             </li>
                             <li class="logoutHome">
-                                <a href="#" class="dropdown-toggle text-right" role="button" aria-expanded="false"> 
+                                <a href="/hnz-enterprise-project/logout" class="dropdown-toggle text-right" role="button" aria-expanded="false"> 
                                     <i class="fa fa-sign-out" aria-hidden="true" title="logout"></i>
                                 </a>
                             </li>
