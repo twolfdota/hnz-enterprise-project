@@ -512,8 +512,9 @@
                                                <img src="${item.avatar}">
                                            </div>
                                            <div class="nameCmt">
-                                               <h4>${item.username} <span>${item.fName}</span></h4>
+                                               <h4>${item.username} <br> <span>${item.fName}</span></h4>
                                            </div>
+
                                            <div class="contentCmt">
                                                ${item.content}
                                            </div>
