@@ -5,7 +5,6 @@
     <title>Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="assets/css/lightbox.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/slick.css">
     <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
     <link rel="stylesheet" type="text/css" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -19,7 +18,7 @@
 </head>
 
 <body>
-    <header class="" id="header-desktop">
+    <header class="hidden-sm  hidden-xs" id="header-desktop">
         <div class="header-desktop">
             <div class="container">
                 <div class="row header-top">
@@ -96,70 +95,50 @@
         </div>
     </header>
     <header class="hidden-lg  hidden-md" id="header-mobie">
-        <div id="header-top">
-            <div class="col-xs-2 header-top1">
-                <a href="#menu">
-                    <i class="fa fa-bars" aria-hidden="true"></i>
+        <div id="header-top ">
+            <div class="col-xs-12 col-sm-12 header-top2 text-center">
+                <a href="index.html">
+                    <img src="assets/images/logo.png">
                 </a>
             </div>
-            <div class="col-xs-8 header-top2">
-                <img src="images/Logo.png">
-            </div>
-            <div class="col-xs-2 header-top3">
-                <a href="">
-                    <img src="images/sprite-icon_05.png"><br>
-                    <span id="count-cart">1</span>
-                </a>
+            <div >
+                <div class="col-xs-2 background-mobie col-sm-6 header-top1">
+                    <a href="#menu">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="col-xs-10 col-sm-6 background-mobie header-top3">
+                   <div class="phone">
+                       <span>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        Hotline:
+                        <a href="tel:0968 098 781">0968 098 781</a>
+                    </span>
+                   </div>
+                    <a href="">
+                        <img  src="assets/images/educap1.png">
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="col-xs-12 chil2-header-two">
-            <p>
+        <div class="col-xs-12 chil2-header-two text-center">
+            <p class="text-center">
                 <span>Inspire Your Teaching and Learning</span>
             </p>
         </div>
-        <div>
-            <nav id="menu">
-                <ul>
-                    <li><a href="index.html">Trang chủ</a></li>
-                    <li><a href="">Mỹ phẩm</a>
-                        <ul>
-                            <li><a href="">Mỹ phẩm nam</a></li>
-                            <li><a href="">Mỹ phẩm nữ</a></li>
-                            <li><a href="">Phụ kiện trang điểm</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="">Thời trang</a>
-                        <ul>
-                            <li><a href="">Thời trang nam</a>
-                                <ul>
-                                    <li><a href="">Mỹ phẩm nam</a></li>
-                                    <li><a href="">Mỹ phẩm nữ</a></li>
-                                    <li><a href="">Phụ kiện trang điểm</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="">Thời trang nữ</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="tintuc.html">Tin tức</a>
-                    <li><a href="">Shop xinh</a>
-                        <ul>
-                            <li><a href="lienhe.html">Liên hệ</a></li>
-                            <li><a href="gioithieu.html">Giới thiệu</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
     </header>
-    <header class="slider-header">
+    <div class="slider-header">
         <a href="">
             <img src="assets/images/student-education_1526999740.jpg">
         </a>
         <a href="">
             <img src="assets/images/student-education_1526999740.jpg">
         </a>
-    </header>
-    <content>
+    </div>
+    <a href="">
+        <img style="width: 100%;height: auto;" src="assets/images/student-education_1526999740.jpg">
+    </a>
+    <!-- <content>
         <div class="container">
 					<?php
             $ch = curl_init();
@@ -171,7 +150,7 @@
 
             if (function_exists('curl_file_create')) { // php 5.5+
               $cFile = curl_file_create($file_name_with_full_path, 'application/msword', basename($file_name_with_full_path));
-            } else { //
+            } else { 
               $cFile = '@' . realpath($file_name_with_full_path);
             }
 
@@ -192,7 +171,7 @@
             ?>
         </div>
 
-    </content>
+    </content> -->
     <footer>
 
     </footer>
@@ -206,6 +185,8 @@
     <script type="text/javascript" src="assets/js/slick.min.js"></script>
     <script type="text/javascript" src="assets/js/index.js"></script>
     <script type="text/javascript" src="assets/mmenu/mmenu/jquery.mmenu.all.js"></script>
+
+
 </body>
 
 </html> 
