@@ -512,7 +512,12 @@
                                                <img src="${item.avatar}">
                                            </div>
                                            <div class="nameCmt">
-                                               <h4>${item.username} <br> <span>${item.fName}</span></h4>
+                                               <h4>${item.username} <br>
+                                                <span>${item.fName}</span>
+                                                <span> - </span>
+                                                <span class="role">IT Deprment</span>
+                                                <span class="time text-right"> 22:30 3/20/2019 </span>
+                                                </h4>
                                            </div>
 
                                            <div class="contentCmt">

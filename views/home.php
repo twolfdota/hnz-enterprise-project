@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <header class="hidden-xs hidden-sm">
+    <header class="" id="header-desktop">
         <div class="header-desktop">
             <div class="container">
                 <div class="row header-top">
@@ -80,7 +80,9 @@
                                 <p> Dao Ngoc Tuan Anh<i> _ </i><span> IT</span></p>
                             </li>
                             <li class="logoutHome">
-                                <a href="#"><i class="fa fa-sign-out" aria-hidden="true" title="logout"></i></a>
+                                <a href="#" class="dropdown-toggle text-right" role="button" aria-expanded="false"> 
+                                    <i class="fa fa-sign-out" aria-hidden="true" title="logout"></i>
+                                </a>
                             </li>
                             <li class="dropdown">
                                 <a href="/hnz-enterprise-project/cms" class="dropdown-toggle text-right" role="button" aria-expanded="false"> 
