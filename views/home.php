@@ -127,17 +127,14 @@
             </p>
         </div>
     </header>
-    <div class="slider-header">
-        <a href="">
-            <img src="assets/images/student-education_1526999740.jpg">
-        </a>
-        <a href="">
-            <img src="assets/images/student-education_1526999740.jpg">
-        </a>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 slider">
+        <div class="slider-header">
+            <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
+            <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
+            <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
+        </div>
     </div>
-    <a href="">
-        <img style="width: 100%;height: auto;" src="assets/images/student-education_1526999740.jpg">
-    </a>
     <!-- <content>
         <div class="container">
 					<?php

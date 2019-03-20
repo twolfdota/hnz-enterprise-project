@@ -28,7 +28,9 @@
     line-height: 20px;
 }
 
-
+.slider{
+    padding: 0px !important
+}
 .header-desktop{
     background-image: url(../images/background.png);
     background-repeat: repeat;
