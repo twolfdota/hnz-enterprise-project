@@ -5,7 +5,18 @@ include 'route.php';
 $route = new Route();
 //Thêm các đường dẫn load trang tĩnh vào đây
 $route->add('/', function () {
-    include_once './views/home.php';
+    session_start();
+    if (isset($_SESSION['login'])) {
+        include './controllers/userController.php';
+        $userCtrl = new userCtrl();
+        $author = $userCtrl->authorize();
+        include_once './views/home.php';
+
+    }
+    else {
+        header("Location:login");
+        exit();
+    }
 });
 $route->add('/coordinator', function () {
     include_once './views/coordinator.php';

@@ -68,7 +68,7 @@
                 <a href="">Vu Van Tien</a>
             </div>
             <div class="Navigation">
-                <h4>Faculty: <span><?php echo $author['faculty'];?></span></h4>
+                <h4>Faculty: <span><?php echo $author['faculty'];?> Department</span></h4>
             </div>
             <div class="menu">
                 <ul>
@@ -503,20 +503,32 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function(result) {
-                    console.log(result);
                     if (result.length) {
   
                     result.forEach(function(item) {
+                        
+                        let textRole = "";
+                        switch(item.roles) {
+                            case "1":
+                                textRole = `<span class="red-role">Student</span>
+                                                <span> - </span>
+                                                <span class="role red-role">${item.fName} Department</span>`;
+                                break;  
+                            case "2":
+                                textRole = `<span class="blue-role">Coordinator</span>
+                                                <span> - </span>
+                                                <span class="role blue-role">${item.fName} Department</span>`;
+                                break;  
+                        }
+                        console.log(textRole);
                         htmlList += `<div class="comment">
                                            <div class="imgCmt">
                                                <img src="${item.avatar}">
                                            </div>
                                            <div class="nameCmt">
-                                               <h4>${item.username} <br>
-                                                <span>${item.fName}</span>
-                                                <span> - </span>
-                                                <span class="role">IT Deprment</span>
-                                                <span class="time text-right"> 22:30 3/20/2019 </span>
+                                               <h4>${item.username} <br>`
+                                            + textRole + 
+                                                `<span class="time text-right"> ${new Date(item.cmtDate).toLocaleString()} </span>
                                                 </h4>
                                            </div>
 
