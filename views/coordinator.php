@@ -328,12 +328,12 @@
 
                     <input id="mgz-id" name="mgzId" type="hidden" value=""/>
                     <!-- image-preview-filename input [CUT FROM HERE]-->
-                    <div class="contentmaganizeCroll">
+                    <div class="">
                         <div class="">
                            <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
-
-                </div>
-                           <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 ">
+                                <h4>Magazine</h4>
+                            </div>
+                           <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contentmaganizeCroll">
                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                                  <div class="contentmaganize">
                                     <img  src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
@@ -353,7 +353,7 @@
             </form>
             <div class="row session3">
                 <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
-
+                    
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                     <h4>Comment</h4>
