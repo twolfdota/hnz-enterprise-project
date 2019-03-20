@@ -126,12 +126,14 @@
         </div>
     </header>
 
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 slider">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="slider-header">
             <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
             <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
             <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
         </div>
+    </div>
     </div>
     <!-- <content>
         <div class="container">
