@@ -7,7 +7,9 @@ $route = new Route();
 $route->add('/', function () {
     include_once './views/home.php';
 });
-
+$route->add('/coordinator', function () {
+    include_once './views/coordinator.php';
+});
 $route->add('/cms', function () {
     session_start();
     if (isset($_SESSION['login'])) {
