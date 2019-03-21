@@ -1,4 +1,5 @@
 @media screen and (max-width:800px) {
+
 .registerContentBG {
     padding: 15px 10px;
 }
@@ -6,6 +7,7 @@
     width: 100%;
     float: left;
 }
+
 .header-top1 i{
   color: #da5b34;
   font-size: 25px;
@@ -55,7 +57,9 @@
     width: 100%;
 }
 
+
 }
+
 /*.content-cart .col-xs-12{
   padding: 0px !im
 }*/
@@ -109,7 +113,9 @@
       text-align: center !important;
   }
 
+
   }
+
   /*.content-cart .col-xs-12{
     padding: 0px !im
   }*/
