@@ -1,5 +1,11 @@
 @media screen and (max-width:800px) {
-<<<<<<< HEAD
+.registerContentBG {
+    padding: 15px 10px;
+}
+.mainForm {
+    width: 100%;
+    float: left;
+}
 .header-top1 i{
   color: #da5b34;
   font-size: 25px;
@@ -48,16 +54,17 @@
     overflow: auto;
     width: 100%;
 }
+
 }
 /*.content-cart .col-xs-12{
   padding: 0px !im
 }*/
 @media screen and (max-width:640px) {
-
+.btnSubmit {
+    width: 100% !important;
+}
 }
 @media screen and (max-width:480px) {
-=======
->>>>>>> 41cd5e37031bf0723bbd65cf60dfe6c5b64b6451
   .header-top1 i{
     color: #da5b34;
     font-size: 25px;
@@ -101,6 +108,7 @@
       color: #da5b34;
       text-align: center !important;
   }
+
   }
   /*.content-cart .col-xs-12{
     padding: 0px !im
@@ -134,7 +142,7 @@
   }
   }
   @media screen and (min-width: 768px) and (max-width: 991px) {
-  #header-mobie #header-top .header-top3 img{
+/*  #header-mobie #header-top .header-top3 img{
       height: 45px;
       width: 52px;
       float: right;
@@ -154,48 +162,10 @@
   }
   .content-checkout #left #input50 input{
     width: 366px !important;
-  }
+  }*/
   }
   @media screen and (min-width: 992px) and (max-width: 1199px) {
-  .container{
-      width: auto !important; 
-  }	
-  .slider-nav img{
-    height: auto;
-    width: 100%;
-  }
-  .slick-next,.slick-prev {
-      display: none !important;
-  }
-     .img-siderbar ul li img {
-      width: 80% !important;
-      height: auto;
-      float: left;
-      padding: 20px;
-  }
-  .slider-nav img {
-      height: 450px;
-       width: 100%; 
-  }
-  .sider-barmenu #title .title-menu2 {
-      font-size: 12px;
-  }
-  #intro-left{
-    text-align: center;
-  }
-  #footer-1 img {
-      width: 50%; 
-  }
-  .modal-content {
-      width: 95%; /* Could be more or less, depending on screen size */
-  }
-  .content-checkout #left select{
-    width: 153px !important;
-    height: 30px
-  }
-  .content-checkout #left #input50 input{
-    width: 153px !important;
-  }
+
   }
   @media screen and (min-width: 1200px) {
   
