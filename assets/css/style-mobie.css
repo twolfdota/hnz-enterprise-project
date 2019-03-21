@@ -1,5 +1,4 @@
 @media screen and (max-width:800px) {
-<<<<<<< HEAD
 .header-top1 i{
   color: #da5b34;
   font-size: 25px;
@@ -48,7 +47,7 @@
     overflow: auto;
     width: 100%;
 }
-}
+
 /*.content-cart .col-xs-12{
   padding: 0px !im
 }*/
@@ -56,8 +55,6 @@
 
 }
 @media screen and (max-width:480px) {
-=======
->>>>>>> 41cd5e37031bf0723bbd65cf60dfe6c5b64b6451
   .header-top1 i{
     color: #da5b34;
     font-size: 25px;
@@ -101,7 +98,7 @@
       color: #da5b34;
       text-align: center !important;
   }
-  }
+  
   /*.content-cart .col-xs-12{
     padding: 0px !im
   }*/
