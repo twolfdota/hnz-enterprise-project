@@ -1,28 +1,26 @@
+// Get the modal
+var modal = document.getElementById('update');
 
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 $(document).ready(function(){
-	 $('.slider-nav').slick({
+   $('.slider-header').slick({
    slidesToShow: 1,
    slidesToScroll: 1,
    autoplay: true,
-   dots: true,
-   focusOnSelect: true,
-   autoplay:true
- });
-});
-$(document).ready(function(){
-   $('.show-product').slick({
-   slidesToShow: 4,
-   slidesToScroll: 4,
-   autoplay: true,
    dots: false,
    focusOnSelect: true,
    responsive: [
     {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: 1,
+        slidesToScroll: 1,
         infinite: true,
         dots: true,
         dots: false
@@ -31,105 +29,23 @@ $(document).ready(function(){
     {
       breakpoint: 600,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
         dots: false,
-        slidesToScroll: 2
+        slidesToScroll: 1
       }
     },
     {
       breakpoint: 480,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
         dots: false,
         slidesToScroll: 1
       }
     }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
   ]
  });
 });
-$(document).ready(function(){
-   $('.show-news').slick({
-   slidesToShow: 4,
-   slidesToScroll: 4,
-   autoplay: true,
-   dots: false,
-   focusOnSelect: true,
-   responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true,
-        dots: false
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        dots: false,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 2,
-        dots: false,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
- });
-});
-$(document).ready(function(){
-   $('.show-productlienquan').slick({
-   slidesToShow: 5,
-   slidesToScroll: 4,
-   autoplay: true,
-   dots: false,
-   focusOnSelect: true,
-   responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true,
-        dots: false
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        dots: false,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 2,
-        dots: false,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
- });
-});
+
 
 $(document).ready(function(){
    $('.show-imgsmall').slick({
@@ -188,18 +104,8 @@ $(document).ready(function() {
     });
 
 });
-// var count = 1;
-// var countEl = document.getElementById("count");
-// onclick = function plus(){
-//   count++;
-//   countEl.value = count;
-// }
-// onclick= function minus(){
-//   if (count > 1) {
-//     count--;
-//     countEl.value = count;
-//   }  
-// }
+
+
 
 $(function(){
 

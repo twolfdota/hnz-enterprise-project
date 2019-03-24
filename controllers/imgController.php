@@ -1,48 +1,74 @@
 <?php
 
 class imgCtrl {
-
-    function addImg($target_dir, $name) {
-        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    function addImg($image_target_dir, $image_name, $doc_target_dir, $doc_name) {
         $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-// Check if image file is a actual image or fake image
-        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-        if ($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
-            $uploadOk = 1;
-        } else {
-            echo "File is not an image.";
-            $uploadOk = 0;
-        }
+        $target_img = $image_target_dir . basename($_FILES["imageUpload"]["name"]);
+        $imageFileType = strtolower(pathinfo($target_img, PATHINFO_EXTENSION));
+        $target_doc = $doc_target_dir . basename($_FILES["doc"]["name"]);
+        $docFileType = strtolower(pathinfo($target_doc, PATHINFO_EXTENSION));
 
 // Check if file already exists
-        if (file_exists($target_file)) {
-            unlink($target_file);
-        }
+
 // Check file size
-        if ($_FILES["fileToUpload"]["size"] > 1000000) {
-            echo "Sorry, your file is too large.";
+        if ($_FILES["imageUpload"]["size"] > 1000000 && $_FILES["doc"]["size"] > 1000000) {
+            echo json_encode('Your file is too large!!');
             $uploadOk = 0;
         }
 // Allow certain file formats
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        if ($docFileType != "doc" && $docFileType != "docx") {
+            echo json_encode("Wrong file format.");
             $uploadOk = 0;
         }
 // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
+            $magazineCtrl->delete($doc_name);
+            echo json_encode('Your file is not uploaded!!');
 // if everything is ok, try to upload file
         } else {
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_dir . $name. '.' . $imageFileType)) {
-                echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
+            
+            if (move_uploaded_file($_FILES["doc"]["tmp_name"], $doc_target_dir . $doc_name. '.' . $docFileType)&& move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $image_target_dir . $image_name. '.' . $imageFileType)) {
+                echo json_encode('upload successfully!');
             } else {
-                echo "Sorry, there was an error uploading your file.";
+                $magazineCtrl->delete($doc_name);
+                echo json_encode('Error uploading file!!!');
             }
         }
     }
 
+    function editImg($image_target_dir, $image_name, $doc_target_dir, $doc_name) {
+        $uploadOk = 1;
+        $target_img = $image_target_dir . basename($_FILES["imageUpload"]["name"]);
+        $imageFileType = strtolower(pathinfo($target_img, PATHINFO_EXTENSION));
+        $target_doc = $doc_target_dir . basename($_FILES["doc"]["name"]);
+        $docFileType = strtolower(pathinfo($target_doc, PATHINFO_EXTENSION));
+
+// Check if file already exists
+
+// Check file size
+        if ($_FILES["imageUpload"]["size"] > 1000000 && $_FILES["doc"]["size"] > 1000000) {
+            echo json_encode('Your file is too large!!');
+            $uploadOk = 0;
+        }
+// Allow certain file formats
+        if ($docFileType != "doc" && $docFileType != "docx") {
+            echo json_encode("Wrong file format.");
+            $uploadOk = 0;
+        }
+// Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo json_encode('Your file is not updated!!');
+// if everything is ok, try to upload file
+        } else {
+            unlink($target_img);
+            unlink($target_doc);
+            if (move_uploaded_file($_FILES["doc"]["tmp_name"], $doc_target_dir . $doc_name. '.' . $docFileType)&& move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $image_target_dir . $image_name. '.' . $imageFileType)) {
+                echo json_encode('New files upload successfully!');
+            } else {
+                echo json_encode('Title updated, but there are errors uploading file!!!');
+            }
+        }
+    }
 }
 
 ?>
