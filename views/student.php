@@ -318,11 +318,14 @@
     </div>
     <div id="update" class="modal">
 
-      <div class="modal-content animate" action="/action_page.php">
+      <div class="modal-content animate">
         <span onclick="document.getElementById('update').style.display='none'" class="close" title="Close Modal">&times;</span>
-        <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
+        <form name="editForm" id="editForm" method="post" enctype="multipart/form-data">  
             <div class="uploadForm">  
                 <input id="mgz-id" name="mgzId" type="hidden" value=""/>
+                <input id="old-title" name="oldTitle" type="hidden" value=""/>
+                <input id="oldDocType" name="oldDocType" type="hidden" value=""/>
+                <input id="oldImgType" name="oldImgType" type="hidden" value=""/>
                 <!-- image-preview-filename input [CUT FROM HERE]-->
                 <div class="image-preview">
                     <div class="row session1">
@@ -330,15 +333,16 @@
                          <h4><span>*</span>Title</h4>
                      </div>
                      <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 ">
-                         <input type="text" name="title" required>
+                         <input type="text" name="title" required id="editTitle">
                      </div>
                  </div>
                  <div class="row session2">
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 ">
-                        <h4><span>*</span>File Manazine</h4>
+                        <h4><span>*</span>File Magazine</h4>
                     </div>
                     <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
                      <div class="file">
+                        <a href="#" id="editDocLink"></a>
                         <input accept=".doc, .docx" type="file" name="doc" required>
                     </div>
                 </div>
@@ -346,10 +350,11 @@
 
             <div class="row session4">
                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                    <h4><span>*</span>Logo </h4>
+                    <h4><span>*</span>Background: </h4>
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 fileImg">
                  <div class="row">
+                    
                      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
                     </div>
@@ -357,7 +362,7 @@
                         <div class="btn btn-default image-preview-input">
                             <i class="fa fa-folder-open" aria-hidden="true"></i>
                             <span class="image-preview-input-title">Browse</span>
-                            <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+                            <input type="file" accept="image/png, image/jpeg, image/gif" name="imageUpload"/> <!-- rename it -->
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
@@ -370,12 +375,17 @@
             </div>
 
         </div>
-
+        <div class="row">
+            <img src="" id="editImg" alt="" width="50%" height="auto"/>
+        </div>
+        <div class="row">
+            <p id="updateErrorMessage"></p>
+        </div>
         <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
             </div>
             <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-             <input " class="btnSubmit" type="submit" name="form-upload" value="Update">
+             <input " class="btnSubmit" type="submit" name="form-upload" onclick="updateMgz(document.editForm, event)" value="Update">
          </div>
      </div>
 
@@ -457,6 +467,28 @@
             }
         })
     }
+
+    function updateMgz(form, event) {
+        $("#UpdateErrorMsg").html("");
+        event.preventDefault();
+        formData = new FormData($("#editForm")[0]);
+        $.ajax({
+            url: `/hnz-enterprise-project/updateMgz`,
+            type: 'POST',
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function(result){
+                if (result == '"success"') {
+                    alert("Magazine successfully updated!");
+                    location.reload();
+                }
+                else {
+                    $("#updateErrorMsg").html(result);
+                }
+            }
+        })
+    }
     function openFullscreen() {
         if (elem.requestFullscreen) {
             elem.requestFullscreen();
@@ -481,10 +513,18 @@
             url: `/hnz-enterprise-project/loadComments?mgzId=${mgzId}`,
             type: 'GET',
             dataType: 'json',
+            cache:false,
             success: function(result) {
-                if (result.length) {
+                $("#old-title").val(result.title);
+                $("#editTitle").val(result.title);
+                $("#oldDocType").val(result.doc.replace(`uploads/${result.year}/doc/${result.title}.`,""));
+                $("#oldImgType").val(result.img.replace(`uploads/${result.year}/mgzImg/${result.title}.`,""));
+                $("#editDocLink").text(result.doc.replace(`uploads/${result.year}/doc/`,""));
+                $("#editDocLink").attr("href", `/hnz-enterprise-project/downloadDocs?docLink=${result.doc}&year=${result.year}`);
+                $("#editImg").attr("src", result.img)
+                if (result.cmtList.length) {
 
-                    result.forEach(function(item) {
+                    result.cmtList.forEach(function(item) {
 
                         let textRole = "";
                         switch(item.roles) {

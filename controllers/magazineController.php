@@ -31,6 +31,7 @@ class magazineCtrl
         $conn->close();
     }
 
+
     function getListMagazine($id) {
         require './DBConnect.php';
         $result = array();
@@ -44,7 +45,8 @@ class magazineCtrl
                     'title' => $show['title'],
                     'img' => $show['imgFile'],
                     'doc' => $show['docFile'],
-                    'status' => $show['status']
+                    'status' => $show['status'],
+                    'acYear' => $show['academicYear']
                 ];
                 array_push($result, $item);
             } // while loop brace
@@ -52,6 +54,25 @@ class magazineCtrl
         } // isset brace
         return $result;
 
+    }
+
+    function update($title, $doc, $ava, $id)
+    {
+        require './DBConnect.php';
+        $validated = true;
+
+
+            $sql = "update magazine set title = ?, imgFile=?, docFile=?, updated_at = now() where id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sssi", $title, $doc, $ava, $id);
+            $stmt->execute();
+            if (mysqli_error($conn)) {
+                $validated = false;
+                echo json_encode('This title is already used!!');
+            }
+            $conn->close();
+
+        return $validated;
     }
 }
  
