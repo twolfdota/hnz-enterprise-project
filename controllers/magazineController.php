@@ -74,5 +74,28 @@ class magazineCtrl
 
         return $validated;
     }
+
+    function getMailInfo($userId){
+        require './DBConnect.php';
+        $email = "";
+        $faculty = "";
+        echo $userId;
+        if($userId){
+            $query_fetch = mysqli_query($conn,"SELECT email, f.`name` from `user` as u 
+            inner join faculty as f on u.faculty = f.`code`
+            where u.roles = 2 and u.faculty = (select u.faculty from `user` where id = $userId)");
+            while($show = mysqli_fetch_array($query_fetch)){
+                $email = $show['email'];
+                $faculty = $show['name'];
+            } // while loop brace
+
+        } // isset brace
+        $return = (object)[
+            'email'=>$email,
+            'faculty'=>$faculty
+        ];
+        return $return;
+      
+    }
 }
  

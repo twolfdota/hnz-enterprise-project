@@ -32,7 +32,7 @@ $route->add('/cms', function () {
                 include_once './views/student.php';
                 break;
             case 2:
-                include_once '.views/coordinator.php';
+                include_once './views/coordinator.php';
                 break;
             case 3:
                 header("/");
@@ -153,8 +153,8 @@ $route->add('/postMgz', function () {
                 echo json_encode('Please upload your image!!');
         }
         else {
-            $img_dir = 'uploads/'.date("Y").'//mgzImg/';
-            $doc_dir = 'uploads/'.date("Y").'//doc/';
+            $img_dir = 'uploads/'.date("Y").'/mgzImg/';
+            $doc_dir = 'uploads/'.date("Y").'/doc/';
             $avaDir = 'assets/images/no-cover.png';
 
                 $img_target_file = $img_dir . basename($_FILES["imageUpload"]["name"]);
@@ -166,7 +166,46 @@ $route->add('/postMgz', function () {
             $docDir = $doc_dir . $title . '.' . $docFileType;
             $validated = $magazineCtrl->add($title, $docDir, $avaDir, $_POST['userid']);
             if ($validated) {
-                $imgCtrl->addImg($img_dir, $title, $doc_dir, $title);
+                $uploadOk = 1;
+                $target_img = $img_dir . basename($_FILES["imageUpload"]["name"]);
+                $imageFileType = strtolower(pathinfo($target_img, PATHINFO_EXTENSION));
+                $target_doc = $doc_dir . basename($_FILES["doc"]["name"]);
+                $docFileType = strtolower(pathinfo($target_doc, PATHINFO_EXTENSION));
+        
+        // Check if file already exists
+        
+        // Check file size
+                if ($_FILES["imageUpload"]["size"] > 1000000 && $_FILES["doc"]["size"] > 1000000) {
+                    echo json_encode('Your file is too large!!');
+                    $uploadOk = 0;
+                }
+        // Allow certain file formats
+                if ($docFileType != "doc" && $docFileType != "docx") {
+                    echo json_encode("Wrong file format.");
+                    $uploadOk = 0;
+                }
+        // Check if $uploadOk is set to 0 by an error
+                if ($uploadOk == 0) {
+                    $magazineCtrl->delete($title);
+                    echo json_encode('Your file is not uploaded!!');
+        // if everything is ok, try to upload file
+                } else {
+                    
+                    if (move_uploaded_file($_FILES["doc"]["tmp_name"], $doc_dir . $title. '.' . $docFileType)&& move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $img_dir . $title. '.' . $imageFileType)) {
+                        $info = $magazineCtrl->getMailInfo($_POST['userid']);
+                        $to      = $info->email;
+                        $subject = 'New magazine "'.$title.'" submitted to ' .$info->faculty. ' Department';
+                        $message = 'A student uploaded a new magazine just now. This is automatic message, please dont reply.';
+                        $headers = 'From: webmaster@example.com' . "\r\n" .
+                        'Reply-To: webmaster@example.com' . "\r\n" .
+                        'X-Mailer: PHP/' . phpversion();
+                        mail($to, $subject, $message);
+                        echo json_encode('upload successfully!');
+                    } else {
+                        $magazineCtrl->delete($title);
+                        echo json_encode('Error uploading file!!!');
+                    }
+                }
             } else {
                 echo 'Cannot upload magazine!';
             }
