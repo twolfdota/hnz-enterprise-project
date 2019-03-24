@@ -281,8 +281,8 @@
                     </div> -->
                 </div>
             </div>
-            <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                <table class="table table-striped custab" style="width: 100%">
+            <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12" style="overflow: auto;width: 100%">
+                <table class="table table-striped custab" >
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -336,8 +336,9 @@
                            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contentmaganizeCroll">
                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                                  <div class="contentmaganize">
-                                    <img  src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
                                     <h3>Test title</h3>
+                                    <img  src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
+                                    
                                     <p>
                                         You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
                                         You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
