@@ -48,13 +48,13 @@
             <nav id="menu">
                 <ul>
                     <li>
-                        <a data-toggle="pill" href="#upload">
-                            <i class="fa fa-bars" aria-hidden="true"></i> Upload File
+                        <a data-toggle="pill" href="#viewallmagazines">
+                            <i class="fa fa-bars" aria-hidden="true"></i> View All Magaiznes
                         </a>
                     </li>
                     <li>
                         <a data-toggle="pill" href="#yourmagazine">
-                            <i class="fa fa-bars" aria-hidden="true"></i> Your File
+                            <!-- <i class="fa fa-bars" aria-hidden="true"></i> Your File -->
                         </a>
                     </li>
                 </ul>
@@ -68,18 +68,18 @@
                 <a href="">Vu Van Tien</a>
             </div>
             <div class="Navigation">
-                <h4>Faculty: <span><?php echo $author['faculty'];?> Department</span></h4>
+                <!-- <h4>Faculty: <span><?php echo $author['faculty'];?></span></h4> -->
             </div>
             <div class="menu">
                 <ul>
                     <li>
-                        <a data-toggle="pill" href="#upload">
-                            <i class="fa fa-bars" aria-hidden="true"></i> Upload File
+                        <a data-toggle="pill" href="#viewallmagazines">
+                            <i class="fa fa-bars" aria-hidden="true"></i>View All Magaiznes
                         </a>
                     </li>
                     <li>
                         <a data-toggle="pill" href="#yourmagazine">
-                            <i class="fa fa-bars" aria-hidden="true"></i> Your File
+                            <!-- <i class="fa fa-bars" aria-hidden="true"></i> Your File -->
                         </a>
                     </li>
                 </ul>
@@ -99,7 +99,7 @@
                             <img src="<?php echo $author['ava'];?>">
                         </li>
                         <li>
-                            <a href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i>
+                            <!-- <a href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i> -->
                         </li>
                     </ul>
                 </div>
@@ -119,7 +119,7 @@
                             <img src="<?php echo $author['ava'];?>">
                         </li>
                         <li>
-                            <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i>
+                            <!-- <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i> -->
                             <ul class="logout">
                                 <li>
                                     <a href="/hnz-enterprise-project/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
@@ -138,8 +138,8 @@
                                 <i class="fa fa-user-plus" aria-hidden="true"></i>
                             </div>
                             <div class="linkText">
-                                <h4>File</h4>
-                                <p>Upload File For Students</p>
+                                <h4>List of Magaizne</h4>
+                                <p>All Magaizne</p>
                             </div>
                         </div>
                         <div class="linkRight text-right">
@@ -162,11 +162,10 @@
                     </div>
                 </div>
                 <div class="registerContent tab-content">
-                    <div id="upload" class="registerContentForm tab-pane fade in active">
+                    <div id="upload" class="registerContentForm tab-pane fade">
                         <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
                             <div class="uploadForm">  
                                 <input type="hidden" value="<?php echo $author['id']?>" name="userid" id="userid"/>
-                                <input type="hidden" value="<?php echo $author['role']?>" id="userRole"/>
                                 <!-- image-preview-filename input [CUT FROM HERE]-->
                                 <div class="image-preview">
                                     <div class="row session1">
@@ -248,181 +247,163 @@
                  </div>
              </div>
 
-         </div><!-- /input-group image-preview [TO HERE]--> 
+         </div>
      </div>
  </form>
 </div>
-<div id="yourmagazine" class="registerContentForm tab-pane fade">
+<div id="viewallmagazines" class="registerContentForm tab-pane fade in active">
     <div>
         <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
             <div class="well well-sm text-center">
 
-                <h3>View by Status</h3>
+                <h3>List of Magaizne</h3>
 
-                <div class="btn-group" data-toggle="buttons">
+<!--                     <div class="btn-group" data-toggle="buttons">
+                        
+                        <label class="btn btn-success active">
+                            <input type="radio" name="options" id="option2" autocomplete="off" >
+                            Approved
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </label>
 
-                    <label class="btn btn-success active">
-                        <input type="radio" name="options" id="option2" autocomplete="off" >
-                        Approved
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
+                        <label class="btn btn-warning">
+                            <input type="radio" name="options" id="option2" autocomplete="off">
+                            Sending
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </label>
 
-                    <label class="btn btn-warning">
-                        <input type="radio" name="options" id="option2" autocomplete="off">
-                        Sending
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
-
-                    <label class="btn btn-danger">
-                        <input type="radio" name="options" id="option2" autocomplete="off">
-                        Cancel
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
+                        <label class="btn btn-danger">
+                            <input type="radio" name="options" id="option2" autocomplete="off">
+                            Cannel
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </label>
                     
+                    </div> -->
                 </div>
             </div>
-        </div>
-        <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
-            <table class="table table-striped custab">
-                <thead>
+            <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                <table class="table table-striped custab" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Image</th>
+                            <th>Create at</th>
+                            <th>Update at</th>
+                            <th>Status</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th>Image</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <?php
-                include_once './controllers/magazineController.php';
-                $magazineCtrl = new magazineCtrl();
-                $result = $magazineCtrl->getListMagazine($author['id']);
-                foreach($result as $item) {
-                    ?>
-                    <tr>
-                        <td><?php echo $item->id?></td>
-                        <td><?php echo $item->title?></td>
+                        <td>1</td>
+                        <td>News</td>
                         <td class="imgPost">
-                            <img src="<?php echo $item->img?>">
+                            <img src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
                         </td>
-                        <td><?php echo $item->status?></td>
-                        <td class="">
-                            <a class="edit-btn" data-value="<?php echo $item->id?>" class='btn btn-info btn-xs' href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                        <td>News Cate</td>
+                        <td>News Cate</td>
+                        <td>Cancel</td>
+                        <td class="text-center">
+                            <a  data-value="<?php echo $item->id?>" class='btn btn-info btn-xs' href="#" onclick="document.getElementById('viewmagazine').style.display='block'">
+                                <i class="fa fa-eye" aria-hidden="true"></i> View
+                            </a>
+                            <a  data-value="<?php echo $item->id?>" class='btn btn-success btn-xs' href="#">
+                                <i class="fa fa-check-square" aria-hidden="true"></i> Approved
+                            </a>
+                            <a   class='btn btn-danger btn-xs' href="#viewmagazine">
+                                <i class="fa fa-times" aria-hidden="true"></i> Delete
+                            </a>
+
                         </td>
                     </tr>
-                    <?php
-                }
-                ?>
-            </table>
-        </div>
-    </div>
-    <div id="update" class="modal">
-
-      <div class="modal-content animate">
-        <span onclick="document.getElementById('update').style.display='none'" class="close" title="Close Modal">&times;</span>
-        <form name="editForm" id="editForm" method="post" enctype="multipart/form-data">  
-            <div class="uploadForm">  
-                <input id="mgz-id" name="mgzId" type="hidden" value=""/>
-                <input id="old-title" name="oldTitle" type="hidden" value=""/>
-                <input id="oldDocType" name="oldDocType" type="hidden" value=""/>
-                <input id="oldImgType" name="oldImgType" type="hidden" value=""/>
-                <!-- image-preview-filename input [CUT FROM HERE]-->
-                <div class="image-preview">
-                    <div class="row session1">
-                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                         <h4><span>*</span>Title</h4>
-                     </div>
-                     <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 ">
-                         <input type="text" name="title" required id="editTitle">
-                     </div>
-                 </div>
-                 <div class="row session2">
-                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 ">
-                        <h4><span>*</span>File Magazine</h4>
-                    </div>
-                    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                     <div class="file">
-                        <a href="#" id="editDocLink"></a>
-                        <input accept=".doc, .docx" type="file" name="doc" required>
-                    </div>
-                </div>
+                </table>
             </div>
+        </div>
+        <div id="viewmagazine" class="modal">
 
-            <div class="row session4">
-                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                    <h4><span>*</span>Background: </h4>
-                </div>
-                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 fileImg">
-                 <div class="row">
-                    
-                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                        <div class="btn btn-default image-preview-input">
-                            <i class="fa fa-folder-open" aria-hidden="true"></i>
-                            <span class="image-preview-input-title">Browse</span>
-                            <input type="file" accept="image/png, image/jpeg, image/gif" name="imageUpload"/> <!-- rename it -->
+          <div class="modal-content animate" action="/action_page.php">
+            <span onclick="document.getElementById('viewmagazine').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
+                <div class="uploadForm">  
+
+                    <input id="mgz-id" name="mgzId" type="hidden" value=""/>
+                    <!-- image-preview-filename input [CUT FROM HERE]-->
+                    <div class="">
+                        <div class="">
+                           <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
+                                <h4>Magazine</h4>
+                            </div>
+                           <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contentmaganizeCroll">
+                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                 <div class="contentmaganize">
+                                    <img  src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
+                                    <h3>Test title</h3>
+                                    <p>
+                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
+                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
+                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
+                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
+                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                        <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                            <span class="glyphicon glyphicon-remove"></span> Clear
-                        </button>
+                </div>
+            </form>
+            <div class="row session3">
+                <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
+                    
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                    <h4>Comment</h4>
+                    <div class="formCmt col-lg-12 col-md-12 col-sm-12 col-xs-12" id="formCmt">
+                       <div class="comment">
+                           <div class="imgCmt">
+                               <img src="assets/images/user.png">
+                           </div>
+                           <div class="nameCmt">
+                               <h4>Vu Van Tien <span>IT</span></h4>
+                           </div>
+                           <div class="contentCmt">
+                               You can also use the following javascript to 
+                           </div>
+                       </div>
+                       <div class="comment">
+                           <div class="imgCmt">
+                               <img src="assets/images/user.png">
+                           </div>
+                           <div class="nameCmt">
+                               <h4>Vu Van Tien <span>IT</span></h4>
+                           </div>
+                           <div class="contentCmt">
+                               You can also use the following javascript to 
+                           </div>
+                       </div>
+                       <div class="comment">
+                           <div class="imgCmt">
+                               <img src="assets/images/user.png">
+                           </div>
+                           <div class="nameCmt">
+                               <h4>Vu Van Tien <span>IT</span></h4>
+                           </div>
+                           <div class="contentCmt">
+                               You can also use the following javascript to close 
+                           </div>
+                       </div>
+                   </div>
+                   <div class="YourFormcmt">
+                    <div class="imgCmt">
+                        <img src="<?php echo $author['ava'];?>">
+                    </div>
+                    <div class="contentCmt">
+                        <textarea placeholder="Write your comment..." class="form-control" rows="5" required id="comment"></textarea>
                     </div>
                 </div>
+
             </div>
-
-        </div>
-        <div class="row">
-            <img src="" id="editImg" alt="" width="50%" height="auto"/>
-        </div>
-        <div class="row">
-            <p id="updateErrorMessage"></p>
-        </div>
-        <div class="row">
-            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-            </div>
-            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-             <input " class="btnSubmit" type="submit" name="form-upload" onclick="updateMgz(document.editForm, event)" value="Update">
-         </div>
-     </div>
-
- </div><!-- /input-group image-preview [TO HERE]--> 
-</div>
-</form>
-<div class="row session3">
-    <div class="col-lg-2 col-md-2  ">
-
-    </div>
-    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-        <h4>Comment</h4>
-        <div class="formCmt" id="formCmt">
-           <div class="comment">
-               <div class="imgCmt">
-                   <img src="assets/images/user.png">
-               </div>
-               <div class="nameCmt">
-                   <h4>Vu Van Tien <span>IT</span></h4>
-               </div>
-               <div class="contentCmt">
-                   You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-               </div>
-           </div>
-       </div>
-       <div class="YourFormcmt">
-        <div class="imgCmt">
-            <img src="<?php echo $author['ava'];?>">
-        </div>
-        <div class="contentCmt">
-            <textarea placeholder="Write your comment..." class="form-control" rows="5" required id="comment"></textarea>
         </div>
     </div>
-
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -467,28 +448,6 @@
             }
         })
     }
-
-    function updateMgz(form, event) {
-        $("#UpdateErrorMsg").html("");
-        event.preventDefault();
-        formData = new FormData($("#editForm")[0]);
-        $.ajax({
-            url: `/hnz-enterprise-project/updateMgz`,
-            type: 'POST',
-            processData: false,
-            contentType: false,
-            data: formData,
-            success: function(result){
-                if (result == '"success"') {
-                    alert("Magazine successfully updated!");
-                    location.reload();
-                }
-                else {
-                    $("#updateErrorMsg").html(result);
-                }
-            }
-        })
-    }
     function openFullscreen() {
         if (elem.requestFullscreen) {
             elem.requestFullscreen();
@@ -513,46 +472,20 @@
             url: `/hnz-enterprise-project/loadComments?mgzId=${mgzId}`,
             type: 'GET',
             dataType: 'json',
-            cache:false,
             success: function(result) {
-                $("#old-title").val(result.title);
-                $("#editTitle").val(result.title);
-                $("#oldDocType").val(result.doc.replace(`uploads/${result.year}/doc/${result.title}.`,""));
-                $("#oldImgType").val(result.img.replace(`uploads/${result.year}/mgzImg/${result.title}.`,""));
-                $("#editDocLink").text(result.doc.replace(`uploads/${result.year}/doc/`,""));
-                $("#editDocLink").attr("href", `/hnz-enterprise-project/downloadDocs?docLink=${result.doc}&year=${result.year}`);
-                $("#editImg").attr("src", result.img)
-                if (result.cmtList.length) {
+                console.log(result);
+                if (result.length) {
 
-                    result.cmtList.forEach(function(item) {
-
-                        let textRole = "";
-                        switch(item.roles) {
-                            case "1":
-                            textRole = `<span class="red-role">Student</span>
-                            <span> - </span>
-                            <span class="role red-role">${item.fName} Department</span>`;
-                            break;  
-                            case "2":
-                            textRole = `<span class="blue-role">Coordinator</span>
-                            <span> - </span>
-                            <span class="role blue-role">${item.fName} Department</span>`;
-                            break;  
-                        }
-                        console.log(textRole);
+                    result.forEach(function(item) {
                         htmlList += `<div class="comment">
                         <div class="imgCmt">
                         <img src="${item.avatar}">
                         </div>
                         <div class="nameCmt">
-                        <h4>${item.username} <br>`
-                        + textRole + 
-                        `<span class="time text-right"> ${new Date(item.cmtDate).toLocaleString()} </span>
-                        </h4>
+                        <h4>${item.username} <span>${item.fName}</span></h4>
                         </div>
-
                         <div class="contentCmt">
-                            ${item.content}
+                        ${item.content}
                         </div>
                         </div>`;
                     })
@@ -583,7 +516,6 @@
                 var content = $.trim($(this).val());
                 var userId = $("#userid").val();
                 var mgzId = $("#mgz-id").val();
-                var userRole = $("#userRole").val();
                 $.ajax({
                     url: `/hnz-enterprise-project/postModifyCmt`,
                     type: 'POST',
@@ -598,28 +530,12 @@
                             alert(result.error)
                         }
                         else {
-                            let textRole = "";
-                            switch(userRole) {
-                                case "1":
-                                textRole = `<span class="red-role">Student</span>
-                                <span> - </span>
-                                <span class="role red-role"><?php echo $author['faculty'];?> Department</span>`;
-                                break;  
-                                case "2":
-                                textRole = `<span class="blue-role">Coordinator</span>
-                                <span> - </span>
-                                <span class="role blue-role"><?php echo $author['faculty'];?> Department</span>`;
-                                break;  
-                            }
                             htmlCmt = `<div class="comment">
                             <div class="imgCmt">
                             <img src="<?php echo $author['ava'];?>">
                             </div>
                             <div class="nameCmt">
-                            <h4><?php echo $author['name'];?> <br>`
-                            + textRole + 
-                            `<span class="time text-right"> ${new Date().toLocaleString()} </span>                                              
-                            </h4>
+                            <h4><?php echo $author['name'];?> <span><?php echo $author['faculty'];?></span></h4>
                             </div>
                             <div class="contentCmt">
                             ${content}

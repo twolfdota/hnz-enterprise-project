@@ -121,15 +121,16 @@ class userCtrl
         $img = "";
         $name = "";
         $fac = "";
-        $sql = "select roles, u.name, f.name, avatar from user as u left join faculty as f on u.faculty = f.code where email=?";
+        $sql = "select u.id, roles, u.name, f.name, avatar from user as u left join faculty as f on u.faculty = f.code where email=?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
         $num_of_rows = $stmt->num_rows;
         if ($num_of_rows > 0) {
-            $stmt->bind_result($adm, $username, $dep, $avatar);
+            $stmt->bind_result($id, $adm, $username, $dep, $avatar);
             while ($stmt->fetch()) {
+                $iduser = $id;
                 $role = $adm;
                 $name = $username;
                 $fac = $dep;
@@ -139,6 +140,7 @@ class userCtrl
             $stmt->close();
         }
         $author = (array) [
+            'id' => $iduser,
             'role' => $role,
             'name' => $name,
             'faculty' => $fac,
