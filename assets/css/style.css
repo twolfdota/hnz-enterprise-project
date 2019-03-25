@@ -1142,7 +1142,7 @@ i.icon_g_plus {
      float: left;
 }
 .contentNotification .icon i{
-    font-size: 24px;
+    font-size: 20px;
     line-height: 40px
 }
 .contentNotification .textContent span{
@@ -1176,4 +1176,10 @@ i.icon_g_plus {
 }
 #signalCancel{
     color: #960505
+}
+.uploadFormMagazine{
+    margin-left: auto;
+    margin-right: auto;
+     width: 100%; 
+}
 }

@@ -21,6 +21,9 @@ $route->add('/', function () {
 $route->add('/coordinator', function () {
     include_once './views/coordinator.php';
 });
+$route->add('/viewmagazine', function () {
+    include_once './views/viewmagazine.php';
+});
 $route->add('/cms', function () {
     session_start();
     if (isset($_SESSION['login'])) {
@@ -32,7 +35,7 @@ $route->add('/cms', function () {
                 include_once './views/student.php';
                 break;
             case 2:
-                include_once '.views/coordinator.php';
+                include_once './views/coordinator.php';
                 break;
             case 3:
                 header("/");

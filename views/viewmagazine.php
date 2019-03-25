@@ -103,84 +103,10 @@
                         </li>
                     </ul>
                 </div>
-                <div class="menubarRight hidden-xs hidden-sm">
+                <div class="menubarRight text-right hidden-xs hidden-sm">
                     <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->
-                    <ul class="menu-bell text-left col-lg-6 col-md-6">
-                        <li class="full hidden-xs hidden-sm">
-                            <a href="#" id="btnBell">
-                                <div class="bell">
-                                    <i class="fa fa-bell" aria-hidden="true"></i>
-                                </div>
-                                <span>1</span>
-                            </a>
-                        </li>
-                        <div id="myDropdown" class="dropdown-content">
-                            <div class="session1Notification">
-                                <span>Thông báo</span>
-                            </div>
-                            <div class="today">
-                                <span>TODAY</span>
-                            </div>
-                            <div class="allNotification">
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i id="signalCMT" class="fa fa-commenting-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>Admin <span>đã phê duyệt bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i id="signalDone" class="fa fa-check-square-o" aria-hidden="true"></i>
-                                    </div>
-                                    
-                                </div>
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i id="signalCMT" class="fa fa-commenting-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>Admin <span>đã không phê duyệt bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i id="signalCancel" class="fa fa-ban" aria-hidden="true"></i>
-                                    </div>
-                                </div>
 
-                            </div>
-                      </div>
-                    </ul>
-
-                    <ul class="menu-logout text-right col-lg-6 col-md-6">
+                    <ul class="menu-logout">
                         <a href="/hnz-enterprise-project/" class="text-left goto" title="Go to Home page">
                             <i class="fa fa-gg" aria-hidden="true"></i>
                         </a>
@@ -209,11 +135,11 @@
                     <div class="nameLink">
                         <div class="linkLeft hidden-xs hidden-sm">
                             <div class="icon">
-                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                <i class="fa fa-eye" aria-hidden="true"></i>
                             </div>
                             <div class="linkText">
-                                <h4>List of Magaizne</h4>
-                                <p>All Magaizne</p>
+                                <h4>View Magaizne</h4>
+                                <p>Views</p>
                             </div>
                         </div>
                         <div class="linkRight text-right">
@@ -227,7 +153,7 @@
                                     <li> / </li>
                                     <li>
                                         <a href="">
-                                            Registration
+                                            View Magazine
                                         </a>
                                     </li>
                                 </ul>
@@ -236,175 +162,10 @@
                     </div>
                 </div>
                 <div class="registerContent tab-content">
-                    <div id="upload" class="registerContentForm tab-pane fade">
+                    <div id="upload" class="registerContentForm">
                         <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
-                            <div class="uploadForm">  
-                                <input type="hidden" value="<?php echo $author['id']?>" name="userid" id="userid"/>
-                                <!-- image-preview-filename input [CUT FROM HERE]-->
-                                <div class="image-preview">
-                                    <div class="row session1">
-                                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                                         <h4><span>*</span>Title</h4>
-                                     </div>
-                                     <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 ">
-                                         <input type="text" name="title" required>
-                                     </div>
-                                 </div>
-                                 <div class="row session2">
-                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 ">
-                                        <h4><span>*</span>File Manazine</h4>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                                     <div class="file">
-                                        <input accept=".doc, .docx" type="file" name="doc" required>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row session4">
-                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                                    <h4><span>*</span>Logo </h4>
-                                </div>
-                                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 fileImg">
-                                 <div class="row">
-                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                        <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
-                                    </div>
-                                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                        <div class="btn btn-default image-preview-input">
-                                            <i class="fa fa-folder-open" aria-hidden="true"></i>
-                                            <span class="image-preview-input-title">Browse</span>
-                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="imageUpload"/> <!-- rename it -->
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                        <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                            <span class="glyphicon glyphicon-remove"></span> Clear
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row session3">
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-
-                            </div>
-                            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                             <div class=" check">
-                                 <input type="checkbox" autocomplete="off" checked name="agree">
-                                 <p>Chấp nhận điều khoản</p>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="row session3">
-                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                         <div class="rules">
-                             <p>
-                                 Trải nghiệm của bạn trên Facebook không giống với của bất kỳ ai khác: từ các bài viết, tin, sự kiện, quảng cáo và nội dung khác mà bạn nhìn thấy trong Bảng tin hoặc nền tảng video của chúng tôi tới các Trang bạn theo dõi và các tính năng khác mà bạn có thể sử dụng, chẳng hạn như Thịnh hành, Marketplace và tìm kiếm. Chúng tôi sử dụng dữ liệu mà mình có - ví dụ: về các kết nối bạn tạo, các lựa chọn và cài đặt bạn chọn và những gì bạn chia sẻ cũng như thực hiện trên và ngoài Sản phẩm của chúng tôi - để cá nhân hóa trải nghiệm của bạn.
-                             </p>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="row session3">
-                    <h4 id="ErrorMsg" style="color:red; font-weight:bold"></h4>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                    </div>
-                    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                     <input " class="btnSubmit" type="submit" name="form-upload" value="Upload" onclick="validateMgz(document.uploadForm, event)">
-                 </div>
-             </div>
-
-         </div>
-     </div>
- </form>
-</div>
-<div id="viewallmagazines" class="registerContentForm tab-pane fade in active">
-    <div>
-        <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
-            <div class="well well-sm text-center">
-
-                <h3>List of Magaizne</h3>
-
-<!--                     <div class="btn-group" data-toggle="buttons">
-                        
-                        <label class="btn btn-success active">
-                            <input type="radio" name="options" id="option2" autocomplete="off" >
-                            Approved
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </label>
-
-                        <label class="btn btn-warning">
-                            <input type="radio" name="options" id="option2" autocomplete="off">
-                            Sending
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </label>
-
-                        <label class="btn btn-danger">
-                            <input type="radio" name="options" id="option2" autocomplete="off">
-                            Cannel
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </label>
-                    
-                    </div> -->
-                </div>
-            </div>
-            <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12" style="overflow: auto;width: 100%">
-                <table class="table table-striped custab" >
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Title</th>
-                            <th>Image</th>
-                            <th>Create at</th>
-                            <th>Update at</th>
-                            <th>Status</th>
-                            <th class="text-center">Action</th>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <td>1</td>
-                        <td>News</td>
-                        <td class="imgPost">
-                            <img src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
-                        </td>
-                        <td>News Cate</td>
-                        <td>News Cate</td>
-                        <td>Cancel</td>
-                        <td class="text-center">
-                            <!-- <a  data-value="<?php echo $item->id?>" class='btn btn-info btn-xs' href="#" onclick="document.getElementById('viewmagazine').style.display='block'">
-                                <i class="fa fa-eye" aria-hidden="true"></i> View
-                            </a> -->
-                            <a  class='btn btn-info btn-xs' href="/hnz-enterprise-project/viewmagazine#menu">
-                                <i class="fa fa-eye" aria-hidden="true"></i> View
-                            </a>
-                            <a  data-value="<?php echo $item->id?>" class='btn btn-success btn-xs' href="#">
-                                <i class="fa fa-check-square" aria-hidden="true"></i> Approved
-                            </a>
-                            <a   class='btn btn-danger btn-xs' href="#viewmagazine">
-                                <i class="fa fa-times" aria-hidden="true"></i> Delete
-                            </a>
-
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div id="viewmagazine" class="modal">
-
-          <div class="modal-content animate" action="/action_page.php">
-            <span onclick="document.getElementById('viewmagazine').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
-                <div class="uploadForm">  
-
-                    <input id="mgz-id" name="mgzId" type="hidden" value=""/>
-                    <!-- image-preview-filename input [CUT FROM HERE]-->
+                            <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
+                <div class="uploadFormMagazine">  
                     <div class="">
                         <div class="">
                            <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
@@ -480,9 +241,9 @@
                 </div>
 
             </div>
-        </div>
-    </div>
+ </form>
 </div>
+
 </div>
 </div>
 
@@ -501,7 +262,7 @@
             }
 
         }
-	</script>
+    </script>
 -->
 <script>
     var elem = document.getElementById("myvideo");
@@ -689,13 +450,6 @@
         reader.readAsDataURL(file);
     });  
 });
-        // Get the button, and when the user clicks on it, execute myFunction
-document.getElementById("btnBell").onclick = function() {myFunction()};
-
-/* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
 </script>
 
 <script type="text/javascript" src="assets/js/slick.js"></script>
