@@ -125,7 +125,7 @@
                                     <a href="/hnz-enterprise-project/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                 </li>
                             </ul>
-                            
+
                         </li>
                     </ul>
                 </div>
@@ -163,8 +163,8 @@
                 </div>
                 <div class="registerContent tab-content">
                     <div id="upload" class="registerContentForm tab-pane fade">
-                        <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
-                            <div class="uploadForm">  
+                        <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">
+                            <div class="uploadForm">
                                 <input type="hidden" value="<?php echo $author['id']?>" name="userid" id="userid"/>
                                 <!-- image-preview-filename input [CUT FROM HERE]-->
                                 <div class="image-preview">
@@ -257,28 +257,6 @@
             <div class="well well-sm text-center">
 
                 <h3>List of Magaizne</h3>
-
-<!--                     <div class="btn-group" data-toggle="buttons">
-                        
-                        <label class="btn btn-success active">
-                            <input type="radio" name="options" id="option2" autocomplete="off" >
-                            Approved
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </label>
-
-                        <label class="btn btn-warning">
-                            <input type="radio" name="options" id="option2" autocomplete="off">
-                            Sending
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </label>
-
-                        <label class="btn btn-danger">
-                            <input type="radio" name="options" id="option2" autocomplete="off">
-                            Cannel
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </label>
-                    
-                    </div> -->
                 </div>
             </div>
             <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
@@ -288,34 +266,48 @@
                             <th>ID</th>
                             <th>Title</th>
                             <th>Image</th>
+                            <th>Author</th>
                             <th>Create at</th>
                             <th>Update at</th>
                             <th>Status</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
-                    <tr>
-                        <td>1</td>
-                        <td>News</td>
-                        <td class="imgPost">
-                            <img src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
-                        </td>
-                        <td>News Cate</td>
-                        <td>News Cate</td>
-                        <td>Cancel</td>
-                        <td class="text-center">
-                            <a  data-value="<?php echo $item->id?>" class='btn btn-info btn-xs' href="#" onclick="document.getElementById('viewmagazine').style.display='block'">
-                                <i class="fa fa-eye" aria-hidden="true"></i> View
-                            </a>
-                            <a  data-value="<?php echo $item->id?>" class='btn btn-success btn-xs' href="#">
-                                <i class="fa fa-check-square" aria-hidden="true"></i> Approved
-                            </a>
-                            <a   class='btn btn-danger btn-xs' href="#viewmagazine">
-                                <i class="fa fa-times" aria-hidden="true"></i> Delete
-                            </a>
+                    <?php
+                    include_once './controllers/magazineController.php';
+                    $magazineCtrl = new magazineCtrl();
+                    echo $author['faculty'];
+                    $result = $magazineCtrl->getListMagazineForFaculty($author['id']);
 
-                        </td>
-                    </tr>
+
+                    foreach($result as $item) {
+                        ?>
+                        <tr>
+                            <td><?php echo $item->id?></td>
+                            <td><?php echo $item->title?></td>
+                            <td class="imgPost">
+                                <img src="<?php echo $item->img?>">
+                            </td>
+                            <td><?php echo $item->name?></td>
+                            <td><?php echo $item->created_at?></td>
+                            <td><?php echo $item->update_at?></td>
+                            <td><?php echo $item->status?></td>
+                            <td class="text-center">
+                                <a  data-value="<?php echo $item->id?>" class='btn btn-info btn-xs' href="#" onclick="document.getElementById('viewmagazine').style.display='block'">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                                </a>
+                                <a  data-value="<?php echo $item->id?>" class='btn btn-success btn-xs' href="#">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i> Approved
+                                </a>
+                                <a data-value="<?php echo $item->id?>"  class='btn btn-danger btn-xs' href="/hnz-enterprise-project/deleteMgz?mgzId=<?php echo $item->id?>">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Delete
+                                </a>
+
+                            </td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
                 </table>
             </div>
         </div>
@@ -323,8 +315,8 @@
 
           <div class="modal-content animate" action="/action_page.php">
             <span onclick="document.getElementById('viewmagazine').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
-                <div class="uploadForm">  
+            <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">
+                <div class="uploadForm">
 
                     <input id="mgz-id" name="mgzId" type="hidden" value=""/>
                     <!-- image-preview-filename input [CUT FROM HERE]-->
@@ -353,7 +345,7 @@
             </form>
             <div class="row session3">
                 <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
-                    
+
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                     <h4>Comment</h4>
@@ -366,7 +358,7 @@
                                <h4>Vu Van Tien <span>IT</span></h4>
                            </div>
                            <div class="contentCmt">
-                               You can also use the following javascript to 
+                               You can also use the following javascript to
                            </div>
                        </div>
                        <div class="comment">
@@ -377,7 +369,7 @@
                                <h4>Vu Van Tien <span>IT</span></h4>
                            </div>
                            <div class="contentCmt">
-                               You can also use the following javascript to 
+                               You can also use the following javascript to
                            </div>
                        </div>
                        <div class="comment">
@@ -388,7 +380,7 @@
                                <h4>Vu Van Tien <span>IT</span></h4>
                            </div>
                            <div class="contentCmt">
-                               You can also use the following javascript to close 
+                               You can also use the following javascript to close
                            </div>
                        </div>
                    </div>
@@ -540,30 +532,30 @@
                             <div class="contentCmt">
                             ${content}
                             </div>
-                            </div>`;    
+                            </div>`;
                             $("#formCmt").append(htmlCmt);
                             $("#formCmt").animate({ scrollTop: $('#formCmt').prop("scrollHeight")}, 1000);
-                            $("#comment").val("");                  
+                            $("#comment").val("");
                         }
                     }
-                })               
+                })
             }
         }
-    });   
+    });
 </script>
 
 <script type="text/javascript">
-    $(document).on('click', '#close-preview', function(){ 
+    $(document).on('click', '#close-preview', function(){
         $('.image-preview').popover('hide');
     // Hover befor close the preview
     $('.image-preview').hover(
         function () {
          $('.image-preview').popover('show');
-     }, 
+     },
      function () {
          $('.image-preview').popover('hide');
      }
-     );    
+     );
 });
 
     $(function() {
@@ -589,27 +581,27 @@
         $('.image-preview-filename').val("");
         $('.image-preview-clear').hide();
         $('.image-preview-input input:file').val("");
-        $(".image-preview-input-title").text("Browse"); 
-    }); 
+        $(".image-preview-input-title").text("Browse");
+    });
     // Create the preview image
-    $(".image-preview-input input:file").change(function (){     
+    $(".image-preview-input input:file").change(function (){
         var img = $('<img/>', {
             id: 'dynamic',
             width:250,
             height:200
-        });      
+        });
         var file = this.files[0];
         var reader = new FileReader();
         // Set preview image into the popover data-content
         reader.onload = function (e) {
             $(".image-preview-input-title").text("Change");
             $(".image-preview-clear").show();
-            $(".image-preview-filename").val(file.name);            
+            $(".image-preview-filename").val(file.name);
             img.attr('src', e.target.result);
             $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
-        }        
+        }
         reader.readAsDataURL(file);
-    });  
+    });
 });
 </script>
 
@@ -619,4 +611,4 @@
 <script type="text/javascript" src="assets/mmenu/mmenu/jquery.mmenu.all.js"></script>
 </body>
 
-</html> 
+</html>

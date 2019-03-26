@@ -32,7 +32,7 @@ $route->add('/cms', function () {
                 include_once './views/student.php';
                 break;
             case 2:
-                include_once '.views/coordinator.php';
+                include_once './views/coordinator.php';
                 break;
             case 3:
                 header("/");
@@ -272,4 +272,10 @@ $route->add('/logout', function() {
     exit;
 });
 
+$route->add('/deleteMgz', function() {
+    include './controllers/magazineController.php';
+    $magazineCtrl = new magazineCtrl();
+    $magazineCtrl->removeMagazine($_GET['mgzId']);
+
+});
 $route->submit();
