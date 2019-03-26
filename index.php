@@ -195,11 +195,11 @@ $route->add('/postMgz', function () {
                         $info = $magazineCtrl->getMailInfo($_POST['userid']);
                         $to      = $info->email;
                         $subject = 'New magazine "'.$title.'" submitted to ' .$info->faculty. ' Department';
-                        $message = 'A student uploaded a new magazine just now. This is automatic message, please dont reply.';
-                        $headers = 'From: webmaster@example.com' . "\r\n" .
-                        'Reply-To: webmaster@example.com' . "\r\n" .
+                        $message = '<!DOCTYPE html><html><body>A student uploaded a new magazine just now, check it out in your <a href="localhost/hnz-enterprise-project/cms">cms</a>.<hr/> This is automatic message, please dont reply.<body></html>';
+                        $headers = 'From: yearlymagazinesys@gmail.com' . "\r\n" .
+                        'Content-type: text/html' . "\r\n" .
                         'X-Mailer: PHP/' . phpversion();
-                        mail($to, $subject, $message);
+                        mail($to, $subject, $message, $headers);
                         echo json_encode('upload successfully!');
                     } else {
                         $magazineCtrl->delete($title);

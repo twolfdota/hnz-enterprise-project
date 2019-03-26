@@ -79,7 +79,6 @@ class magazineCtrl
         require './DBConnect.php';
         $email = "";
         $faculty = "";
-        echo $userId;
         if($userId){
             $query_fetch = mysqli_query($conn,"SELECT email, f.`name` from `user` as u 
             inner join faculty as f on u.faculty = f.`code`
