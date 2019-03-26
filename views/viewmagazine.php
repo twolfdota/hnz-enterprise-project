@@ -170,6 +170,12 @@
                         <div class="">
                            <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
                                 <h4>Magazine</h4>
+                                <a  data-value="<?php echo $item->id?>" class='btn btn-success btn-xs'  href="#">
+                                <i class="fa fa-check-square" aria-hidden="true"></i> Approved
+                                </a>
+                                <a   class='btn btn-danger btn-xs' href="#viewmagazine">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Delete
+                                </a>
                             </div>
                            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contentmaganizeCroll">
                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
