@@ -357,42 +357,53 @@
             </div>
             <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12" style="overflow: auto;width: 100%">
                 <table class="table table-striped custab" >
-                    <thead>
+                <thead>
                         <tr>
                             <th>ID</th>
                             <th>Title</th>
                             <th>Image</th>
+                            <th>Author</th>
                             <th>Create at</th>
                             <th>Update at</th>
                             <th>Status</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
-                    <tr>
-                        <td>1</td>
-                        <td>News</td>
-                        <td class="imgPost">
-                            <img src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
-                        </td>
-                        <td>News Cate</td>
-                        <td>News Cate</td>
-                        <td>Cancel</td>
-                        <td class="text-center">
-                            <!-- <a  data-value="<?php echo $item->id?>" class='btn btn-info btn-xs' href="#" onclick="document.getElementById('viewmagazine').style.display='block'">
-                                <i class="fa fa-eye" aria-hidden="true"></i> View
-                            </a> -->
-                            <a  class='btn btn-info btn-xs' href="/hnz-enterprise-project/viewmagazine#menu">
-                                <i class="fa fa-eye" aria-hidden="true"></i> View
-                            </a>
-                            <a  data-value="<?php echo $item->id?>" class='btn btn-success btn-xs' href="#">
-                                <i class="fa fa-check-square" aria-hidden="true"></i> Approved
-                            </a>
-                            <a   class='btn btn-danger btn-xs' href="#viewmagazine">
-                                <i class="fa fa-times" aria-hidden="true"></i> Delete
-                            </a>
+                    <?php
+                    include_once './controllers/magazineController.php';
+                    $magazineCtrl = new magazineCtrl();
+                    echo $author['faculty'];
+                    $result = $magazineCtrl->getListMagazine($author['id']);
 
-                        </td>
-                    </tr>
+
+                    foreach($result as $item) {
+                        ?>
+                        <tr>
+                            <td><?php echo $item->id?></td>
+                            <td><?php echo $item->title?></td>
+                            <td class="imgPost">
+                                <img src="<?php echo $item->img?>">
+                            </td>
+                            <td><?php echo $item->name?></td>
+                            <td><?php echo $item->created_at?></td>
+                            <td><?php echo $item->update_at?></td>
+                            <td><?php echo $item->status?></td>
+                            <td class="text-center">
+                                <a  data-value="<?php echo $item->id?>" class='btn btn-info btn-xs' href="#" onclick="document.getElementById('viewmagazine').style.display='block'">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                                </a>
+                                <a  data-value="<?php echo $item->id?>" class='btn btn-success btn-xs' href="#">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i> Approved
+                                </a>
+                                <a data-value="<?php echo $item->id?>"  class='btn btn-danger btn-xs' href="/hnz-enterprise-project/deleteMgz?mgzId=<?php echo $item->id?>">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Delete
+                                </a>
+
+                            </td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
                 </table>
             </div>
         </div>
