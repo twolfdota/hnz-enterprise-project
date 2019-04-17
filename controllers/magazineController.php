@@ -102,7 +102,7 @@ class magazineCtrl
     function removeMagazine($id)
     {
         require_once './DBConnect.php';
-        $sql = "delete from magazine,comments using magazine,comments where magazine.id = comments.magazineId AND magazine.id = ".$id;
+        $sql = "delete from magazine where id = ".$id;
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         if (mysqli_error($conn)) {
