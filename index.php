@@ -72,7 +72,8 @@ $route->add('/loadYear', function () {
 $route->add('/loadComments', function(){
     include './controllers/cmtController.php';
     $cmtCtrl = new cmtCtrl();
-    $cmtCtrl->getListModifyCmt($_GET['mgzId']);
+    $rawRes = $cmtCtrl->getListModifyCmt($_GET['mgzId']);
+    echo json_encode($rawRes);
 });
 
 $route->add('/downloadDocs', function(){

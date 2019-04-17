@@ -44,7 +44,7 @@ class cmtCtrl {
             'year' => $mgzYear,
             'cmtList'=>$result
         ];
-        echo json_encode($mgzObj);
+        return $mgzObj;
 
     }
 
