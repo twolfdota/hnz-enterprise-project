@@ -104,11 +104,22 @@ class magazineCtrl
     function removeMagazine($id)
     {
         require_once './DBConnect.php';
+        $docLink = "";
+        $imgLink = "";
+        $query_fetch = mysqli_query($conn,"SELECT imgFile, docFile FROM magazine WHERE id = $id");
+        while($show = mysqli_fetch_array($query_fetch)){
+            $docLink = $show['docFile'];
+            $imgLink = $show['imgFile']; 
+        } 
         $sql = "delete from magazine where id = ".$id;
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         if (mysqli_error($conn)) {
             echo mysqli_error($conn);
+        }
+        else {
+            @unlink($docLink); 
+            @unlink($imgLink); 
         }
 
         $conn->close();
