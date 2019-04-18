@@ -6,6 +6,7 @@ class cmtCtrl {
         $mgzDoc = "";
         $mgzImg = "";
         $mgzYear = 1973;
+        $mgzStatus = "";
         $result = array();
         if($id){
 
@@ -27,13 +28,14 @@ class cmtCtrl {
                 ];
                 array_push($result, $item);
             } // while loop brace
-            $query_fetch = mysqli_query($conn,"SELECT title, imgFile, docFile,academicYear FROM magazine
+            $query_fetch = mysqli_query($conn,"SELECT title, imgFile, docFile,academicYear, `status` FROM magazine
             WHERE id = $id");
             while($show = mysqli_fetch_array($query_fetch)){
                 $mgzTitle = $show['title'];
                 $mgzDoc = $show['docFile'];
                 $mgzImg= $show['imgFile'];
                 $mgzYear = $show['academicYear'];
+                $mgzStatus = $show['status'];
             }
 
         } // isset brace
@@ -42,9 +44,10 @@ class cmtCtrl {
             'doc'=> $mgzDoc,
             'img' => $mgzImg,
             'year' => $mgzYear,
+            'status' => $mgzStatus,
             'cmtList'=>$result
         ];
-        echo json_encode($mgzObj);
+        return $mgzObj;
 
     }
 

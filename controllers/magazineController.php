@@ -70,9 +70,61 @@ class magazineCtrl
                 $validated = false;
                 echo json_encode('This title is already used!!');
             }
+            
             $conn->close();
 
         return $validated;
+    }
+
+    function getListMagazineForFaculty($id) {
+        require './DBConnect.php';
+        $result = array();
+        if($id){
+            $query_fetch = mysqli_query($conn,"SELECT magazine.id, magazine.title, magazine.imgFile, magazine.created_at, magazine.updated_at, magazine.status, user.name FROM `user` 
+                                                    INNER JOIN magazine ON `user`.id = magazine.userId
+                                                    where `user`.faculty = (SELECT faculty from `user` where id = $id)");
+            while($show = mysqli_fetch_array($query_fetch)){
+                $item = (object) [
+                    'id' => $show['id'],
+                    'title' => $show['title'],
+                    'img' => $show['imgFile'],
+                    'name' => $show['name'],
+                    'created_at' => $show['created_at'],
+                    'update_at' => @$show['update_at'],
+                    'status' => $show['status'],
+                ];
+                array_push($result, $item);
+            } // while loop brace
+    
+        } // isset brace
+        return $result;
+    
+    }
+
+    function removeMagazine($id)
+    {
+        require_once './DBConnect.php';
+        $sql = "delete from magazine where id = ".$id;
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        if (mysqli_error($conn)) {
+            echo mysqli_error($conn);
+        }
+
+        $conn->close();
+    }
+
+    function approveMagazine($id)
+    {
+        require_once './DBConnect.php';
+        $sql = "update magazine set status = 'approved' where id = ".$id;
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        if (mysqli_error($conn)) {
+            echo mysqli_error($conn);
+        }
+
+        $conn->close();
     }
 }
  

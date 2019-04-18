@@ -21,6 +21,21 @@ $route->add('/', function () {
 $route->add('/coordinator', function () {
     include_once './views/coordinator.php';
 });
+$route->add('/viewmagazine', function () {
+    session_start();
+    if (isset($_SESSION['login'])) {
+        include './controllers/userController.php';
+        $userCtrl = new userCtrl();
+        $author = $userCtrl->authorize();
+        if($author['role'] == 2){
+            include_once './views/viewmagazine.php';
+        }
+    }
+    else {
+        header("Location:login");
+        exit();
+    }
+});
 $route->add('/cms', function () {
     session_start();
     if (isset($_SESSION['login'])) {
@@ -32,7 +47,7 @@ $route->add('/cms', function () {
                 include_once './views/student.php';
                 break;
             case 2:
-                include_once '.views/coordinator.php';
+                include_once './views/coordinator.php';
                 break;
             case 3:
                 header("/");
@@ -69,7 +84,8 @@ $route->add('/loadYear', function () {
 $route->add('/loadComments', function(){
     include './controllers/cmtController.php';
     $cmtCtrl = new cmtCtrl();
-    $cmtCtrl->getListModifyCmt($_GET['mgzId']);
+    $rawRes = $cmtCtrl->getListModifyCmt($_GET['mgzId']);
+    echo json_encode($rawRes);
 });
 
 $route->add('/downloadDocs', function(){
@@ -270,6 +286,20 @@ $route->add('/logout', function() {
     unset($_SESSION['login']);
     header("Location: login");
     exit;
+});
+
+$route->add('/deleteMgz', function() {
+    include './controllers/magazineController.php';
+    $magazineCtrl = new magazineCtrl();
+    $magazineCtrl->removeMagazine($_GET['mgzId']);
+
+});
+
+$route->add('/approveMgz', function() {
+    include './controllers/magazineController.php';
+    $magazineCtrl = new magazineCtrl();
+    $magazineCtrl->approveMagazine($_GET['mgzId']);
+
 });
 
 $route->submit();
