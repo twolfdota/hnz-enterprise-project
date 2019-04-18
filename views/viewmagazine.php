@@ -48,12 +48,12 @@
             <nav id="menu">
                 <ul>
                     <li>
-                        <a data-toggle="pill" href="#viewallmagazines">
+                        <a href="/hnz-enterprise-project/cms">
                             <i class="fa fa-bars" aria-hidden="true"></i> View All Magaiznes
                         </a>
                     </li>
                     <li>
-                        <a data-toggle="pill" href="#yourmagazine">
+                        <a data-toggle="pill" href="">
                             <!-- <i class="fa fa-bars" aria-hidden="true"></i> Your File -->
                         </a>
                     </li>
@@ -73,7 +73,7 @@
             <div class="menu">
                 <ul>
                     <li>
-                        <a data-toggle="pill" href="#viewallmagazines">
+                        <a href="/hnz-enterprise-project/cms">
                             <i class="fa fa-bars" aria-hidden="true"></i>View All Magaiznes
                         </a>
                     </li>
@@ -170,26 +170,57 @@
                         <div class="">
                            <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
                                 <h4>Magazine</h4>
-                                <a  data-value="<?php echo $item->id?>" class='btn btn-success btn-xs'  href="#">
+                                <?php
+                                            include './controllers/cmtController.php';
+                                            $cmtCtrl = new cmtCtrl();
+                                            $rawRes = $cmtCtrl->getListModifyCmt($_GET['mgzId']);
+                                ?>
+                                <?php if ($rawRes->status != "approved") {?>
+                                <a value="<?php echo $_GET['mgzId']?>" class='btn btn-success btn-xs'  href="#" onclick="approveMgz(this.getAttribute('value'))">
                                 <i class="fa fa-check-square" aria-hidden="true"></i> Approved
                                 </a>
-                                <a   class='btn btn-danger btn-xs' href="#viewmagazine">
+                                <?php } ?>
+                                <a value="<?php echo $_GET['mgzId']?>" class='btn btn-danger btn-xs' href="#" onclick="deleteMgz(this.getAttribute('value'))">
                                     <i class="fa fa-times" aria-hidden="true"></i> Delete
                                 </a>
                             </div>
                            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contentmaganizeCroll">
                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                                  <div class="contentmaganize">
-                                    <h3>Test title</h3>
-                                    <img  src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
+                                     <input type="hidden" value="<?php echo $_GET['mgzId']?>" id="mgz-id"/>
+                                     <input type="hidden" value="<?php echo $author['id']?>" id="userid"/>
+                                     <input type="hidden" value="<?php echo $author['role']?>" id="userRole"/>
+
+                                    <h3><?php echo $rawRes->title?></h3>
+                                    <img  src="<?php echo $rawRes->img?>">
+                                    <?php 
+                                                $ch = curl_init();
+                                                $file_name_with_full_path = "/xampp/htdocs/hnz-enterprise-projec/".$rawRes->doc;
                                     
-                                    <p>
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                    </p>
+                                                curl_setopt($ch, CURLOPT_URL, "https://api.docconversionapi.com/convert?outputFormat=html");
+                                                curl_setopt($ch, CURLOPT_POST, 2);
+                                                curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-ApplicationID:286f4243-5ed4-450d-bce9-435f568d450b', 'X-SecretKey:120748dd-ac15-44fd-88c8-ca46149b4b8d'));
+                                    
+                                                if (function_exists('curl_file_create')) { // php 5.5+
+                                                  $cFile = curl_file_create($file_name_with_full_path, 'application/msword', basename($file_name_with_full_path));
+                                                } else { 
+                                                  $cFile = '@' . realpath($file_name_with_full_path);
+                                                }
+                                    
+                                                $post = array(
+                                                  "optionsJson" => "{}",
+                                                  "inputFile" => $cFile
+                                                );
+                                    
+                                                curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+                                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                                                $server_output = curl_exec($ch); 	
+                                                if ($server_output === false) {
+                                                  echo 'Curl error occurred: ' . curl_error($ch);
+                                                } else {
+                                                  echo $server_output;
+                                                }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -203,39 +234,31 @@
                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                     <h4>Comment</h4>
                     <div class="formCmt col-lg-12 col-md-12 col-sm-12 col-xs-12" id="formCmt">
-                       <div class="comment">
-                           <div class="imgCmt">
-                               <img src="assets/images/user.png">
-                           </div>
-                           <div class="nameCmt">
-                               <h4>Vu Van Tien <span>IT</span></h4>
-                           </div>
-                           <div class="contentCmt">
-                               You can also use the following javascript to 
-                           </div>
-                       </div>
-                       <div class="comment">
-                           <div class="imgCmt">
-                               <img src="assets/images/user.png">
-                           </div>
-                           <div class="nameCmt">
-                               <h4>Vu Van Tien <span>IT</span></h4>
-                           </div>
-                           <div class="contentCmt">
-                               You can also use the following javascript to 
-                           </div>
-                       </div>
-                       <div class="comment">
-                           <div class="imgCmt">
-                               <img src="assets/images/user.png">
-                           </div>
-                           <div class="nameCmt">
-                               <h4>Vu Van Tien <span>IT</span></h4>
-                           </div>
-                           <div class="contentCmt">
-                               You can also use the following javascript to close 
-                           </div>
-                       </div>
+                    <?php foreach($rawRes->cmtList as $item) {
+                        ?>
+                        <div class="comment">
+                            <div class="imgCmt">
+                                <img src="<?php echo $item->avatar?>">
+                            </div>
+                        <div class="nameCmt">
+                        <h4><?php echo $item->username?> <br>
+                        <?php echo $item->roles == 1 ? "<span style='color:red !important'>Student</span>":"<span style='color:blue'>Coordinator <i class='fa fa-wrench'></i></span>"?>
+                            <span> - </span>
+                            <span><?php echo $item->fName?> Department</span>
+                        
+                        <span class="time text-right"> <?php echo $item->cmtDate?> </span>
+                        </h4>
+                        </div>
+
+                        <div class="contentCmt">
+                        <?php echo $item->content?>
+                        </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
+
+
                    </div>
                    <div class="YourFormcmt">
                     <div class="imgCmt">
@@ -272,27 +295,47 @@
 -->
 <script>
     var elem = document.getElementById("myvideo");
-    function validateMgz(form, event) {
-        $("#ErrorMsg").html("");
-        event.preventDefault();
-        formData = new FormData($("#uploadForm")[0]);
+    function approveMgz(id) {
+        var approveCfm = confirm("Are you sure you want to approve this?");
+        if (approveCfm === true) {
         $.ajax({
-            url: `/hnz-enterprise-project/postMgz`,
-            type: 'POST',
-            processData: false,
-            contentType: false,
-            data: formData,
-            success: function(result){
-                if (result == '"success"') {
-                    alert("Magazine successfully uploaded!");
-                    location.reload();
+            url: `/hnz-enterprise-project/approveMgz?mgzId=${id}`,
+            type: 'GET',
+            success: function(result) {
+                console.log(result);
+                if (result) {
+                    alert(result);
                 }
                 else {
-                    $("#ErrorMsg").html(result);
+                    alert("magazine successfully published!");
+                    window.location = "/hnz-enterprise-project/cms";
                 }
             }
-        })
+        })    
+        }   
     }
+
+
+    function deleteMgz(id) {
+        var deleteCfm = confirm("Are you sure you want to delete this?");
+        if (deleteCfm === true) {
+        $.ajax({
+            url: `/hnz-enterprise-project/deleteMgz?mgzId=${id}`,
+            type: 'GET',
+            success: function(result) {
+                console.log(result);
+                if (result) {
+                    alert(result);
+                }
+                else {
+                    alert("magazine successfully deleted!");
+                    window.location = "/hnz-enterprise-project/cms";
+                }
+            }
+        })    
+        }   
+    }
+
     function openFullscreen() {
         if (elem.requestFullscreen) {
             elem.requestFullscreen();
@@ -308,92 +351,76 @@
         }
     }
 
-    $(".edit-btn").click(function() {
-        var mgzId = $(this).data("value");
-        $("#mgz-id").val(mgzId);
-        $("#formCmt").html("");
-        var htmlList="";
-        $.ajax({
-            url: `/hnz-enterprise-project/loadComments?mgzId=${mgzId}`,
-            type: 'GET',
-            dataType: 'json',
-            success: function(result) {
-                console.log(result);
-                if (result.length) {
 
-                    result.forEach(function(item) {
-                        htmlList += `<div class="comment">
-                        <div class="imgCmt">
-                        <img src="${item.avatar}">
-                        </div>
-                        <div class="nameCmt">
-                        <h4>${item.username} <span>${item.fName}</span></h4>
-                        </div>
-                        <div class="contentCmt">
-                        ${item.content}
-                        </div>
-                        </div>`;
-                    })
-
-                }
-                $("#formCmt").html(htmlList);
-            }
-        })
-
-        document.getElementById('update').style.display='block';
-    })
 
     $('#comment').keypress(function (e) {
 
-        var key = e.which;
-        if(key == 13)  // the enter key code
-        {
-            e.preventDefault();
-            var c = $.trim($(this).val()).length;
-            console.log(c);
-            if (c<10) {
-                alert("Your comment too short!!");
-            }
-            else if (c>200) {
-                alert("Your comment too long!!");
-            }
-            else {
-                var content = $.trim($(this).val());
-                var userId = $("#userid").val();
-                var mgzId = $("#mgz-id").val();
-                $.ajax({
-                    url: `/hnz-enterprise-project/postModifyCmt`,
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {
-                        content:content,
-                        userId:userId,
-                        mgzId:mgzId
-                    },
-                    success: function(result) {
-                        if(result.error) {
-                            alert(result.error)
-                        }
-                        else {
-                            htmlCmt = `<div class="comment">
-                            <div class="imgCmt">
-                            <img src="<?php echo $author['ava'];?>">
-                            </div>
-                            <div class="nameCmt">
-                            <h4><?php echo $author['name'];?> <span><?php echo $author['faculty'];?></span></h4>
-                            </div>
-                            <div class="contentCmt">
-                            ${content}
-                            </div>
-                            </div>`;    
-                            $("#formCmt").append(htmlCmt);
-                            $("#formCmt").animate({ scrollTop: $('#formCmt').prop("scrollHeight")}, 1000);
-                            $("#comment").val("");                  
-                        }
+var key = e.which;
+if(key == 13)  // the enter key code
+{
+    e.preventDefault();
+    var c = $.trim($(this).val()).length;
+    console.log(c);
+    if (c<10) {
+        alert("Your comment too short!!");
+    }
+    else if (c>200) {
+        alert("Your comment too long!!");
+    }
+    else {
+        var content = $.trim($(this).val());
+        var userId = $("#userid").val();
+        var mgzId = $("#mgz-id").val();
+        var userRole = $("#userRole").val();
+        $.ajax({
+            url: `/hnz-enterprise-project/postModifyCmt`,
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                content:content,
+                userId:userId,
+                mgzId:mgzId
+            },
+            success: function(result) {
+                if(result.error) {
+                    alert(result.error)
+                }
+                else {
+                    let textRole = "";
+                    switch(userRole) {
+                        case "1":
+                        textRole = `<span style="color:red !important">Student</span>
+                        <span> - </span>
+                        <span><?php echo $author['faculty'];?> Department</span>`;
+                        break;  
+                        case "2":
+                        textRole = `<span style="color:blue">Coordinator <i class="fa fa-wrench"></i></span>
+                        <span> - </span>
+                        <span><?php echo $author['faculty'];?> Department</span>`;
+                        break;  
                     }
-                })               
+                    htmlCmt = `<div class="comment">
+                    <div class="imgCmt">
+                    <img src="<?php echo $author['ava'];?>">
+                    </div>
+                    <div class="nameCmt">
+                    <h4><?php echo $author['name'];?> <br>`
+                    + textRole + 
+                    `<span class="time text-right"> ${new Date().toLocaleString()} </span>                                              
+                    </h4>
+                    </div>
+                    <div class="contentCmt">
+                    ${content}
+                    </div>
+                    </div>`;    
+                    $("#formCmt").append(htmlCmt);
+                    $("#formCmt").animate({ scrollTop: $('#formCmt').prop("scrollHeight")}, 1000);
+                    $("#comment").val("");                  
+                }
             }
-        }
+        })               
+    }
+}
     });   
 </script>
 
