@@ -373,7 +373,7 @@
                     include_once './controllers/magazineController.php';
                     $magazineCtrl = new magazineCtrl();
                     echo $author['faculty'];
-                    $result = $magazineCtrl->getListMagazine($author['id']);
+                    $result = $magazineCtrl->getListMagazineForFaculty($author['id']);
 
 
                     foreach($result as $item) {
@@ -389,7 +389,7 @@
                             <td><?php echo $item->update_at?></td>
                             <td><?php echo $item->status?></td>
                             <td class="text-center">
-                                <a  data-value="<?php echo $item->id?>" class='btn btn-info btn-xs' href="#" onclick="document.getElementById('viewmagazine').style.display='block'">
+                                <a class='btn btn-info btn-xs' href="/hnz-enterprise-project/viewmagazine?mgzId=<?php echo $item->id?>">
                                     <i class="fa fa-eye" aria-hidden="true"></i> View
                                 </a>
                                 <a  data-value="<?php echo $item->id?>" class='btn btn-success btn-xs' href="#">

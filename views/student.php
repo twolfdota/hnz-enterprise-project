@@ -591,12 +591,12 @@
                         let textRole = "";
                         switch(item.roles) {
                             case "1":
-                            textRole = `<span class="red-role">Student</span>
+                            textRole = `<span style="color:red !important">Student</span>
                             <span> - </span>
-                            <span class="role red-role">${item.fName} Department</span>`;
+                            <span>${item.fName} Department</span>`;
                             break;  
                             case "2":
-                            textRole = `<span class="blue-role">Coordinator</span>
+                            textRole = `<span>Coordinator <i class="fa fa-wrench"></i></span>
                             <span> - </span>
                             <span class="role blue-role">${item.fName} Department</span>`;
                             break;  
@@ -663,14 +663,14 @@
                             let textRole = "";
                             switch(userRole) {
                                 case "1":
-                                textRole = `<span class="red-role">Student</span>
+                                textRole = `<span style="color:red !important">Student</span>
                                 <span> - </span>
-                                <span class="role red-role"><?php echo $author['faculty'];?> Department</span>`;
+                                <span><?php echo $author['faculty'];?> Department</span>`;
                                 break;  
                                 case "2":
-                                textRole = `<span class="blue-role">Coordinator</span>
+                                textRole = `<span>Coordinator <i class="fa fa-wrench"></i></span>
                                 <span> - </span>
-                                <span class="role blue-role"><?php echo $author['faculty'];?> Department</span>`;
+                                <span><?php echo $author['faculty'];?> Department</span>`;
                                 break;  
                             }
                             htmlCmt = `<div class="comment">

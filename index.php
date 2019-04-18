@@ -22,7 +22,19 @@ $route->add('/coordinator', function () {
     include_once './views/coordinator.php';
 });
 $route->add('/viewmagazine', function () {
-    include_once './views/viewmagazine.php';
+    session_start();
+    if (isset($_SESSION['login'])) {
+        include './controllers/userController.php';
+        $userCtrl = new userCtrl();
+        $author = $userCtrl->authorize();
+        if($author['role'] == 2){
+            include_once './views/viewmagazine.php';
+        }
+    }
+    else {
+        header("Location:login");
+        exit();
+    }
 });
 $route->add('/cms', function () {
     session_start();
