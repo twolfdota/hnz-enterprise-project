@@ -103,10 +103,84 @@
                         </li>
                     </ul>
                 </div>
-                <div class="menubarRight text-right hidden-xs hidden-sm">
+                <div class="menubarRight hidden-xs hidden-sm">
                     <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->
+                    <ul class="menu-bell text-left col-lg-6 col-md-6">
+                        <li class="full hidden-xs hidden-sm">
+                            <a href="#" id="btnBell">
+                                <div class="bell">
+                                    <i class="fa fa-bell" aria-hidden="true"></i>
+                                </div>
+                                <span>1</span>
+                            </a>
+                        </li>
+                        <div id="myDropdown" class="dropdown-content">
+                            <div class="session1Notification">
+                                <span>Thông báo</span>
+                            </div>
+                            <div class="today">
+                                <span>TODAY</span>
+                            </div>
+                            <div class="allNotification">
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i id="signalCMT" class="fa fa-commenting-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>Admin <span>đã phê duyệt bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i id="signalDone" class="fa fa-check-square-o" aria-hidden="true"></i>
+                                    </div>
+                                    
+                                </div>
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i id="signalCMT" class="fa fa-commenting-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>Admin <span>đã không phê duyệt bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i id="signalCancel" class="fa fa-ban" aria-hidden="true"></i>
+                                    </div>
+                                </div>
 
-                    <ul class="menu-logout">
+                            </div>
+                      </div>
+                    </ul>
+                    
+                    <ul class="menu-logout text-right col-lg-6 col-md-6">
                         <a href="/hnz-enterprise-project/" class="text-left goto" title="Go to Home page">
                             <i class="fa fa-gg" aria-hidden="true"></i>
                         </a>
@@ -432,18 +506,6 @@
 </div>
 </div>
 
-    <!--
-    <script>
-        function validateForm() {
-            var x = document.forms["myForm"]["fname"].value;
-            if (x == "") {
-                alert("Name must be filled out");
-                return false;
-            }
-
-        }
-	</script>
--->
 <script>
     var elem = document.getElementById("myvideo");
     function validateMgz(form, event) {
@@ -479,7 +541,7 @@
             contentType: false,
             data: formData,
             success: function(result){
-                if (result == '"success"') {
+                if (result.length <= 10) {
                     alert("Magazine successfully updated!");
                     location.reload();
                 }
@@ -529,12 +591,12 @@
                         let textRole = "";
                         switch(item.roles) {
                             case "1":
-                            textRole = `<span class="red-role">Student</span>
+                            textRole = `<span style="color:red !important">Student</span>
                             <span> - </span>
-                            <span class="role red-role">${item.fName} Department</span>`;
+                            <span>${item.fName} Department</span>`;
                             break;  
                             case "2":
-                            textRole = `<span class="blue-role">Coordinator</span>
+                            textRole = `<span>Coordinator <i class="fa fa-wrench"></i></span>
                             <span> - </span>
                             <span class="role blue-role">${item.fName} Department</span>`;
                             break;  
@@ -601,14 +663,14 @@
                             let textRole = "";
                             switch(userRole) {
                                 case "1":
-                                textRole = `<span class="red-role">Student</span>
+                                textRole = `<span style="color:red !important">Student</span>
                                 <span> - </span>
-                                <span class="role red-role"><?php echo $author['faculty'];?> Department</span>`;
+                                <span><?php echo $author['faculty'];?> Department</span>`;
                                 break;  
                                 case "2":
-                                textRole = `<span class="blue-role">Coordinator</span>
+                                textRole = `<span>Coordinator <i class="fa fa-wrench"></i></span>
                                 <span> - </span>
-                                <span class="role blue-role"><?php echo $author['faculty'];?> Department</span>`;
+                                <span><?php echo $author['faculty'];?> Department</span>`;
                                 break;  
                             }
                             htmlCmt = `<div class="comment">
@@ -695,6 +757,13 @@
         reader.readAsDataURL(file);
     });  
 });
+    // Get the button, and when the user clicks on it, execute myFunction
+document.getElementById("btnBell").onclick = function() {myFunction()};
+
+/* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
 </script>
 
 <script type="text/javascript" src="assets/js/slick.js"></script>

@@ -103,10 +103,84 @@
                         </li>
                     </ul>
                 </div>
-                <div class="menubarRight text-right hidden-xs hidden-sm">
+                <div class="menubarRight hidden-xs hidden-sm">
                     <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->
+                    <ul class="menu-bell text-left col-lg-6 col-md-6">
+                        <li class="full hidden-xs hidden-sm">
+                            <a href="#" id="btnBell">
+                                <div class="bell">
+                                    <i class="fa fa-bell" aria-hidden="true"></i>
+                                </div>
+                                <span>1</span>
+                            </a>
+                        </li>
+                        <div id="myDropdown" class="dropdown-content">
+                            <div class="session1Notification">
+                                <span>Thông báo</span>
+                            </div>
+                            <div class="today">
+                                <span>TODAY</span>
+                            </div>
+                            <div class="allNotification">
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i id="signalCMT" class="fa fa-commenting-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>Admin <span>đã phê duyệt bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i id="signalDone" class="fa fa-check-square-o" aria-hidden="true"></i>
+                                    </div>
+                                    
+                                </div>
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i id="signalCMT" class="fa fa-commenting-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>Admin <span>đã không phê duyệt bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i id="signalCancel" class="fa fa-ban" aria-hidden="true"></i>
+                                    </div>
+                                </div>
 
-                    <ul class="menu-logout">
+                            </div>
+                      </div>
+                    </ul>
+
+                    <ul class="menu-logout text-right col-lg-6 col-md-6">
                         <a href="/hnz-enterprise-project/" class="text-left goto" title="Go to Home page">
                             <i class="fa fa-gg" aria-hidden="true"></i>
                         </a>
@@ -125,7 +199,7 @@
                                     <a href="/hnz-enterprise-project/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                 </li>
                             </ul>
-
+                            
                         </li>
                     </ul>
                 </div>
@@ -163,8 +237,8 @@
                 </div>
                 <div class="registerContent tab-content">
                     <div id="upload" class="registerContentForm tab-pane fade">
-                        <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">
-                            <div class="uploadForm">
+                        <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
+                            <div class="uploadForm">  
                                 <input type="hidden" value="<?php echo $author['id']?>" name="userid" id="userid"/>
                                 <!-- image-preview-filename input [CUT FROM HERE]-->
                                 <div class="image-preview">
@@ -257,11 +331,33 @@
             <div class="well well-sm text-center">
 
                 <h3>List of Magaizne</h3>
+
+<!--                     <div class="btn-group" data-toggle="buttons">
+                        
+                        <label class="btn btn-success active">
+                            <input type="radio" name="options" id="option2" autocomplete="off" >
+                            Approved
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </label>
+
+                        <label class="btn btn-warning">
+                            <input type="radio" name="options" id="option2" autocomplete="off">
+                            Sending
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </label>
+
+                        <label class="btn btn-danger">
+                            <input type="radio" name="options" id="option2" autocomplete="off">
+                            Cannel
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </label>
+                    
+                    </div> -->
                 </div>
             </div>
-            <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                <table class="table table-striped custab" style="width: 100%">
-                    <thead>
+            <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12" style="overflow: auto;width: 100%">
+                <table class="table table-striped custab" >
+                <thead>
                         <tr>
                             <th>ID</th>
                             <th>Title</th>
@@ -293,13 +389,15 @@
                             <td><?php echo $item->update_at?></td>
                             <td><?php echo $item->status?></td>
                             <td class="text-center">
-                                <a  data-value="<?php echo $item->id?>" class='btn btn-info btn-xs' href="#" onclick="document.getElementById('viewmagazine').style.display='block'">
+                                <a class='btn btn-info btn-xs' href="/hnz-enterprise-project/viewmagazine?mgzId=<?php echo $item->id?>">
                                     <i class="fa fa-eye" aria-hidden="true"></i> View
                                 </a>
-                                <a  data-value="<?php echo $item->id?>" class='btn btn-success btn-xs' href="#">
+                                <?php if ($item->status != "approved") {?>
+                                <a value="<?php echo $item->id?>" class='btn btn-success btn-xs' href="#" onclick="approveMgz(this.getAttribute('value'))">
                                     <i class="fa fa-check-square" aria-hidden="true"></i> Approved
                                 </a>
-                                <a data-value="<?php echo $item->id?>"  class='btn btn-danger btn-xs' href="/hnz-enterprise-project/deleteMgz?mgzId=<?php echo $item->id?>">
+                                <?php } ?>
+                                <a value="<?php echo $item->id?>"  class='btn btn-danger btn-xs' href="#" onclick="deleteMgz(this.getAttribute('value'))">
                                     <i class="fa fa-times" aria-hidden="true"></i> Delete
                                 </a>
 
@@ -315,8 +413,8 @@
 
           <div class="modal-content animate" action="/action_page.php">
             <span onclick="document.getElementById('viewmagazine').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">
-                <div class="uploadForm">
+            <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
+                <div class="uploadForm">  
 
                     <input id="mgz-id" name="mgzId" type="hidden" value=""/>
                     <!-- image-preview-filename input [CUT FROM HERE]-->
@@ -328,8 +426,9 @@
                            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contentmaganizeCroll">
                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                                  <div class="contentmaganize">
-                                    <img  src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
                                     <h3>Test title</h3>
+                                    <img  src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
+                                    
                                     <p>
                                         You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
                                         You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
@@ -345,7 +444,7 @@
             </form>
             <div class="row session3">
                 <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
-
+                    
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                     <h4>Comment</h4>
@@ -358,7 +457,7 @@
                                <h4>Vu Van Tien <span>IT</span></h4>
                            </div>
                            <div class="contentCmt">
-                               You can also use the following javascript to
+                               You can also use the following javascript to 
                            </div>
                        </div>
                        <div class="comment">
@@ -369,7 +468,7 @@
                                <h4>Vu Van Tien <span>IT</span></h4>
                            </div>
                            <div class="contentCmt">
-                               You can also use the following javascript to
+                               You can also use the following javascript to 
                            </div>
                        </div>
                        <div class="comment">
@@ -380,7 +479,7 @@
                                <h4>Vu Van Tien <span>IT</span></h4>
                            </div>
                            <div class="contentCmt">
-                               You can also use the following javascript to close
+                               You can also use the following javascript to close 
                            </div>
                        </div>
                    </div>
@@ -419,27 +518,49 @@
 -->
 <script>
     var elem = document.getElementById("myvideo");
-    function validateMgz(form, event) {
-        $("#ErrorMsg").html("");
-        event.preventDefault();
-        formData = new FormData($("#uploadForm")[0]);
+    
+
+    function approveMgz(id) {
+        var approveCfm = confirm("Are you sure you want to approve this?");
+        if (approveCfm === true) {
         $.ajax({
-            url: `/hnz-enterprise-project/postMgz`,
-            type: 'POST',
-            processData: false,
-            contentType: false,
-            data: formData,
-            success: function(result){
-                if (result == '"success"') {
-                    alert("Magazine successfully uploaded!");
-                    location.reload();
+            url: `/hnz-enterprise-project/approveMgz?mgzId=${id}`,
+            type: 'GET',
+            success: function(result) {
+                console.log(result);
+                if (result) {
+                    alert(result);
                 }
                 else {
-                    $("#ErrorMsg").html(result);
+                    alert("magazine successfully published!");
+                    location.reload();
                 }
             }
-        })
+        })    
+        }   
     }
+
+
+    function deleteMgz(id) {
+        var deleteCfm = confirm("Are you sure you want to delete this?");
+        if (deleteCfm === true) {
+        $.ajax({
+            url: `/hnz-enterprise-project/deleteMgz?mgzId=${id}`,
+            type: 'GET',
+            success: function(result) {
+                console.log(result);
+                if (result) {
+                    alert(result);
+                }
+                else {
+                    alert("magazine successfully deleted!");
+                    location.reload();
+                }
+            }
+        })    
+        }   
+    }
+
     function openFullscreen() {
         if (elem.requestFullscreen) {
             elem.requestFullscreen();
@@ -532,30 +653,30 @@
                             <div class="contentCmt">
                             ${content}
                             </div>
-                            </div>`;
+                            </div>`;    
                             $("#formCmt").append(htmlCmt);
                             $("#formCmt").animate({ scrollTop: $('#formCmt').prop("scrollHeight")}, 1000);
-                            $("#comment").val("");
+                            $("#comment").val("");                  
                         }
                     }
-                })
+                })               
             }
         }
-    });
+    });   
 </script>
 
 <script type="text/javascript">
-    $(document).on('click', '#close-preview', function(){
+    $(document).on('click', '#close-preview', function(){ 
         $('.image-preview').popover('hide');
     // Hover befor close the preview
     $('.image-preview').hover(
         function () {
          $('.image-preview').popover('show');
-     },
+     }, 
      function () {
          $('.image-preview').popover('hide');
      }
-     );
+     );    
 });
 
     $(function() {
@@ -581,28 +702,35 @@
         $('.image-preview-filename').val("");
         $('.image-preview-clear').hide();
         $('.image-preview-input input:file').val("");
-        $(".image-preview-input-title").text("Browse");
-    });
+        $(".image-preview-input-title").text("Browse"); 
+    }); 
     // Create the preview image
-    $(".image-preview-input input:file").change(function (){
+    $(".image-preview-input input:file").change(function (){     
         var img = $('<img/>', {
             id: 'dynamic',
             width:250,
             height:200
-        });
+        });      
         var file = this.files[0];
         var reader = new FileReader();
         // Set preview image into the popover data-content
         reader.onload = function (e) {
             $(".image-preview-input-title").text("Change");
             $(".image-preview-clear").show();
-            $(".image-preview-filename").val(file.name);
+            $(".image-preview-filename").val(file.name);            
             img.attr('src', e.target.result);
             $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
-        }
+        }        
         reader.readAsDataURL(file);
-    });
+    });  
 });
+        // Get the button, and when the user clicks on it, execute myFunction
+document.getElementById("btnBell").onclick = function() {myFunction()};
+
+/* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
 </script>
 
 <script type="text/javascript" src="assets/js/slick.js"></script>
@@ -611,4 +739,4 @@
 <script type="text/javascript" src="assets/mmenu/mmenu/jquery.mmenu.all.js"></script>
 </body>
 
-</html>
+</html> 

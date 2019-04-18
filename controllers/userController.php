@@ -15,7 +15,7 @@ class userCtrl
         $role = (int)$_POST["role"];
         $faculty = $_POST["faculty"];
 
-        $sql = "insert into user(roles, faculty, `name`, dob, phone, email, `password`, avatar) values(?,?,?,?,?,?,?,'assets/img/anonymous.png')";
+        $sql = "insert into user(roles, faculty, `name`, dob, phone, email, `password`, avatar) values(?,?,?,?,?,?,?,'assets/images/anonymous.png')";
         $stmt = $conn->prepare($sql);
         $salt = "124$@=+YJQ123";
         $token = hash("sha1", $pass . $salt);

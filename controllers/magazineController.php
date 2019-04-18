@@ -37,6 +37,7 @@ class magazineCtrl
         $result = array();
         if($id){
 
+
             $query_fetch = mysqli_query($conn,"SELECT * FROM magazine WHERE userid = $id");
             while($show = mysqli_fetch_array($query_fetch)){
                 $item = (object) [
@@ -69,6 +70,7 @@ class magazineCtrl
                 $validated = false;
                 echo json_encode('This title is already used!!');
             }
+            
             $conn->close();
 
         return $validated;
@@ -93,21 +95,35 @@ class magazineCtrl
                 ];
                 array_push($result, $item);
             } // while loop brace
-
+    
         } // isset brace
         return $result;
-
+    
     }
 
     function removeMagazine($id)
     {
         require_once './DBConnect.php';
-        $sql = "delete from magazine,comments using magazine,comments where magazine.id = comments.magazineId AND magazine.id = ".$id;
+        $sql = "delete from magazine where id = ".$id;
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         if (mysqli_error($conn)) {
             echo mysqli_error($conn);
         }
+
+        $conn->close();
+    }
+
+    function approveMagazine($id)
+    {
+        require_once './DBConnect.php';
+        $sql = "update magazine set status = 'approved' where id = ".$id;
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        if (mysqli_error($conn)) {
+            echo mysqli_error($conn);
+        }
+
         $conn->close();
     }
 }

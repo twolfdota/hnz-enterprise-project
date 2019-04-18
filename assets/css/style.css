@@ -489,10 +489,10 @@ ul{
 .contentmaganize img{
     width: 100%;
     height: auto;
-    margin-top: 30px
+    margin: 30px 0
 }
-.contentmaganize h3{
-    text-align: center;
+.contentmaganize {
+    text-align: left;
 }
 .contentmaganize p{
     width: 100%
@@ -1073,4 +1073,113 @@ i.icon_g_plus {
     margin-top: 10px;
     border-radius: 50%;
     padding-right: 5px
+}
+.menubarRight{
+    height: 70px
+}
+.menubarRight .menu-bell li{
+    margin-top: -8px;
+    position: relative;
+
+}
+.menubarRight .menu-bell li i{
+    font-size: 21px;
+    color: white
+
+}
+.menubarRight .menu-bell li span{
+    background-color: #FA3737;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    color: white;
+    padding-left:6px;
+    padding-top: 1px;
+    font-size: 13px
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 400px;
+  overflow: auto;
+  height: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 999
+}
+.session1Notification{
+    background-color: #FFFFFF;
+    height: 35px;
+    padding:5px;
+}
+.session1Notification span{
+    font-weight: 700;
+    line-height: 28px;
+    color: #2E2D2D
+}
+.today{
+    background-color: #ECECEC;
+    height: 35px;
+    padding:5px;
+}
+.contentNotification .img{
+    width: 15%;
+    float: left;
+}
+.contentNotification .img img{
+    width: 70%;
+    height: auto;
+}
+.contentNotification .textContent{
+    width: 75%;
+     float: left;
+}
+.contentNotification  .icon{
+    width: 10%;
+     float: left;
+}
+.contentNotification .icon i{
+    font-size: 20px;
+    line-height: 40px
+}
+.contentNotification .textContent span{
+    color: #2B2B2B !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+.contentNotification .textContent p{
+    color: #2B2B2B !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+}
+.contentNotification{
+    width: 100%;
+    padding:5px;
+    background-color: #F7F7F7;
+    min-height: 65px;
+    border-bottom: 1px solid #D1D1D1
+}
+.allNotification{
+    padding:5px;
+}
+.contentNotification .textContent .time{
+    color: #ADACAC !important
+}
+#signalCMT{
+    color: #F97832
+}
+#signalDone{
+    color: #2EEC09
+}
+#signalCancel{
+    color: #960505
+}
+.uploadFormMagazine{
+    margin-left: auto;
+    margin-right: auto;
+     width: 100%; 
+}
 }
