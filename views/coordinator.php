@@ -392,10 +392,12 @@
                                 <a class='btn btn-info btn-xs' href="/hnz-enterprise-project/viewmagazine?mgzId=<?php echo $item->id?>">
                                     <i class="fa fa-eye" aria-hidden="true"></i> View
                                 </a>
-                                <a  data-value="<?php echo $item->id?>" class='btn btn-success btn-xs' href="#">
+                                <?php if ($item->status != "approved") {?>
+                                <a value="<?php echo $item->id?>" class='btn btn-success btn-xs' href="#" onclick="approveMgz(this.getAttribute('value'))">
                                     <i class="fa fa-check-square" aria-hidden="true"></i> Approved
                                 </a>
-                                <a data-value="<?php echo $item->id?>"  class='btn btn-danger btn-xs' href="/hnz-enterprise-project/deleteMgz?mgzId=<?php echo $item->id?>">
+                                <?php } ?>
+                                <a value="<?php echo $item->id?>"  class='btn btn-danger btn-xs' href="#" onclick="deleteMgz(this.getAttribute('value'))">
                                     <i class="fa fa-times" aria-hidden="true"></i> Delete
                                 </a>
 
@@ -516,27 +518,49 @@
 -->
 <script>
     var elem = document.getElementById("myvideo");
-    function validateMgz(form, event) {
-        $("#ErrorMsg").html("");
-        event.preventDefault();
-        formData = new FormData($("#uploadForm")[0]);
+    
+
+    function approveMgz(id) {
+        var approveCfm = confirm("Are you sure you want to approve this?");
+        if (approveCfm === true) {
         $.ajax({
-            url: `/hnz-enterprise-project/postMgz`,
-            type: 'POST',
-            processData: false,
-            contentType: false,
-            data: formData,
-            success: function(result){
-                if (result == '"success"') {
-                    alert("Magazine successfully uploaded!");
-                    location.reload();
+            url: `/hnz-enterprise-project/approveMgz?mgzId=${id}`,
+            type: 'GET',
+            success: function(result) {
+                console.log(result);
+                if (result) {
+                    alert(result);
                 }
                 else {
-                    $("#ErrorMsg").html(result);
+                    alert("magazine successfully published!");
+                    location.reload();
                 }
             }
-        })
+        })    
+        }   
     }
+
+
+    function deleteMgz(id) {
+        var deleteCfm = confirm("Are you sure you want to delete this?");
+        if (deleteCfm === true) {
+        $.ajax({
+            url: `/hnz-enterprise-project/deleteMgz?mgzId=${id}`,
+            type: 'GET',
+            success: function(result) {
+                console.log(result);
+                if (result) {
+                    alert(result);
+                }
+                else {
+                    alert("magazine successfully deleted!");
+                    location.reload();
+                }
+            }
+        })    
+        }   
+    }
+
     function openFullscreen() {
         if (elem.requestFullscreen) {
             elem.requestFullscreen();

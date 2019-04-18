@@ -541,7 +541,7 @@
             contentType: false,
             data: formData,
             success: function(result){
-                if (result == '"success"') {
+                if (result.length <= 10) {
                     alert("Magazine successfully updated!");
                     location.reload();
                 }

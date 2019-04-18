@@ -70,6 +70,7 @@ class magazineCtrl
                 $validated = false;
                 echo json_encode('This title is already used!!');
             }
+            
             $conn->close();
 
         return $validated;
@@ -98,6 +99,32 @@ class magazineCtrl
         } // isset brace
         return $result;
     
+    }
+
+    function removeMagazine($id)
+    {
+        require_once './DBConnect.php';
+        $sql = "delete from magazine where id = ".$id;
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        if (mysqli_error($conn)) {
+            echo mysqli_error($conn);
+        }
+
+        $conn->close();
+    }
+
+    function approveMagazine($id)
+    {
+        require_once './DBConnect.php';
+        $sql = "update magazine set status = 'approved' where id = ".$id;
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        if (mysqli_error($conn)) {
+            echo mysqli_error($conn);
+        }
+
+        $conn->close();
     }
 }
  

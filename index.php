@@ -295,4 +295,11 @@ $route->add('/deleteMgz', function() {
 
 });
 
+$route->add('/approveMgz', function() {
+    include './controllers/magazineController.php';
+    $magazineCtrl = new magazineCtrl();
+    $magazineCtrl->approveMagazine($_GET['mgzId']);
+
+});
+
 $route->submit();
