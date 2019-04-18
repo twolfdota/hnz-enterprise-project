@@ -21,6 +21,21 @@ $route->add('/', function () {
 $route->add('/coordinator', function () {
     include_once './views/coordinator.php';
 });
+$route->add('/viewmagazine', function () {
+    session_start();
+    if (isset($_SESSION['login'])) {
+        include './controllers/userController.php';
+        $userCtrl = new userCtrl();
+        $author = $userCtrl->authorize();
+        if($author['role'] == 2){
+            include_once './views/viewmagazine.php';
+        }
+    }
+    else {
+        header("Location:login");
+        exit();
+    }
+});
 $route->add('/cms', function () {
     session_start();
     if (isset($_SESSION['login'])) {
@@ -69,7 +84,8 @@ $route->add('/loadYear', function () {
 $route->add('/loadComments', function(){
     include './controllers/cmtController.php';
     $cmtCtrl = new cmtCtrl();
-    $cmtCtrl->getListModifyCmt($_GET['mgzId']);
+    $rawRes = $cmtCtrl->getListModifyCmt($_GET['mgzId']);
+    echo json_encode($rawRes);
 });
 
 $route->add('/downloadDocs', function(){
@@ -153,8 +169,8 @@ $route->add('/postMgz', function () {
                 echo json_encode('Please upload your image!!');
         }
         else {
-            $img_dir = 'uploads/'.date("Y").'/mgzImg/';
-            $doc_dir = 'uploads/'.date("Y").'/doc/';
+            $img_dir = 'uploads/'.date("Y").'//mgzImg/';
+            $doc_dir = 'uploads/'.date("Y").'//doc/';
             $avaDir = 'assets/images/no-cover.png';
 
                 $img_target_file = $img_dir . basename($_FILES["imageUpload"]["name"]);
@@ -166,46 +182,7 @@ $route->add('/postMgz', function () {
             $docDir = $doc_dir . $title . '.' . $docFileType;
             $validated = $magazineCtrl->add($title, $docDir, $avaDir, $_POST['userid']);
             if ($validated) {
-                $uploadOk = 1;
-                $target_img = $img_dir . basename($_FILES["imageUpload"]["name"]);
-                $imageFileType = strtolower(pathinfo($target_img, PATHINFO_EXTENSION));
-                $target_doc = $doc_dir . basename($_FILES["doc"]["name"]);
-                $docFileType = strtolower(pathinfo($target_doc, PATHINFO_EXTENSION));
-        
-        // Check if file already exists
-        
-        // Check file size
-                if ($_FILES["imageUpload"]["size"] > 1000000 && $_FILES["doc"]["size"] > 1000000) {
-                    echo json_encode('Your file is too large!!');
-                    $uploadOk = 0;
-                }
-        // Allow certain file formats
-                if ($docFileType != "doc" && $docFileType != "docx") {
-                    echo json_encode("Wrong file format.");
-                    $uploadOk = 0;
-                }
-        // Check if $uploadOk is set to 0 by an error
-                if ($uploadOk == 0) {
-                    $magazineCtrl->delete($title);
-                    echo json_encode('Your file is not uploaded!!');
-        // if everything is ok, try to upload file
-                } else {
-                    
-                    if (move_uploaded_file($_FILES["doc"]["tmp_name"], $doc_dir . $title. '.' . $docFileType)&& move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $img_dir . $title. '.' . $imageFileType)) {
-                        $info = $magazineCtrl->getMailInfo($_POST['userid']);
-                        $to      = $info->email;
-                        $subject = 'New magazine "'.$title.'" submitted to ' .$info->faculty. ' Department';
-                        $message = '<!DOCTYPE html><html><body>A student uploaded a new magazine just now, check it out in your <a href="localhost/hnz-enterprise-project/cms">cms</a>.<hr/> This is automatic message, please dont reply.<body></html>';
-                        $headers = 'From: yearlymagazinesys@gmail.com' . "\r\n" .
-                        'Content-type: text/html' . "\r\n" .
-                        'X-Mailer: PHP/' . phpversion();
-                        mail($to, $subject, $message, $headers);
-                        echo json_encode('upload successfully!');
-                    } else {
-                        $magazineCtrl->delete($title);
-                        echo json_encode('Error uploading file!!!');
-                    }
-                }
+                $imgCtrl->addImg($img_dir, $title, $doc_dir, $title);
             } else {
                 echo 'Cannot upload magazine!';
             }
@@ -309,6 +286,20 @@ $route->add('/logout', function() {
     unset($_SESSION['login']);
     header("Location: login");
     exit;
+});
+
+$route->add('/deleteMgz', function() {
+    include './controllers/magazineController.php';
+    $magazineCtrl = new magazineCtrl();
+    $magazineCtrl->removeMagazine($_GET['mgzId']);
+
+});
+
+$route->add('/approveMgz', function() {
+    include './controllers/magazineController.php';
+    $magazineCtrl = new magazineCtrl();
+    $magazineCtrl->approveMagazine($_GET['mgzId']);
+
 });
 
 $route->submit();
