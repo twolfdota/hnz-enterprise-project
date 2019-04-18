@@ -24,6 +24,8 @@ $route->add('/coordinator', function () {
 $route->add('/viewmagazine', function () {
     include_once './views/viewmagazine.php';
 });
+
+
 $route->add('/cms', function () {
     session_start();
     if (isset($_SESSION['login'])) {
@@ -60,7 +62,6 @@ $route->add('/loadFaculty', function () {
     $facultyCtrl = new facultyCtrl();
     $facultyCtrl->loadFalcuty();
 });
-
 
 $route->add('/loadYear', function () {
 
