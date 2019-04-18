@@ -288,4 +288,11 @@ $route->add('/logout', function() {
     exit;
 });
 
+$route->add('/deleteMgz', function() {
+    include './controllers/magazineController.php';
+    $magazineCtrl = new magazineCtrl();
+    $magazineCtrl->removeMagazine($_GET['mgzId']);
+
+});
+
 $route->submit();
