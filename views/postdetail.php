@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Home</title>
+    <title>Post Detail</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="assets/css/slick.css">
@@ -69,7 +69,7 @@
                                 <a href="gioithieu.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Giới thiệu</a>
                             </li>
                         </ul>
-                        <ul class="nav navbar-nav navbar-right">
+                        <!-- <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <img class="avatar" src="<?php echo $author['ava']?>">
                             </li>
@@ -86,7 +86,7 @@
                                     <i class="fa fa-gg" aria-hidden="true" title="Go to Manazine page"></i>
                                 </a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
             </nav>
@@ -125,29 +125,85 @@
             </p>
         </div>
     </header>
-
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="slider-header">
-                <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
-                <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
-                <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
+    <content>
+        <div class="postdetail">
+            <div class="section-1">
+                <div class="container">
+                    <h2>Chi tiết bài viết</h2>
+                </div>
+            </div>
+            <div class="section-2">
+                <div class="link">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <ul>
+                                    <li>Home</li>
+                                    <li>Post Detail</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contentPost">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                            <div class="timePost">
+                                <p>
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    <time>18/04/2019</time>
+                                </p>
+                            </div>
+                            <div class="titlePost">
+                                <h3>10 ý tưởng trang trí phòng ngủ cho trẻ theo chủ đề biển</h3>
+                            </div>
+                            <div class="mainContent">
+                                <p>Màu xanh dương, màu của bầu trời, màu của biển luôn là chủ đề yêu thích cho mùa hè. Có rất nhiều cách để mang phong cách và chủ đề này vào phòng ngủ của trẻ. Từ những đồ nội thất mang hình dáng những con tàu biển tới bức tường được trang trí với lưới đánh cá, có rất nhiều ý tưởng sáng tạo cho bạn lựa chọn.</p>
+                                <img src="https://e2.365dm.com/13/12/768x432/Manchester-United-v-Newcastle-Red-DEvils-deje_3047907.jpg?20131209162127">
+                                <p>Màu xanh dương, màu của bầu trời, màu của biển luôn là chủ đề yêu thích cho mùa hè. Có rất nhiều cách để mang phong cách và chủ đề này vào phòng ngủ của trẻ. Từ những đồ nội thất mang hình dáng những con tàu biển tới bức tường được trang trí với lưới đánh cá, có rất nhiều ý tưởng sáng tạo cho bạn lựa chọn.</p>
+                                <img src="https://e2.365dm.com/13/12/768x432/Manchester-United-v-Newcastle-Red-DEvils-deje_3047907.jpg?20131209162127">
+                                <p>Màu xanh dương, màu của bầu trời, màu của biển luôn là chủ đề yêu thích cho mùa hè. Có rất nhiều cách để mang phong cách và chủ đề này vào phòng ngủ của trẻ. Từ những đồ nội thất mang hình dáng những con tàu biển tới bức tường được trang trí với lưới đánh cá, có rất nhiều ý tưởng sáng tạo cho bạn lựa chọn.</p>
+                                <img src="https://e2.365dm.com/13/12/768x432/Manchester-United-v-Newcastle-Red-DEvils-deje_3047907.jpg?20131209162127">
+                            </div>
+                            <div class="commentPost">
+                                <div class="row">
+                                    <div class="imgComent col-lg-2 col-md-3 col-sm-4 col-xs-4">
+                                        <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1">
+                                    </div>
+                                    <div class="inputComent col-lg-8 col-md-7 col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <textarea placeholder="Add comment..." class="form-control" rows="5" id="Notes"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="btnComent col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                        <input type="submit" name="" value="Add Comment">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 hidden-xs hidden-sm">
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="img-bottom">
-        
-    </div>
-    <content>
-
-
     </content>
     <footer>
-        
+        <div class="top-footer">
+            
+        </div>
+        <div class="myfooter">
+            <div class="container">
+                <div class="text-center">
+                    <h4>Team</h4>
+                </div>
+            </div>
+        </div>
     </footer>
     <a id="back2Top" title="Back to top" href="#"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
-    </footer>
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -160,5 +216,3 @@
 </body>
 
 </html> 
-
-

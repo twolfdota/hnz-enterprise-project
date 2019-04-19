@@ -1186,18 +1186,14 @@ i.icon_g_plus {
 
 
 /*Trang chủ*/
-.time{
+.timeHome{
     background-color: #ED910D;
     height: auto;
     margin-top: -5px;
     text-align: center;
     position: relative;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px
 }
-.time .margin-top{
+.timeHome .margin-top{
     margin: 0px !important
 }
 .Timeremaining {
@@ -1364,4 +1360,69 @@ i.icon_g_plus {
 }
 .myfooter h4{
     color: #F2F2F2
+}
+
+/*Trang chi tiết bài viết*/
+
+.postdetail .section-1{
+    background-image: url(../images/background_header_page_img.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    min-height: 150px;
+}
+.link{
+    background-color: white;
+    border-bottom: 2px solid #D8D8D8
+}
+.link ul li{
+    list-style: none;
+    display: inline-block;
+    padding:10px 20px 10px 0px;
+}
+.link ul{
+    list-style: none;
+    display: inline-block;
+}
+.contentPost .timePost{
+    color: #4A4A4A;
+    margin-top: 30px;
+    font-size: 16px
+}
+.contentPost .titlePost{
+    color: #4A4A4A;
+    font-size: 16px
+}
+.contentPost .mainContent{
+    color: #4A4A4A;
+    line-height: 25px;
+    border-bottom: 2px solid #D66512
+}
+.contentPost .mainContent img{
+    text-align: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px
+}
+.commentPost{
+    margin-top: 40px
+}
+.commentPost .imgComent img{
+    width: 80%;
+    height: auto;
+    border: 1px solid #DFDFDF;
+    border-radius: 3px
+}
+.commentPost .btnComent input{
+    width: 100%;
+    background-color: #356690;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding:5px 10px;
+}
+
+
+
+* {
+    font-family: 'Roboto', sans-serif!important;
 }

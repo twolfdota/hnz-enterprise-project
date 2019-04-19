@@ -18,6 +18,10 @@ $route->add('/', function () {
         exit();
     }
 });
+
+$route->add('/postdetail', function () {
+    include_once './views/postdetail.php';
+});
 $route->add('/coordinator', function () {
     include_once './views/coordinator.php';
 });

@@ -150,7 +150,7 @@
                 </div>
             </div>
         </div>
-        <div class="time">
+        <div class="timeHome">
             <div class="container">
                 <div class="margin-top">
                     <div class="row">
@@ -197,7 +197,7 @@
             <div class="container">
                 <div class="row" id="content-background">
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 news">
-                        <a href="#">
+                        <a href="/hnz-enterprise-project/postdetail">
                             <div class="section-1">
                                 <figure>
                                     <img src="assets/images/posts.jpg">
@@ -404,7 +404,7 @@
         </div>
     </footer>
     <a id="back2Top" title="Back to top" href="#"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
-    </footer>
+
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
