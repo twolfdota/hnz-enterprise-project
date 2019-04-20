@@ -43,7 +43,6 @@
                 </div>
             </div>
         </div>
-        <div>
             <nav class="navbar navbar-findcond navbar">
                 <div class="container">
                     <!-- <div class="navbar-header">
@@ -90,7 +89,6 @@
                     </div>
                 </div>
             </nav>
-        </div>
     </header>
     <header class="hidden-lg  hidden-md" id="header-mobie">
         <div id="header-top ">
@@ -126,17 +124,15 @@
         </div>
     </header>
 
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="slider-header">
-                <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
-                <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
-                <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
-            </div>
+    <div class="slider">
+        <div class="slider-header">
+            <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
+            <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
+            <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
         </div>
     </div>
     <div class="img-bottom">
-        
+        <img src="assets/images/scale-top.png">
     </div>
     <content>
         <div class="text-center">
@@ -196,7 +192,7 @@
         <div class="content-news">
             <div class="container">
                 <div class="row" id="content-background">
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 news">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 news">
                         <a href="/hnz-enterprise-project/postdetail">
                             <div class="section-1">
                                 <figure>
@@ -226,7 +222,7 @@
                             </div> 
                         </a>   
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 news">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 news">
                         <a href="#">
                             <div class="section-1">
                                 <figure>
@@ -256,7 +252,7 @@
                             </div> 
                         </a>   
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 news">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 news">
                         <a href="#">
                             <div class="section-1">
                                 <figure>
@@ -286,7 +282,7 @@
                             </div> 
                         </a>   
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 news">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 news">
                         <a href="#">
                             <div class="section-1">
                                 <figure>
@@ -316,7 +312,7 @@
                             </div> 
                         </a>   
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 news">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 news">
                         <a href="#">
                             <div class="section-1">
                                 <figure>
@@ -346,7 +342,7 @@
                             </div> 
                         </a>   
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 news">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 news">
                         <a href="#">
                             <div class="section-1">
                                 <figure>

@@ -86,6 +86,9 @@
 .slider-header a{
     width: 100%
 }
+.slider{
+    width: 100%
+}
 .slick-next, .slick-prev {
     display: none !important
 }
@@ -1344,11 +1347,9 @@ i.icon_g_plus {
     left: 30%;
   }
 }
-.img-bottom{
-    background-image: url(../images/scale-top.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    height: 30px;
+.img-bottom img{
+    margin-top: -5px;
+    width: 100%;
     margin-top: -5px
 }
 .top-footer{
@@ -1370,16 +1371,16 @@ i.icon_g_plus {
     background-size: 100%;
     min-height: 150px;
 }
-.link{
+.linkPost{
     background-color: white;
     border-bottom: 2px solid #D8D8D8
 }
-.link ul li{
+.linkPost ul li{
     list-style: none;
     display: inline-block;
     padding:10px 20px 10px 0px;
 }
-.link ul{
+.linkPost ul{
     list-style: none;
     display: inline-block;
 }

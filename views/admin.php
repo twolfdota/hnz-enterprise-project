@@ -326,7 +326,7 @@
                             </div>
                             <div class="main-input">
                                 <div class="text">
-                                    <p><span>* </span>Password</p>
+                                    <p><span>* </span>Pass</p>
                                 </div>
                                 <div class="input">
                                     <input type="Password" name="password" required>

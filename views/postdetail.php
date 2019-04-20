@@ -133,7 +133,7 @@
                 </div>
             </div>
             <div class="section-2">
-                <div class="link">
+                <div class="linkPost">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -169,15 +169,15 @@
                             </div>
                             <div class="commentPost">
                                 <div class="row">
-                                    <div class="imgComent col-lg-2 col-md-3 col-sm-4 col-xs-4">
+                                    <div class="imgComent col-lg-2 col-md-3 col-sm-2 col-xs-3">
                                         <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1">
                                     </div>
-                                    <div class="inputComent col-lg-8 col-md-7 col-sm-4 col-xs-4">
+                                    <div class="inputComent col-lg-8 col-md-7 col-sm-7 col-xs-9">
                                         <div class="form-group">
                                             <textarea placeholder="Add comment..." class="form-control" rows="5" id="Notes"></textarea>
                                         </div>
                                     </div>
-                                    <div class="btnComent col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                    <div class="btnComent col-lg-2 col-md-2 col-sm-3 col-xs-12">
                                         <input type="submit" name="" value="Add Comment">
                                     </div>
                                 </div>

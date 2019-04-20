@@ -56,8 +56,33 @@
     overflow: auto;
     width: 100%;
 }
+.commentPost .btnComent input{
+    font-size: 14px;
+    margin-bottom: 30px
+}
+.commentPost .imgComent img{
+    width: 100%;
+}
 
 
+.registerContentForm input, select{
+  width: 100% !important
+}
+.registerForm .mainForm p {
+    font-size: 14px;
+}
+.registerForm .mainForm .text {
+    width: 25%;
+    float: left;
+}
+.registerForm .mainForm .input {
+    width: 75%;
+    float: left;
+}
+.button-res input{
+  width: 94% !important;
+  float: right;
+}
 }
 
 /*.content-cart .col-xs-12{
@@ -67,6 +92,7 @@
 .btnSubmit {
     width: 100% !important;
 }
+
 }
 @media screen and (max-width:480px) {
   .header-top1 i{
@@ -146,6 +172,22 @@
       font-size: 13px;
       border-radius: 5px;
   }
+  .down{
+    top:-55px;
+    left: 42%;
+}
+.Timeremaining label{
+
+    font-size: 30px
+}
+.Timeremaining span{
+
+    font-size: 12px;
+}
+.down{
+    top:-55px;
+    left: 45%;
+}
   }
   @media screen and (min-width: 768px) and (max-width: 991px) {
 /*  #header-mobie #header-top .header-top3 img{
@@ -172,7 +214,9 @@
   }
   @media screen and (min-width: 992px) and (max-width: 1199px) {
 
+
   }
   @media screen and (min-width: 1200px) {
+
   
   }
