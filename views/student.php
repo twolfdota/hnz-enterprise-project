@@ -398,6 +398,8 @@
         <form name="editForm" id="editForm" method="post" enctype="multipart/form-data">  
             <div class="uploadForm">  
                 <input id="mgz-id" name="mgzId" type="hidden" value=""/>
+                <input type="hidden" value="<?php echo $author['id']?>" name="userid"/>
+                <input type="hidden" value="<?php echo $author['corId']?>" name="corId"/>
                 <input id="old-title" name="oldTitle" type="hidden" value=""/>
                 <input id="oldDocType" name="oldDocType" type="hidden" value=""/>
                 <input id="oldImgType" name="oldImgType" type="hidden" value=""/>

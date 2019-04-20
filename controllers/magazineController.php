@@ -32,7 +32,7 @@ class magazineCtrl
         if($id){
 
 
-            $query_fetch = mysqli_query($conn,"SELECT * FROM magazine WHERE userid = $id");
+            $query_fetch = mysqli_query($conn,"SELECT * FROM magazine WHERE userid = $id order by created_at desc, updated_at desc");
             while($show = mysqli_fetch_array($query_fetch)){
                 $item = (object) [
                     'id' => $show['id'],
@@ -74,9 +74,10 @@ class magazineCtrl
         require './DBConnect.php';
         $result = array();
         if($id){
-            $query_fetch = mysqli_query($conn,"SELECT magazine.id, magazine.title, magazine.imgFile, magazine.created_at, magazine.updated_at, magazine.status, user.name FROM `user` 
+            $query_fetch = mysqli_query($conn,"SELECT magazine.id, magazine.title, magazine.imgFile, magazine.created_at, magazine.updated_at, magazine.status, user.id as creatorId, user.name FROM `user` 
                                                     INNER JOIN magazine ON `user`.id = magazine.userId
-                                                    where `user`.faculty = (SELECT faculty from `user` where id = $id)");
+                                                    where `user`.faculty = (SELECT faculty from `user` where id = $id)
+                                                    order by magazine.created_at desc, magazine.updated_at desc");
             while($show = mysqli_fetch_array($query_fetch)){
                 $item = (object) [
                     'id' => $show['id'],
@@ -86,6 +87,7 @@ class magazineCtrl
                     'created_at' => $show['created_at'],
                     'update_at' => @$show['update_at'],
                     'status' => $show['status'],
+                    'creatorId' => $show['creatorId']
                 ];
                 array_push($result, $item);
             } // while loop brace
@@ -144,6 +146,28 @@ class magazineCtrl
             $notiCtrl->createNoti($id, 'approve', $publisher, $mgzUser);
         }
         $conn->close();
+    }
+
+    function getMailInfo($userId){
+        require './DBConnect.php';
+        $email = "";
+        $faculty = "";
+        if($userId){
+            $query_fetch = mysqli_query($conn,"SELECT email, f.`name` from `user` as u 
+            inner join faculty as f on u.faculty = f.`code`
+            where u.roles = 2 and u.faculty = (select u.faculty from `user` where id = $userId)");
+            while($show = mysqli_fetch_array($query_fetch)){
+                $email = $show['email'];
+                $faculty = $show['name'];
+            } // while loop brace
+
+        } // isset brace
+        $return = (object)[
+            'email'=>$email,
+            'faculty'=>$faculty
+        ];
+        return $return;
+      
     }
 }
  

@@ -209,7 +209,7 @@ $route->add('/postMgz', function () {
                         $info = $magazineCtrl->getMailInfo($_POST['userid']);
                         $to      = $info->email;
                         $subject = 'New magazine "'.$title.'" submitted to ' .$info->faculty. ' Department';
-                        $message = '<!DOCTYPE html><html><body>A student uploaded a new magazine just now, check it out in your <a href="localhost/hnz-enterprise-project/cms">cms</a>.<hr/> This is automatic message, please dont reply.<body></html>';
+                        $message = '<!DOCTYPE html><html><body>A student uploaded a new magazine just now, check it out in your <a href="localhost/hnz-enterprise-project/viewmagazine?mgzId='.$addResult->insertId.'">cms</a>.<hr/> This is automatic message, please dont reply.<body></html>';
                         $headers = 'From: yearlymagazinesys@gmail.com' . "\r\n" .
                         'Content-type: text/html' . "\r\n" .
                         'X-Mailer: PHP/' . phpversion();
@@ -235,9 +235,8 @@ $route->add('/postMgz', function () {
 
 $route->add('/updateMgz', function () {
     include './controllers/magazineController.php';
-    include './controllers/imgController.php';
     $magazineCtrl = new magazineCtrl();
-
+    $updated = false;
     if (isset($_POST["title"])) {
         $title = $_POST["title"];
         if ($title == "") {
@@ -251,6 +250,7 @@ $route->add('/updateMgz', function () {
         if ($title != $_POST['oldTitle']) {
             rename('./'. $img_dir . $_POST['oldTitle'].'.' . $_POST['oldImgType'], './'. $img_dir . $title.'.' . $_POST['oldImgType']);
             rename('./' .$doc_dir. $_POST['oldTitle'].'.' . $_POST['oldDocType'], './'.$doc_dir. $title.'.' . $_POST['oldDocType']);
+            $updated = true;
         } 
         if ($_FILES['doc']['name']) {
             $doc_target_file = $doc_dir . basename($_FILES["doc"]["name"]);
@@ -275,6 +275,8 @@ $route->add('/updateMgz', function () {
                 if (move_uploaded_file($_FILES["doc"]["tmp_name"], $doc_dir . $title. '.' . $docFileType)) {
                     
                     $magazineCtrl->update($title, $imgDir, $docDir, $_POST['mgzId']);
+                    $updated = true;
+
                     echo json_encode('doc file updated successfully!');
                 } else {
                     echo json_encode('Error uploading doc file!!!');
@@ -301,15 +303,20 @@ $route->add('/updateMgz', function () {
     // if everything is ok, try to upload file
             } else {
                 unlink($img_dir . $_POST['oldTitle'].'.'. $_POST['oldImgType']); 
-                if (move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $img_dir . $title. '.' . $imgFileType)) {
-                    
+                if (move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $img_dir . $title. '.' . $imgFileType)) {                   
                     $magazineCtrl->update($title, $imgDir, $docDir, $_POST['mgzId']);
+                    $updated = true;
                     echo json_encode('Image file updated successfully!');
                 } else {
                     echo json_encode('Error uploading image file!!!');
                 }
             }
         } 
+        if($updated) {
+            include './controllers/notiController.php';
+            $notiCtrl = new notiCtrl();
+            @$notiCtrl->createNoti($_POST['mgzId'], 'update', $_POST['userid'], $_POST['corId']);   
+        }
     } else {
         echo json_encode("please input title!!!");
     }

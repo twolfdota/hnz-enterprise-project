@@ -20,7 +20,8 @@ class notiCtrl{
             $query_fetch = mysqli_query($conn,"SELECT m.title, u.name, n.notiType, n.notiDate, n.id FROM noti as n 
                                                     INNER JOIN magazine as m ON m.id = n.mgzId
                                                     INNER JOIN user as u ON u.id = n.senderId
-                                                    where n.receiverId = $userId");
+                                                    where n.receiverId = $userId
+                                                    order by n.notiDate desc");
             while($show = mysqli_fetch_array($query_fetch)){
                 $item = (object) [
                     'id' => $show['id'],
@@ -36,12 +37,9 @@ class notiCtrl{
         return $result;        
     }
 
-    function removeNoti($id) {
+    function removeNoti($condition) {
         require './DBConnect.php';
-        $sql = "delete from noti where id = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
+        mysqli_query($conn,"delete from noti where ". $condition);
         if (mysqli_error($conn)) {
             echo 'Internal server error!!';
         }

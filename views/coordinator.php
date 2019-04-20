@@ -21,7 +21,26 @@
 <body>
 
 
-
+    <?php
+        include_once './controllers/magazineController.php';
+        include_once './controllers/notiController.php';
+        $magazineCtrl = new magazineCtrl();
+        $notiCtrl = new notiCtrl();
+        $result = $magazineCtrl->getListMagazineForFaculty($author['id']);
+        $notiCtrl -> removeNoti("receiverId = ".$author['id']." and notiType='cmtTime'");
+        date_default_timezone_set("Asia/Bangkok");
+        foreach($result as $item) {
+            $date1 = new DateTime();
+            $date2 = new DateTime($item->created_at);
+            if ($date1->getTimestamp() - $date2->getTimestamp() > 1209600) {
+                $notiCtrl->createNoti($item->id, 'cmtTime', $item->creatorId, $author['id']);
+            }
+        }
+        $notiRes = $notiCtrl->getNoti($author['id']);
+        foreach($notiRes as $item) {
+            echo $item->type .' '. $item->title. '<br>';
+        }
+    ?>    
     <!-- Modal để hiển thị thông tin user sau khi add-->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -370,12 +389,6 @@
                         </tr>
                     </thead>
                     <?php
-                    include_once './controllers/magazineController.php';
-                    $magazineCtrl = new magazineCtrl();
-                    echo $author['faculty'];
-                    $result = $magazineCtrl->getListMagazineForFaculty($author['id']);
-
-
                     foreach($result as $item) {
                         ?>
                         <tr>
