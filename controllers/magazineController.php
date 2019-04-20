@@ -5,31 +5,25 @@ class magazineCtrl
     {
         require_once './DBConnect.php';
         $validated = true;
-
-
-            $sql = "insert into magazine(title, docFile, imgFile, userid, status, created_at, updated_at, academicYear) values(?,?,?,?,'new',now(), null, YEAR(now()))";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssi", $title, $doc, $ava, $userid);
-            $stmt->execute();
+        $insertId = 0;
+        $stmt = mysqli_prepare($conn, "INSERT into magazine(title, docFile, imgFile, userid, `status`, created_at, updated_at, academicYear) values(?,?,?,?,'new',now(), null, YEAR(now()))");
+        mysqli_stmt_bind_param($stmt, "sssi", $title, $doc, $ava, $userid);
+        mysqli_stmt_execute($stmt);
             if (mysqli_error($conn)) {
                 $validated = false;
                 echo json_encode('Title already used!!');
             }
+            else {
+                $insertId = mysqli_insert_id($conn);
+            }
             $conn->close();
-
-        return $validated;
+        $addResult = (object) [
+            'validated' => $validated,
+            'insertId' => $insertId
+        ];
+        return $addResult;
     }
 
-    function delete($title){
-        $sql = "delete from magazine where title = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $title);
-        $stmt->execute();
-        if (mysqli_error($conn)) {
-            echo 'Internal server error!!';
-        }
-        $conn->close();
-    }
 
 
     function getListMagazine($id) {
@@ -101,15 +95,17 @@ class magazineCtrl
     
     }
 
-    function removeMagazine($id)
+    function removeMagazine($id, $deletor)
     {
         require_once './DBConnect.php';
         $docLink = "";
         $imgLink = "";
-        $query_fetch = mysqli_query($conn,"SELECT imgFile, docFile FROM magazine WHERE id = $id");
+        $mgzUser = 0;
+        $query_fetch = mysqli_query($conn,"SELECT imgFile, docFile, userid FROM magazine WHERE id = $id");
         while($show = mysqli_fetch_array($query_fetch)){
             $docLink = $show['docFile'];
             $imgLink = $show['imgFile']; 
+            $mgzUser = $show['userid'];
         } 
         $sql = "delete from magazine where id = ".$id;
         $stmt = $conn->prepare($sql);
@@ -119,22 +115,34 @@ class magazineCtrl
         }
         else {
             @unlink($docLink); 
-            @unlink($imgLink); 
+            @unlink($imgLink);
+            include './controllers/notiController.php';
+            $notiCtrl = new notiCtrl();
+            $notiCtrl->createNoti($id, 'delete', $deletor, $mgzUser);
         }
 
         $conn->close();
     }
 
-    function approveMagazine($id)
+    function approveMagazine($id, $publisher)
     {
         require_once './DBConnect.php';
+        $mgzUser = 0;
+        $query_fetch = mysqli_query($conn,"SELECT userid FROM magazine WHERE id = $id");
+        while($show = mysqli_fetch_array($query_fetch)){
+            $mgzUser = $show['userid'];
+        } 
         $sql = "update magazine set status = 'approved' where id = ".$id;
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         if (mysqli_error($conn)) {
             echo mysqli_error($conn);
         }
-
+        else {
+            include './controllers/notiController.php';
+            $notiCtrl = new notiCtrl();
+            $notiCtrl->createNoti($id, 'approve', $publisher, $mgzUser);
+        }
         $conn->close();
     }
 }

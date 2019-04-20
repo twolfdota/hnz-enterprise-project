@@ -524,7 +524,7 @@
         var approveCfm = confirm("Are you sure you want to approve this?");
         if (approveCfm === true) {
         $.ajax({
-            url: `/hnz-enterprise-project/approveMgz?mgzId=${id}`,
+            url: `/hnz-enterprise-project/approveMgz?mgzId=${id}&publisher=${$("#userId").val()}`,
             type: 'GET',
             success: function(result) {
                 console.log(result);
@@ -545,7 +545,7 @@
         var deleteCfm = confirm("Are you sure you want to delete this?");
         if (deleteCfm === true) {
         $.ajax({
-            url: `/hnz-enterprise-project/deleteMgz?mgzId=${id}`,
+            url: `/hnz-enterprise-project/deleteMgz?mgzId=${id}&deletor=${$("#userId").val()}`,
             type: 'GET',
             success: function(result) {
                 console.log(result);

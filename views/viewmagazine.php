@@ -190,6 +190,7 @@
                                      <input type="hidden" value="<?php echo $_GET['mgzId']?>" id="mgz-id"/>
                                      <input type="hidden" value="<?php echo $author['id']?>" id="userid"/>
                                      <input type="hidden" value="<?php echo $author['role']?>" id="userRole"/>
+                                     <input type="hidden" value="<?php echo $rawRes->author?>" id="authorId"/>
 
                                     <h3><?php echo $rawRes->title?></h3>
                                     <img  src="<?php echo $rawRes->img?>">
@@ -299,7 +300,7 @@
         var approveCfm = confirm("Are you sure you want to approve this?");
         if (approveCfm === true) {
         $.ajax({
-            url: `/hnz-enterprise-project/approveMgz?mgzId=${id}`,
+            url: `/hnz-enterprise-project/approveMgz?mgzId=${id}&publisher=${$("#userid").val()}`,
             type: 'GET',
             success: function(result) {
                 console.log(result);
@@ -320,7 +321,7 @@
         var deleteCfm = confirm("Are you sure you want to delete this?");
         if (deleteCfm === true) {
         $.ajax({
-            url: `/hnz-enterprise-project/deleteMgz?mgzId=${id}`,
+            url: `/hnz-enterprise-project/deleteMgz?mgzId=${id}&deletor=${$("#userid").val()}`,
             type: 'GET',
             success: function(result) {
                 console.log(result);
@@ -372,6 +373,7 @@ if(key == 13)  // the enter key code
         var userId = $("#userid").val();
         var mgzId = $("#mgz-id").val();
         var userRole = $("#userRole").val();
+        var authorId = $("#authorId").val();
         $.ajax({
             url: `/hnz-enterprise-project/postModifyCmt`,
             type: 'POST',
@@ -379,7 +381,9 @@ if(key == 13)  // the enter key code
             data: {
                 content:content,
                 userId:userId,
-                mgzId:mgzId
+                mgzId:mgzId,
+                authorId: authorId,
+                corId: userId
             },
             success: function(result) {
                 if(result.error) {

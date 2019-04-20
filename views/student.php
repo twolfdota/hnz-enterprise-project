@@ -241,6 +241,7 @@
                             <div class="uploadForm">  
                                 <input type="hidden" value="<?php echo $author['id']?>" name="userid" id="userid"/>
                                 <input type="hidden" value="<?php echo $author['role']?>" id="userRole"/>
+                                <input type="hidden" value="<?php echo $author['corId']?>" name="corId" id="corId"/>
                                 <!-- image-preview-filename input [CUT FROM HERE]-->
                                 <div class="image-preview">
                                     <div class="row session1">
@@ -646,6 +647,7 @@
                 var userId = $("#userid").val();
                 var mgzId = $("#mgz-id").val();
                 var userRole = $("#userRole").val();
+                var corId = $("#corId").val();
                 $.ajax({
                     url: `/hnz-enterprise-project/postModifyCmt`,
                     type: 'POST',
@@ -653,7 +655,9 @@
                     data: {
                         content:content,
                         userId:userId,
-                        mgzId:mgzId
+                        mgzId:mgzId,
+                        authorId:userId,
+                        corId: corId
                     },
                     success: function(result) {
                         if(result.error) {

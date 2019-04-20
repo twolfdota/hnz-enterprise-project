@@ -7,6 +7,7 @@ class cmtCtrl {
         $mgzImg = "";
         $mgzYear = 1973;
         $mgzStatus = "";
+        $authorId = 0;
         $result = array();
         if($id){
 
@@ -24,11 +25,11 @@ class cmtCtrl {
                     'roles' => $show['roles'],
                     'fName' => $show['fName'],
                     'avatar' => $show['avatar'],
-                    'cmtDate' => $show['cmtDate']
+                    'cmtDate' => $show['cmtDate'],
                 ];
                 array_push($result, $item);
             } // while loop brace
-            $query_fetch = mysqli_query($conn,"SELECT title, imgFile, docFile,academicYear, `status` FROM magazine
+            $query_fetch = mysqli_query($conn,"SELECT userid, title, imgFile, docFile,academicYear, `status` FROM magazine
             WHERE id = $id");
             while($show = mysqli_fetch_array($query_fetch)){
                 $mgzTitle = $show['title'];
@@ -36,6 +37,7 @@ class cmtCtrl {
                 $mgzImg= $show['imgFile'];
                 $mgzYear = $show['academicYear'];
                 $mgzStatus = $show['status'];
+                $authorId = $show['userid'];
             }
 
         } // isset brace
@@ -45,13 +47,14 @@ class cmtCtrl {
             'img' => $mgzImg,
             'year' => $mgzYear,
             'status' => $mgzStatus,
+            'author' => $authorId,
             'cmtList'=>$result
         ];
         return $mgzObj;
 
     }
 
-    function addModifyCmt($content, $userId, $magazineId) {
+    function addModifyCmt($content, $userId, $magazineId, $authorId, $corId) {
         require_once './DBConnect.php';
 
             $sql = "insert into comments(content, userId, magazineId, cmtType, cmtDate) values(?,?,?,1,now())";
@@ -63,6 +66,14 @@ class cmtCtrl {
             }
             else {
                 echo json_encode("Success!");
+                include './controllers/notiController.php';
+                $notiCtrl = new notiCtrl();
+                if ($userId == $authorId) {
+                    $notiCtrl->createNoti($magazineId, 'comment', $authorId, $corId);
+                }
+                else {
+                    $notiCtrl->createNoti($magazineId, 'comment', $corId, $authorId);
+                }               
             }
             $conn->close();
 
