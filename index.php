@@ -30,6 +30,9 @@ $route->add('/viewmagazine', function () {
         if($author['role'] == 2){
             include_once './views/viewmagazine.php';
         }
+        else {
+            return;
+        }
     }
     else {
         header("Location:login");
@@ -347,6 +350,13 @@ $route->add('/approveMgz', function() {
     $magazineCtrl = new magazineCtrl();
     $magazineCtrl->approveMagazine($_GET['mgzId'], $_GET['publisher']);
 
+});
+
+$route->add('/deleteNoti', function() {
+    include './controllers/notiController.php';
+    $notiCtrl = new notiCtrl();
+    $condition = "mgzId = '" .$_POST['mgzId']. "' and receiverId = '". $_POST['userId']."'";
+    $notiCtrl->removeNoti($condition);
 });
 
 $route->submit();

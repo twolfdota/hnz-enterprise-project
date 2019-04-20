@@ -74,7 +74,9 @@ class magazineCtrl
         require './DBConnect.php';
         $result = array();
         if($id){
-            $query_fetch = mysqli_query($conn,"SELECT magazine.id, magazine.title, magazine.imgFile, magazine.created_at, magazine.updated_at, magazine.status, user.id as creatorId, user.name FROM `user` 
+            $query_fetch = mysqli_query($conn,"SELECT (SELECT count(id) from comments where comments.magazineId = magazine.id and userid = $id group by magazine.id ) cmtCount,
+                                                    magazine.id, magazine.title, magazine.imgFile, magazine.created_at, magazine.updated_at, magazine.status, user.id as creatorId, user.name 
+                                                    FROM `user` 
                                                     INNER JOIN magazine ON `user`.id = magazine.userId
                                                     where `user`.faculty = (SELECT faculty from `user` where id = $id)
                                                     order by magazine.created_at desc, magazine.updated_at desc");
@@ -87,7 +89,8 @@ class magazineCtrl
                     'created_at' => $show['created_at'],
                     'update_at' => @$show['update_at'],
                     'status' => $show['status'],
-                    'creatorId' => $show['creatorId']
+                    'creatorId' => $show['creatorId'],
+                    'cmtCount' => $show['cmtCount']
                 ];
                 array_push($result, $item);
             } // while loop brace

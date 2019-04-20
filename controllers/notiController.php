@@ -17,8 +17,8 @@ class notiCtrl{
         require './DBConnect.php';
         $result = array();
         if($userId){
-            $query_fetch = mysqli_query($conn,"SELECT m.title, u.name, n.notiType, n.notiDate, n.id FROM noti as n 
-                                                    INNER JOIN magazine as m ON m.id = n.mgzId
+            $query_fetch = mysqli_query($conn,"SELECT m.title, u.name, u.avatar, n.notiType, n.notiDate, n.id, n.mgzId FROM noti as n 
+                                                    LEFT JOIN magazine as m ON m.id = n.mgzId
                                                     INNER JOIN user as u ON u.id = n.senderId
                                                     where n.receiverId = $userId
                                                     order by n.notiDate desc");
@@ -26,9 +26,11 @@ class notiCtrl{
                 $item = (object) [
                     'id' => $show['id'],
                     'title' => $show['title'],
-                    'senderName' => $show['name'],
+                    'name' => $show['name'],
                     'type' => $show['notiType'],
-                    'date' => $show['notiDate']
+                    'date' => $show['notiDate'],
+                    'avatar' => $show['avatar'],
+                    'mgzId' => $show['mgzId']
                 ];
                 array_push($result, $item);
             } // while loop brace
