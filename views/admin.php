@@ -29,7 +29,7 @@
                     <h4 class="modal-title">User information</h4>
                 </div>
                 <div class="modal-body" id="mymodal-body">
-                    <center><img src="assets/images/anonymous.png" width="50%" height="50%" /></center>
+                    <center><img  src="assets/images/anonymous.png" width="50%" height="50%" /></center>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">OK</button>
@@ -58,10 +58,10 @@
         </div>
         <div class="mainMenu hidden-xs hidden-sm">
             <div class="logoTeam">
-                <a href="index.html">
-                    <img src="assets/images/logo.png">
+                <a data-toggle="pill" href="#home">
+                    <img  src="assets/images/logo.png">
                 </a>
-                <a href="">Heroes and Zeroes</a>
+                <a href="#">Heroes and Zeroes</a>
             </div>
             <div class="Navigation">
                 <h4>Navigation</h4>
@@ -76,6 +76,11 @@
                     <li>
                         <a data-toggle="pill" href="#academic">
                             <i class="fa fa-bars" aria-hidden="true"></i> Academic Year's Event Information
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="pill" href="#downloadFile">
+                            <i class="fa fa-bars" aria-hidden="true"></i> Download File
                         </a>
                     </li>
                 </ul>
@@ -153,7 +158,31 @@
                     </div>
                 </div>
                 <div class="registerContent tab-content">
-                    <div id="register" class="registerContentForm tab-pane fade in active">
+                    <div id="home" class="registerContentForm tab-pane fade in active">
+                        <form name="yearForm" id="yearForm">
+                            <!-- <div class="title">
+                                <h3>Download File</h3>
+                            </div> -->
+                            <div class="text-center row">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <div style="background-color: red;width: 200px ;height: 200px;border-radius: 50%">
+                                        1
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <div style="background-color: red;width: 200px ;height: 200px;border-radius: 50%">
+                                        1
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <div style="background-color: red;width: 200px ;height: 200px;border-radius: 50%">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="register" class="registerContentForm tab-pane fade">
                         <form name="formRes" id="createForm">
                             <div class="title">
                                 <h3>Personal information</h3>
@@ -271,6 +300,24 @@
                             <div class="main-input">
                                 <div class="button-res">
                                     <input type="submit" name="" value="Edit" onclick="validateYear(document.yearForm, event)">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="downloadFile" class="registerContentForm tab-pane fade">
+                        <form name="yearForm" id="yearForm">
+                            <div class="title">
+                                <h3>Download File</h3>
+                            </div>
+                            <div class="btnDownload row">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <button type="submit">2017</button>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <button type="submit">2018</button>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <button type="submit">2019</button>
                                 </div>
                             </div>
                         </form>

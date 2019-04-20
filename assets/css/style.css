@@ -1421,8 +1421,21 @@ i.icon_g_plus {
     padding:5px 10px;
 }
 
+/*trang download file*/
 
 
-* {
-    font-family: 'Roboto', sans-serif!important;
+.btnDownload button{
+    width: 100%;
+    background-color: #428bca;
+    height: 45px !important;
+    border: 0px;
+    color: white;
+    font-size: 18px;
+    border-radius: 3px;
+    margin-top: 20px
+}
+.btnDownload button:hover{
+    background-color: white;
+    color: #428bca;
+    border: 1px solid #428bca;
 }
