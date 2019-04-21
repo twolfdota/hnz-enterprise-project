@@ -1172,13 +1172,13 @@ i.icon_g_plus {
 .contentNotification .textContent .time{
     color: #ADACAC !important
 }
-#signalCMT{
+.signalCMT{
     color: #F97832
 }
-#signalDone{
+.signalDone{
     color: #2EEC09
 }
-#signalCancel{
+.signalCancel{
     color: #960505
 }
 .uploadFormMagazine{
@@ -1495,4 +1495,8 @@ i.icon_g_plus {
     border-radius: 3px;
     margin-bottom: 15px;
     margin-top: 20px
+}
+.linkText label{
+    font-weight: 500;
+
 }

@@ -192,7 +192,7 @@
         <div class="content-news">
             <div class="container">
                 <div class="row" id="content-background">
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 news">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
                         <a href="/hnz-enterprise-project/postdetail">
                             <div class="section-1">
                                 <figure>
@@ -222,7 +222,7 @@
                             </div> 
                         </a>   
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 news">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
                         <a href="#">
                             <div class="section-1">
                                 <figure>
@@ -252,7 +252,7 @@
                             </div> 
                         </a>   
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 news">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
                         <a href="#">
                             <div class="section-1">
                                 <figure>
@@ -282,7 +282,7 @@
                             </div> 
                         </a>   
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 news">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
                         <a href="#">
                             <div class="section-1">
                                 <figure>
@@ -312,7 +312,7 @@
                             </div> 
                         </a>   
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 news">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
                         <a href="#">
                             <div class="section-1">
                                 <figure>
@@ -342,7 +342,7 @@
                             </div> 
                         </a>   
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 news">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
                         <a href="#">
                             <div class="section-1">
                                 <figure>
