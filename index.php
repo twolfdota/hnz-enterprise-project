@@ -106,7 +106,47 @@ $route->add('/downloadDocs', function(){
     readfile($file_url);
 });
 
+$route->add('/downloadZip', function(){
+$zipname = $_GET['year'].'.zip';
+// Initialize archive object
+$rootPath = realpath('./uploads/' . $_GET['year']);
 
+// Initialize archive object
+$zip = new ZipArchive();
+$zip->open($zipname, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+
+// Create recursive directory iterator
+/** @var SplFileInfo[] $files */
+$files = new RecursiveIteratorIterator(
+    new RecursiveDirectoryIterator($rootPath),
+    RecursiveIteratorIterator::LEAVES_ONLY
+);
+
+foreach ($files as $name => $file)
+{
+    // Skip directories (they would be added automatically)
+    if (!$file->isDir())
+    {
+        // Get real and relative path for current file
+        $filePath = $file->getRealPath();
+        $relativePath = substr($filePath, strlen($rootPath) + 1);
+
+        // Add current file to archive
+        $zip->addFile($filePath, $relativePath);
+    }
+}
+
+// Zip archive will be created only after closing object
+$zip->close();
+  
+    header('Content-Type: application/zip');
+    header("Content-Transfer-Encoding: Binary"); 
+    header("Content-Disposition: attachment; filename=\"".$_GET['year'].".zip" ."\"");
+    header('Content-Length: ' . filesize($zipname));
+
+    readfile(realpath('./'.$zipname));
+    unlink(realpath('./'.$zipname));
+});
 //Thêm các đường dẫn validate hoặc add, update dữ liệu vào đây (thường dùng POST)
 $route->add('/editDeadlines', function () {
     include './controllers/yearController.php';

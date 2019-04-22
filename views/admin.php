@@ -393,16 +393,8 @@
                             <div class="title">
                                 <h3>Download File</h3>
                             </div>
-                            <div class="btnDownload row">
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <button type="submit">2017</button>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <button type="submit">2018</button>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <button type="submit">2019</button>
-                                </div>
+                            <div class="btnDownload row" id="downloadList">
+
                             </div>
                         </form>
                     </div>
@@ -502,6 +494,19 @@
                 })
             }
         }
+
+    function getZip(yearNum) {
+        console.log(yearNum);
+        $.ajax({
+            url: `/hnz-enterprise-project/downloadZip?year=${yearNum}`,
+            type: 'GET',
+            success: function(result) {
+                console.log("download success!!");
+            }
+        })    
+           
+    }
+
     </script>
     <!--
     <script>
@@ -559,11 +564,20 @@
                 dataType: 'json',
                 success: function(result) {
                     console.log(new Date(result[0].dl1).formatted());
-                    if (result[0]) {
-                        document.yearForm.yearName.value = result[0].yearName;
-                        document.yearForm.startDate.defaultValue = new Date(result[0].std).formatted();
-                        document.yearForm.deadline.defaultValue = new Date(result[0].dl1).formatted();
-                        document.yearForm.finalDeadline.defaultValue = new Date(result[0].dl2).formatted();
+                    if (result.length) {
+
+                        var thisYear = new Date().getFullYear();
+                        if(result[0].year == thisYear) {
+                            document.yearForm.yearName.value = result[0].yearName;
+                            document.yearForm.startDate.defaultValue = new Date(result[0].std).formatted();
+                            document.yearForm.deadline.defaultValue = new Date(result[0].dl1).formatted();
+                            document.yearForm.finalDeadline.defaultValue = new Date(result[0].dl2).formatted();
+                        }
+                        result.forEach(function(item){
+                            $("#downloadList").append(`<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <button type="button" value=${item.year} onclick="getZip(this.getAttribute('value'))">${item.year} - ${item.yearName}</button>
+                                </div>`)
+                        })
                     }
                 }
             })
