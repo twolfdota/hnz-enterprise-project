@@ -238,7 +238,7 @@
                 </div>
                 <div class="registerContent tab-content">
                     <div id="home" class="registerContentForm tab-pane fade in active">
-                        <form name="yearForm" id="yearForm">
+                        <form name="reportForm" id="reportForm">
                             <!-- <div class="title">
                                 <h3>Download File</h3>
                             </div> -->
@@ -384,7 +384,7 @@
                         </form>
                     </div>
                     <div id="downloadFile" class="registerContentForm tab-pane fade">
-                        <form name="yearForm" id="yearForm">
+                        <form name="downloadForm" id="downloadForm">
                             <div class="title">
                                 <h3>Download File</h3>
                             </div>
