@@ -3,7 +3,7 @@ class yearCtrl {
 function loadYear()
 {
     require_once './DBConnect.php';
-    $sql = "select * from academic_year where `year` =  YEAR(now())";
+    $sql = "select * from academic_year order by year desc";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $stmt->store_result();
@@ -13,6 +13,7 @@ function loadYear()
         $stmt->bind_result($id, $year, $startDate, $end_date, $final_closure_date,$yearName);
         while ($stmt->fetch()) {
             $resItem = (object)[
+                'year' => $year,
                 'std' => $startDate,
                 'dl1' => $end_date,
                 'dl2' => $final_closure_date,
