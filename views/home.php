@@ -5,13 +5,16 @@
     <title>Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assets/css/lightbox.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/slick.css">
     <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
     <link rel="stylesheet" type="text/css" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/mmenu/mmenu/jquery.mmenu.all.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style-mobie.css">
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -91,17 +94,51 @@
             </nav>
     </header>
     <header class="hidden-lg  hidden-md" id="header-mobie">
-        <div id="header-top ">
+        <div id="header-top">
             <div class="col-xs-12 col-sm-12 header-top2 text-center">
                 <a href="index.html">
                     <img src="assets/images/logo.png">
                 </a>
             </div>
-            <div >
+
+            <div>
                 <div class="col-xs-2 background-mobie col-sm-6 header-top1">
                     <a href="#menu">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                     </a>
+                </div>
+                <div class="hidden-lg hidden-md">
+                    <nav id="menu">
+                     <ul>
+                        <li><a href="/">Home</a></li>
+                        <li>
+                            <a href="/hnz-enterprise-project/cms" class="dropdown-toggle" role="button" aria-expanded="false"> 
+                                Go To Manager Page
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>
+                                     <p> <?php echo $author['name']?><i> _ </i><span> <?php echo $author['faculty']?> Department</span></p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="/Acount">User</a>
+                           <ul>
+                              <li>
+                                <a href="/Acount/name">
+                                  <p> <?php echo $author['name']?><i> _ </i><span> <?php echo $author['faculty']?> Department</span></p>
+                                </a>
+                              </li>
+                              <li>
+                                  <a href="/hnz-enterprise-project/logout" class="dropdown-toggle" role="button" aria-expanded="false"> 
+                                    Log Out
+                                </a>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </nav>
                 </div>
                 <div class="col-xs-10 col-sm-6 background-mobie header-top3">
                    <div class="phone">
@@ -131,7 +168,7 @@
             <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
         </div>
     </div>
-    <div class="img-bottom">
+    <div class="img-bottom hidden-sm hidden-xs">
         <img src="assets/images/scale-top.png">
     </div>
     <content>
@@ -402,13 +439,11 @@
     <a id="back2Top" title="Back to top" href="#"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
 
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/slick.js"></script>
     <script type="text/javascript" src="assets/js/slick.min.js"></script>
     <script type="text/javascript" src="assets/js/index.js"></script>
     <script type="text/javascript" src="assets/mmenu/mmenu/jquery.mmenu.all.js"></script>
+    
 
 
 </body>

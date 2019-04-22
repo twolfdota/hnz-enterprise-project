@@ -1,5 +1,56 @@
 @media screen and (max-width:800px) {
-
+.session1Notification{
+    background-color: #FFFFFF;
+    height: 55px;
+    padding:5px;
+}
+.session1Notification span{
+    font-weight: 700;
+    line-height: 28px;
+    color: #2E2D2D
+}
+.today{
+    background-color: #ECECEC;
+    height: 35px;
+    padding:5px;
+}
+.contentNotification .img{
+    width: 15%;
+    float: left;
+}
+.contentNotification .img img{
+    width: 70%;
+    height: auto;
+}
+.contentNotification .textContent{
+    width: 75%;
+     float: left;
+}
+.contentNotification  .icon{
+    width: 10%;
+     float: left;
+}
+.contentNotification .icon i{
+    font-size: 16px;
+    line-height: 40px
+}
+.contentNotification .textContent span{
+    color: #2B2B2B !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+}
+.contentNotification .textContent p{
+    color: #2B2B2B !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+}
+.contentNotification{
+    width: 100%;
+    padding:5px;
+    background-color: #F7F7F7;
+    min-height: 78px;
+    border-bottom: 1px solid #D1D1D1
+}
 .registerContentBG {
     padding: 15px 10px;
 }
@@ -194,6 +245,7 @@
 .oneComment{
     border:none;
 }
+
   }
   @media screen and (min-width: 768px) and (max-width: 991px) {
 /*  #header-mobie #header-top .header-top3 img{

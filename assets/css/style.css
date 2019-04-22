@@ -1114,6 +1114,17 @@ i.icon_g_plus {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 999
 }
+.dropdown-contentMobile {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 100%;
+  overflow: auto;
+  height: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 999;
+  margin-top: 50px
+}
 .session1Notification{
     background-color: #FFFFFF;
     height: 35px;
@@ -1499,4 +1510,52 @@ i.icon_g_plus {
 .linkText label{
     font-weight: 500;
 
+}
+.dropdownLogout {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+.menubarRight ul li a:visit .dropdownLogout{
+    display: block;
+}
+.dropdown-menu {
+    margin-top: 15px !important;
+    left: -105px !important;
+}
+.dropdown-menu li{
+    width: 100% !important;
+    text-align: center;
+}
+.mm-navbar {
+    background: #3c8dbc !important;
+}
+.bellMobile{
+   position: relative;
+   text-align: center;
+   float: left;
+   margin-top: 10px;
+   margin-left: 5%
+}
+.bellMobile i{
+   font-size: 16px
+}
+#btnBellMobile span{
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 1000;
+    color: white;
+    background-color: red;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-left: 7px;
+    padding: 0px
 }

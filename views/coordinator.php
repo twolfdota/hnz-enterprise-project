@@ -47,12 +47,7 @@
                 <ul>
                     <li>
                         <a data-toggle="pill" href="#viewallmagazines">
-                            <i class="fa fa-bars" aria-hidden="true"></i> View All Magaiznes
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="pill" href="#yourmagazine">
-                            <!-- <i class="fa fa-bars" aria-hidden="true"></i> Your File -->
+                            View All Magaiznes
                         </a>
                     </li>
                 </ul>
@@ -86,18 +81,101 @@
         <div class="mainForm">
             <div class="menubar">
                 <div class="menubarRight text-right hidden-md hidden-lg">
-                    <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->
                     <ul>
                         <li class="icon-nvar">
                             <a href="#menu">
                                 <i class="fa fa-bars" aria-hidden="true"></i>
                             </a>
                         </li>
+                        <li class="bellMobile">
+                            <a href="#" id="btnBellMobile">
+                                <div class="">
+                                    <i class="fa fa-bell" aria-hidden="true"></i>
+                                </div>
+                                <span>1</span>
+                            </a>
+                        </li>
+                        <div id="ShowBell" class="dropdown-contentMobile">
+                            <div class="session1Notification text-left">
+                                <span>Thông báo</span>
+                            </div>
+                            <div class="today">
+                                <span>TODAY</span>
+                            </div>
+                            <div class="allNotification">
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i class="signalCMT fa fa-commenting-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>Admin <span>đã phê duyệt bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i class="signalDone fa fa-check-square-o" aria-hidden="true"></i>
+                                    </div>
+                                    
+                                </div>
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i class=" signalCMT fa fa-commenting-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>Admin <span>đã không phê duyệt bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i class="signalCancel fa fa-ban" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+                      </div>
                         <li class="active">
                             <img src="<?php echo $author['ava'];?>">
                         </li>
                         <li>
-                            <!-- <a href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i> -->
+                            <div class="dropdown">
+                                <a id="menu1" data-toggle="dropdown" class=" dropdown-toggle"  href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="/hnz-enterprise-project/" class=" goto" title="Go to Home page">
+                                                <i class="fa fa-gg" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                          <a href="/hnz-enterprise-project/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                        </li>
+                                  </ul>
+                              </div>
                         </li>
                     </ul>
                 </div>
@@ -157,7 +235,7 @@
                                         <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
                                     </div>
                                     <div class="icon text-right">
-                                        <i class=" signalCMTfa fa-commenting-o" aria-hidden="true"></i>
+                                        <i class=" signalCMT fa fa-commenting-o" aria-hidden="true"></i>
                                     </div>
                                 </div>
                                 <div class="contentNotification">
@@ -191,7 +269,7 @@
                             <img src="<?php echo $author['ava'];?>">
                         </li>
                         <li>
-                            <!-- <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i> -->
+                            <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i>
                             <ul class="logout">
                                 <li>
                                     <a href="/hnz-enterprise-project/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
@@ -735,6 +813,15 @@ function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 </script>
+<script type="text/javascript">
+                // Get the button, and when the user clicks on it, execute myFunction
+        document.getElementById("btnBellMobile").onclick = function() {myFunctionBell()};
+
+        /* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
+        function myFunctionBell() {
+          document.getElementById("ShowBell").classList.toggle("show");
+        }
+    </script>
 
 <script type="text/javascript" src="assets/js/slick.js"></script>
 <script type="text/javascript" src="assets/js/slick.min.js"></script>

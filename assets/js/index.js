@@ -162,9 +162,38 @@ window.onclick = function(event) {
      modal.style.display = "none";
   }
 }
+
 jQuery(document).ready(function( $ ) {
-     $("#menu").mmenu();
-});
+            $("#menu").mmenu({
+               "extensions": [
+                  "fx-menu-zoom",
+                  "fx-panels-zoom",
+                  "pagedim-black",
+                  "position-left",
+                  "theme-dark"
+               ],
+               "counters": true,
+               "iconbar": {
+                  "add": true,
+                  "top": [
+                     "<a href='/hnz-enterprise-project/'><i class='fa fa-home'></i></a>",
+                     "<a href='#/'><i class='fa fa-user'></i></a>"
+                  ],
+                  "bottom": [
+                     "<a href='#/'><i class='fa fa-twitter'></i></a>",
+                     "<a href='#/'><i class='fa fa-facebook'></i></a>",
+                     "<a href='#/'><i class='fa fa-linkedin'></i></a>"
+                  ]
+               },
+               "iconPanels": true,
+               "navbars": [
+                  {
+                     "position": "top"
+                  }
+               ]
+            });
+         });
+
 $(function () {
     $(".div").slice(0, 1).show();
     $("#loadMore").on('click', function (e) {
