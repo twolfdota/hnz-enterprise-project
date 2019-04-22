@@ -18,33 +18,9 @@ $route->add('/', function () {
         exit();
     }
 });
-
-$route->add('/postdetail', function () {
-    include_once './views/postdetail.php';
-});
 $route->add('/coordinator', function () {
     include_once './views/coordinator.php';
 });
-$route->add('/viewmagazine', function () {
-    session_start();
-    if (isset($_SESSION['login'])) {
-        include './controllers/userController.php';
-        $userCtrl = new userCtrl();
-        $author = $userCtrl->authorize();
-        if($author['role'] == 2){
-            include_once './views/viewmagazine.php';
-        }
-        else {
-            return;
-        }
-    }
-    else {
-        header("Location:login");
-        exit();
-    }
-});
-
-
 $route->add('/cms', function () {
     session_start();
     if (isset($_SESSION['login'])) {
@@ -56,7 +32,7 @@ $route->add('/cms', function () {
                 include_once './views/student.php';
                 break;
             case 2:
-                include_once './views/coordinator.php';
+                include_once '.views/coordinator.php';
                 break;
             case 3:
                 header("/");
@@ -82,6 +58,7 @@ $route->add('/loadFaculty', function () {
     $facultyCtrl->loadFalcuty();
 });
 
+
 $route->add('/loadYear', function () {
 
     include './controllers/yearController.php';
@@ -92,8 +69,7 @@ $route->add('/loadYear', function () {
 $route->add('/loadComments', function(){
     include './controllers/cmtController.php';
     $cmtCtrl = new cmtCtrl();
-    $rawRes = $cmtCtrl->getListModifyCmt($_GET['mgzId']);
-    echo json_encode($rawRes);
+    $cmtCtrl->getListModifyCmt($_GET['mgzId']);
 });
 
 $route->add('/downloadDocs', function(){
@@ -160,6 +136,8 @@ $route->add('/login', function () {
 
 $route->add('/postMgz', function () {
     include './controllers/magazineController.php';
+    include './controllers/imgController.php';
+    $imgCtrl = new imgCtrl();
     $magazineCtrl = new magazineCtrl();
 
     if (isset($_POST["title"])) {
@@ -186,52 +164,9 @@ $route->add('/postMgz', function () {
             $doc_target_file = $doc_dir . basename($_FILES["doc"]["name"]);
             $docFileType = strtolower(pathinfo($doc_target_file, PATHINFO_EXTENSION));
             $docDir = $doc_dir . $title . '.' . $docFileType;
-            $addResult= $magazineCtrl->add($title, $docDir, $avaDir, $_POST['userid']);
-            if ($addResult->validated) {
-                $uploadOk = 1;
-                $target_img = $img_dir . basename($_FILES["imageUpload"]["name"]);
-                $imageFileType = strtolower(pathinfo($target_img, PATHINFO_EXTENSION));
-                $target_doc = $doc_dir . basename($_FILES["doc"]["name"]);
-                $docFileType = strtolower(pathinfo($target_doc, PATHINFO_EXTENSION));
-        
-        // Check if file already exists
-        
-        // Check file size
-                if ($_FILES["imageUpload"]["size"] > 1000000 && $_FILES["doc"]["size"] > 1000000) {
-                    echo json_encode('Your file is too large!!');
-                    $uploadOk = 0;
-                }
-        // Allow certain file formats
-                if ($docFileType != "doc" && $docFileType != "docx") {
-                    echo json_encode("Wrong file format.");
-                    $uploadOk = 0;
-                }
-        // Check if $uploadOk is set to 0 by an error
-                if ($uploadOk == 0) {
-                    $magazineCtrl->delete($title);
-                    echo json_encode('Your file is not uploaded!!');
-        // if everything is ok, try to upload file
-                } else {
-                    
-                    if (move_uploaded_file($_FILES["doc"]["tmp_name"], $doc_dir . $title. '.' . $docFileType)&& move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $img_dir . $title. '.' . $imageFileType)) {
-                        $info = $magazineCtrl->getMailInfo($_POST['userid']);
-                        $to      = $info->email;
-                        $subject = 'New magazine "'.$title.'" submitted to ' .$info->faculty. ' Department';
-                        $message = '<!DOCTYPE html><html><body>A student uploaded a new magazine just now, check it out in your <a href="localhost/hnz-enterprise-project/viewmagazine?mgzId='.$addResult->insertId.'">cms</a>.<hr/> This is automatic message, please dont reply.<body></html>';
-                        $headers = 'From: yearlymagazinesys@gmail.com' . "\r\n" .
-                        'Content-type: text/html' . "\r\n" .
-                        'X-Mailer: PHP/' . phpversion();
-                        mail($to, $subject, $message, $headers);
-                        include './controllers/notiController.php';
-                        $notiCtrl = new notiCtrl();
-                        $notiCtrl->createNoti($addResult->insertId, 'create', $_POST['userid'], $_POST['corId']);                        
-                        echo json_encode('upload successfully!');
-
-                    } else {
-                        $magazineCtrl->delete($title);
-                        echo json_encode('Error uploading file!!!');
-                    }
-                }
+            $validated = $magazineCtrl->add($title, $docDir, $avaDir, $_POST['userid']);
+            if ($validated) {
+                $imgCtrl->addImg($img_dir, $title, $doc_dir, $title);
             } else {
                 echo 'Cannot upload magazine!';
             }
@@ -243,8 +178,10 @@ $route->add('/postMgz', function () {
 
 $route->add('/updateMgz', function () {
     include './controllers/magazineController.php';
+    include './controllers/imgController.php';
+    $imgCtrl = new imgCtrl();
     $magazineCtrl = new magazineCtrl();
-    $updated = false;
+
     if (isset($_POST["title"])) {
         $title = $_POST["title"];
         if ($title == "") {
@@ -258,7 +195,6 @@ $route->add('/updateMgz', function () {
         if ($title != $_POST['oldTitle']) {
             rename('./'. $img_dir . $_POST['oldTitle'].'.' . $_POST['oldImgType'], './'. $img_dir . $title.'.' . $_POST['oldImgType']);
             rename('./' .$doc_dir. $_POST['oldTitle'].'.' . $_POST['oldDocType'], './'.$doc_dir. $title.'.' . $_POST['oldDocType']);
-            $updated = true;
         } 
         if ($_FILES['doc']['name']) {
             $doc_target_file = $doc_dir . basename($_FILES["doc"]["name"]);
@@ -283,8 +219,6 @@ $route->add('/updateMgz', function () {
                 if (move_uploaded_file($_FILES["doc"]["tmp_name"], $doc_dir . $title. '.' . $docFileType)) {
                     
                     $magazineCtrl->update($title, $imgDir, $docDir, $_POST['mgzId']);
-                    $updated = true;
-
                     echo json_encode('doc file updated successfully!');
                 } else {
                     echo json_encode('Error uploading doc file!!!');
@@ -311,20 +245,15 @@ $route->add('/updateMgz', function () {
     // if everything is ok, try to upload file
             } else {
                 unlink($img_dir . $_POST['oldTitle'].'.'. $_POST['oldImgType']); 
-                if (move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $img_dir . $title. '.' . $imgFileType)) {                   
+                if (move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $img_dir . $title. '.' . $imgFileType)) {
+                    
                     $magazineCtrl->update($title, $imgDir, $docDir, $_POST['mgzId']);
-                    $updated = true;
                     echo json_encode('Image file updated successfully!');
                 } else {
                     echo json_encode('Error uploading image file!!!');
                 }
             }
         } 
-        if($updated) {
-            include './controllers/notiController.php';
-            $notiCtrl = new notiCtrl();
-            @$notiCtrl->createNoti($_POST['mgzId'], 'update', $_POST['userid'], $_POST['corId']);   
-        }
     } else {
         echo json_encode("please input title!!!");
     }
@@ -333,7 +262,7 @@ $route->add('/updateMgz', function () {
 $route->add('/postModifyCmt', function(){
     include './controllers/cmtController.php';
     $cmtCtrl = new cmtCtrl();
-    $cmtCtrl->addModifyCmt($_POST["content"], $_POST["userId"], $_POST["mgzId"], $_POST['authorId'], $_POST['corId']);
+    $cmtCtrl->addModifyCmt($_POST["content"], $_POST["userId"], $_POST["mgzId"]);
 });
 
 $route->add('/logout', function() {
@@ -341,27 +270,6 @@ $route->add('/logout', function() {
     unset($_SESSION['login']);
     header("Location: login");
     exit;
-});
-
-$route->add('/deleteMgz', function() {
-    include './controllers/magazineController.php';
-    $magazineCtrl = new magazineCtrl();
-    $magazineCtrl->removeMagazine($_GET['mgzId'], $_GET['deletor']);
-
-});
-
-$route->add('/approveMgz', function() {
-    include './controllers/magazineController.php';
-    $magazineCtrl = new magazineCtrl();
-    $magazineCtrl->approveMagazine($_GET['mgzId'], $_GET['publisher']);
-
-});
-
-$route->add('/deleteNoti', function() {
-    include './controllers/notiController.php';
-    $notiCtrl = new notiCtrl();
-    $condition = "mgzId = '" .$_POST['mgzId']. "' and receiverId = '". $_POST['userId']."'";
-    $notiCtrl->removeNoti($condition);
 });
 
 $route->submit();

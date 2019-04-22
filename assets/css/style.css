@@ -1129,9 +1129,24 @@ i.icon_g_plus {
     height: 35px;
     padding:5px;
 }
+
+.contentNotification{
+    width: 100%;
+    padding:5px;
+    background-color: #F7F7F7;
+    display:block;
+    min-height:100px;
+    border-bottom: 1px solid #D1D1D1;
+    cursor:pointer;
+}
+
+.contentNotification:hover {
+    background-color: lightgrey;
+}
+
 .contentNotification .img{
     width: 15%;
-    float: left;
+    float:left;
 }
 .contentNotification .img img{
     width: 70%;
@@ -1147,7 +1162,7 @@ i.icon_g_plus {
 }
 .contentNotification .icon i{
     font-size: 20px;
-    line-height: 40px
+    line-height: 40px;
 }
 .contentNotification .textContent span{
     color: #2B2B2B !important;
@@ -1159,13 +1174,9 @@ i.icon_g_plus {
     font-size: 14px !important;
     font-weight: 700 !important;
 }
-.contentNotification{
-    width: 100%;
-    padding:5px;
-    background-color: #F7F7F7;
-    min-height: 65px;
-    border-bottom: 1px solid #D1D1D1
-}
+
+
+
 .allNotification{
     padding:5px;
 }
@@ -1180,6 +1191,17 @@ i.icon_g_plus {
 }
 .signalCancel{
     color: #960505
+}
+
+.signalUpload {
+    color:cornflowerblue;
+}
+
+.signalUpdate {
+    color: cornflowerblue;
+}
+.signalcmtLate {
+    color:chocolate;
 }
 .uploadFormMagazine{
     margin-left: auto;

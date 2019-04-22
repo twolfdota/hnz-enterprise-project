@@ -15,7 +15,7 @@ class userCtrl
         $role = (int)$_POST["role"];
         $faculty = $_POST["faculty"];
 
-        $sql = "insert into user(roles, faculty, `name`, dob, phone, email, `password`, avatar) values(?,?,?,?,?,?,?,'assets/images/anonymous.png')";
+        $sql = "insert into user(roles, faculty, `name`, dob, phone, email, `password`, avatar) values(?,?,?,?,?,?,?,'assets/img/anonymous.png')";
         $stmt = $conn->prepare($sql);
         $salt = "124$@=+YJQ123";
         $token = hash("sha1", $pass . $salt);
@@ -121,32 +121,27 @@ class userCtrl
         $img = "";
         $name = "";
         $fac = "";
-        $cor = 0;
-        $sql = "select u.id, roles, u.name, f.name, (select id from user t1 where t1.roles = 2 and t1.faculty = u.faculty) corId,avatar from user as u left join faculty as f on u.faculty = f.code where email=?";
+        $sql = "select roles, u.name, f.name, avatar from user as u left join faculty as f on u.faculty = f.code where email=?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
         $num_of_rows = $stmt->num_rows;
         if ($num_of_rows > 0) {
-            $stmt->bind_result($id, $adm, $username, $dep, $corId, $avatar);
+            $stmt->bind_result($adm, $username, $dep, $avatar);
             while ($stmt->fetch()) {
-                $iduser = $id;
                 $role = $adm;
                 $name = $username;
                 $fac = $dep;
-                $cor = $corId;
                 $img = $avatar != null ? $avatar : 'assets/images/anonymous.png';
             }
             $stmt->free_result();
             $stmt->close();
         }
         $author = (array) [
-            'id' => $iduser,
             'role' => $role,
             'name' => $name,
             'faculty' => $fac,
-            'corId' => $cor,
             'ava' => $img
         ];
         return $author; 
