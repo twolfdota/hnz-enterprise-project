@@ -46,14 +46,6 @@
         <div>
             <nav class="navbar navbar-findcond navbar">
                 <div class="container">
-                    <!-- <div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#">Trang chủ</a>
-					</div> -->
                     <div class="collapse navbar-collapse" id="navbar">
                         <ul class="nav navbar-nav navbar-left">
                             <li class="dropdown">
@@ -69,24 +61,6 @@
                                 <a href="gioithieu.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Giới thiệu</a>
                             </li>
                         </ul>
-                        <!-- <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <img class="avatar" src="<?php echo $author['ava']?>">
-                            </li>
-                            <li>
-                                <p> <?php echo $author['name']?><i> _ </i><span> <?php echo $author['faculty']?> Department</span></p>
-                            </li>
-                            <li class="logoutHome">
-                                <a href="/hnz-enterprise-project/logout" class="dropdown-toggle text-right" role="button" aria-expanded="false"> 
-                                    <i class="fa fa-sign-out" aria-hidden="true" title="logout"></i>
-                                </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="/hnz-enterprise-project/cms" class="dropdown-toggle text-right" role="button" aria-expanded="false"> 
-                                    <i class="fa fa-gg" aria-hidden="true" title="Go to Manazine page"></i>
-                                </a>
-                            </li>
-                        </ul> -->
                     </div>
                 </div>
             </nav>

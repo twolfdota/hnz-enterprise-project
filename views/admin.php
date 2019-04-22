@@ -133,7 +133,7 @@
                                         <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
                                     </div>
                                     <div class="icon text-right">
-                                        <i id="signalCMT" class="fa fa-commenting-o" aria-hidden="true"></i>
+                                        <i class="signalCMT fa fa-commenting-o" aria-hidden="true"></i>
                                     </div>
                                 </div>
                                 <div class="contentNotification">
@@ -146,7 +146,7 @@
                                         <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
                                     </div>
                                     <div class="icon text-right">
-                                        <i id="signalDone" class="fa fa-check-square-o" aria-hidden="true"></i>
+                                        <i class="signalDone fa fa-check-square-o" aria-hidden="true"></i>
                                     </div>
                                     
                                 </div>
@@ -160,7 +160,7 @@
                                         <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
                                     </div>
                                     <div class="icon text-right">
-                                        <i id="signalCMT" class="fa fa-commenting-o" aria-hidden="true"></i>
+                                        <i class=" signalCMT fa fa-commenting-o" aria-hidden="true"></i>
                                     </div>
                                 </div>
                                 <div class="contentNotification">
@@ -173,7 +173,7 @@
                                         <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
                                     </div>
                                     <div class="icon text-right">
-                                        <i id="signalCancel" class="fa fa-ban" aria-hidden="true"></i>
+                                        <i class="signalCancel fa fa-ban" aria-hidden="true"></i>
                                     </div>
                                 </div>
 
@@ -210,11 +210,16 @@
                     <div class="nameLink">
                         <div class="linkLeft hidden-xs hidden-sm">
                             <div class="icon">
-                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
                             </div>
                             <div class="linkText">
-                                <h4>Registration</h4>
-                                <p>Hello</p>
+                                <h4>Time remaining</h4>
+                                <span>
+                                    <label id="days"></label> <span>Days</span>
+                                    <label id="hours"></label> <span>:</span>
+                                    <label id="minutes"></label> <span>:</span>
+                                    <label id="seconds"></label>
+                                </span>
                             </div>
                         </div>
                         <div class="linkRight text-right">
