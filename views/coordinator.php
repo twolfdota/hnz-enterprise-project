@@ -64,12 +64,7 @@
                 <ul>
                     <li>
                         <a data-toggle="pill" href="#viewallmagazines">
-                            <i class="fa fa-bars" aria-hidden="true"></i> View All Magaiznes
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="pill" href="#yourmagazine">
-                            <!-- <i class="fa fa-bars" aria-hidden="true"></i> Your File -->
+                            View All Magaiznes
                         </a>
                     </li>
                 </ul>
@@ -103,18 +98,101 @@
         <div class="mainForm">
             <div class="menubar">
                 <div class="menubarRight text-right hidden-md hidden-lg">
-                    <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->
                     <ul>
                         <li class="icon-nvar">
                             <a href="#menu">
                                 <i class="fa fa-bars" aria-hidden="true"></i>
                             </a>
                         </li>
+                        <li class="bellMobile">
+                            <a href="#" id="btnBellMobile">
+                                <div class="">
+                                    <i class="fa fa-bell" aria-hidden="true"></i>
+                                </div>
+                                <span>1</span>
+                            </a>
+                        </li>
+                        <div id="ShowBell" class="dropdown-contentMobile">
+                            <div class="session1Notification text-left">
+                                <span>Thông báo</span>
+                            </div>
+                            <div class="today">
+                                <span>TODAY</span>
+                            </div>
+                            <div class="allNotification">
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i class="signalCMT fa fa-commenting-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>Admin <span>đã phê duyệt bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i class="signalDone fa fa-check-square-o" aria-hidden="true"></i>
+                                    </div>
+                                    
+                                </div>
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i class=" signalCMT fa fa-commenting-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>Admin <span>đã không phê duyệt bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i class="signalCancel fa fa-ban" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+                      </div>
                         <li class="active">
                             <img src="<?php echo $author['ava'];?>">
                         </li>
                         <li>
-                            <!-- <a href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i> -->
+                            <div class="dropdown">
+                                <a id="menu1" data-toggle="dropdown" class=" dropdown-toggle"  href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="/hnz-enterprise-project/" class=" goto" title="Go to Home page">
+                                                <i class="fa fa-gg" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                          <a href="/hnz-enterprise-project/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                        </li>
+                                  </ul>
+                              </div>
                         </li>
                     </ul>
                 </div>
@@ -224,7 +302,7 @@
                             <img src="<?php echo $author['ava'];?>">
                         </li>
                         <li>
-                            <!-- <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i> -->
+                            <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i>
                             <ul class="logout">
                                 <li>
                                     <a href="/hnz-enterprise-project/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
@@ -363,7 +441,7 @@
 </div>
 <div id="viewallmagazines" class="registerContentForm tab-pane fade in active">
     <div>
-        <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
+        <div class="titleList">
             <div class="well well-sm text-center">
 
                 <h3>List of Magaizne</h3>
@@ -391,8 +469,8 @@
                     </div> -->
                 </div>
             </div>
-            <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12" style="overflow: auto;width: 100%">
-                <table class="table table-striped custab" >
+            <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12 listMagazine">
+                <table class="table table-striped custab">
                 <thead>
                         <tr>
                             <th>ID</th>
@@ -437,91 +515,6 @@
                     }
                     ?>
                 </table>
-            </div>
-        </div>
-        <div id="viewmagazine" class="modal">
-
-          <div class="modal-content animate" action="/action_page.php">
-            <span onclick="document.getElementById('viewmagazine').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
-                <div class="uploadForm">  
-
-                    <input id="mgz-id" name="mgzId" type="hidden" value=""/>
-                    <!-- image-preview-filename input [CUT FROM HERE]-->
-                    <div class="">
-                        <div class="">
-                           <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
-                                <h4>Magazine</h4>
-                            </div>
-                           <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contentmaganizeCroll">
-                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                                 <div class="contentmaganize">
-                                    <h3>Test title</h3>
-                                    <img  src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
-                                    
-                                    <p>
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div class="row session3">
-                <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
-                    
-                </div>
-                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-                    <h4>Comment</h4>
-                    <div class="formCmt col-lg-12 col-md-12 col-sm-12 col-xs-12" id="formCmt">
-                       <div class="comment">
-                           <div class="imgCmt">
-                               <img src="assets/images/user.png">
-                           </div>
-                           <div class="nameCmt">
-                               <h4>Vu Van Tien <span>IT</span></h4>
-                           </div>
-                           <div class="contentCmt">
-                               You can also use the following javascript to 
-                           </div>
-                       </div>
-                       <div class="comment">
-                           <div class="imgCmt">
-                               <img src="assets/images/user.png">
-                           </div>
-                           <div class="nameCmt">
-                               <h4>Vu Van Tien <span>IT</span></h4>
-                           </div>
-                           <div class="contentCmt">
-                               You can also use the following javascript to 
-                           </div>
-                       </div>
-                       <div class="comment">
-                           <div class="imgCmt">
-                               <img src="assets/images/user.png">
-                           </div>
-                           <div class="nameCmt">
-                               <h4>Vu Van Tien <span>IT</span></h4>
-                           </div>
-                           <div class="contentCmt">
-                               You can also use the following javascript to close 
-                           </div>
-                       </div>
-                   </div>
-                   <div class="YourFormcmt">
-                    <div class="imgCmt">
-                        <img src="<?php echo $author['ava'];?>">
-                    </div>
-                    <div class="contentCmt">
-                        <textarea placeholder="Write your comment..." class="form-control" rows="5" required id="comment"></textarea>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -777,6 +770,15 @@ function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 </script>
+<script type="text/javascript">
+                // Get the button, and when the user clicks on it, execute myFunction
+        document.getElementById("btnBellMobile").onclick = function() {myFunctionBell()};
+
+        /* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
+        function myFunctionBell() {
+          document.getElementById("ShowBell").classList.toggle("show");
+        }
+    </script>
 
 <script type="text/javascript" src="assets/js/slick.js"></script>
 <script type="text/javascript" src="assets/js/slick.min.js"></script>
