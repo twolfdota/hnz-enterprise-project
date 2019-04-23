@@ -1,4 +1,20 @@
 @media screen and (max-width:800px) {
+  .nameCmt h4{
+    font-size: 14px !important;
+    margin-top: 0
+
+}
+
+.imgCmt{
+    width: 20%;
+}
+.nameCmt{
+    width: 80%;
+}
+.contentCmt{
+    padding-left: 0;
+    margin-top: 0px
+}
 .session1Notification{
     background-color: #FFFFFF;
     height: 55px;
@@ -102,11 +118,7 @@
     color: #da5b34;
     text-align: center !important;
 }
-.formCmt{
-    height: 150px;
-    overflow: auto;
-    width: 100%;
-}
+
 .commentPost .btnComent input{
     font-size: 14px;
     margin-bottom: 30px
@@ -199,6 +211,11 @@
 #viewallmagazines .listMagazine{
     width: 104%
 }
+/*.formCmt{
+    height: 150px;
+    overflow: auto;
+    width: 100%;
+}*/
 
   }
 
@@ -207,6 +224,7 @@
   }*/
 
   @media screen and (max-width:480px) {
+
     .header-top1 i{
     color: #da5b34;
     font-size: 25px;
@@ -252,6 +270,7 @@
 .oneComment{
     border:none;
 }
+
 .imgCmt img{
     height: auto;
     width: 100%;
@@ -266,36 +285,8 @@
     width: 80%;
     float: left;
 }
-.nameCmt h4{
-    margin-bottom:0;
-    margin-top:10px;
-    color: #880505 !important;
-    font-size: 14px !important;
 
-}
-.nameCmt h4 span{
-    margin-bottom:0;
-    margin-top:10px;
-    color: #054CC1 !important;
-    font-size: 14px !important
 
-}
-.nameCmt .role{
-    font-style: italic !important;
-}
-.nameCmt .time{
-    float: right !important;
-    margin-top: 2px !important;
-    color: #C7C6C6 !important;
-    font-size: 13px !important;
-}
-.contentCmt{
-    width: 100%;
-    float: left;
-    padding-left: 0;
-    margin-top: 10px;
-    margin-bottom: 5px
-}
   }
   @media screen and (min-width: 768px) and (max-width: 991px) {
 /*  #header-mobie #header-top .header-top3 img{

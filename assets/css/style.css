@@ -562,7 +562,7 @@ ul{
     min-height: 110px;
 }
 .formCmt{
-    height: 150px;
+    height: 250px;
     overflow: auto;
     width: 61%;
 }
@@ -588,7 +588,7 @@ ul{
     margin-bottom:0;
     margin-top:10px;
     color: #880505 !important;
-     font-size: 18px !important
+     font-size: 18px
 
 }
 .nameCmt h4 span{
@@ -1657,8 +1657,23 @@ background-image: linear-gradient(120deg, #3c8dbc 0%, #3c8dbc 100%); }
     float: left;
 }
 .contentCmtYourFormcmt textarea{
-    width: 100% !important
+    width: 100% !important;
+    height: 90% !important;
 }
 .YourFormcmt2{
-    margin-top: 10px
+    width: 100%;
+    float: left;
+    background-color: #FAFAFA;
+    border: 1px solid #EFEFEF;
+    padding: 15px;
+    border-radius: 3px;
+}
+/*.contentmaganizeCroll{
+    padding:0 !important;
+}*/
+.deleteMobile{
+    width: 1005
+}
+.deleteMobile a{
+    width: 100%
 }

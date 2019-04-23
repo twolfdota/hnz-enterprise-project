@@ -185,6 +185,11 @@
                                 </a>
                             </div>
                            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contentmaganizeCroll">
+                            <div class="deleteMobile hidden-lg hidden-md">
+                                <a value="<?php echo $_GET['mgzId']?>" class='btn btn-danger btn-xs' href="#" onclick="deleteMgz(this.getAttribute('value'))">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Delete
+                                </a>
+                            </div>
                              <div class="commentWith">
                                  <div class="contentmaganize">
                                      <input type="hidden" value="<?php echo $_GET['mgzId']?>" id="mgz-id"/>
@@ -258,18 +263,19 @@
                         <?php
                     }
                     ?>
-
-
-                   </div>
+                    
+                        <h4>Your Comment</h4>
                    <div class="YourFormcmt2">
-                    <div class="imgCmtYourFormcmt">
-                        <img src="<?php echo $author['ava'];?>">
-                    </div>
-                    <div class="contentCmtYourFormcmt">
-                        <textarea placeholder="Write your comment..." class="form-control" rows="5" required id="comment"></textarea>
+                    <div style="width: 100%">
+                        <div class="imgCmtYourFormcmt">
+                            <img src="<?php echo $author['ava'];?>">
+                        </div>
+                        <div class="contentCmtYourFormcmt">
+                            <textarea placeholder="Write your comment..." class="form-control" rows="5" required id="comment"></textarea>
+                        </div>
                     </div>
                 </div>
-
+                   </div>
             </div>
  </form>
 </div>
