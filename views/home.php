@@ -237,7 +237,7 @@
                             foreach($result as $item) {
                                 ?>
                      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
-                        <a href="/hnz-enterprise-project/postdetail">
+                        <a href="/hnz-enterprise-project/postdetail?mgzId=<?php echo $item->id ?>">
                             <div class="section-1">
                                 <figure>
                                     <img src="<?php echo $item->img?>">

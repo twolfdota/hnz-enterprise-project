@@ -4,7 +4,46 @@
     margin-top: 0
 
 }
+.uploadForm h4{
+  font-size: 14px
+}
+.imgCmt{
+    width: 20%;
+}
+.modal{
+  margin-top: -50px
+}
+.commentStudent{
+    width: 100%;
+    float: left;
+}
+.commentStudent2{
+    width: 100%;
+    float: left;
+}
+.uploadForm {
+    width: 100%;
+}
+.session3{
+  padding:0 10px;
+}
+.commentStudent h4{
+  margin-left: 20px
+}
+.modal .close {
+  right: 10px;
+  top: -7px;
+}
+.registerForm .mainForm input {
+    margin-bottom: 20px;
+}
 
+.rules {
+    width: 100%;
+}
+.modal-content {
+    width: 100%;
+}
 .imgCmt{
     width: 20%;
 }
@@ -153,6 +192,7 @@
   padding:0;
 }
 
+
 }
 
 /*.content-cart .col-xs-12{
@@ -162,9 +202,15 @@
 .btnSubmit {
     width: 100% !important;
 }
+.crollStudent{
+    width: 104% !important;
+}
 
 }
 @media screen and (max-width:480px) {
+  .crollStudent{
+    width: 106% !important;
+}
   .header-top1 i{
     color: #da5b34;
     font-size: 25px;

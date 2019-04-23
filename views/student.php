@@ -424,12 +424,12 @@
 </div>
 <div id="yourmagazine" class="registerContentForm tab-pane fade">
     <div>
-        <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
+        <div class="titleList">
             <div class="well well-sm text-center">
 
                 <h3>View by Status</h3>
 
-                <div class="btn-group" data-toggle="buttons">
+                <!-- <div class="btn-group" data-toggle="buttons">
 
                     <label class="btn btn-success active">
                         <input type="radio" name="options" id="option2" autocomplete="off" >
@@ -449,10 +449,10 @@
                         <span class="glyphicon glyphicon-ok"></span>
                     </label>
                     
-                </div>
+                </div> -->
             </div>
         </div>
-        <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
+        <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12 crollStudent">
             <table class="table table-striped custab" id="mgzTable">
                 <thead>
                     <tr>
@@ -491,7 +491,7 @@
       <div class="modal-content animate">
         <span onclick="document.getElementById('update').style.display='none'" class="close" title="Close Modal">&times;</span>
         <form name="editForm" id="editForm" method="post" enctype="multipart/form-data">  
-            <div class="uploadForm">  
+            <div class="uploadForm UpdateForm">  
                 <input id="mgz-id" name="mgzId" type="hidden" value=""/>
                 <input type="hidden" value="<?php echo $author['id']?>" name="userid"/>
                 <input type="hidden" value="<?php echo $author['corId']?>" name="corId"/>
@@ -546,29 +546,67 @@
                 </div>
             </div>
 
-        </div>
-        <div class="row">
-            <img src="" id="editImg" alt="" width="50%" height="auto"/>
-        </div>
-        <div class="row">
-            <p id="updateErrorMessage"></p>
-        </div>
-        <div class="row">
-            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
             </div>
-            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-             <input " class="btnSubmit" type="submit" name="form-upload" onclick="updateMgz(document.editForm, event)" value="Update">
+            <div class="row imgEdit">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                    
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                    <img src="" id="editImg" alt="" width="50%" height="auto"/>
+                </div>
+            </div>
+            <div class="row">
+                <p id="updateErrorMessage"></p>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                 <input " class="btnSubmit" type="submit" name="form-upload" onclick="updateMgz(document.editForm, event)" value="Update">
+             </div>
          </div>
-     </div>
 
- </div><!-- /input-group image-preview [TO HERE]--> 
+     </div><!-- /input-group image-preview [TO HERE]--> 
 </div>
 </form>
-<div class="row session3">
-    <div class="col-lg-2 col-md-2  ">
-
+<form name="editForm" id="editForm" method="post" enctype="multipart/form-data">  
+    <div class="uploadForm UpdateForm">  
+        <div class="row session3">
+    <div class="commentStudent">
+        <h4>Comment</h4>
     </div>
-    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+    <div class="commentStudent2 CommentOver">
+        <div class="formCmt" id="formCmt">
+           <div class="comment">
+               <div class="imgCmt">
+                   <img src="assets/images/user.png">
+               </div>
+               <div class="nameCmt">
+                   <h4>Vu Van Tien <span>IT</span></h4>
+               </div>
+               <div class="contentCmt">
+                   You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
+               </div>
+           </div>
+       </div>
+       <h4>Your Comment</h4>
+       <div class="YourFormcmtSTudent">
+        <div class="imgCmt">
+            <img src="<?php echo $author['ava'];?>">
+        </div>
+        <div class="contentCmt">
+            <textarea placeholder="Write your comment..." class="form-control" rows="5" required id="comment"></textarea>
+        </div>
+    </div>
+</div>
+</div>
+    </div>
+</form>
+<!-- <div class="row session3">
+    <div class="commentStudent">
+        hh
+    </div>
+    <div class="commentStudent2">
         <h4>Comment</h4>
         <div class="formCmt" id="formCmt">
            <div class="comment">
@@ -591,8 +629,7 @@
             <textarea placeholder="Write your comment..." class="form-control" rows="5" required id="comment"></textarea>
         </div>
     </div>
-
-</div>
+</div> -->
 </div>
 </div>
 </div>
