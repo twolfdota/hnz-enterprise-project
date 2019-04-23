@@ -1299,8 +1299,8 @@ i.icon_g_plus {
 }
 .content-news .news img{
   width: 100%;
-  height: auto;
-  margin-top: 10px
+  height: 20vh;
+  margin-top: 10px;
 }
 .content-news .news .section-2{
   padding:10px 0px;

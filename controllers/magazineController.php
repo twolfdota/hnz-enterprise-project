@@ -79,6 +79,7 @@ class magazineCtrl
                                                     FROM `user` 
                                                     INNER JOIN magazine ON `user`.id = magazine.userId
                                                     where `user`.faculty = (SELECT faculty from `user` where id = $id)
+                                                    and magazine.academicYear = YEAR(now())
                                                     order by magazine.created_at desc, magazine.updated_at desc");
             while($show = mysqli_fetch_array($query_fetch)){
                 $item = (object) [
@@ -98,6 +99,32 @@ class magazineCtrl
         } // isset brace
         return $result;
     
+    }
+
+    function getListMagazineForGuest() {
+        require './DBConnect.php';
+        $result = array();
+
+
+            $query_fetch = mysqli_query($conn,"SELECT m.*, u.name as authorName FROM magazine m
+            inner join user u on m.userid = u.id
+            WHERE `status` = 'approved' and academicYear = YEAR(now())
+            order by created_at desc, updated_at desc");
+            while($show = mysqli_fetch_array($query_fetch)){
+                $item = (object) [
+                    'id' => $show['id'],
+                    'title' => $show['title'],
+                    'img' => $show['imgFile'],
+                    'doc' => $show['docFile'],
+                    'created_at' => $show['created_at'],
+                    'author' => $show['authorName']
+                ];
+                array_push($result, $item);
+            } // while loop brace
+
+
+        return $result;
+
     }
 
     function removeMagazine($id, $deletor)

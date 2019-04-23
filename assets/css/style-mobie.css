@@ -205,9 +205,7 @@
   /*.content-cart .col-xs-12{
     padding: 0px !im
   }*/
-  @media screen and (max-width:640px) {
-  
-  }
+
   @media screen and (max-width:480px) {
     .header-top1 i{
     color: #da5b34;
@@ -298,7 +296,6 @@
     margin-top: 10px;
     margin-bottom: 5px
 }
-
   }
   @media screen and (min-width: 768px) and (max-width: 991px) {
 /*  #header-mobie #header-top .header-top3 img{
