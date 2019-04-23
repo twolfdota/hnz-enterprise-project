@@ -86,6 +86,9 @@
 .slider-header a{
     width: 100%
 }
+.slider{
+    width: 100%
+}
 .slick-next, .slick-prev {
     display: none !important
 }
@@ -194,7 +197,8 @@ nav.navbar-findcond ul.navbar-nav a:active{
 }
 .title{
     color: #37474f;
-    margin:30px 0;
+    margin:25px 0;
+    font-size: 18px !important
 }
 .registerForm .mainForm{
     background-color: #f2f7fb
@@ -1125,9 +1129,24 @@ i.icon_g_plus {
     height: 35px;
     padding:5px;
 }
+
+.contentNotification{
+    width: 100%;
+    padding:5px;
+    background-color: #F7F7F7;
+    display:block;
+    min-height:100px;
+    border-bottom: 1px solid #D1D1D1;
+    cursor:pointer;
+}
+
+.contentNotification:hover {
+    background-color: lightgrey;
+}
+
 .contentNotification .img{
     width: 15%;
-    float: left;
+    float:left;
 }
 .contentNotification .img img{
     width: 70%;
@@ -1143,7 +1162,7 @@ i.icon_g_plus {
 }
 .contentNotification .icon i{
     font-size: 20px;
-    line-height: 40px
+    line-height: 40px;
 }
 .contentNotification .textContent span{
     color: #2B2B2B !important;
@@ -1155,31 +1174,351 @@ i.icon_g_plus {
     font-size: 14px !important;
     font-weight: 700 !important;
 }
-.contentNotification{
-    width: 100%;
-    padding:5px;
-    background-color: #F7F7F7;
-    min-height: 65px;
-    border-bottom: 1px solid #D1D1D1
-}
+
+
+
 .allNotification{
     padding:5px;
 }
 .contentNotification .textContent .time{
     color: #ADACAC !important
 }
-#signalCMT{
+.signalCMT{
     color: #F97832
 }
-#signalDone{
+.signalDone{
     color: #2EEC09
 }
-#signalCancel{
+.signalCancel{
     color: #960505
+}
+
+.signalUpload {
+    color:cornflowerblue;
+}
+
+.signalUpdate {
+    color: cornflowerblue;
+}
+.signalcmtLate {
+    color:chocolate;
 }
 .uploadFormMagazine{
     margin-left: auto;
     margin-right: auto;
      width: 100%; 
 }
+
+
+
+/*Trang chủ*/
+.timeHome{
+    background-color: #ED910D;
+    height: auto;
+    margin-top: -5px;
+    text-align: center;
+    position: relative;
+}
+.timeHome .margin-top{
+    margin: 0px !important
+}
+.Timeremaining {
+    margin-top: 20px
+}
+.Timeremaining label{
+    color: #42495b;
+    font-size: 65px
+}
+
+.Timeremaining label{
+    background-color: white;
+    padding:15px 10px;
+    border-radius: 5px;
+    height: auto;
+    margin-top: 10px;
+    border: 1px solid #CACACA
+}
+
+.Timeremaining span{
+    color: #373D4C;
+    font-size: 20px;
+    text-transform:uppercase;
+}
+.Timeremaining h2{
+    padding:15px 10px;
+    height: auto;
+    margin-top: 10px;
+    text-transform:uppercase;
+    color: #42495b;
+    font-size: 27px
+}
+.Timeremaining h4{
+    margin-top: 10px;
+    color: #42495b;
+    font-size: 15px;
+    margin-bottom: 20px
+}
+.title-news h2{
+    padding:15px 10px;
+    height: auto;
+    margin-top: 10px;
+    text-transform:uppercase;
+    color: #42495b;
+    font-size: 27px
+}
+.title-news h4{
+    margin-top: 10px;
+    color: #42495b;
+    font-size: 15px;
+    margin-bottom: 20px
+}
+.down{
+    position: absolute;
+    top:-45px;
+    left: 48%;
+    z-index: 99999
+}
+.down i{
+    font-size: 100px;
+    color: white
+}
+
+
+
+.content-news{
+    background-color: white;
+    margin-top: 30px
+}
+#content-background{
+    background-color: white;
+    margin-top: 30px
+}
+.content-news .news img{
+  width: 100%;
+  height: auto;
+  margin-top: 10px
+}
+.content-news .news .section-2{
+  padding:10px 0px;
+}
+.content-news .news .section-2 a{
+  color: #3C3B3B;
+}
+.content-news .news .section-2 a:hover{
+  color: #356690;
+}
+.content-news .news .section-3 i{
+  color:#ff9813;
+}
+.content-news .news .section-3 time{
+  padding-right:20px;
+}
+.content-news .news .section-4{
+  margin-top: 30px;
+  margin-bottom:20px;
+}
+.content-news .news .section-4 a{
+  padding: 8px 10px;
+  background-color: #356690;
+  color: white;
+  font-size:12px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+.content-news .news .section-4 a:hover{
+  background-color: white;
+  color: #356690;
+  border:1px solid #356690;
+}
+
+.content-news .news {
+  margin-bottom: 10px;
+  border:1px solid #E8E8E8;
+  height: auto;
+}
+.section-1 figure {
+  position: relative;
+}
+.section-1 figure::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  display: none;
+  content: '';
+  width: 50%;
+  height: 100%;
+  background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+  -webkit-transform: skewX(-25deg);
+  transform: skewX(-25deg);
+}
+.section-1:hover figure::before {
+  display: block;
+}
+.section-1 figure:hover::before {
+  -webkit-animation: shine .5s;
+  animation: shine .5s;
+}
+@-webkit-keyframes shine {
+  100% {
+    left: 30%;
+  }
+}
+@keyframes shine {
+  100% {
+    left: 30%;
+  }
+}
+.img-bottom img{
+    margin-top: -5px;
+    width: 100%;
+    margin-top: -5px
+}
+.top-footer{
+    background-color: #05115D;
+    height: 10px
+}
+.myfooter{
+    background-color: #E46011
+}
+.myfooter h4{
+    color: #F2F2F2
+}
+
+/*Trang chi tiết bài viết*/
+
+.postdetail .section-1{
+    background-image: url(../images/background_header_page_img.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    min-height: 150px;
+}
+.linkPost{
+    background-color: white;
+    border-bottom: 2px solid #D8D8D8
+}
+.linkPost ul li{
+    list-style: none;
+    display: inline-block;
+    padding:10px 20px 10px 0px;
+}
+.linkPost ul{
+    list-style: none;
+    display: inline-block;
+}
+.contentPost .timePost{
+    color: #4A4A4A;
+    margin-top: 30px;
+    font-size: 16px
+}
+.contentPost .titlePost{
+    color: #4A4A4A;
+    font-size: 16px
+}
+.contentPost .mainContent{
+    color: #4A4A4A;
+    line-height: 25px;
+    border-bottom: 2px solid #D66512
+}
+.contentPost .mainContent img{
+    text-align: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px
+}
+.commentPost{
+    margin-top: 40px
+}
+.commentPost .imgComent img{
+    width: 80%;
+    height: auto;
+    border: 1px solid #DFDFDF;
+    border-radius: 3px
+}
+.commentPost .btnComent input{
+    width: 30%;
+    background-color: #356690;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding:5px 10px;
+    border:1px solid #356690;
+}
+.commentPost .btnComent input:hover{
+    color: #356690;
+    background-color: white;
+    border:1px solid #356690;
+}
+
+/*trang download file*/
+
+
+.btnDownload button{
+    width: 100%;
+    background-color: #428bca;
+    height: 45px !important;
+    border: 0px;
+    color: white;
+    font-size: 18px;
+    border-radius: 3px;
+    margin-top: 20px
+}
+.btnDownload button:hover{
+    background-color: white;
+    color: #428bca;
+    border: 1px solid #428bca;
+}.commentEveryone{
+    width: 100%;
+    float: left;
+    background-color: #FAFAFA;
+    border: 1px solid #EFEFEF;
+    padding: 15px;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    margin-top: 20px
+
+}
+.commentEveryone .img{
+    width: 25%;
+    float: left;
+}
+.commentEveryone .content{
+    width: 75%;
+    float: left;
+}
+.commentEveryone .content p{
+    width: 100%
+}
+.commentEveryone .img img{
+    width: 70%;
+    height: auto;
+    max-height: 150px;
+    border-radius: 3px
+}
+.commentEveryone .content time{
+    padding-left: 10px
+}
+.commentEveryone .content span{
+    color: #2953DC
+}
+.oneComment{
+    border-bottom: 1px solid #D8D8D8;
+    min-height: 150px;
+    margin-top: 20px;
+    height: auto;
+}
+.commentPost{
+    width: 100%;
+    float: left;
+    background-color: #FAFAFA;
+    border: 1px solid #EFEFEF;
+    padding: 15px;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    margin-top: 20px
+}
+.linkText label{
+    font-weight: 500;
+
 }

@@ -29,7 +29,7 @@
                     <h4 class="modal-title">User information</h4>
                 </div>
                 <div class="modal-body" id="mymodal-body">
-                    <center><img src="assets/images/anonymous.png" width="50%" height="50%" /></center>
+                    <center><img  src="assets/images/anonymous.png" width="50%" height="50%" /></center>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">OK</button>
@@ -58,10 +58,10 @@
         </div>
         <div class="mainMenu hidden-xs hidden-sm">
             <div class="logoTeam">
-                <a href="index.html">
-                    <img src="assets/images/logo.png">
+                <a data-toggle="pill" href="#home">
+                    <img  src="assets/images/logo.png">
                 </a>
-                <a href="">Heroes and Zeroes</a>
+                <a href="#">Heroes and Zeroes</a>
             </div>
             <div class="Navigation">
                 <h4>Navigation</h4>
@@ -78,11 +78,16 @@
                             <i class="fa fa-bars" aria-hidden="true"></i> Academic Year's Event Information
                         </a>
                     </li>
+                    <li>
+                        <a data-toggle="pill" href="#downloadFile">
+                            <i class="fa fa-bars" aria-hidden="true"></i> Download File
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
         <div class="mainForm">
-        <div class="menubar">
+            <div class="menubar">
                 <div class="menubarRight text-right hidden-md hidden-lg">
                     <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->
                     <ul>
@@ -95,13 +100,91 @@
                             <img src="<?php echo $author['ava'];?>">
                         </li>
                         <li>
-                            <a href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i>
+                            <!-- <a href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i> -->
                         </li>
                     </ul>
                 </div>
-                <div class="menubarRight text-right hidden-xs hidden-sm">
+                <div class="menubarRight hidden-xs hidden-sm">
                     <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->
-                    <ul class="menu-logout">
+                    <ul class="menu-bell text-left col-lg-6 col-md-6">
+                        <li class="full hidden-xs hidden-sm">
+                            <a href="#" id="btnBell">
+                                <div class="bell">
+                                    <i class="fa fa-bell" aria-hidden="true"></i>
+                                </div>
+                                <span>1</span>
+                            </a>
+                        </li>
+                        <div id="myDropdown" class="dropdown-content">
+                            <div class="session1Notification">
+                                <span>Thông báo</span>
+                            </div>
+                            <div class="today">
+                                <span>TODAY</span>
+                            </div>
+                            <div class="allNotification">
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i class="signalCMT fa fa-commenting-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>Admin <span>đã phê duyệt bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i class="signalDone fa fa-check-square-o" aria-hidden="true"></i>
+                                    </div>
+                                    
+                                </div>
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i class=" signalCMT fa fa-commenting-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="contentNotification">
+                                    <div class="img">
+                                        <img src="assets/images/images.jpg">
+                                    </div>
+                                    <div class="textContent">
+                                        <p>Admin <span>đã không phê duyệt bài viết của bạn</span>
+                                        </p> 
+                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
+                                    </div>
+                                    <div class="icon text-right">
+                                        <i class="signalCancel fa fa-ban" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+                      </div>
+                    </ul>
+
+                    <ul class="menu-logout text-right col-lg-6 col-md-6">
+                        <a href="/hnz-enterprise-project/" class="text-left goto" title="Go to Home page">
+                            <i class="fa fa-gg" aria-hidden="true"></i>
+                        </a>
                         <li class="full hidden-xs hidden-sm">
                             <a href="#">
                                 <i onclick="openFullscreen();" class="fa fa-arrows-alt" aria-hidden="true"></i>
@@ -111,12 +194,13 @@
                             <img src="<?php echo $author['ava'];?>">
                         </li>
                         <li>
-                            <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i>
+                            <!-- <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i> -->
                             <ul class="logout">
                                 <li>
                                     <a href="/hnz-enterprise-project/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                 </li>
                             </ul>
+                            
                         </li>
                     </ul>
                 </div>
@@ -126,11 +210,16 @@
                     <div class="nameLink">
                         <div class="linkLeft hidden-xs hidden-sm">
                             <div class="icon">
-                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
                             </div>
                             <div class="linkText">
-                                <h4>Registration</h4>
-                                <p>Hello</p>
+                                <h4>Time remaining</h4>
+                                <span>
+                                    <label id="days"></label> <span>Days</span>
+                                    <label id="hours"></label> <span>:</span>
+                                    <label id="minutes"></label> <span>:</span>
+                                    <label id="seconds"></label>
+                                </span>
                             </div>
                         </div>
                         <div class="linkRight text-right">
@@ -153,7 +242,31 @@
                     </div>
                 </div>
                 <div class="registerContent tab-content">
-                    <div id="register" class="registerContentForm tab-pane fade in active">
+                    <div id="home" class="registerContentForm tab-pane fade in active">
+                        <form name="reportForm" id="reportForm">
+                            <!-- <div class="title">
+                                <h3>Download File</h3>
+                            </div> -->
+                            <div class="text-center row">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <div style="background-color: red;width: 200px ;height: 200px;border-radius: 50%">
+                                        1
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <div style="background-color: red;width: 200px ;height: 200px;border-radius: 50%">
+                                        1
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <div style="background-color: red;width: 200px ;height: 200px;border-radius: 50%">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="register" class="registerContentForm tab-pane fade">
                         <form name="formRes" id="createForm">
                             <div class="title">
                                 <h3>Personal information</h3>
@@ -218,7 +331,7 @@
                             </div>
                             <div class="main-input">
                                 <div class="text">
-                                    <p><span>* </span>Password</p>
+                                    <p><span>* </span>Pass</p>
                                 </div>
                                 <div class="input">
                                     <input type="Password" name="password" required>
@@ -272,6 +385,16 @@
                                 <div class="button-res">
                                     <input type="submit" name="" value="Edit" onclick="validateYear(document.yearForm, event)">
                                 </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="downloadFile" class="registerContentForm tab-pane fade">
+                        <form name="downloadForm" id="downloadForm">
+                            <div class="title">
+                                <h3>Download File</h3>
+                            </div>
+                            <div class="btnDownload row" id="downloadList">
+
                             </div>
                         </form>
                     </div>
@@ -371,6 +494,19 @@
                 })
             }
         }
+
+    function getZip(yearNum) {
+        console.log(yearNum);
+        $.ajax({
+            url: `/hnz-enterprise-project/downloadZip?year=${yearNum}`,
+            type: 'GET',
+            success: function(result) {
+                console.log("download success!!");
+            }
+        })    
+           
+    }
+
     </script>
     <!--
     <script>
@@ -428,11 +564,20 @@
                 dataType: 'json',
                 success: function(result) {
                     console.log(new Date(result[0].dl1).formatted());
-                    if (result[0]) {
-                        document.yearForm.yearName.value = result[0].yearName;
-                        document.yearForm.startDate.defaultValue = new Date(result[0].std).formatted();
-                        document.yearForm.deadline.defaultValue = new Date(result[0].dl1).formatted();
-                        document.yearForm.finalDeadline.defaultValue = new Date(result[0].dl2).formatted();
+                    if (result.length) {
+
+                        var thisYear = new Date().getFullYear();
+                        if(result[0].year == thisYear) {
+                            document.yearForm.yearName.value = result[0].yearName;
+                            document.yearForm.startDate.defaultValue = new Date(result[0].std).formatted();
+                            document.yearForm.deadline.defaultValue = new Date(result[0].dl1).formatted();
+                            document.yearForm.finalDeadline.defaultValue = new Date(result[0].dl2).formatted();
+                        }
+                        result.forEach(function(item){
+                            $("#downloadList").append(`<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <button type="button" value=${item.year} onclick="getZip(this.getAttribute('value'))">${item.year} - ${item.yearName}</button>
+                                </div>`)
+                        })
                     }
                 }
             })
@@ -470,7 +615,15 @@
             })
         });
     </script>
+    <script type="text/javascript">
+                // Get the button, and when the user clicks on it, execute myFunction
+        document.getElementById("btnBell").onclick = function() {myFunction()};
 
+        /* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+    </script>
 
     <script type="text/javascript" src="assets/js/slick.js"></script>
     <script type="text/javascript" src="assets/js/slick.min.js"></script>

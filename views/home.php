@@ -43,7 +43,6 @@
                 </div>
             </div>
         </div>
-        <div>
             <nav class="navbar navbar-findcond navbar">
                 <div class="container">
                     <!-- <div class="navbar-header">
@@ -90,7 +89,6 @@
                     </div>
                 </div>
             </nav>
-        </div>
     </header>
     <header class="hidden-lg  hidden-md" id="header-mobie">
         <div id="header-top ">
@@ -126,53 +124,283 @@
         </div>
     </header>
 
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="slider">
         <div class="slider-header">
             <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
             <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
             <a href=""><img src="assets/images/student-education_1526999740.jpg"></a>
         </div>
     </div>
+    <div class="img-bottom">
+        <img src="assets/images/scale-top.png">
     </div>
     <content>
+        <div class="text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="Timeremaining">
+                            <h2>Time Remaining</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="timeHome">
+            <div class="container">
+                <div class="margin-top">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <div class="Timeremaining">
+                                <label id="days"></label><br>
+                                <span>Days</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <div class="Timeremaining">
+                                <label id="hours"></label><br>
+                                <span>Hours</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <div class="Timeremaining">
+                                <label id="minutes"></label><br>
+                                <span>Minutes</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <div class="Timeremaining">
+                                <label id="seconds"></label><br>
+                                <span>Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="down">
+                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
         <div class="container">
-					<?php
-            $ch = curl_init();
-            $file_name_with_full_path = "/xampp/htdocs/hnz-enterprise-project/uploads/test/guide.docx";
-
-            curl_setopt($ch, CURLOPT_URL, "https://api.docconversionapi.com/convert?outputFormat=html");
-            curl_setopt($ch, CURLOPT_POST, 2);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-ApplicationID:286f4243-5ed4-450d-bce9-435f568d450b', 'X-SecretKey:120748dd-ac15-44fd-88c8-ca46149b4b8d'));
-
-            if (function_exists('curl_file_create')) { // php 5.5+
-              $cFile = curl_file_create($file_name_with_full_path, 'application/msword', basename($file_name_with_full_path));
-            } else { 
-              $cFile = '@' . realpath($file_name_with_full_path);
-            }
-
-            $post = array(
-              "optionsJson" => "{}",
-              "inputFile" => $cFile
-            );
-
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $server_output = curl_exec($ch); 	
-            if ($server_output === false) {
-              echo 'Curl error occurred: ' . curl_error($ch);
-            } else {
-              echo $server_output;
-            }
-            ?>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 title-news text-center">
+                    <h2>TIN NỔI BẬT</h2>
+                    <h4>Ant Ngoại Ngữ - Tin tức về các chủ đề học tiếng Anh, sự nghiệp, lối sống, truyền cảm hứng,...</h4>
+                </div>
+            </div>
+        </div>
+        <div class="content-news">
+            <div class="container">
+                <div class="row" id="content-background">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
+                        <a href="/hnz-enterprise-project/postdetail">
+                            <div class="section-1">
+                                <figure>
+                                    <img src="assets/images/posts.jpg">
+                                </figure>
+                            </div>
+                            <div class="section-2">
+                                <a href="">
+                                    Bí quyết phối đồ với màu đỏ rượu hot nhất mùa xuân 2015
+                                </a>
+                            </div>
+                            <div class="section-3">
+                                <time>
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    12/12/2018
+                                </time>
+                                <a href="">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    VuvanTien
+                                </a>
+                            </div>
+                            <div class="section-4">
+                                <a href="">
+                                    Đọc thêm
+                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                </a>
+                            </div> 
+                        </a>   
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
+                        <a href="#">
+                            <div class="section-1">
+                                <figure>
+                                    <img src="assets/images/posts.jpg">
+                                </figure>
+                            </div>
+                            <div class="section-2">
+                                <a href="">
+                                    Bí quyết phối đồ với màu đỏ rượu hot nhất mùa xuân 2015
+                                </a>
+                            </div>
+                            <div class="section-3">
+                                <time>
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    12/12/2018
+                                </time>
+                                <a href="">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    VuvanTien
+                                </a>
+                            </div>
+                            <div class="section-4">
+                                <a href="">
+                                    Đọc thêm
+                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                </a>
+                            </div> 
+                        </a>   
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
+                        <a href="#">
+                            <div class="section-1">
+                                <figure>
+                                    <img src="assets/images/posts.jpg">
+                                </figure>
+                            </div>
+                            <div class="section-2">
+                                <a href="">
+                                    Bí quyết phối đồ với màu đỏ rượu hot nhất mùa xuân 2015
+                                </a>
+                            </div>
+                            <div class="section-3">
+                                <time>
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    12/12/2018
+                                </time>
+                                <a href="">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    VuvanTien
+                                </a>
+                            </div>
+                            <div class="section-4">
+                                <a href="">
+                                    Đọc thêm
+                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                </a>
+                            </div> 
+                        </a>   
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
+                        <a href="#">
+                            <div class="section-1">
+                                <figure>
+                                    <img src="assets/images/posts.jpg">
+                                </figure>
+                            </div>
+                            <div class="section-2">
+                                <a href="">
+                                    Bí quyết phối đồ với màu đỏ rượu hot nhất mùa xuân 2015
+                                </a>
+                            </div>
+                            <div class="section-3">
+                                <time>
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    12/12/2018
+                                </time>
+                                <a href="">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    VuvanTien
+                                </a>
+                            </div>
+                            <div class="section-4">
+                                <a href="">
+                                    Đọc thêm
+                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                </a>
+                            </div> 
+                        </a>   
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
+                        <a href="#">
+                            <div class="section-1">
+                                <figure>
+                                    <img src="assets/images/posts.jpg">
+                                </figure>
+                            </div>
+                            <div class="section-2">
+                                <a href="">
+                                    Bí quyết phối đồ với màu đỏ rượu hot nhất mùa xuân 2015
+                                </a>
+                            </div>
+                            <div class="section-3">
+                                <time>
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    12/12/2018
+                                </time>
+                                <a href="">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    VuvanTien
+                                </a>
+                            </div>
+                            <div class="section-4">
+                                <a href="">
+                                    Đọc thêm
+                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                </a>
+                            </div> 
+                        </a>   
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
+                        <a href="#">
+                            <div class="section-1">
+                                <figure>
+                                    <img src="assets/images/posts.jpg">
+                                </figure>
+                            </div>
+                            <div class="section-2">
+                                <a href="">
+                                    Bí quyết phối đồ với màu đỏ rượu hot nhất mùa xuân 2015
+                                </a>
+                            </div>
+                            <div class="section-3">
+                                <time>
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    12/12/2018
+                                </time>
+                                <a href="">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    VuvanTien
+                                </a>
+                            </div>
+                            <div class="section-4">
+                                <a href="">
+                                    Đọc thêm
+                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                </a>
+                            </div> 
+                        </a>   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="members">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 title-news text-center">
+                        <h2>Thành viên Team</h2>
+                        <h4>Ant Ngoại Ngữ - Tin tức về các chủ đề học tiếng Anh, sự nghiệp, lối sống, truyền cảm hứng,...</h4>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </content>
     <footer>
-
+        <div class="top-footer">
+            
+        </div>
+        <div class="myfooter">
+            <div class="container">
+                <div class="text-center">
+                    <h4>Team</h4>
+                </div>
+            </div>
+        </div>
     </footer>
     <a id="back2Top" title="Back to top" href="#"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
-    </footer>
+
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -186,3 +414,5 @@
 </body>
 
 </html> 
+
+
