@@ -134,6 +134,13 @@
   width: 94% !important;
   float: right;
 }
+.titleList{
+    padding-right:0px;
+}
+.contentmaganizeCroll{
+  padding:0;
+}
+
 }
 
 /*.content-cart .col-xs-12{
@@ -189,7 +196,9 @@
       color: #da5b34;
       text-align: center !important;
   }
-
+#viewallmagazines .listMagazine{
+    width: 104%
+}
 
   }
 
@@ -244,6 +253,50 @@
 }
 .oneComment{
     border:none;
+}
+.imgCmt img{
+    height: auto;
+    width: 100%;
+}
+.imgCmt{
+    height: auto;
+    width: 100%;
+    width: 20%;
+    float: left;
+}
+.nameCmt{
+    width: 80%;
+    float: left;
+}
+.nameCmt h4{
+    margin-bottom:0;
+    margin-top:10px;
+    color: #880505 !important;
+    font-size: 14px !important;
+
+}
+.nameCmt h4 span{
+    margin-bottom:0;
+    margin-top:10px;
+    color: #054CC1 !important;
+    font-size: 14px !important
+
+}
+.nameCmt .role{
+    font-style: italic !important;
+}
+.nameCmt .time{
+    float: right !important;
+    margin-top: 2px !important;
+    color: #C7C6C6 !important;
+    font-size: 13px !important;
+}
+.contentCmt{
+    width: 100%;
+    float: left;
+    padding-left: 0;
+    margin-top: 10px;
+    margin-bottom: 5px
 }
 
   }

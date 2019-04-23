@@ -185,7 +185,7 @@
                                 </a>
                             </div>
                            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contentmaganizeCroll">
-                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                             <div class="commentWith">
                                  <div class="contentmaganize">
                                      <input type="hidden" value="<?php echo $_GET['mgzId']?>" id="mgz-id"/>
                                      <input type="hidden" value="<?php echo $author['id']?>" id="userid"/>
@@ -234,7 +234,7 @@
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                     <h4>Comment</h4>
-                    <div class="formCmt col-lg-12 col-md-12 col-sm-12 col-xs-12" id="formCmt">
+                    <div class="formCmt" id="formCmt">
                     <?php foreach($rawRes->cmtList as $item) {
                         ?>
                         <div class="comment">
@@ -261,11 +261,11 @@
 
 
                    </div>
-                   <div class="YourFormcmt">
-                    <div class="imgCmt">
+                   <div class="YourFormcmt2">
+                    <div class="imgCmtYourFormcmt">
                         <img src="<?php echo $author['ava'];?>">
                     </div>
-                    <div class="contentCmt">
+                    <div class="contentCmtYourFormcmt">
                         <textarea placeholder="Write your comment..." class="form-control" rows="5" required id="comment"></textarea>
                     </div>
                 </div>

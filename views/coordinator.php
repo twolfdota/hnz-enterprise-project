@@ -441,7 +441,7 @@
 </div>
 <div id="viewallmagazines" class="registerContentForm tab-pane fade in active">
     <div>
-        <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
+        <div class="titleList">
             <div class="well well-sm text-center">
 
                 <h3>List of Magaizne</h3>
@@ -469,8 +469,8 @@
                     </div> -->
                 </div>
             </div>
-            <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12" style="overflow: auto;width: 100%">
-                <table class="table table-striped custab" >
+            <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12 listMagazine">
+                <table class="table table-striped custab">
                 <thead>
                         <tr>
                             <th>ID</th>
@@ -515,91 +515,6 @@
                     }
                     ?>
                 </table>
-            </div>
-        </div>
-        <div id="viewmagazine" class="modal">
-
-          <div class="modal-content animate" action="/action_page.php">
-            <span onclick="document.getElementById('viewmagazine').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
-                <div class="uploadForm">  
-
-                    <input id="mgz-id" name="mgzId" type="hidden" value=""/>
-                    <!-- image-preview-filename input [CUT FROM HERE]-->
-                    <div class="">
-                        <div class="">
-                           <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
-                                <h4>Magazine</h4>
-                            </div>
-                           <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contentmaganizeCroll">
-                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                                 <div class="contentmaganize">
-                                    <h3>Test title</h3>
-                                    <img  src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
-                                    
-                                    <p>
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div class="row session3">
-                <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
-                    
-                </div>
-                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-                    <h4>Comment</h4>
-                    <div class="formCmt col-lg-12 col-md-12 col-sm-12 col-xs-12" id="formCmt">
-                       <div class="comment">
-                           <div class="imgCmt">
-                               <img src="assets/images/user.png">
-                           </div>
-                           <div class="nameCmt">
-                               <h4>Vu Van Tien <span>IT</span></h4>
-                           </div>
-                           <div class="contentCmt">
-                               You can also use the following javascript to 
-                           </div>
-                       </div>
-                       <div class="comment">
-                           <div class="imgCmt">
-                               <img src="assets/images/user.png">
-                           </div>
-                           <div class="nameCmt">
-                               <h4>Vu Van Tien <span>IT</span></h4>
-                           </div>
-                           <div class="contentCmt">
-                               You can also use the following javascript to 
-                           </div>
-                       </div>
-                       <div class="comment">
-                           <div class="imgCmt">
-                               <img src="assets/images/user.png">
-                           </div>
-                           <div class="nameCmt">
-                               <h4>Vu Van Tien <span>IT</span></h4>
-                           </div>
-                           <div class="contentCmt">
-                               You can also use the following javascript to close 
-                           </div>
-                       </div>
-                   </div>
-                   <div class="YourFormcmt">
-                    <div class="imgCmt">
-                        <img src="<?php echo $author['ava'];?>">
-                    </div>
-                    <div class="contentCmt">
-                        <textarea placeholder="Write your comment..." class="form-control" rows="5" required id="comment"></textarea>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>

@@ -568,22 +568,15 @@ ul{
 }
 .YourFormcmt{
     height: 150px;
-    width: 61%;
-}
-.YourFormcmt img{
-    margin-top: 30px;
-}
-.YourFormcmt textarea{
-    height: 35px !important;
-    background-color: #ECECEC
+    width: 100%;
 }
 .imgCmt img{
-    height: 40px;
-    width: auto;
+    height: auto;
+    width: 70%;
 }
 .imgCmt{
-    height: 70px;
-    width: auto;
+    height: auto;
+    width: 100%;
     width: 10%;
     float: left;
 }
@@ -1580,4 +1573,92 @@ i.icon_g_plus {
     margin-top: -10px;
     margin-left: 7px;
     padding: 0px
+}
+.listMagazine{
+    height: 600px;
+    overflow: auto;
+
+}
+.listMagazine::-webkit-scrollbar-track {
+-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-color: #F5F5F5;
+border-radius: 10px; 
+
+}
+
+.listMagazine::-webkit-scrollbar {
+width: 10px;
+background-color: #F5F5F5; 
+}
+
+.listMagazine::-webkit-scrollbar-thumb {
+border-radius: 10px;
+-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-image: -webkit-linear-gradient(330deg, #3c8dbc 0%, #3c8dbc 100%);
+background-image: linear-gradient(120deg, #3c8dbc 0%, #3c8dbc 100%); }
+.titleList{
+    width: 100%;
+    padding-right:15px;
+}
+#viewallmagazines .listMagazine{
+    width: 100%
+}
+
+.contentmaganizeCroll::-webkit-scrollbar-track {
+-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-color: #F5F5F5;
+border-radius: 10px; 
+
+}
+
+.contentmaganizeCroll::-webkit-scrollbar {
+width: 10px;
+background-color: #F5F5F5; 
+}
+
+.contentmaganizeCroll::-webkit-scrollbar-thumb {
+border-radius: 10px;
+-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-image: -webkit-linear-gradient(330deg, #3c8dbc 0%, #3c8dbc 100%);
+background-image: linear-gradient(120deg, #3c8dbc 0%, #3c8dbc 100%); }
+
+
+.formCmt::-webkit-scrollbar-track {
+-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-color: #F5F5F5;
+border-radius: 10px; 
+
+}
+
+.formCmt::-webkit-scrollbar {
+width: 10px;
+background-color: #F5F5F5; 
+}
+
+.formCmt::-webkit-scrollbar-thumb {
+border-radius: 10px;
+-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-image: -webkit-linear-gradient(330deg, #3c8dbc 0%, #3c8dbc 100%);
+background-image: linear-gradient(120deg, #3c8dbc 0%, #3c8dbc 100%); }
+
+.formCmt{
+    width: 100%
+}
+.imgCmtYourFormcmt{
+    width: 10%;
+    float: left;
+}
+.imgCmtYourFormcmt img{
+    width: 80%  !important;
+    height: auto;
+}
+.contentCmtYourFormcmt{
+    width: 90%;
+    float: left;
+}
+.contentCmtYourFormcmt textarea{
+    width: 100% !important
+}
+.YourFormcmt2{
+    margin-top: 10px
 }
