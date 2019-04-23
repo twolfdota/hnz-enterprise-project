@@ -20,11 +20,20 @@ $route->add('/', function () {
 });
 
 $route->add('/postdetail', function () {
-    include_once './views/postdetail.php';
+    session_start();
+    if (isset($_SESSION['login'])) {
+        include './controllers/userController.php';
+        $userCtrl = new userCtrl();
+        $author = $userCtrl->authorize();
+        include_once './views/postdetail.php';
+
+    }
+    else {
+        header("Location:login");
+        exit();
+    }
 });
-$route->add('/coordinator', function () {
-    include_once './views/coordinator.php';
-});
+
 $route->add('/viewmagazine', function () {
     session_start();
     if (isset($_SESSION['login'])) {
@@ -374,6 +383,12 @@ $route->add('/postModifyCmt', function(){
     include './controllers/cmtController.php';
     $cmtCtrl = new cmtCtrl();
     $cmtCtrl->addModifyCmt($_POST["content"], $_POST["userId"], $_POST["mgzId"], $_POST['authorId'], $_POST['corId']);
+});
+
+$route->add('/postPublicCmt', function(){
+    include './controllers/cmtController.php';
+    $cmtCtrl = new cmtCtrl();
+    $cmtCtrl->addPublicCmt($_POST["content"], $_POST["userId"], $_POST["mgzId"]);
 });
 
 $route->add('/logout', function() {

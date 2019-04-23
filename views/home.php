@@ -229,186 +229,49 @@
         <div class="content-news">
             <div class="container">
                 <div class="row" id="content-background">
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
+                    <?php
+                        include_once './controllers/magazineController.php';
+                        $magazineCtrl = new magazineCtrl();
+                        $result = $magazineCtrl->getListMagazineForGuest();
+                        if(count($result)> 0) {
+                            foreach($result as $item) {
+                                ?>
+                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
                         <a href="/hnz-enterprise-project/postdetail">
                             <div class="section-1">
                                 <figure>
-                                    <img src="assets/images/posts.jpg">
+                                    <img src="<?php echo $item->img?>">
                                 </figure>
                             </div>
                             <div class="section-2">
                                 <a href="">
-                                    Bí quyết phối đồ với màu đỏ rượu hot nhất mùa xuân 2015
+                                    <?php echo $item->title?>
                                 </a>
                             </div>
                             <div class="section-3">
                                 <time>
                                     <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    12/12/2018
+                                    <?php echo $item->created_at ?>
                                 </time>
+                            <br>
                                 <a href="">
                                     <i class="fa fa-user" aria-hidden="true"></i>
-                                    VuvanTien
+                                    <?php echo $item->author ?>
                                 </a>
                             </div>
                             <div class="section-4">
-                                <a href="">
+                                <a href="/hnz-enterprise-project/postdetail?mgzId=<?php echo $item->id ?>">
                                     Đọc thêm
                                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                                 </a>
                             </div> 
                         </a>   
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
-                        <a href="#">
-                            <div class="section-1">
-                                <figure>
-                                    <img src="assets/images/posts.jpg">
-                                </figure>
-                            </div>
-                            <div class="section-2">
-                                <a href="">
-                                    Bí quyết phối đồ với màu đỏ rượu hot nhất mùa xuân 2015
-                                </a>
-                            </div>
-                            <div class="section-3">
-                                <time>
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    12/12/2018
-                                </time>
-                                <a href="">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    VuvanTien
-                                </a>
-                            </div>
-                            <div class="section-4">
-                                <a href="">
-                                    Đọc thêm
-                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                                </a>
-                            </div> 
-                        </a>   
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
-                        <a href="#">
-                            <div class="section-1">
-                                <figure>
-                                    <img src="assets/images/posts.jpg">
-                                </figure>
-                            </div>
-                            <div class="section-2">
-                                <a href="">
-                                    Bí quyết phối đồ với màu đỏ rượu hot nhất mùa xuân 2015
-                                </a>
-                            </div>
-                            <div class="section-3">
-                                <time>
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    12/12/2018
-                                </time>
-                                <a href="">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    VuvanTien
-                                </a>
-                            </div>
-                            <div class="section-4">
-                                <a href="">
-                                    Đọc thêm
-                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                                </a>
-                            </div> 
-                        </a>   
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
-                        <a href="#">
-                            <div class="section-1">
-                                <figure>
-                                    <img src="assets/images/posts.jpg">
-                                </figure>
-                            </div>
-                            <div class="section-2">
-                                <a href="">
-                                    Bí quyết phối đồ với màu đỏ rượu hot nhất mùa xuân 2015
-                                </a>
-                            </div>
-                            <div class="section-3">
-                                <time>
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    12/12/2018
-                                </time>
-                                <a href="">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    VuvanTien
-                                </a>
-                            </div>
-                            <div class="section-4">
-                                <a href="">
-                                    Đọc thêm
-                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                                </a>
-                            </div> 
-                        </a>   
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
-                        <a href="#">
-                            <div class="section-1">
-                                <figure>
-                                    <img src="assets/images/posts.jpg">
-                                </figure>
-                            </div>
-                            <div class="section-2">
-                                <a href="">
-                                    Bí quyết phối đồ với màu đỏ rượu hot nhất mùa xuân 2015
-                                </a>
-                            </div>
-                            <div class="section-3">
-                                <time>
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    12/12/2018
-                                </time>
-                                <a href="">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    VuvanTien
-                                </a>
-                            </div>
-                            <div class="section-4">
-                                <a href="">
-                                    Đọc thêm
-                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                                </a>
-                            </div> 
-                        </a>   
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
-                        <a href="#">
-                            <div class="section-1">
-                                <figure>
-                                    <img src="assets/images/posts.jpg">
-                                </figure>
-                            </div>
-                            <div class="section-2">
-                                <a href="">
-                                    Bí quyết phối đồ với màu đỏ rượu hot nhất mùa xuân 2015
-                                </a>
-                            </div>
-                            <div class="section-3">
-                                <time>
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    12/12/2018
-                                </time>
-                                <a href="">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    VuvanTien
-                                </a>
-                            </div>
-                            <div class="section-4">
-                                <a href="">
-                                    Đọc thêm
-                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                                </a>
-                            </div> 
-                        </a>   
-                    </div>
+                    </div>                              
+                                <?php
+                            }
+                        }                        
+                    ?>
+ 
                 </div>
             </div>
         </div>

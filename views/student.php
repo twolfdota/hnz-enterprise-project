@@ -210,61 +210,6 @@
                                 <span>TODAY</span>
                             </div>
                             <div class="allNotification">
-<<<<<<< HEAD
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i class="signalCMT fa fa-commenting-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>Admin <span>đã phê duyệt bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i class="signalDone fa fa-check-square-o" aria-hidden="true"></i>
-                                    </div>
-                                    
-                                </div>
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i class=" signalCMT fa fa-commenting-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>Admin <span>đã không phê duyệt bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i class="signalCancel fa fa-ban" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-=======
                                 <?php 
                                     
                                     foreach($notiRes as $item) {
@@ -320,7 +265,6 @@
                                     }
                                 ?>
  
->>>>>>> 74c16166acc648826210f6dd64bbc0b035c162c9
 
                             </div>
                       </div>

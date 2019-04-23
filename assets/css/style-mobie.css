@@ -196,9 +196,7 @@
   /*.content-cart .col-xs-12{
     padding: 0px !im
   }*/
-  @media screen and (max-width:640px) {
-  
-  }
+
   @media screen and (max-width:480px) {
     .header-top1 i{
     color: #da5b34;
@@ -244,6 +242,9 @@
 }
 .oneComment{
     border:none;
+}
+.content-news .news img{
+  height: 50vh;
 }
 
   }
