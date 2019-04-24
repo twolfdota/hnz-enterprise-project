@@ -5,18 +5,8 @@ include 'route.php';
 $route = new Route();
 //Thêm các đường dẫn load trang tĩnh vào đây
 $route->add('/', function () {
-    session_start();
-    if (isset($_SESSION['login'])) {
-        include './controllers/userController.php';
-        $userCtrl = new userCtrl();
-        $author = $userCtrl->authorize();
-        include_once './views/home.php';
+    echo "hello world!!";
 
-    }
-    else {
-        header("Location:login");
-        exit();
-    }
 });
 
 $route->add('/postdetail', function () {
