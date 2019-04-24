@@ -334,10 +334,13 @@
                                 <h3>Download File</h3>
                             </div> -->
                             <div class="text-center row">
+                                
                                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <div style="background-color: red;width: 200px ;height: 200px;border-radius: 50%">
-                                        1
-                                    </div>
+                                    Choose year:
+                                    <select id="reportYearSelect">
+
+                                    </select>
+                                    <button type="button" id="rptButton" onclick="generateRpt()">Submit</button>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                     <div style="background-color: red;width: 200px ;height: 200px;border-radius: 50%">
@@ -593,6 +596,18 @@
            
     }
 
+    function generateRpt() {
+        if ($("#reportYearSelect").val()) {
+            $.ajax({
+            url: `/hnz-enterprise-project/getStatData?year=${$("#reportYearSelect").val()}`,
+            type: 'GET',
+            success: function(result) {
+                console.log(result);
+            }
+        })    
+        }
+    }
+
     </script>
     <!--
     <script>
@@ -662,7 +677,8 @@
                         result.forEach(function(item){
                             $("#downloadList").append(`<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                     <button type="button" value=${item.year} onclick="getZip(this.getAttribute('value'))">${item.year} - ${item.yearName}</button>
-                                </div>`)
+                                </div>`);
+                            $("#reportYearSelect").append(`<option value=${item.year}>${item.year} - ${item.yearName}</option>`)
                         })
                     }
                 }

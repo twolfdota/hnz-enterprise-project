@@ -162,7 +162,7 @@
                     <?php
                         include_once './controllers/cmtController.php';
                         $cmtCtrl = new cmtCtrl();
-                        $result = $cmtCtrl->getListPublicCmt($_GET['mgzId']);
+                        $result = @$cmtCtrl->getListPublicCmt($_GET['mgzId']);
                         if ($result->title!= '') {
                             ?>
                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">

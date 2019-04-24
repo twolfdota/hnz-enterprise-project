@@ -3,7 +3,7 @@ class magazineCtrl
 {
     function add($title, $doc, $ava, $userid)
     {
-        require_once './DBConnect.php';
+        require './DBConnect.php';
         $validated = true;
         $insertId = 0;
         $stmt = mysqli_prepare($conn, "INSERT into magazine(title, docFile, imgFile, userid, `status`, created_at, updated_at, academicYear) values(?,?,?,?,'new',now(), null, YEAR(now()))");

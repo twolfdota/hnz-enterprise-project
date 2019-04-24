@@ -438,5 +438,11 @@ $route->add('/deleteNoti', function() {
     $condition = "mgzId = '" .$_POST['mgzId']. "' and receiverId = '". $_POST['userId']."'";
     $notiCtrl->removeNoti($condition);
 });
+$route->add('/getStatData', function() {
+    include './controllers/statisticController.php';
+    $sttCtrl = new sttCtrl();
+    $res = $sttCtrl->getDataEachYear($_GET['year']);
+    echo json_encode($res);
+});
 
 $route->submit();

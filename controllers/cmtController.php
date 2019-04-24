@@ -61,16 +61,14 @@ class cmtCtrl {
         $mgzDoc = "";
         $mgzImg = "";
         $mgzYear = 1973;
-        $mgzStatus = "";
-        $authorId = 0;
         $result = array();
         if($id){
 
-            $query_fetch = mysqli_query($conn,"SELECT m.title, m.imgFile, m.docFile, c.*, u.name as username, u.roles, f.name as fName, u.avatar FROM comments as c
+            $query_fetch = mysqli_query($conn,"SELECT m.*, c.*, u.name as username, u.roles, f.name as fName, u.avatar FROM comments as c
             inner join `user` as u on c.userId = u.id
             inner join faculty as f on u.faculty = f.code
             left join magazine as m on c.magazineId = m.id 
-            WHERE magazineId = $id AND cmtType = 2 AND m.status='approved'");
+            WHERE  cmtType = 2 AND m.status='approved' AND magazineId = $id");
             while($show = mysqli_fetch_array($query_fetch)){
 
                 $item = (object) [
@@ -85,7 +83,7 @@ class cmtCtrl {
                 array_push($result, $item);
             } // while loop brace
             $query_fetch = mysqli_query($conn,"SELECT * FROM magazine
-            WHERE id = $id");
+            WHERE id = $id and status='approved'");
             while($show = mysqli_fetch_array($query_fetch)){
                 $mgzTitle = $show['title'];
                 $mgzDoc = $show['docFile'];
