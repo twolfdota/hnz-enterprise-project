@@ -177,7 +177,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="Timeremaining">
-                            <h2>Time Remaining</h2>
+                            <h2>Time remaining to join our event</h2>
                         </div>
                     </div>
                 </div>
@@ -211,6 +211,11 @@
                                 <span>Seconds</span>
                             </div>
                         </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <center id="demo">
+
+                            </center>
+                        </div>
                     </div>
                 </div>
                 <div class="down">
@@ -231,13 +236,22 @@
                 <div class="row" id="content-background">
                     <?php
                         include_once './controllers/magazineController.php';
+                        include_once './controllers/yearController.php';
+                        date_default_timezone_set("Asia/Bangkok");
+                        $thisYear = date("Y");
+                        $yearCtrl = new yearCtrl();
+                        $yearRes = $yearCtrl->loadThisYear();
+
+                        if (count($yearRes) > 0 && $yearRes[0]->year == $thisYear ) {
+                            echo "<input type='hidden' id='deadline' value='". $yearRes[0]->dl1."'/>";
+                        }
                         $magazineCtrl = new magazineCtrl();
                         $result = $magazineCtrl->getListMagazineForGuest();
                         if(count($result)> 0) {
                             foreach($result as $item) {
                                 ?>
                      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
-                        <a href="/hnz-enterprise-project/postdetail">
+                        <a href="/hnz-enterprise-project/postdetail?mgzId=<?php echo $item->id ?>">
                             <div class="section-1">
                                 <figure>
                                     <img src="<?php echo $item->img?>">

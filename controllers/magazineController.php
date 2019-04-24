@@ -24,7 +24,14 @@ class magazineCtrl
         return $addResult;
     }
 
-
+    function delete($title) {
+        require './DBConnect.php';
+        mysqli_query($conn,"delete FROM magazine WHERE title = $title");
+        if (mysqli_error($conn)) {
+            echo json_encode('error deleting magazine!!');
+        }
+        $conn->close();
+    }
 
     function getListMagazine($id) {
         require './DBConnect.php';

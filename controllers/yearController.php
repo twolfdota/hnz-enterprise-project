@@ -35,7 +35,7 @@ function loadYear()
 
 function loadThisYear()
 {
-    require_once './DBConnect.php';
+    require './DBConnect.php';
     $sql = "select * from academic_year where year = YEAR(now())";
     $stmt = $conn->prepare($sql);
     $stmt->execute();

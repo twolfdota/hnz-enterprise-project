@@ -15,9 +15,23 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>
+
+    <?php
+        include_once './controllers/yearController.php';
+        date_default_timezone_set("Asia/Bangkok");
+        $thisYear = date("Y");
+        $yearCtrl = new yearCtrl();
+        $yearRes = $yearCtrl->loadThisYear();
+
+        if (count($yearRes) > 0 && $yearRes[0]->year == $thisYear ) {
+            echo "<input type='hidden' id='deadline' value='". $yearRes[0]->dl1."'/>";
+        }
+
+    ?>
     <!-- Modal để hiển thị thông tin user sau khi add-->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">  
@@ -335,22 +349,18 @@
                             </div> -->
                             <div class="text-center row">
                                 
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     Choose year:
                                     <select id="reportYearSelect">
 
                                     </select>
                                     <button type="button" id="rptButton" onclick="generateRpt()">Submit</button>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <div style="background-color: red;width: 200px ;height: 200px;border-radius: 50%">
-                                        1
-                                    </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="mgzPie">
+
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <div style="background-color: red;width: 200px ;height: 200px;border-radius: 50%">
-                                        1
-                                    </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="authorPie">
+
                                 </div>
                             </div>
                         </form>
@@ -601,8 +611,43 @@
             $.ajax({
             url: `/hnz-enterprise-project/getStatData?year=${$("#reportYearSelect").val()}`,
             type: 'GET',
-            success: function(result) {
-                console.log(result);
+            success: function(rawResult) {
+                var result = JSON.parse(rawResult);
+                var myFac = [];
+                var myMgz = [];
+                var myAuthor = [];
+                    for (var i = 0; i < result.length; i++) {
+                        myFac.push(result[i].faculty);
+                        myMgz.push(result[i].mgzCount);
+                        myAuthor.push(result[i].authorCount);
+                    }
+                    google.charts.load('current', {'packages': ['corechart']});
+                    google.charts.setOnLoadCallback(drawVisualization);
+                    function drawVisualization() {
+// Create and populate the data table.
+                        var mgzdata = new google.visualization.DataTable();
+                        var authordata = new google.visualization.DataTable();
+
+                        mgzdata.addColumn('string', 'faculty');
+                        mgzdata.addColumn('number', 'contributions');
+                        mgzdata.addRows(myFac.length);
+                        for (var i = 0; i < myFac.length; i++) {
+                            mgzdata.setCell(i, 0, myFac[i]);
+                            mgzdata.setCell(i, 1, myMgz[i]);
+                        }
+                        new google.visualization.PieChart(document.getElementById('mgzPie')).
+                                draw(mgzdata, {title: "Contributions", is3D: true, width: '100%', height: '400'});
+
+                        authordata.addColumn('string', 'faculty');
+                        authordata.addColumn('number', 'contributors');
+                        authordata.addRows(myFac.length);
+                        for (var i = 0; i < myFac.length; i++) {
+                            authordata.setCell(i, 0, myFac[i]);
+                            authordata.setCell(i, 1, myAuthor[i]);
+                        }
+                        new google.visualization.PieChart(document.getElementById('authorPie')).
+                                draw(authordata, {title: "Contributors", is3D: true, width: '100%', height: '400'});             
+            }
             }
         })    
         }

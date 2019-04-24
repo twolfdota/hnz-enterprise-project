@@ -231,8 +231,14 @@ $route->add('/postMgz', function () {
                 echo json_encode('Please upload your image!!');
         }
         else {
-            $img_dir = 'uploads/'.date("Y").'//mgzImg/';
-            $doc_dir = 'uploads/'.date("Y").'//doc/';
+            $img_dir = 'uploads/'.date("Y").'/mgzImg/';
+            $doc_dir = 'uploads/'.date("Y").'/doc/';
+            if (!file_exists($img_dir)) {
+                mkdir($img_dir, 0777, true);
+            }
+            if (!file_exists($doc_dir)) {
+                mkdir($doc_dir, 0777, true);
+            }
             $avaDir = 'assets/images/no-cover.png';
 
                 $img_target_file = $img_dir . basename($_FILES["imageUpload"]["name"]);

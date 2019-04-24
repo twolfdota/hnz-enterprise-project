@@ -24,6 +24,15 @@
     <?php
         include_once './controllers/magazineController.php';
         include_once './controllers/notiController.php';
+        include_once './controllers/yearController.php';
+        date_default_timezone_set("Asia/Bangkok");
+        $thisYear = date("Y");
+        $yearCtrl = new yearCtrl();
+        $yearRes = $yearCtrl->loadThisYear();
+
+        if (count($yearRes) > 0 && $yearRes[0]->year == $thisYear ) {
+            echo "<input type='hidden' id='deadline' value='". $yearRes[0]->dl1."'/>";
+        }
         $magazineCtrl = new magazineCtrl();
         $notiCtrl = new notiCtrl();
         $result = $magazineCtrl->getListMagazineForFaculty($author['id']);

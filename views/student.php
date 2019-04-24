@@ -22,9 +22,17 @@
 
     <?php
         include_once './controllers/notiController.php';
+        include_once './controllers/yearController.php';
         $notiCtrl = new notiCtrl();
         $notiRes = $notiCtrl->getNoti($author['id']);
+        date_default_timezone_set("Asia/Bangkok");
+        $thisYear = date("Y");
+        $yearCtrl = new yearCtrl();
+        $yearRes = $yearCtrl->loadThisYear();
 
+        if (count($yearRes) > 0 && $yearRes[0]->year == $thisYear ) {
+            echo "<input type='hidden' id='deadline' value='". $yearRes[0]->dl1."'/>";
+        }
     ?>  
 
     <!-- Modal để hiển thị thông tin user sau khi add-->
@@ -104,7 +112,7 @@
                                 <div class="">
                                     <i class="fa fa-bell" aria-hidden="true"></i>
                                 </div>
-                                <span>1</span>
+                                <span class="notiCount"><?php echo count($notiRes)?></span>
                             </a>
                         </li>
                         <div id="ShowBell" class="dropdown-contentMobile">
@@ -115,59 +123,60 @@
                                 <span>TODAY</span>
                             </div>
                             <div class="allNotification">
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i class="signalCMT fa fa-commenting-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>Admin <span>đã phê duyệt bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i class="signalDone fa fa-check-square-o" aria-hidden="true"></i>
-                                    </div>
+                            <?php 
                                     
-                                </div>
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i class=" signalCMT fa fa-commenting-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>Admin <span>đã không phê duyệt bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i class="signalCancel fa fa-ban" aria-hidden="true"></i>
-                                    </div>
-                                </div>
+                                    foreach($notiRes as $item) {
+                                        ?>
+                                        <div value="<?php echo $item->mgzId ?>" class="contentNotification" onclick="notiNavigate(this.getAttribute('value'))">
+                                            <input type="hidden" class="notiId" value="<?php echo $item->id ?>"/>
+                                            <div class="img">
+                                                <img src="<?php echo $item->avatar?>">
+                                            </div>
+                                        <?php    
+                                        switch($item->type) {                                            
+                                            case "delete":
+                                                ?>
+                                                <div class="textContent">
+                                                    <p><?php echo $item->name?> <span>deleted one of your posts </span>
+                                                    </p> 
+                                                    <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> <?php echo $item->date?></span>
+                                                </div>
+                                                <div class="icon text-right">
+                                                    <i class="fa fa-close signalCancel" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                                <?php
+                                                break;
+                                            case "approve":
+                                                ?>
+                                                <div class="textContent">
+                                                    <p><?php echo $item->name?> <span>published your post <i><?php echo $item->title?></i></span>
+                                                    </p> 
+                                                    <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> <?php echo $item->date?></span>
+                                                </div>
+                                                <div class="icon text-right">
+                                                    <i class="fa fa-check signalDone" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                                <?php
+                                                break;
+
+                                            case "comment":
+                                                ?>
+                                                <div class="textContent">
+                                                    <p><?php echo $item->name?> <span>commented on your post <i><?php echo $item->title?></i></span>
+                                                    </p> 
+                                                    <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> <?php echo $item->date?></span>
+                                                </div>
+                                                <div class="icon text-right">
+                                                    <i class="fa fa-commenting-o signalCMT" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                                <?php
+                                                break;
+                                        }
+                                    }
+                                ?>
 
                             </div>
                       </div>
@@ -199,7 +208,7 @@
                                 <div class="bell">
                                     <i class="fa fa-bell" aria-hidden="true"></i>
                                 </div>
-                                <span><?php echo count($notiRes)?></span>
+                                <span class="notiCount"><?php echo count($notiRes)?></span>
                             </a>
                         </li>
                         <div id="myDropdown" class="dropdown-content">
@@ -617,6 +626,10 @@
                 userId: userId
             },
             success: function(result) {
+                var deleteNum = $(".allNotification").find(`.contentNotification[value=${id}]`).length/2;
+                var deleted = $(".allNotification").find(`.contentNotification[value=${id}]`).remove();
+                var currNoti = parseInt($(".notiCount").html());
+                $(".notiCount").html(currNoti - deleteNum);
                 $("#mgzListToggle").click();
                 $(`#mgzTable .edit-btn[data-value="${id}"]`).click();
             }
