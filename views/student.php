@@ -551,13 +551,13 @@
             <img src="" id="editImg" alt="" width="50%" height="auto"/>
         </div>
         <div class="row">
-            <p id="updateErrorMessage"></p>
+            <p id="updateErrorMsg" style="color:red"></p>
         </div>
         <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
             </div>
             <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-             <input " class="btnSubmit" type="submit" name="form-upload" onclick="updateMgz(document.editForm, event)" value="Update">
+             <input class="btnSubmit" type="submit" name="form-upload" onclick="updateMgz(document.editForm, event)" value="Update">
          </div>
      </div>
 
@@ -656,7 +656,7 @@
             contentType: false,
             data: formData,
             success: function(result){
-                if (result.length <= 10) {
+                if (result.length <= 18) {
                     alert("Magazine successfully updated!");
                     location.reload();
                 }

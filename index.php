@@ -210,7 +210,14 @@ $route->add('/login', function () {
 $route->add('/postMgz', function () {
     include './controllers/magazineController.php';
     $magazineCtrl = new magazineCtrl();
-
+    include './controllers/yearController.php';
+    $yearCtrl = new yearCtrl();
+    $currYearInfo = $yearCtrl->loadThisYear();
+    $now = new DateTime();
+    if (count($currYearInfo) <=0 || new DateTime($currYearInfo[0]->std) > $now || new DateTime($currYearInfo[0]->dl1) < $now) {
+        echo json_encode('upload time expired!');
+    }
+    else {
     if (isset($_POST["title"])) {
         $title = $_POST["title"];
         $vldAgree = isset($_POST["agree"]) ? $_POST["agree"] : false;
@@ -288,17 +295,28 @@ $route->add('/postMgz', function () {
     } else {
         echo json_encode("please input title!!!");
     }
+}
 });
 
 $route->add('/updateMgz', function () {
     include './controllers/magazineController.php';
     $magazineCtrl = new magazineCtrl();
+
+    include './controllers/yearController.php';
+    $yearCtrl = new yearCtrl();
+    $currYearInfo = $yearCtrl->loadThisYear();
+    $now = new DateTime();
+    if (count($currYearInfo) <=0 || new DateTime($currYearInfo[0]->std) > $now || new DateTime($currYearInfo[0]->dl2) < $now) {
+        echo json_encode('Editing time expired!');
+    }
+    else {
     $updated = false;
     if (isset($_POST["title"])) {
         $title = $_POST["title"];
         if ($title == "") {
             echo json_encode('Please input the title!!');
         }
+        else {
         $img_dir = 'uploads/'.date("Y").'/mgzImg/';
         $doc_dir = 'uploads/'.date("Y").'/doc/';
         $docDir = $doc_dir . $title.'.' . $_POST['oldDocType'];
@@ -334,7 +352,7 @@ $route->add('/updateMgz', function () {
                     $magazineCtrl->update($title, $imgDir, $docDir, $_POST['mgzId']);
                     $updated = true;
 
-                    echo json_encode('doc file updated successfully!');
+                    echo json_encode('doc updated!');
                 } else {
                     echo json_encode('Error uploading doc file!!!');
                 }
@@ -363,7 +381,7 @@ $route->add('/updateMgz', function () {
                 if (move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $img_dir . $title. '.' . $imgFileType)) {                   
                     $magazineCtrl->update($title, $imgDir, $docDir, $_POST['mgzId']);
                     $updated = true;
-                    echo json_encode('Image file updated successfully!');
+                    echo json_encode('Image updated!');
                 } else {
                     echo json_encode('Error uploading image file!!!');
                 }
@@ -374,9 +392,11 @@ $route->add('/updateMgz', function () {
             $notiCtrl = new notiCtrl();
             @$notiCtrl->createNoti($_POST['mgzId'], 'update', $_POST['userid'], $_POST['corId']);   
         }
+    }
     } else {
         echo json_encode("please input title!!!");
     }
+}
 });
 
 $route->add('/postModifyCmt', function(){

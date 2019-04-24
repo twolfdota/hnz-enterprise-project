@@ -33,6 +33,37 @@ function loadYear()
     $conn->close();
 }
 
+function loadThisYear()
+{
+    require_once './DBConnect.php';
+    $sql = "select * from academic_year where year = YEAR(now())";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $stmt->store_result();
+    $num_of_rows = $stmt->num_rows;
+    $result = array();
+    if ($num_of_rows > 0) {
+        $stmt->bind_result($id, $year, $startDate, $end_date, $final_closure_date,$yearName);
+        while ($stmt->fetch()) {
+            $resItem = (object)[
+                'year' => $year,
+                'std' => $startDate,
+                'dl1' => $end_date,
+                'dl2' => $final_closure_date,
+                'yearName' => $yearName
+            ];
+            array_push($result, $resItem);
+        }
+        $stmt->free_result();
+        $stmt->close();
+    }
+    if (mysqli_error($conn)) {
+        echo 'Error';
+    } 
+    
+    $conn->close();
+    return $result;
+}
 
 function editYear(){
     require_once './DBConnect.php';
