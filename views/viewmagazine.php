@@ -68,7 +68,7 @@
                 <a href="">Vu Van Tien</a>
             </div>
             <div class="Navigation">
-                <!-- <h4>Faculty: <span><?php echo $author['faculty'];?></span></h4> -->
+                <h4>Faculty: <span><?php echo $author['faculty'];?></span></h4>
             </div>
             <div class="menu">
                 <ul>
@@ -85,7 +85,7 @@
                 </ul>
             </div>
         </div>
-        <div class="mainForm">
+        <div class="mainForm mainFormView">
             <div class="menubar">
                 <div class="menubarRight text-right hidden-md hidden-lg">
                     <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->

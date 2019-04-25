@@ -37,6 +37,19 @@
 .registerForm .mainForm input {
     margin-bottom: 20px;
 }
+.registerForm .mainFormView input {
+    margin-bottom: 0px;
+}
+.Timeremaining label {
+    font-size: 35px;
+}
+.Timeremaining span {
+    font-size: 12px;
+}
+
+.modal-content .uploadForm {
+    padding: 0 5px;
+}
 
 .rules {
     width: 100%;
