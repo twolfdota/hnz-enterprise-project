@@ -118,7 +118,7 @@
                                 <div class="">
                                     <i class="fa fa-bell" aria-hidden="true"></i>
                                 </div>
-                                <span>1</span>
+                                <span><?php echo count($notiRes)?></span>
                             </a>
                         </li>
                         <div id="ShowBell" class="dropdown-contentMobile">
@@ -129,59 +129,75 @@
                                 <span>TODAY</span>
                             </div>
                             <div class="allNotification">
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i class="signalCMT fa fa-commenting-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>Admin <span>đã phê duyệt bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i class="signalDone fa fa-check-square-o" aria-hidden="true"></i>
-                                    </div>
+                            <?php 
                                     
-                                </div>
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>VuvanTien <span>đã bình luận về bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i class=" signalCMT fa fa-commenting-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="contentNotification">
-                                    <div class="img">
-                                        <img src="assets/images/images.jpg">
-                                    </div>
-                                    <div class="textContent">
-                                        <p>Admin <span>đã không phê duyệt bài viết của bạn</span>
-                                        </p> 
-                                        <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> 11:20 23/9/2019</span>
-                                    </div>
-                                    <div class="icon text-right">
-                                        <i class="signalCancel fa fa-ban" aria-hidden="true"></i>
-                                    </div>
-                                </div>
+                                    foreach($notiRes as $item) {
+                                        ?>
+                                        <div value="<?php echo $item->mgzId ?>" class="contentNotification" onclick="notiNavigate(this.getAttribute('value'))">
+                                            <input type="hidden" class="notiId" value="<?php echo $item->id ?>"/>
+                                            <div class="img">
+                                                <img src="<?php echo $item->avatar?>">
+                                            </div>
+                                        <?php    
+                                        switch($item->type) {                                            
+                                            case "create":
+                                                ?>
+                                                <div class="textContent">
+                                                    <p><?php echo $item->name?> <span>created post <i><?php echo $item->title?></i></span>
+                                                    </p> 
+                                                    <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> <?php echo $item->date?></span>
+                                                </div>
+                                                <div class="icon text-right">
+                                                    <i class="fa fa-upload signalUpload" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                                <?php
+                                                break;
+                                            case "update":
+                                                ?>
+                                                <div class="textContent">
+                                                    <p><?php echo $item->name?> <span>updated the post <i><?php echo $item->title?></i></span>
+                                                    </p> 
+                                                    <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> <?php echo $item->date?></span>
+                                                </div>
+                                                <div class="icon text-right">
+                                                    <i class="fa fa-refresh signalUpdate" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                                <?php
+                                                break;
+
+                                            case "comment":
+                                                ?>
+                                                <div class="textContent">
+                                                    <p><?php echo $item->name?> <span>commented on the post <i><?php echo $item->title?></i></span>
+                                                    </p> 
+                                                    <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> <?php echo $item->date?></span>
+                                                </div>
+                                                <div class="icon text-right">
+                                                    <i class="fa fa-commenting-o signalCMT" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                                <?php
+                                                break;
+
+                                            case "cmtTime":
+                                                ?>
+                                                <div class="textContent">
+                                                    <p><span>You have to comment on the post <i><?php echo $item->title?></i> now!</span>
+                                                    </p> 
+                                                    <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> <?php echo $item->date?></span>
+                                                </div>
+                                                <div class="icon text-right">
+                                                    <i class="fa fa-exclamation-triangle signalcmtLate" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                                <?php
+                                                break;
+                                        }
+                                    }
+                                ?>
+ 
 
                             </div>
                       </div>
