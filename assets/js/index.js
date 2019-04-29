@@ -7,7 +7,6 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 }
-
 $(document).ready(function () {
   if ($("#deadline").length) {
     const second = 1000,
@@ -216,29 +215,6 @@ $(function () {
     // }, 1500);
   });
 });
-
-(function ($) {
-  $(document).ready(function () {
-    $('#cssmenu > ul > li > a').click(function () {
-      $('#cssmenu li').removeClass('active');
-      $(this).closest('li').addClass('active');
-      var checkElement = $(this).next();
-      if ((checkElement.is('ul')) && (checkElement.is(':visible'))) {
-        $(this).closest('li').removeClass('active');
-        checkElement.slideUp('normal');
-      }
-      if ((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
-        $('#cssmenu ul ul:visible').slideUp('normal');
-        checkElement.slideDown('normal');
-      }
-      if ($(this).closest('li').find('ul').children().length == 0) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-  });
-})(jQuery);
 
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");

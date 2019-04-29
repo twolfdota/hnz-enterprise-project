@@ -25,7 +25,7 @@
                 <div class="row header-top">
                     <div class="col-lg-2 col-md-2 col-xs-12 section1">
                         <a href="index.html">
-                            <img src="assets/images/logo.png">
+                            <img src="assets/images/Logo.png">
                         </a>
                     </div>
                     <div class="col-lg-5 col-md-5 col-xs-12 section2">
@@ -59,16 +59,16 @@
                     <div class="collapse navbar-collapse" id="navbar">
                         <ul class="nav navbar-nav navbar-left">
                             <li class="dropdown">
-                                <a href="student.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Trang chủ</a>
+                                <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Home</a>
                             </li>
                             <li class="dropdown">
-                                <a href="lienhe.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Tin tức - Sự kiện</a>
+                                <a href="lienhe.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> News - Event</a>
                             </li>
                             <li class="dropdown">
-                                <a href="lienhe.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Liên hệ</a>
+                                <a href="lienhe.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Contact</a>
                             </li>
                             <li class="dropdown">
-                                <a href="gioithieu.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Giới thiệu</a>
+                                <a href="gioithieu.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> About us</a>
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
@@ -79,12 +79,12 @@
                                 <p> <?php echo $author['name']?><i> _ </i><span> <?php echo $author['faculty']?> Department</span></p>
                             </li>
                             <li class="logoutHome">
-                                <a href="/hnz-enterprise-project/logout" class="dropdown-toggle text-right" role="button" aria-expanded="false"> 
+                                <a href="/logout" class="dropdown-toggle text-right" role="button" aria-expanded="false"> 
                                     <i class="fa fa-sign-out" aria-hidden="true" title="logout"></i>
                                 </a>
                             </li>
                             <li class="dropdown">
-                                <a href="/hnz-enterprise-project/cms" class="dropdown-toggle text-right" role="button" aria-expanded="false"> 
+                                <a href="/cms" class="dropdown-toggle text-right" role="button" aria-expanded="false"> 
                                     <i class="fa fa-gg" aria-hidden="true" title="Go to Manazine page"></i>
                                 </a>
                             </li>
@@ -97,7 +97,7 @@
         <div id="header-top">
             <div class="col-xs-12 col-sm-12 header-top2 text-center">
                 <a href="index.html">
-                    <img src="assets/images/logo.png">
+                    <img src="assets/images/Logo.png">
                 </a>
             </div>
 
@@ -112,7 +112,7 @@
                      <ul>
                         <li><a href="/">Home</a></li>
                         <li>
-                            <a href="/hnz-enterprise-project/cms" class="dropdown-toggle" role="button" aria-expanded="false"> 
+                            <a href="/cms" class="dropdown-toggle" role="button" aria-expanded="false"> 
                                 Go To Manager Page
                             </a>
                         </li>
@@ -131,7 +131,7 @@
                                 </a>
                               </li>
                               <li>
-                                  <a href="/hnz-enterprise-project/logout" class="dropdown-toggle" role="button" aria-expanded="false"> 
+                                  <a href="/logout" class="dropdown-toggle" role="button" aria-expanded="false"> 
                                     Log Out
                                 </a>
                               </li>
@@ -219,15 +219,14 @@
                     </div>
                 </div>
                 <div class="down">
-                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 title-news text-center">
-                    <h2>TIN NỔI BẬT</h2>
-                    <h4>Ant Ngoại Ngữ - Tin tức về các chủ đề học tiếng Anh, sự nghiệp, lối sống, truyền cảm hứng,...</h4>
+                    <h2>HOT NEWS</h2>
                 </div>
             </div>
         </div>
@@ -251,7 +250,7 @@
                             foreach($result as $item) {
                                 ?>
                      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news">
-                        <a href="/hnz-enterprise-project/postdetail?mgzId=<?php echo $item->id ?>">
+                        <a href="/postdetail?mgzId=<?php echo $item->id ?>">
                             <div class="section-1">
                                 <figure>
                                     <img src="<?php echo $item->img?>">
@@ -274,8 +273,8 @@
                                 </a>
                             </div>
                             <div class="section-4">
-                                <a href="/hnz-enterprise-project/postdetail?mgzId=<?php echo $item->id ?>">
-                                    Đọc thêm
+                                <a href="/postdetail?mgzId=<?php echo $item->id ?>">
+                                    Read more
                                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                                 </a>
                             </div> 
@@ -289,16 +288,7 @@
                 </div>
             </div>
         </div>
-        <div class="members">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 title-news text-center">
-                        <h2>Thành viên Team</h2>
-                        <h4>Ant Ngoại Ngữ - Tin tức về các chủ đề học tiếng Anh, sự nghiệp, lối sống, truyền cảm hứng,...</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
     </content>
     <footer>
@@ -308,10 +298,37 @@
         <div class="myfooter">
             <div class="container">
                 <div class="text-center">
-                    <h4>Team</h4>
+                    
                 </div>
             </div>
         </div>
+        <div id="footer-2">
+            <div class="container">
+                <div class=" content-footer2">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <p>
+                            Ha Noi 
+                            <br>
+                            Detech, Ton That Thuyet, My Dinh, Ha Noi <br>
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                        <ul>
+                            <li><a href=""><i id="icon-fb" class="fa fa-facebook"></i></a></li>
+                            <li><a href=""><i id="icon-tw" class="fa fa-twitter"></i></a></li>
+                            <li><a href=""><i id="icon-yt" class="fa fa-youtube"></i></a></li>
+                            <li><a href=""><i id="icon-gg" class="fa fa-google-plus"></i></a></li>
+                            <li><a href=""><i id="icon-ins" class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer-3">
+            <h4>Design by: Team</h4>
+        </div>
+    </footer>
+    <a id="back2Top" title="Back to top" href="#"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
     </footer>
     <a id="back2Top" title="Back to top" href="#"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
 

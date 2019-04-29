@@ -76,9 +76,9 @@
         <div class="mainMenu hidden-xs hidden-sm">
             <div class="logoTeam">
                 <a href="index.html">
-                    <img src="assets/images/logo.png">
+                    <img src="assets/images/Logo.png">
                 </a>
-                <a href="">Vu Van Tien</a>
+                <a href="">Heroes & Zeroes</a>
             </div>
             <div class="Navigation">
                 <h4>Faculty: <span><?php echo $author['faculty'];?> Department</span></h4>
@@ -188,12 +188,12 @@
                                 <a id="menu1" data-toggle="dropdown" class=" dropdown-toggle"  href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="/hnz-enterprise-project/" class=" goto" title="Go to Home page">
+                                            <a href="/" class=" goto" title="Go to Home page">
                                                 <i class="fa fa-gg" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                          <a href="/hnz-enterprise-project/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                          <a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                         </li>
                                   </ul>
                               </div>
@@ -280,7 +280,7 @@
                     </ul>
 
                     <ul class="menu-logout text-right col-lg-6 col-md-6">
-                        <a href="/hnz-enterprise-project/" class="text-left goto" title="Go to Home page">
+                        <a href="/" class="text-left goto" title="Go to Home page">
                             <i class="fa fa-gg" aria-hidden="true"></i>
                         </a>
                         <li class="full hidden-xs hidden-sm">
@@ -295,7 +295,7 @@
                             <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i>
                             <ul class="logout">
                                 <li>
-                                    <a href="/hnz-enterprise-project/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                    <a href="/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                 </li>
                             </ul>
                             
@@ -331,7 +331,7 @@
                                     <li> / </li>
                                     <li>
                                         <a href="">
-                                            Registration
+                                            Student
                                         </a>
                                     </li>
                                 </ul>
@@ -434,9 +434,9 @@
 <div id="yourmagazine" class="registerContentForm tab-pane fade">
     <div>
         <div class="titleList">
-            <div class="well well-sm text-center">
+            <div class="alert alert-warning">
 
-                <h3>View by Status</h3>
+                <h3>List Your File</h3>
 
                 <!-- <div class="btn-group" data-toggle="buttons">
 
@@ -565,7 +565,7 @@
                 </div>
             </div>
             <div class="row">
-                <p id="updateErrorMessage" style="color:red"></p>
+                <p id="updateErrorMsg" style="color:red"></p>
             </div>
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
@@ -611,34 +611,6 @@
 </div>
     </div>
 </form>
-<!-- <div class="row session3">
-    <div class="commentStudent">
-        hh
-    </div>
-    <div class="commentStudent2">
-        <h4>Comment</h4>
-        <div class="formCmt" id="formCmt">
-           <div class="comment">
-               <div class="imgCmt">
-                   <img src="assets/images/user.png">
-               </div>
-               <div class="nameCmt">
-                   <h4>Vu Van Tien <span>IT</span></h4>
-               </div>
-               <div class="contentCmt">
-                   You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-               </div>
-           </div>
-       </div>
-       <div class="YourFormcmt">
-        <div class="imgCmt">
-            <img src="<?php echo $author['ava'];?>">
-        </div>
-        <div class="contentCmt">
-            <textarea placeholder="Write your comment..." class="form-control" rows="5" required id="comment"></textarea>
-        </div>
-    </div>
-</div> -->
 </div>
 </div>
 </div>
@@ -656,7 +628,7 @@
 
         var userId = $("#userid").val();
         $.ajax({
-            url: `/hnz-enterprise-project/deleteNoti`,
+            url: `/deleteNoti`,
             type: 'POST',
             data: {
                 mgzId:id,
@@ -678,13 +650,13 @@
         event.preventDefault();
         formData = new FormData($("#uploadForm")[0]);
         $.ajax({
-            url: `/hnz-enterprise-project/postMgz`,
+            url: `/postMgz`,
             type: 'POST',
             processData: false,
             contentType: false,
             data: formData,
             success: function(result){
-                if (result == '"success"') {
+                if (result.length < 12) {
                     alert("Magazine successfully uploaded!");
                     location.reload();
                 }
@@ -700,7 +672,7 @@
         event.preventDefault();
         formData = new FormData($("#editForm")[0]);
         $.ajax({
-            url: `/hnz-enterprise-project/updateMgz`,
+            url: `/updateMgz`,
             type: 'POST',
             processData: false,
             contentType: false,
@@ -737,7 +709,7 @@
         $("#formCmt").html("");
         var htmlList="";
         $.ajax({
-            url: `/hnz-enterprise-project/loadComments?mgzId=${mgzId}`,
+            url: `/loadComments?mgzId=${mgzId}`,
             type: 'GET',
             dataType: 'json',
             cache:false,
@@ -747,7 +719,7 @@
                 $("#oldDocType").val(result.doc.replace(`uploads/${result.year}/doc/${result.title}.`,""));
                 $("#oldImgType").val(result.img.replace(`uploads/${result.year}/mgzImg/${result.title}.`,""));
                 $("#editDocLink").text(result.doc.replace(`uploads/${result.year}/doc/`,""));
-                $("#editDocLink").attr("href", `/hnz-enterprise-project/downloadDocs?docLink=${result.doc}&year=${result.year}`);
+                $("#editDocLink").attr("href", `/downloadDocs?docLink=${result.doc}&year=${result.year}`);
                 $("#editImg").attr("src", result.img)
                 if (result.cmtList.length) {
 
@@ -813,7 +785,7 @@
                 var userRole = $("#userRole").val();
                 var corId = $("#corId").val();
                 $.ajax({
-                    url: `/hnz-enterprise-project/postModifyCmt`,
+                    url: `/postModifyCmt`,
                     type: 'POST',
                     dataType: 'json',
                     data: {

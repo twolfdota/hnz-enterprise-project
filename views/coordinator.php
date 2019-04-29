@@ -82,9 +82,9 @@
         <div class="mainMenu hidden-xs hidden-sm">
             <div class="logoTeam">
                 <a href="index.html">
-                    <img src="assets/images/logo.png">
+                    <img src="assets/images/Logo.png">
                 </a>
-                <a href="">Vu Van Tien</a>
+                <a href="">Heroes & Zeroes</a>
             </div>
             <div class="Navigation">
                 <!-- <h4>Faculty: <span><?php echo $author['faculty'];?></span></h4> -->
@@ -209,12 +209,12 @@
                                 <a id="menu1" data-toggle="dropdown" class=" dropdown-toggle"  href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="/hnz-enterprise-project/" class=" goto" title="Go to Home page">
+                                            <a href="/" class=" goto" title="Go to Home page">
                                                 <i class="fa fa-gg" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                          <a href="/hnz-enterprise-project/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                          <a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                         </li>
                                   </ul>
                               </div>
@@ -315,7 +315,7 @@
                     </ul>
 
                     <ul class="menu-logout text-right col-lg-6 col-md-6">
-                        <a href="/hnz-enterprise-project/" class="text-left goto" title="Go to Home page">
+                        <a href="/" class="text-left goto" title="Go to Home page">
                             <i class="fa fa-gg" aria-hidden="true"></i>
                         </a>
                         <li class="full hidden-xs hidden-sm">
@@ -330,7 +330,7 @@
                             <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i>
                             <ul class="logout">
                                 <li>
-                                    <a href="/hnz-enterprise-project/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                    <a href="/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                 </li>
                             </ul>
                             
@@ -343,7 +343,7 @@
                     <div class="nameLink">
                         <div class="linkLeft hidden-xs hidden-sm">
                             <div class="icon">
-                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                               <i class="fa fa-clock-o" aria-hidden="true"></i>
                             </div>
                             <div class="linkText">
                                 <h4>Time remaining</h4>
@@ -366,7 +366,7 @@
                                     <li> / </li>
                                     <li>
                                         <a href="">
-                                            Registration
+                                           View All Magaiznes
                                         </a>
                                     </li>
                                 </ul>
@@ -469,7 +469,7 @@
         <div class="titleList">
             <div class="well well-sm text-center">
 
-                <h3>List of Magaizne</h3>
+                <h3>List of Magazines</h3>
 
 <!--                     <div class="btn-group" data-toggle="buttons">
                         
@@ -522,7 +522,7 @@
                             <td><?php echo $item->update_at?></td>
                             <td><?php echo $item->status?></td>
                             <td class="text-center">
-                                <a class='btn btn-info btn-xs' href="/hnz-enterprise-project/viewmagazine?mgzId=<?php echo $item->id?>">
+                                <a class='btn btn-info btn-xs' href="/viewmagazine?mgzId=<?php echo $item->id?>">
                                     <i class="fa fa-eye" aria-hidden="true"></i> View
                                 </a>
                                 <?php if ($item->status != "approved") {?>
@@ -562,7 +562,7 @@
             }
 
         }
-	</script>
+    </script>
 -->
 <script>
     var elem = document.getElementById("myvideo");
@@ -572,7 +572,7 @@
         var approveCfm = confirm("Are you sure you want to approve this?");
         if (approveCfm === true) {
         $.ajax({
-            url: `/hnz-enterprise-project/approveMgz?mgzId=${id}&publisher=${$("#userid").val()}`,
+            url: `/approveMgz?mgzId=${id}&publisher=${$("#userid").val()}`,
             type: 'GET',
             success: function(result) {
                 console.log(result);
@@ -593,7 +593,7 @@
         var deleteCfm = confirm("Are you sure you want to delete this?");
         if (deleteCfm === true) {
         $.ajax({
-            url: `/hnz-enterprise-project/deleteMgz?mgzId=${id}&deletor=${$("#userid").val()}`,
+            url: `/deleteMgz?mgzId=${id}&deletor=${$("#userid").val()}`,
             type: 'GET',
             success: function(result) {
                 console.log(result);
@@ -612,14 +612,14 @@
     function notiNavigate(id) {
         var userId = $("#userid").val();
         $.ajax({
-            url: `/hnz-enterprise-project/deleteNoti`,
+            url: `/deleteNoti`,
             type: 'POST',
             data: {
                 mgzId:id,
                 userId: userId
             },
             success: function(result) {
-                window.location.href=`/hnz-enterprise-project/viewmagazine?mgzId=${id}`;
+                window.location.href=`/viewmagazine?mgzId=${id}`;
             }
         })           
     }
@@ -645,7 +645,7 @@
         $("#formCmt").html("");
         var htmlList="";
         $.ajax({
-            url: `/hnz-enterprise-project/loadComments?mgzId=${mgzId}`,
+            url: `/loadComments?mgzId=${mgzId}`,
             type: 'GET',
             dataType: 'json',
             success: function(result) {
@@ -693,7 +693,7 @@
                 var userId = $("#userid").val();
                 var mgzId = $("#mgz-id").val();
                 $.ajax({
-                    url: `/hnz-enterprise-project/postModifyCmt`,
+                    url: `/postModifyCmt`,
                     type: 'POST',
                     dataType: 'json',
                     data: {

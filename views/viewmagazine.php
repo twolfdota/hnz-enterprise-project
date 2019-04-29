@@ -48,7 +48,7 @@
             <nav id="menu">
                 <ul>
                     <li>
-                        <a href="/hnz-enterprise-project/cms">
+                        <a href="/cms">
                             <i class="fa fa-bars" aria-hidden="true"></i> View All Magaiznes
                         </a>
                     </li>
@@ -63,7 +63,7 @@
         <div class="mainMenu hidden-xs hidden-sm">
             <div class="logoTeam">
                 <a href="index.html">
-                    <img src="assets/images/logo.png">
+                    <img src="assets/images/Logo.png">
                 </a>
                 <a href="">Vu Van Tien</a>
             </div>
@@ -73,7 +73,7 @@
             <div class="menu">
                 <ul>
                     <li>
-                        <a href="/hnz-enterprise-project/cms">
+                        <a href="/cms">
                             <i class="fa fa-bars" aria-hidden="true"></i>View All Magaiznes
                         </a>
                     </li>
@@ -107,7 +107,7 @@
                     <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->
 
                     <ul class="menu-logout">
-                        <a href="/hnz-enterprise-project/" class="text-left goto" title="Go to Home page">
+                        <a href="/" class="text-left goto" title="Go to Home page">
                             <i class="fa fa-gg" aria-hidden="true"></i>
                         </a>
                         <li class="full hidden-xs hidden-sm">
@@ -122,7 +122,7 @@
                             <!-- <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i> -->
                             <ul class="logout">
                                 <li>
-                                    <a href="/hnz-enterprise-project/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                    <a href="/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                 </li>
                             </ul>
                             
@@ -169,28 +169,23 @@
                     <div class="">
                         <div class="">
                            <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
-                                <h4>Magazine</h4>
+                                <h4>Action</h4>
                                 <?php
                                             include './controllers/cmtController.php';
                                             $cmtCtrl = new cmtCtrl();
                                             $rawRes = $cmtCtrl->getListModifyCmt($_GET['mgzId']);
                                 ?>
                                 <?php if ($rawRes->status != "approved") {?>
-                                <a value="<?php echo $_GET['mgzId']?>" class='btn btn-success btn-xs'  href="#" onclick="approveMgz(this.getAttribute('value'))">
+                                <a value="<?php echo $_GET['mgzId']?>" style="width: 100%" class='btn btn-success btn-xs'  href="#" onclick="approveMgz(this.getAttribute('value'))">
                                 <i class="fa fa-check-square" aria-hidden="true"></i> Approved
                                 </a>
                                 <?php } ?>
-                                <a value="<?php echo $_GET['mgzId']?>" class='btn btn-danger btn-xs' href="#" onclick="deleteMgz(this.getAttribute('value'))">
+                                <a value="<?php echo $_GET['mgzId']?>" style="width: 100%"  class='btn btn-danger btn-xs' href="#" onclick="deleteMgz(this.getAttribute('value'))">
                                     <i class="fa fa-times" aria-hidden="true"></i> Delete
                                 </a>
                             </div>
                            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contentmaganizeCroll">
-                            <div class="deleteMobile hidden-lg hidden-md">
-                                <a value="<?php echo $_GET['mgzId']?>" class='btn btn-danger btn-xs' href="#" onclick="deleteMgz(this.getAttribute('value'))">
-                                    <i class="fa fa-times" aria-hidden="true"></i> Delete
-                                </a>
-                            </div>
-                             <div class="commentWith">
+                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                                  <div class="contentmaganize">
                                      <input type="hidden" value="<?php echo $_GET['mgzId']?>" id="mgz-id"/>
                                      <input type="hidden" value="<?php echo $author['id']?>" id="userid"/>
@@ -200,27 +195,20 @@
                                     <h3><?php echo $rawRes->title?></h3>
                                     <img  src="<?php echo $rawRes->img?>">
                                     <?php 
-                                                $ch = curl_init();
-                                                $file_name_with_full_path = "/xampp/htdocs/hnz-enterprise-projec/".$rawRes->doc;
-                                    
+                                                $ch = curl_init();                                    
                                                 curl_setopt($ch, CURLOPT_URL, "https://api.docconversionapi.com/convert?outputFormat=html");
                                                 curl_setopt($ch, CURLOPT_POST, 2);
                                                 curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-ApplicationID:286f4243-5ed4-450d-bce9-435f568d450b', 'X-SecretKey:120748dd-ac15-44fd-88c8-ca46149b4b8d'));
                                     
-                                                if (function_exists('curl_file_create')) { // php 5.5+
-                                                  $cFile = curl_file_create($file_name_with_full_path, 'application/msword', basename($file_name_with_full_path));
-                                                } else { 
-                                                  $cFile = '@' . realpath($file_name_with_full_path);
-                                                }
-                                    
+                                                
                                                 $post = array(
                                                   "optionsJson" => "{}",
-                                                  "inputFile" => $cFile
+                                                  "inputFile" => "https://yearlymgz.herokuapp.com/" . $rawRes->doc
                                                 );
                                     
                                                 curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
                                                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                                                $server_output = curl_exec($ch); 	
+                                                $server_output = curl_exec($ch);    
                                                 if ($server_output === false) {
                                                   echo 'Curl error occurred: ' . curl_error($ch);
                                                 } else {
@@ -239,7 +227,7 @@
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                     <h4>Comment</h4>
-                    <div class="formCmt" id="formCmt">
+                    <div class="formCmt col-lg-12 col-md-12 col-sm-12 col-xs-12" id="formCmt">
                     <?php foreach($rawRes->cmtList as $item) {
                         ?>
                         <div class="comment">
@@ -263,7 +251,8 @@
                         <?php
                     }
                     ?>
-                    
+
+
                         <h4>Your Comment</h4>
                    <div class="YourFormcmt2">
                     <div style="width: 100%">
@@ -306,7 +295,7 @@
         var approveCfm = confirm("Are you sure you want to approve this?");
         if (approveCfm === true) {
         $.ajax({
-            url: `/hnz-enterprise-project/approveMgz?mgzId=${id}&publisher=${$("#userid").val()}`,
+            url: `/approveMgz?mgzId=${id}&publisher=${$("#userid").val()}`,
             type: 'GET',
             success: function(result) {
                 console.log(result);
@@ -315,7 +304,7 @@
                 }
                 else {
                     alert("magazine successfully published!");
-                    window.location = "/hnz-enterprise-project/cms";
+                    window.location = "/cms";
                 }
             }
         })    
@@ -327,7 +316,7 @@
         var deleteCfm = confirm("Are you sure you want to delete this?");
         if (deleteCfm === true) {
         $.ajax({
-            url: `/hnz-enterprise-project/deleteMgz?mgzId=${id}&deletor=${$("#userid").val()}`,
+            url: `/deleteMgz?mgzId=${id}&deletor=${$("#userid").val()}`,
             type: 'GET',
             success: function(result) {
                 console.log(result);
@@ -336,7 +325,7 @@
                 }
                 else {
                     alert("magazine successfully deleted!");
-                    window.location = "/hnz-enterprise-project/cms";
+                    window.location = "/cms";
                 }
             }
         })    
@@ -381,7 +370,7 @@ if(key == 13)  // the enter key code
         var userRole = $("#userRole").val();
         var authorId = $("#authorId").val();
         $.ajax({
-            url: `/hnz-enterprise-project/postModifyCmt`,
+            url: `/postModifyCmt`,
             type: 'POST',
             dataType: 'json',
             data: {

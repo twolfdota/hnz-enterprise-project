@@ -22,7 +22,7 @@
                 <div class="row header-top">
                     <div class="col-lg-2 col-md-2 col-xs-12 section1">
                         <a href="index.html">
-                            <img src="assets/images/logo.png">
+                            <img src="assets/images/Logo.png">
                         </a>
                     </div>
                     <div class="col-lg-5 col-md-5 col-xs-12 section2">
@@ -49,16 +49,16 @@
                     <div class="collapse navbar-collapse" id="navbar">
                         <ul class="nav navbar-nav navbar-left">
                             <li class="dropdown">
-                                <a href="student.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Trang chủ</a>
+                                <a href="/" role="button" aria-expanded="false"> Home</a>
                             </li>
                             <li class="dropdown">
-                                <a href="lienhe.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Tin tức - Sự kiện</a>
+                                <a href="lienhe.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> News - Event</a>
                             </li>
                             <li class="dropdown">
-                                <a href="lienhe.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Liên hệ</a>
+                                <a href="lienhe.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Contact</a>
                             </li>
                             <li class="dropdown">
-                                <a href="gioithieu.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Giới thiệu</a>
+                                <a href="gioithieu.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> About us</a>
                             </li>
                         </ul>
                     </div>
@@ -70,7 +70,7 @@
         <div id="header-top">
             <div class="col-xs-12 col-sm-12 header-top2 text-center">
                 <a href="index.html">
-                    <img src="assets/images/logo.png">
+                    <img src="assets/images/Logo.png">
                 </a>
             </div>
 
@@ -85,7 +85,7 @@
                      <ul>
                         <li><a href="/">Home</a></li>
                         <li>
-                            <a href="/hnz-enterprise-project/cms" class="dropdown-toggle" role="button" aria-expanded="false"> 
+                            <a href="/cms" class="dropdown-toggle" role="button" aria-expanded="false"> 
                                 Go To Manager Page
                             </a>
                         </li>
@@ -104,7 +104,7 @@
                                 </a>
                               </li>
                               <li>
-                                  <a href="/hnz-enterprise-project/logout" class="dropdown-toggle" role="button" aria-expanded="false"> 
+                                  <a href="/logout" class="dropdown-toggle" role="button" aria-expanded="false"> 
                                     Log Out
                                 </a>
                               </li>
@@ -178,22 +178,15 @@
                             <div class="mainContent">
                                 <img src="<?php echo $result->img ?>">
                                 <?php
-                                                $ch = curl_init();
-                                                $file_name_with_full_path = "/xampp/htdocs/hnz-enterprise-projec/".$result->doc;
-                                    
+                                                $ch = curl_init();                                    
                                                 curl_setopt($ch, CURLOPT_URL, "https://api.docconversionapi.com/convert?outputFormat=html");
                                                 curl_setopt($ch, CURLOPT_POST, 2);
                                                 curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-ApplicationID:286f4243-5ed4-450d-bce9-435f568d450b', 'X-SecretKey:120748dd-ac15-44fd-88c8-ca46149b4b8d'));
                                     
-                                                if (function_exists('curl_file_create')) { // php 5.5+
-                                                  $cFile = curl_file_create($file_name_with_full_path, 'application/msword', basename($file_name_with_full_path));
-                                                } else { 
-                                                  $cFile = '@' . realpath($file_name_with_full_path);
-                                                }
-                                    
+                                                
                                                 $post = array(
                                                   "optionsJson" => "{}",
-                                                  "inputFile" => $cFile
+                                                  "inputFile" => "https://yearlymgz.herokuapp.com/" . $result->doc
                                                 );
                                     
                                                 curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
@@ -260,8 +253,90 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 hidden-xs hidden-sm">
-                            <h3>Tin tức mới nhất</h3>
+                        <div class="col-lg-3 col-md-3 hidden-xs hidden-sm news-siderbar">
+                            <div>
+                                <div class="news-ti">
+                                    <span>New Post</span>
+                                </div>
+                                <div class="new-news">
+                                    <a href="#">
+                                        <div style="padding: 0 5px">
+                                            <div class="section-1">
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9sJD2bGSi3fOgbB78tNsLTfSeabvMXwT4_02B3yRSCrP0hFt5">
+                                            </div>
+                                            <div class="section-2">
+                                                <div class="child-1">
+                                                    <a href="">
+                                                       IT magazine 2
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <time>
+                                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                        12/12/2018
+                                                    </time>
+                                                    <a href="">
+                                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                                        VuvanTien
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="new-news">
+                                    <a href="#">
+                                        <div style="padding: 0 5px">
+                                            <div class="section-1">
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9sJD2bGSi3fOgbB78tNsLTfSeabvMXwT4_02B3yRSCrP0hFt5">
+                                            </div>
+                                            <div class="section-2">
+                                                <div class="child-1">
+                                                    <a href="">
+                                                        IT magazine 2
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <time>
+                                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                        12/12/2018
+                                                    </time>
+                                                    <a href="">
+                                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                                        VuvanTien
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="new-news">
+                                    <a href="#">
+                                        <div style="padding: 0 5px">
+                                            <div class="section-1">
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9sJD2bGSi3fOgbB78tNsLTfSeabvMXwT4_02B3yRSCrP0hFt5">
+                                            </div>
+                                            <div class="section-2">
+                                                <div class="child-1">
+                                                    <a href="">
+                                                        IT magazine 2
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <time>
+                                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                        12/12/2018
+                                                    </time>
+                                                    <a href="">
+                                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                                        VuvanTien
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -275,9 +350,34 @@
         <div class="myfooter">
             <div class="container">
                 <div class="text-center">
-                    <h4>Team</h4>
+                    
                 </div>
             </div>
+        </div>
+        <div id="footer-2">
+            <div class="container">
+                <div class=" content-footer2">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <p>
+                            Ha Noi 
+                            <br>
+                            Detech, Ton That Thuyet, My Dinh, Ha Noi <br>
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                        <ul>
+                            <li><a href=""><i id="icon-fb" class="fa fa-facebook"></i></a></li>
+                            <li><a href=""><i id="icon-tw" class="fa fa-twitter"></i></a></li>
+                            <li><a href=""><i id="icon-yt" class="fa fa-youtube"></i></a></li>
+                            <li><a href=""><i id="icon-gg" class="fa fa-google-plus"></i></a></li>
+                            <li><a href=""><i id="icon-ins" class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer-3">
+            <h4>Design by: Team</h4>
         </div>
     </footer>
     <a id="back2Top" title="Back to top" href="#"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
@@ -303,7 +403,7 @@
                 var userId = $("#userid").val();
                 var mgzId = $("#mgz-id").val();
                 $.ajax({
-                    url: `/hnz-enterprise-project/postPublicCmt`,
+                    url: `/postPublicCmt`,
                     type: 'POST',
                     dataType: 'json',
                     data: {
@@ -338,7 +438,7 @@
                 })               
             }           
         }
-    </script>   
+    </script>  
 
 </body>
 

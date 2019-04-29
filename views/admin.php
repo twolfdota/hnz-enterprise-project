@@ -56,6 +56,11 @@
             <nav id="menu">
                 <ul>
                     <li>
+                        <a data-toggle="pill" href="#home">
+                            Reports
+                        </a>
+                    </li>
+                    <li>
                         <a data-toggle="pill" href="#register">
                             Registration
                         </a>
@@ -76,15 +81,20 @@
         <div class="mainMenu hidden-xs hidden-sm">
             <div class="logoTeam">
                 <a data-toggle="pill" href="#home">
-                    <img  src="assets/images/logo.png">
+                    <img  src="assets/images/Logo.png">
                 </a>
-                <a href="#">Heroes and Zeroes</a>
+                <a href="#">Heroes & Zeroes</a>
             </div>
             <div class="Navigation">
                 <h4>Navigation</h4>
             </div>
             <div class="menu">
                 <ul>
+                    <li>
+                        <a data-toggle="pill" href="#home">
+                            <i class="fa fa-bars" aria-hidden="true"></i> Reports
+                        </a>
+                    </li>
                     <li>
                         <a data-toggle="pill" href="#register">
                             <i class="fa fa-bars" aria-hidden="true"></i> Registration
@@ -192,12 +202,12 @@
                                 <a id="menu1" data-toggle="dropdown" class=" dropdown-toggle"  href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="/hnz-enterprise-project/" class=" goto" title="Go to Home page">
+                                            <a href="/" class=" goto" title="Go to Home page">
                                                 <i class="fa fa-gg" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                          <a href="/hnz-enterprise-project/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                          <a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                         </li>
                                   </ul>
                               </div>
@@ -282,7 +292,7 @@
                     </ul>
 
                     <ul class="menu-logout text-right col-lg-6 col-md-6">
-                        <a href="/hnz-enterprise-project/" class="text-left goto" title="Go to Home page">
+                        <a href="/" class="text-left goto" title="Go to Home page">
                             <i class="fa fa-gg" aria-hidden="true"></i>
                         </a>
                         <li class="full hidden-xs hidden-sm">
@@ -297,7 +307,7 @@
                             <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i>
                             <ul class="logout">
                                 <li>
-                                    <a href="/hnz-enterprise-project/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                    <a href="/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                 </li>
                             </ul>
                             
@@ -333,7 +343,7 @@
                                     <li> / </li>
                                     <li>
                                         <a href="">
-                                            Registration
+                                            Admin
                                         </a>
                                     </li>
                                 </ul>
@@ -342,19 +352,22 @@
                     </div>
                 </div>
                 <div class="registerContent tab-content">
-                    <div id="home" class="registerContentForm tab-pane fade in active">
+                    <div id="home" class="registerContentForm tab-pane fade in active listMagazine">
                         <form name="reportForm" id="reportForm">
-                            <!-- <div class="title">
-                                <h3>Download File</h3>
-                            </div> -->
                             <div class="text-center row">
                                 
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    Choose year:
-                                    <select id="reportYearSelect">
+                                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                                    <div class="alert alert-warning">
+                                        <h3>Choose Year:</h3>
+                                    </div>
+                                    <div class="reportYearSelect col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <select id="reportYearSelect">
 
-                                    </select>
-                                    <button type="button" id="rptButton" onclick="generateRpt()">Submit</button>
+                                        </select>
+                                    </div>
+                                    <div class="rptButton col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <button type="button" id="rptButton" onclick="generateRpt()">Submit</button>
+                                    </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="mgzPie">
 
@@ -362,12 +375,19 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="authorPie">
 
                                 </div>
+                                <h3>Exception reports:</h3>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="nocmtPie">
+
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="no14daysPie">
+
+                                </div>
                             </div>
                         </form>
                     </div>
                     <div id="register" class="registerContentForm tab-pane fade">
                         <form name="formRes" id="createForm">
-                            <div class="title">
+                            <div class="alert alert-warning">
                                 <h3>Personal information</h3>
                             </div>
                             <div class="main-input">
@@ -417,9 +437,9 @@
                                 </div>
                             </div>
 
-                            <div class="title">
+                           <!--  <div class="title">
                                 <h3>Account information</h3>
-                            </div>
+                            </div> -->
                             <div class="main-input">
                                 <div class="text">
                                     <p><span>* </span>Email</p>
@@ -445,7 +465,7 @@
                     </div>
                     <div id="academic" class="registerContentForm tab-pane fade">
                         <form name="yearForm" id="yearForm">
-                            <div class="title">
+                            <div class="alert alert-warning">
                                 <h3>Academic year information</h3>
                             </div>
                             <div class="main-input">
@@ -489,7 +509,7 @@
                     </div>
                     <div id="downloadFile" class="registerContentForm tab-pane fade">
                         <form name="downloadForm" id="downloadForm">
-                            <div class="title">
+                            <div class="alert alert-warning">
                                 <h3>Download File</h3>
                             </div>
                             <div class="btnDownload row" id="downloadList">
@@ -522,7 +542,7 @@
             } else {
                 //kiểm tra email có bị lặp không bằng ajax
                 $.ajax({
-                    url: `/hnz-enterprise-project/vldEmail`,
+                    url: `/vldEmail`,
                     type: 'GET',
                     dataType: 'json',
                     async: false
@@ -534,7 +554,7 @@
                 }).then(function() {
                     //post bằng ajax
                     $.ajax({
-                        url: `/hnz-enterprise-project/createUser`,
+                        url: `/createUser`,
                         type: 'POST',
                         dataType: 'json',
                         data: $("#createForm").serialize(),
@@ -580,7 +600,7 @@
             //post bằng ajax
             } else {
                 $.ajax({
-                    url: `/hnz-enterprise-project/editDeadlines`,
+                    url: `/editDeadlines`,
                     type: 'POST',
                     dataType: 'json',
                     data: $("#yearForm").serialize(),
@@ -597,10 +617,10 @@
     function getZip(yearNum) {
         console.log(yearNum);
         $.ajax({
-            url: `/hnz-enterprise-project/downloadZip?year=${yearNum}`,
+            url: `/downloadZip?year=${yearNum}`,
             type: 'GET',
             success: function(result) {
-                console.log("download success!!");
+                window.open(`https://yearlymgz.herokuapp.com/${yearNum}.zip`, '_blank');
             }
         })    
            
@@ -609,17 +629,21 @@
     function generateRpt() {
         if ($("#reportYearSelect").val()) {
             $.ajax({
-            url: `/hnz-enterprise-project/getStatData?year=${$("#reportYearSelect").val()}`,
+            url: `/getStatData?year=${$("#reportYearSelect").val()}`,
             type: 'GET',
             success: function(rawResult) {
                 var result = JSON.parse(rawResult);
                 var myFac = [];
                 var myMgz = [];
                 var myAuthor = [];
+                var myNocmt = [];
+                var myNo14days = [];
                     for (var i = 0; i < result.length; i++) {
                         myFac.push(result[i].faculty);
                         myMgz.push(result[i].mgzCount);
                         myAuthor.push(result[i].authorCount);
+                        myNocmt.push(result[i].nocmtCount);
+                        myNo14days.push(result[i].nocmtCount14days);
                     }
                     google.charts.load('current', {'packages': ['corechart']});
                     google.charts.setOnLoadCallback(drawVisualization);
@@ -627,6 +651,8 @@
 // Create and populate the data table.
                         var mgzdata = new google.visualization.DataTable();
                         var authordata = new google.visualization.DataTable();
+                        var nocmtdata = new google.visualization.DataTable();
+                        var no14daysdata = new google.visualization.DataTable();
 
                         mgzdata.addColumn('string', 'faculty');
                         mgzdata.addColumn('number', 'contributions');
@@ -646,7 +672,27 @@
                             authordata.setCell(i, 1, myAuthor[i]);
                         }
                         new google.visualization.PieChart(document.getElementById('authorPie')).
-                                draw(authordata, {title: "Contributors", is3D: true, width: '100%', height: '400'});             
+                                draw(authordata, {title: "Contributors", is3D: true, width: '100%', height: '400'}); 
+
+                        nocmtdata.addColumn('string', 'faculty');
+                        nocmtdata.addColumn('number', 'posts');
+                        nocmtdata.addRows(myFac.length);
+                        for (var i = 0; i < myFac.length; i++) {
+                            nocmtdata.setCell(i, 0, myFac[i]);
+                            nocmtdata.setCell(i, 1, myNocmt[i]);
+                        }
+                        new google.visualization.PieChart(document.getElementById('nocmtPie')).
+                                draw(nocmtdata, {title: "Abadoned posts", is3D: true, width: '100%', height: '400'});
+                                
+                        no14daysdata.addColumn('string', 'faculty');
+                        no14daysdata.addColumn('number', 'posts');
+                        no14daysdata.addRows(myFac.length);
+                        for (var i = 0; i < myFac.length; i++) {
+                            no14daysdata.setCell(i, 0, myFac[i]);
+                            no14daysdata.setCell(i, 1, myNo14days[i]);
+                        }
+                        new google.visualization.PieChart(document.getElementById('no14daysPie')).
+                                draw(no14daysdata, {title: "Abadoned posts after 14 days", is3D: true, width: '100%', height: '400'});
             }
             }
         })    
@@ -705,7 +751,7 @@
             })
             //load thông tin năm hiện tại vào trang
             $.ajax({
-                url: `/hnz-enterprise-project/loadYear`,
+                url: `/loadYear`,
                 type: 'GET',
                 dataType: 'json',
                 success: function(result) {
@@ -730,7 +776,7 @@
             })
             //load danh sách khoa, lọc ra số khoa đã có coordinator
             $.ajax({
-                url: `/hnz-enterprise-project/loadFaculty`,
+                url: `/loadFaculty`,
                 type: 'GET',
                 dataType: 'json',
                 success: function(result) {

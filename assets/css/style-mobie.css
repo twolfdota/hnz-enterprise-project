@@ -27,6 +27,12 @@
 .session3{
   padding:0 10px;
 }
+.Timeremaining label {
+    font-size: 20px;
+}
+.Timeremaining span {
+    font-size: 12px;
+}
 .commentStudent h4{
   margin-left: 20px
 }
@@ -211,6 +217,15 @@
   .crollStudent{
     width: 106% !important;
 }
+.commentPost .btnComent input {
+    width: 100%;
+}
+.rptButton{
+  margin-top: 20px;
+}
+.content-news .news img {
+    height: 30vh;
+}
   .header-top1 i{
     color: #da5b34;
     font-size: 25px;
@@ -231,7 +246,7 @@
       padding:10px 20px;
       color: white;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 12px;
       border-radius: 5px;
   }
   .phone{

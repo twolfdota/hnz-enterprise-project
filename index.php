@@ -68,7 +68,7 @@ $route->add('/cms', function () {
                 include_once './views/coordinator.php';
                 break;
             case 3:
-                header("/");
+                header("Location:index.php");
                 exit();
             default:
                 include_once './views/admin.php';
@@ -119,13 +119,13 @@ $route->add('/downloadZip', function(){
 $zipname = $_GET['year'].'.zip';
 // Initialize archive object
 $rootPath = realpath('./uploads/' . $_GET['year']);
-
 // Initialize archive object
+
 $zip = new ZipArchive();
 $zip->open($zipname, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
 // Create recursive directory iterator
-/** @var SplFileInfo[] $files */
+
 $files = new RecursiveIteratorIterator(
     new RecursiveDirectoryIterator($rootPath),
     RecursiveIteratorIterator::LEAVES_ONLY
@@ -147,14 +147,10 @@ foreach ($files as $name => $file)
 
 // Zip archive will be created only after closing object
 $zip->close();
-  
-    header('Content-Type: application/zip');
-    header("Content-Transfer-Encoding: Binary"); 
-    header("Content-Disposition: attachment; filename=\"".$_GET['year'].".zip" ."\"");
-    header('Content-Length: ' . filesize($zipname));
+    echo realpath('./'.$zipname);
+    
 
-    readfile(realpath('./'.$zipname));
-    unlink(realpath('./'.$zipname));
+
 });
 //Thêm các đường dẫn validate hoặc add, update dữ liệu vào đây (thường dùng POST)
 $route->add('/editDeadlines', function () {
@@ -277,13 +273,18 @@ $route->add('/postMgz', function () {
                     
                     if (move_uploaded_file($_FILES["doc"]["tmp_name"], $doc_dir . $title. '.' . $docFileType)&& move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $img_dir . $title. '.' . $imageFileType)) {
                         $info = $magazineCtrl->getMailInfo($_POST['userid']);
-                        $to      = $info->email;
+                        require("./sendgrid-php/sendgrid-php.php");
+
+                        $from = new SendGrid\Email(null, "yearlymagazinesys@gmail.com");
                         $subject = 'New magazine "'.$title.'" submitted to ' .$info->faculty. ' Department';
-                        $message = '<!DOCTYPE html><html><body>A student uploaded a new magazine just now, check it out in your <a href="localhost/hnz-enterprise-project/viewmagazine?mgzId='.$addResult->insertId.'">cms</a>.<hr/> This is automatic message, please dont reply.<body></html>';
-                        $headers = 'From: yearlymagazinesys@gmail.com' . "\r\n" .
-                        'Content-type: text/html' . "\r\n" .
-                        'X-Mailer: PHP/' . phpversion();
-                        mail($to, $subject, $message, $headers);
+                        $to = new SendGrid\Email(null, $info->email);
+                        $content = new SendGrid\Content("text/html", '<!DOCTYPE html><html><body>A student uploaded a new magazine just now, check it out in your <a href="https://yearlymgz.herokuapp.com/viewmagazine?mgzId='.$addResult->insertId.'">cms</a>.<hr/> This is automatic message, please dont reply.<body></html>');
+                        $mail = new SendGrid\Mail($from, $subject, $to, $content);
+
+                        $apiKey = getenv('SENDGRID_API_KEY');
+                        $sg = new \SendGrid($apiKey);
+                        $sg->client->mail()->send()->post($mail);
+
                         include './controllers/notiController.php';
                         $notiCtrl = new notiCtrl();
                         $notiCtrl->createNoti($addResult->insertId, 'create', $_POST['userid'], $_POST['corId']);                        
@@ -299,7 +300,7 @@ $route->add('/postMgz', function () {
             }
         }
     } else {
-        echo json_encode("please input title!!!");
+        echo json_encode("please input the title!!!");
     }
 }
 });
@@ -344,7 +345,7 @@ $route->add('/updateMgz', function () {
             }
     // Allow certain file formats
             if ($docFileType != "doc" && $docFileType != "docx") {
-                echo json_encode("Wrong file format.");
+                echo json_encode("Wrong file format choosen.");
                 $docUploadOk = 0;
             }
     // Check if $uploadOk is set to 0 by an error
@@ -358,7 +359,7 @@ $route->add('/updateMgz', function () {
                     $magazineCtrl->update($title, $imgDir, $docDir, $_POST['mgzId']);
                     $updated = true;
 
-                    echo json_encode('doc updated!');
+                    echo json_encode('doc OK!');
                 } else {
                     echo json_encode('Error uploading doc file!!!');
                 }
@@ -375,7 +376,7 @@ $route->add('/updateMgz', function () {
             }
     // Allow certain file formats
             if ($imgFileType != "png" && $imgFileType != "jpg" && $imgFileType != "jpeg" && $imgFileType != "svg") {
-                echo json_encode("Wrong file format.");
+                echo json_encode("Wrong file format choosen.");
                 $imgUploadOk = 0;
             }
     // Check if $uploadOk is set to 0 by an error
@@ -387,7 +388,7 @@ $route->add('/updateMgz', function () {
                 if (move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $img_dir . $title. '.' . $imgFileType)) {                   
                     $magazineCtrl->update($title, $imgDir, $docDir, $_POST['mgzId']);
                     $updated = true;
-                    echo json_encode('Image updated!');
+                    echo json_encode('Img OK!');
                 } else {
                     echo json_encode('Error uploading image file!!!');
                 }
@@ -400,7 +401,7 @@ $route->add('/updateMgz', function () {
         }
     }
     } else {
-        echo json_encode("please input title!!!");
+        echo json_encode("please input the title!!!");
     }
 }
 });
