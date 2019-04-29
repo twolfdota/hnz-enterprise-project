@@ -1,5 +1,117 @@
 @media screen and (max-width:800px) {
+  .nameCmt h4{
+    font-size: 14px !important;
+    margin-top: 0
 
+}
+.uploadForm h4{
+  font-size: 14px
+}
+.imgCmt{
+    width: 20%;
+}
+.modal{
+  margin-top: -50px
+}
+.commentStudent{
+    width: 100%;
+    float: left;
+}
+.commentStudent2{
+    width: 100%;
+    float: left;
+}
+.uploadForm {
+    width: 100%;
+}
+.session3{
+  padding:0 10px;
+}
+.Timeremaining label {
+    font-size: 20px;
+}
+.Timeremaining span {
+    font-size: 12px;
+}
+.commentStudent h4{
+  margin-left: 20px
+}
+.modal .close {
+  right: 10px;
+  top: -7px;
+}
+.registerForm .mainForm input {
+    margin-bottom: 20px;
+}
+
+.rules {
+    width: 100%;
+}
+.modal-content {
+    width: 100%;
+}
+.imgCmt{
+    width: 20%;
+}
+.nameCmt{
+    width: 80%;
+}
+.contentCmt{
+    padding-left: 0;
+    margin-top: 0px
+}
+.session1Notification{
+    background-color: #FFFFFF;
+    height: 55px;
+    padding:5px;
+}
+.session1Notification span{
+    font-weight: 700;
+    line-height: 28px;
+    color: #2E2D2D
+}
+.today{
+    background-color: #ECECEC;
+    height: 35px;
+    padding:5px;
+}
+.contentNotification .img{
+    width: 15%;
+    float: left;
+}
+.contentNotification .img img{
+    width: 70%;
+    height: auto;
+}
+.contentNotification .textContent{
+    width: 75%;
+     float: left;
+}
+.contentNotification  .icon{
+    width: 10%;
+     float: left;
+}
+.contentNotification .icon i{
+    font-size: 16px;
+    line-height: 40px
+}
+.contentNotification .textContent span{
+    color: #2B2B2B !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+}
+.contentNotification .textContent p{
+    color: #2B2B2B !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+}
+.contentNotification{
+    width: 100%;
+    padding:5px;
+    background-color: #F7F7F7;
+    min-height: 78px;
+    border-bottom: 1px solid #D1D1D1
+}
 .registerContentBG {
     padding: 15px 10px;
 }
@@ -51,11 +163,7 @@
     color: #da5b34;
     text-align: center !important;
 }
-.formCmt{
-    height: 150px;
-    overflow: auto;
-    width: 100%;
-}
+
 .commentPost .btnComent input{
     font-size: 14px;
     margin-bottom: 30px
@@ -83,6 +191,14 @@
   width: 94% !important;
   float: right;
 }
+.titleList{
+    padding-right:0px;
+}
+.contentmaganizeCroll{
+  padding:0;
+}
+
+
 }
 
 /*.content-cart .col-xs-12{
@@ -92,9 +208,24 @@
 .btnSubmit {
     width: 100% !important;
 }
+.crollStudent{
+    width: 104% !important;
+}
 
 }
 @media screen and (max-width:480px) {
+  .crollStudent{
+    width: 106% !important;
+}
+.commentPost .btnComent input {
+    width: 100%;
+}
+.rptButton{
+  margin-top: 20px;
+}
+.content-news .news img {
+    height: 30vh;
+}
   .header-top1 i{
     color: #da5b34;
     font-size: 25px;
@@ -115,7 +246,7 @@
       padding:10px 20px;
       color: white;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 12px;
       border-radius: 5px;
   }
   .phone{
@@ -138,17 +269,23 @@
       color: #da5b34;
       text-align: center !important;
   }
-
+#viewallmagazines .listMagazine{
+    width: 104%
+}
+/*.formCmt{
+    height: 150px;
+    overflow: auto;
+    width: 100%;
+}*/
 
   }
 
   /*.content-cart .col-xs-12{
     padding: 0px !im
   }*/
-  @media screen and (max-width:640px) {
-  
-  }
+
   @media screen and (max-width:480px) {
+
     .header-top1 i{
     color: #da5b34;
     font-size: 25px;
@@ -194,6 +331,23 @@
 .oneComment{
     border:none;
 }
+
+.imgCmt img{
+    height: auto;
+    width: 100%;
+}
+.imgCmt{
+    height: auto;
+    width: 100%;
+    width: 20%;
+    float: left;
+}
+.nameCmt{
+    width: 80%;
+    float: left;
+}
+
+
   }
   @media screen and (min-width: 768px) and (max-width: 991px) {
 /*  #header-mobie #header-top .header-top3 img{

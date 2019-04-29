@@ -22,9 +22,17 @@
 
     <?php
         include_once './controllers/notiController.php';
+        include_once './controllers/yearController.php';
         $notiCtrl = new notiCtrl();
         $notiRes = $notiCtrl->getNoti($author['id']);
+        date_default_timezone_set("Asia/Bangkok");
+        $thisYear = date("Y");
+        $yearCtrl = new yearCtrl();
+        $yearRes = $yearCtrl->loadThisYear();
 
+        if (count($yearRes) > 0 && $yearRes[0]->year == $thisYear ) {
+            echo "<input type='hidden' id='deadline' value='". $yearRes[0]->dl1."'/>";
+        }
     ?>  
 
     <!-- Modal để hiển thị thông tin user sau khi add-->
@@ -54,12 +62,12 @@
                 <ul>
                     <li>
                         <a data-toggle="pill" href="#upload">
-                            <i class="fa fa-bars" aria-hidden="true"></i> Upload File
+                            Upload File
                         </a>
                     </li>
                     <li>
                         <a data-toggle="pill" href="#yourmagazine">
-                            <i class="fa fa-bars" aria-hidden="true"></i> Your File
+                            Your File
                         </a>
                     </li>
                 </ul>
@@ -68,9 +76,9 @@
         <div class="mainMenu hidden-xs hidden-sm">
             <div class="logoTeam">
                 <a href="index.html">
-                    <img src="assets/images/logo.png">
+                    <img src="assets/images/Logo.png">
                 </a>
-                <a href="">Vu Van Tien</a>
+                <a href="">Heroes & Zeroes</a>
             </div>
             <div class="Navigation">
                 <h4>Faculty: <span><?php echo $author['faculty'];?> Department</span></h4>
@@ -93,18 +101,102 @@
         <div class="mainForm">
             <div class="menubar">
                 <div class="menubarRight text-right hidden-md hidden-lg">
-                    <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->
                     <ul>
                         <li class="icon-nvar">
                             <a href="#menu">
                                 <i class="fa fa-bars" aria-hidden="true"></i>
                             </a>
                         </li>
+                        <li class="bellMobile">
+                            <a href="#" id="btnBellMobile">
+                                <div class="">
+                                    <i class="fa fa-bell" aria-hidden="true"></i>
+                                </div>
+                                <span class="notiCount"><?php echo count($notiRes)?></span>
+                            </a>
+                        </li>
+                        <div id="ShowBell" class="dropdown-contentMobile">
+                            <div class="session1Notification text-left">
+                                <span>Thông báo</span>
+                            </div>
+                            <div class="today">
+                                <span>TODAY</span>
+                            </div>
+                            <div class="allNotification">
+                            <?php 
+                                    
+                                    foreach($notiRes as $item) {
+                                        ?>
+                                        <div value="<?php echo $item->mgzId ?>" class="contentNotification" onclick="notiNavigate(this.getAttribute('value'))">
+                                            <input type="hidden" class="notiId" value="<?php echo $item->id ?>"/>
+                                            <div class="img">
+                                                <img src="<?php echo $item->avatar?>">
+                                            </div>
+                                        <?php    
+                                        switch($item->type) {                                            
+                                            case "delete":
+                                                ?>
+                                                <div class="textContent">
+                                                    <p><?php echo $item->name?> <span>deleted one of your posts </span>
+                                                    </p> 
+                                                    <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> <?php echo $item->date?></span>
+                                                </div>
+                                                <div class="icon text-right">
+                                                    <i class="fa fa-close signalCancel" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                                <?php
+                                                break;
+                                            case "approve":
+                                                ?>
+                                                <div class="textContent">
+                                                    <p><?php echo $item->name?> <span>published your post <i><?php echo $item->title?></i></span>
+                                                    </p> 
+                                                    <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> <?php echo $item->date?></span>
+                                                </div>
+                                                <div class="icon text-right">
+                                                    <i class="fa fa-check signalDone" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                                <?php
+                                                break;
+
+                                            case "comment":
+                                                ?>
+                                                <div class="textContent">
+                                                    <p><?php echo $item->name?> <span>commented on your post <i><?php echo $item->title?></i></span>
+                                                    </p> 
+                                                    <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> <?php echo $item->date?></span>
+                                                </div>
+                                                <div class="icon text-right">
+                                                    <i class="fa fa-commenting-o signalCMT" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                                <?php
+                                                break;
+                                        }
+                                    }
+                                ?>
+
+                            </div>
+                      </div>
                         <li class="active">
                             <img src="<?php echo $author['ava'];?>">
                         </li>
                         <li>
-                            <a href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i>
+                            <div class="dropdown">
+                                <a id="menu1" data-toggle="dropdown" class=" dropdown-toggle"  href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="/" class=" goto" title="Go to Home page">
+                                                <i class="fa fa-gg" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                          <a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                        </li>
+                                  </ul>
+                              </div>
                         </li>
                     </ul>
                 </div>
@@ -116,7 +208,7 @@
                                 <div class="bell">
                                     <i class="fa fa-bell" aria-hidden="true"></i>
                                 </div>
-                                <span><?php echo count($notiRes)?></span>
+                                <span class="notiCount"><?php echo count($notiRes)?></span>
                             </a>
                         </li>
                         <div id="myDropdown" class="dropdown-content">
@@ -186,9 +278,9 @@
                             </div>
                       </div>
                     </ul>
-                    
+
                     <ul class="menu-logout text-right col-lg-6 col-md-6">
-                        <a href="/hnz-enterprise-project/" class="text-left goto" title="Go to Home page">
+                        <a href="/" class="text-left goto" title="Go to Home page">
                             <i class="fa fa-gg" aria-hidden="true"></i>
                         </a>
                         <li class="full hidden-xs hidden-sm">
@@ -203,7 +295,7 @@
                             <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i>
                             <ul class="logout">
                                 <li>
-                                    <a href="/hnz-enterprise-project/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                    <a href="/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                 </li>
                             </ul>
                             
@@ -219,8 +311,13 @@
                                 <i class="fa fa-user-plus" aria-hidden="true"></i>
                             </div>
                             <div class="linkText">
-                                <h4>File</h4>
-                                <p>Upload File For Students</p>
+                                <h4>Time remaining</h4>
+                                <span>
+                                    <label id="days"></label> <span>Days</span>
+                                    <label id="hours"></label> <span>:</span>
+                                    <label id="minutes"></label> <span>:</span>
+                                    <label id="seconds"></label>
+                                </span>
                             </div>
                         </div>
                         <div class="linkRight text-right">
@@ -234,7 +331,7 @@
                                     <li> / </li>
                                     <li>
                                         <a href="">
-                                            Registration
+                                            Student
                                         </a>
                                     </li>
                                 </ul>
@@ -336,12 +433,12 @@
 </div>
 <div id="yourmagazine" class="registerContentForm tab-pane fade">
     <div>
-        <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
-            <div class="well well-sm text-center">
+        <div class="titleList">
+            <div class="alert alert-warning">
 
-                <h3>View by Status</h3>
+                <h3>List Your File</h3>
 
-                <div class="btn-group" data-toggle="buttons">
+                <!-- <div class="btn-group" data-toggle="buttons">
 
                     <label class="btn btn-success active">
                         <input type="radio" name="options" id="option2" autocomplete="off" >
@@ -361,10 +458,10 @@
                         <span class="glyphicon glyphicon-ok"></span>
                     </label>
                     
-                </div>
+                </div> -->
             </div>
         </div>
-        <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
+        <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12 crollStudent">
             <table class="table table-striped custab" id="mgzTable">
                 <thead>
                     <tr>
@@ -403,7 +500,7 @@
       <div class="modal-content animate">
         <span onclick="document.getElementById('update').style.display='none'" class="close" title="Close Modal">&times;</span>
         <form name="editForm" id="editForm" method="post" enctype="multipart/form-data">  
-            <div class="uploadForm">  
+            <div class="uploadForm UpdateForm">  
                 <input id="mgz-id" name="mgzId" type="hidden" value=""/>
                 <input type="hidden" value="<?php echo $author['id']?>" name="userid"/>
                 <input type="hidden" value="<?php echo $author['corId']?>" name="corId"/>
@@ -458,30 +555,36 @@
                 </div>
             </div>
 
-        </div>
-        <div class="row">
-            <img src="" id="editImg" alt="" width="50%" height="auto"/>
-        </div>
-        <div class="row">
-            <p id="updateErrorMessage"></p>
-        </div>
-        <div class="row">
-            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
             </div>
-            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-             <input " class="btnSubmit" type="submit" name="form-upload" onclick="updateMgz(document.editForm, event)" value="Update">
+            <div class="row imgEdit">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                    
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                    <img src="" id="editImg" alt="" width="50%" height="auto"/>
+                </div>
+            </div>
+            <div class="row">
+                <p id="updateErrorMsg" style="color:red"></p>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+                 <input class="btnSubmit" type="submit" name="form-upload" onclick="updateMgz(document.editForm, event)" value="Update">
+             </div>
          </div>
-     </div>
 
- </div><!-- /input-group image-preview [TO HERE]--> 
+     </div><!-- /input-group image-preview [TO HERE]--> 
 </div>
 </form>
-<div class="row session3">
-    <div class="col-lg-2 col-md-2  ">
-
-    </div>
-    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+<form name="editForm" id="editForm" method="post" enctype="multipart/form-data">  
+    <div class="uploadForm UpdateForm">  
+        <div class="row session3">
+    <div class="commentStudent">
         <h4>Comment</h4>
+    </div>
+    <div class="commentStudent2 CommentOver">
         <div class="formCmt" id="formCmt">
            <div class="comment">
                <div class="imgCmt">
@@ -495,7 +598,8 @@
                </div>
            </div>
        </div>
-       <div class="YourFormcmt">
+       <h4>Your Comment</h4>
+       <div class="YourFormcmtSTudent">
         <div class="imgCmt">
             <img src="<?php echo $author['ava'];?>">
         </div>
@@ -503,8 +607,10 @@
             <textarea placeholder="Write your comment..." class="form-control" rows="5" required id="comment"></textarea>
         </div>
     </div>
-
 </div>
+</div>
+    </div>
+</form>
 </div>
 </div>
 </div>
@@ -522,13 +628,17 @@
 
         var userId = $("#userid").val();
         $.ajax({
-            url: `/hnz-enterprise-project/deleteNoti`,
+            url: `/deleteNoti`,
             type: 'POST',
             data: {
                 mgzId:id,
                 userId: userId
             },
             success: function(result) {
+                var deleteNum = $(".allNotification").find(`.contentNotification[value=${id}]`).length/2;
+                var deleted = $(".allNotification").find(`.contentNotification[value=${id}]`).remove();
+                var currNoti = parseInt($(".notiCount").html());
+                $(".notiCount").html(currNoti - deleteNum);
                 $("#mgzListToggle").click();
                 $(`#mgzTable .edit-btn[data-value="${id}"]`).click();
             }
@@ -540,13 +650,13 @@
         event.preventDefault();
         formData = new FormData($("#uploadForm")[0]);
         $.ajax({
-            url: `/hnz-enterprise-project/postMgz`,
+            url: `/postMgz`,
             type: 'POST',
             processData: false,
             contentType: false,
             data: formData,
             success: function(result){
-                if (result == '"success"') {
+                if (result.length < 12) {
                     alert("Magazine successfully uploaded!");
                     location.reload();
                 }
@@ -562,13 +672,13 @@
         event.preventDefault();
         formData = new FormData($("#editForm")[0]);
         $.ajax({
-            url: `/hnz-enterprise-project/updateMgz`,
+            url: `/updateMgz`,
             type: 'POST',
             processData: false,
             contentType: false,
             data: formData,
             success: function(result){
-                if (result.length <= 10) {
+                if (result.length <= 18) {
                     alert("Magazine successfully updated!");
                     location.reload();
                 }
@@ -599,7 +709,7 @@
         $("#formCmt").html("");
         var htmlList="";
         $.ajax({
-            url: `/hnz-enterprise-project/loadComments?mgzId=${mgzId}`,
+            url: `/loadComments?mgzId=${mgzId}`,
             type: 'GET',
             dataType: 'json',
             cache:false,
@@ -609,7 +719,7 @@
                 $("#oldDocType").val(result.doc.replace(`uploads/${result.year}/doc/${result.title}.`,""));
                 $("#oldImgType").val(result.img.replace(`uploads/${result.year}/mgzImg/${result.title}.`,""));
                 $("#editDocLink").text(result.doc.replace(`uploads/${result.year}/doc/`,""));
-                $("#editDocLink").attr("href", `/hnz-enterprise-project/downloadDocs?docLink=${result.doc}&year=${result.year}`);
+                $("#editDocLink").attr("href", `/downloadDocs?docLink=${result.doc}&year=${result.year}`);
                 $("#editImg").attr("src", result.img)
                 if (result.cmtList.length) {
 
@@ -675,7 +785,7 @@
                 var userRole = $("#userRole").val();
                 var corId = $("#corId").val();
                 $.ajax({
-                    url: `/hnz-enterprise-project/postModifyCmt`,
+                    url: `/postModifyCmt`,
                     type: 'POST',
                     dataType: 'json',
                     data: {
@@ -795,6 +905,15 @@ function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 </script>
+<script type="text/javascript">
+                // Get the button, and when the user clicks on it, execute myFunction
+        document.getElementById("btnBellMobile").onclick = function() {myFunctionBell()};
+
+        /* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
+        function myFunctionBell() {
+          document.getElementById("ShowBell").classList.toggle("show");
+        }
+    </script>
 
 <script type="text/javascript" src="assets/js/slick.js"></script>
 <script type="text/javascript" src="assets/js/slick.min.js"></script>

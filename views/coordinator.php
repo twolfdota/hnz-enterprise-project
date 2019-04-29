@@ -24,6 +24,15 @@
     <?php
         include_once './controllers/magazineController.php';
         include_once './controllers/notiController.php';
+        include_once './controllers/yearController.php';
+        date_default_timezone_set("Asia/Bangkok");
+        $thisYear = date("Y");
+        $yearCtrl = new yearCtrl();
+        $yearRes = $yearCtrl->loadThisYear();
+
+        if (count($yearRes) > 0 && $yearRes[0]->year == $thisYear ) {
+            echo "<input type='hidden' id='deadline' value='". $yearRes[0]->dl1."'/>";
+        }
         $magazineCtrl = new magazineCtrl();
         $notiCtrl = new notiCtrl();
         $result = $magazineCtrl->getListMagazineForFaculty($author['id']);
@@ -64,12 +73,7 @@
                 <ul>
                     <li>
                         <a data-toggle="pill" href="#viewallmagazines">
-                            <i class="fa fa-bars" aria-hidden="true"></i> View All Magaiznes
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="pill" href="#yourmagazine">
-                            <!-- <i class="fa fa-bars" aria-hidden="true"></i> Your File -->
+                            View All Magaiznes
                         </a>
                     </li>
                 </ul>
@@ -78,9 +82,9 @@
         <div class="mainMenu hidden-xs hidden-sm">
             <div class="logoTeam">
                 <a href="index.html">
-                    <img src="assets/images/logo.png">
+                    <img src="assets/images/Logo.png">
                 </a>
-                <a href="">Vu Van Tien</a>
+                <a href="">Heroes & Zeroes</a>
             </div>
             <div class="Navigation">
                 <!-- <h4>Faculty: <span><?php echo $author['faculty'];?></span></h4> -->
@@ -103,18 +107,117 @@
         <div class="mainForm">
             <div class="menubar">
                 <div class="menubarRight text-right hidden-md hidden-lg">
-                    <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin</a> -->
                     <ul>
                         <li class="icon-nvar">
                             <a href="#menu">
                                 <i class="fa fa-bars" aria-hidden="true"></i>
                             </a>
                         </li>
+                        <li class="bellMobile">
+                            <a href="#" id="btnBellMobile">
+                                <div class="">
+                                    <i class="fa fa-bell" aria-hidden="true"></i>
+                                </div>
+                                <span><?php echo count($notiRes)?></span>
+                            </a>
+                        </li>
+                        <div id="ShowBell" class="dropdown-contentMobile">
+                            <div class="session1Notification text-left">
+                                <span>Thông báo</span>
+                            </div>
+                            <div class="today">
+                                <span>TODAY</span>
+                            </div>
+                            <div class="allNotification">
+                            <?php 
+                                    
+                                    foreach($notiRes as $item) {
+                                        ?>
+                                        <div value="<?php echo $item->mgzId ?>" class="contentNotification" onclick="notiNavigate(this.getAttribute('value'))">
+                                            <input type="hidden" class="notiId" value="<?php echo $item->id ?>"/>
+                                            <div class="img">
+                                                <img src="<?php echo $item->avatar?>">
+                                            </div>
+                                        <?php    
+                                        switch($item->type) {                                            
+                                            case "create":
+                                                ?>
+                                                <div class="textContent">
+                                                    <p><?php echo $item->name?> <span>created post <i><?php echo $item->title?></i></span>
+                                                    </p> 
+                                                    <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> <?php echo $item->date?></span>
+                                                </div>
+                                                <div class="icon text-right">
+                                                    <i class="fa fa-upload signalUpload" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                                <?php
+                                                break;
+                                            case "update":
+                                                ?>
+                                                <div class="textContent">
+                                                    <p><?php echo $item->name?> <span>updated the post <i><?php echo $item->title?></i></span>
+                                                    </p> 
+                                                    <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> <?php echo $item->date?></span>
+                                                </div>
+                                                <div class="icon text-right">
+                                                    <i class="fa fa-refresh signalUpdate" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                                <?php
+                                                break;
+
+                                            case "comment":
+                                                ?>
+                                                <div class="textContent">
+                                                    <p><?php echo $item->name?> <span>commented on the post <i><?php echo $item->title?></i></span>
+                                                    </p> 
+                                                    <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> <?php echo $item->date?></span>
+                                                </div>
+                                                <div class="icon text-right">
+                                                    <i class="fa fa-commenting-o signalCMT" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                                <?php
+                                                break;
+
+                                            case "cmtTime":
+                                                ?>
+                                                <div class="textContent">
+                                                    <p><span>You have to comment on the post <i><?php echo $item->title?></i> now!</span>
+                                                    </p> 
+                                                    <span class="time"> <i class="fa fa-comments" aria-hidden="true"></i> <?php echo $item->date?></span>
+                                                </div>
+                                                <div class="icon text-right">
+                                                    <i class="fa fa-exclamation-triangle signalcmtLate" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                                <?php
+                                                break;
+                                        }
+                                    }
+                                ?>
+ 
+
+                            </div>
+                      </div>
                         <li class="active">
                             <img src="<?php echo $author['ava'];?>">
                         </li>
                         <li>
-                            <!-- <a href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i> -->
+                            <div class="dropdown">
+                                <a id="menu1" data-toggle="dropdown" class=" dropdown-toggle"  href=""><?php echo $author['name'] ?> <i class="fa fa-caret-down" aria-hidden="true"></a></i>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="/" class=" goto" title="Go to Home page">
+                                                <i class="fa fa-gg" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                          <a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                        </li>
+                                  </ul>
+                              </div>
                         </li>
                     </ul>
                 </div>
@@ -212,7 +315,7 @@
                     </ul>
 
                     <ul class="menu-logout text-right col-lg-6 col-md-6">
-                        <a href="/hnz-enterprise-project/" class="text-left goto" title="Go to Home page">
+                        <a href="/" class="text-left goto" title="Go to Home page">
                             <i class="fa fa-gg" aria-hidden="true"></i>
                         </a>
                         <li class="full hidden-xs hidden-sm">
@@ -224,10 +327,10 @@
                             <img src="<?php echo $author['ava'];?>">
                         </li>
                         <li>
-                            <!-- <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i> -->
+                            <a href=""><?php echo $author['name'];?> <i class="fa fa-caret-down" aria-hidden="true"> </a></i>
                             <ul class="logout">
                                 <li>
-                                    <a href="/hnz-enterprise-project/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                    <a href="/logout">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                 </li>
                             </ul>
                             
@@ -240,7 +343,7 @@
                     <div class="nameLink">
                         <div class="linkLeft hidden-xs hidden-sm">
                             <div class="icon">
-                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                               <i class="fa fa-clock-o" aria-hidden="true"></i>
                             </div>
                             <div class="linkText">
                                 <h4>Time remaining</h4>
@@ -263,7 +366,7 @@
                                     <li> / </li>
                                     <li>
                                         <a href="">
-                                            Registration
+                                           View All Magaiznes
                                         </a>
                                     </li>
                                 </ul>
@@ -363,10 +466,10 @@
 </div>
 <div id="viewallmagazines" class="registerContentForm tab-pane fade in active">
     <div>
-        <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12">
+        <div class="titleList">
             <div class="well well-sm text-center">
 
-                <h3>List of Magaizne</h3>
+                <h3>List of Magazines</h3>
 
 <!--                     <div class="btn-group" data-toggle="buttons">
                         
@@ -391,8 +494,8 @@
                     </div> -->
                 </div>
             </div>
-            <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12" style="overflow: auto;width: 100%">
-                <table class="table table-striped custab" >
+            <div class="row col-md-12 col-lg-12 col-xs-12 col-sm-12 listMagazine">
+                <table class="table table-striped custab">
                 <thead>
                         <tr>
                             <th>ID</th>
@@ -419,7 +522,7 @@
                             <td><?php echo $item->update_at?></td>
                             <td><?php echo $item->status?></td>
                             <td class="text-center">
-                                <a class='btn btn-info btn-xs' href="/hnz-enterprise-project/viewmagazine?mgzId=<?php echo $item->id?>">
+                                <a class='btn btn-info btn-xs' href="/viewmagazine?mgzId=<?php echo $item->id?>">
                                     <i class="fa fa-eye" aria-hidden="true"></i> View
                                 </a>
                                 <?php if ($item->status != "approved") {?>
@@ -437,91 +540,6 @@
                     }
                     ?>
                 </table>
-            </div>
-        </div>
-        <div id="viewmagazine" class="modal">
-
-          <div class="modal-content animate" action="/action_page.php">
-            <span onclick="document.getElementById('viewmagazine').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">  
-                <div class="uploadForm">  
-
-                    <input id="mgz-id" name="mgzId" type="hidden" value=""/>
-                    <!-- image-preview-filename input [CUT FROM HERE]-->
-                    <div class="">
-                        <div class="">
-                           <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
-                                <h4>Magazine</h4>
-                            </div>
-                           <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contentmaganizeCroll">
-                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                                 <div class="contentmaganize">
-                                    <h3>Test title</h3>
-                                    <img  src="assets/images/1544430890_622660_1544430994_noticia_normal.jpg">
-                                    
-                                    <p>
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                        You can also use the following javascript to close the modal by clicking outside of the modal content (and not just by using the "x" or "cancel" button to close it):
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div class="row session3">
-                <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
-                    
-                </div>
-                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-                    <h4>Comment</h4>
-                    <div class="formCmt col-lg-12 col-md-12 col-sm-12 col-xs-12" id="formCmt">
-                       <div class="comment">
-                           <div class="imgCmt">
-                               <img src="assets/images/user.png">
-                           </div>
-                           <div class="nameCmt">
-                               <h4>Vu Van Tien <span>IT</span></h4>
-                           </div>
-                           <div class="contentCmt">
-                               You can also use the following javascript to 
-                           </div>
-                       </div>
-                       <div class="comment">
-                           <div class="imgCmt">
-                               <img src="assets/images/user.png">
-                           </div>
-                           <div class="nameCmt">
-                               <h4>Vu Van Tien <span>IT</span></h4>
-                           </div>
-                           <div class="contentCmt">
-                               You can also use the following javascript to 
-                           </div>
-                       </div>
-                       <div class="comment">
-                           <div class="imgCmt">
-                               <img src="assets/images/user.png">
-                           </div>
-                           <div class="nameCmt">
-                               <h4>Vu Van Tien <span>IT</span></h4>
-                           </div>
-                           <div class="contentCmt">
-                               You can also use the following javascript to close 
-                           </div>
-                       </div>
-                   </div>
-                   <div class="YourFormcmt">
-                    <div class="imgCmt">
-                        <img src="<?php echo $author['ava'];?>">
-                    </div>
-                    <div class="contentCmt">
-                        <textarea placeholder="Write your comment..." class="form-control" rows="5" required id="comment"></textarea>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -544,7 +562,7 @@
             }
 
         }
-	</script>
+    </script>
 -->
 <script>
     var elem = document.getElementById("myvideo");
@@ -554,7 +572,7 @@
         var approveCfm = confirm("Are you sure you want to approve this?");
         if (approveCfm === true) {
         $.ajax({
-            url: `/hnz-enterprise-project/approveMgz?mgzId=${id}&publisher=${$("#userid").val()}`,
+            url: `/approveMgz?mgzId=${id}&publisher=${$("#userid").val()}`,
             type: 'GET',
             success: function(result) {
                 console.log(result);
@@ -575,7 +593,7 @@
         var deleteCfm = confirm("Are you sure you want to delete this?");
         if (deleteCfm === true) {
         $.ajax({
-            url: `/hnz-enterprise-project/deleteMgz?mgzId=${id}&deletor=${$("#userid").val()}`,
+            url: `/deleteMgz?mgzId=${id}&deletor=${$("#userid").val()}`,
             type: 'GET',
             success: function(result) {
                 console.log(result);
@@ -594,14 +612,14 @@
     function notiNavigate(id) {
         var userId = $("#userid").val();
         $.ajax({
-            url: `/hnz-enterprise-project/deleteNoti`,
+            url: `/deleteNoti`,
             type: 'POST',
             data: {
                 mgzId:id,
                 userId: userId
             },
             success: function(result) {
-                window.location.href=`/hnz-enterprise-project/viewmagazine?mgzId=${id}`;
+                window.location.href=`/viewmagazine?mgzId=${id}`;
             }
         })           
     }
@@ -627,7 +645,7 @@
         $("#formCmt").html("");
         var htmlList="";
         $.ajax({
-            url: `/hnz-enterprise-project/loadComments?mgzId=${mgzId}`,
+            url: `/loadComments?mgzId=${mgzId}`,
             type: 'GET',
             dataType: 'json',
             success: function(result) {
@@ -675,7 +693,7 @@
                 var userId = $("#userid").val();
                 var mgzId = $("#mgz-id").val();
                 $.ajax({
-                    url: `/hnz-enterprise-project/postModifyCmt`,
+                    url: `/postModifyCmt`,
                     type: 'POST',
                     dataType: 'json',
                     data: {
@@ -777,6 +795,15 @@ function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 </script>
+<script type="text/javascript">
+                // Get the button, and when the user clicks on it, execute myFunction
+        document.getElementById("btnBellMobile").onclick = function() {myFunctionBell()};
+
+        /* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
+        function myFunctionBell() {
+          document.getElementById("ShowBell").classList.toggle("show");
+        }
+    </script>
 
 <script type="text/javascript" src="assets/js/slick.js"></script>
 <script type="text/javascript" src="assets/js/slick.min.js"></script>
